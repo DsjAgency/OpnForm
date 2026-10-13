@@ -147,11 +147,12 @@ class WorkspaceController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
+            'photo' => 'nullable|url:http,https|max:2048',
         ]);
 
         $workspace->update([
             'name' => $request->name,
-            'icon' => $request->emoji ?? '',
+            'icon' => $request->input('photo') ?: ($request->emoji ?? ''),
         ]);
 
         return $this->success([

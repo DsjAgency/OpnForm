@@ -12,6 +12,21 @@
     <VForm @submit.prevent="updateProfile" size="sm">
    
         <div class="max-w-sm">
+          <div class="flex items-center gap-4 mb-4">
+            <WorkspaceIcon
+              :workspace="{ ...workspace, icon: workspaceForm.photo || workspaceForm.emoji }"
+              size="size-16"
+              class="text-2xl"
+            />
+            <ImageInput
+              :disabled="workspace.is_readonly"
+              :form="workspaceForm"
+              name="photo"
+              label="Foto do espaço de trabalho"
+              help="Se enviar uma foto, ela substitui o emoji."
+              class="flex-1"
+            />
+          </div>
           <TextInput
             :disabled="workspace.is_readonly"
             :form="workspaceForm"
@@ -81,6 +96,8 @@
 </template>
 
 <script setup>
+import WorkspaceIcon from '~/components/workspaces/WorkspaceIcon.vue'
+
 const { update, remove, leave } = useWorkspaces()
 
 const alert = useAlert()
@@ -96,7 +113,8 @@ const leaveMutation = leave()
 // Workspace form
 const workspaceForm = useForm({
   name: '',
-  emoji: ''
+  emoji: '',
+  photo: null
 })
 
 // Update profile
@@ -152,9 +170,11 @@ const leaveWorkSpace = () => {
 // Watch for user changes
 watch(workspace, (newWorkspace) => {
   if (newWorkspace) {
+    const iconIsPhoto = /^https?:\/\//i.test(newWorkspace.icon || '')
     workspaceForm.fill({
       name: newWorkspace.name || '',
-      emoji: newWorkspace.icon || ''
+      emoji: iconIsPhoto ? '' : (newWorkspace.icon || ''),
+      photo: iconIsPhoto ? newWorkspace.icon : null
     })
   }
 }, { immediate: true })

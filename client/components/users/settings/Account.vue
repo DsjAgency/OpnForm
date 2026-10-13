@@ -14,6 +14,22 @@
           @submit.prevent="updateProfile"
         >
           <div class="max-w-sm">
+            <div class="flex items-center gap-4 mb-4">
+              <UserAvatar
+                :src="avatarPreview"
+                :name="user?.name"
+                size="size-16"
+                text-size="text-xl"
+                class="ring-2 ring-white shadow-sm"
+              />
+              <image-input
+                :form="profileForm"
+                name="avatar_url"
+                label="Foto de perfil"
+                help="Envie uma imagem quadrada (ex.: 400×400). Sem foto, usamos a do Gravatar ou suas iniciais."
+                class="flex-1"
+              />
+            </div>
             <text-input
               :form="profileForm"
               name="name"
@@ -101,8 +117,11 @@ const { data: user } = useAuth().user()
 const profileForm = useForm({
   name: '',
   email: '',
+  avatar_url: null,
   current_password: '',
 })
+
+const avatarPreview = computed(() => profileForm.avatar_url || user.value?.photo_url)
 
 const isEmailChanged = computed(() => {
   return Boolean(user.value) && profileForm.email.trim().toLowerCase() !== user.value.email.toLowerCase()
@@ -147,6 +166,7 @@ const deleteAccount = () => {
 function syncProfileForm(currentUser) {
   profileForm.name = currentUser.name
   profileForm.email = currentUser.email
+  profileForm.avatar_url = currentUser.avatar_url || null
   profileForm.current_password = ''
 }
 

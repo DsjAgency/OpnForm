@@ -20,6 +20,38 @@ it('update profile info', function () {
     ]);
 });
 
+it('updates and removes the profile photo', function () {
+    $this->actingAs($user = User::factory()->create());
+
+    $this->patchJson('/settings/profile', [
+        'name' => $user->name,
+        'email' => $user->email,
+        'avatar_url' => 'https://example.com/foto.png',
+    ])
+        ->assertSuccessful()
+        ->assertJson(['photo_url' => 'https://example.com/foto.png']);
+
+    $this->patchJson('/settings/profile', [
+        'name' => $user->name,
+        'email' => $user->email,
+        'avatar_url' => null,
+    ])->assertSuccessful();
+
+    expect($user->fresh()->avatar_url)->toBeNull();
+    expect($user->fresh()->photo_url)->toContain('gravatar.com');
+});
+
+it('rejects a profile photo that is not an http url', function () {
+    $this->actingAs($user = User::factory()->create())
+        ->patchJson('/settings/profile', [
+            'name' => $user->name,
+            'email' => $user->email,
+            'avatar_url' => 'javascript:alert(1)',
+        ])
+        ->assertStatus(422)
+        ->assertJsonValidationErrors(['avatar_url']);
+});
+
 it('requires the current password when changing email', function () {
     $user = User::factory()->create([
         'email' => 'original@example.com',

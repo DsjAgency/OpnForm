@@ -44,7 +44,7 @@
                     v-if="version.user?.photo_url"
                     :src="version.user.photo_url"
                     :alt="version.user?.name || 'Usuário'"
-                    class="h-8 w-8 rounded-full bg-neutral-50 dark:bg-neutral-800 ring-2 ring-white dark:ring-neutral-900"
+                    class="h-8 w-8 rounded-full object-cover bg-neutral-50 dark:bg-neutral-800 ring-2 ring-white dark:ring-neutral-900"
                   />
                   <div
                     v-else

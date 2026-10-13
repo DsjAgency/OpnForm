@@ -4,11 +4,12 @@
     class="rounded-full text-xs truncate text-center flex items-center justify-center overflow-hidden shrink-0"
   >
   <img
-    v-if="isUrl(workspace.icon)"
+    v-if="isUrl(workspace.icon) && !imageFailed"
     :src="workspace.icon"
     :alt="`Ícone de ${workspace.name}`"
-          class="flex-shrink-0 rounded-sm"
+          class="flex-shrink-0 rounded-sm object-cover"
     :class="size"
+    @error="imageFailed = true"
   >
     <p v-else
       class="font-semibold"
@@ -18,7 +19,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 const props = defineProps({
   workspace: {
@@ -30,6 +31,9 @@ const props = defineProps({
     default: 'h-6 w-6',
   },
 })
+
+const imageFailed = ref(false)
+watch(() => props.workspace?.icon, () => { imageFailed.value = false })
 
 const colorClasses = computed(() => {
     if (!props.workspace?.id) {
@@ -72,7 +76,7 @@ const isUrl = (str) => {
 }
 
 const displayText = computed(() => {
-  if (props.workspace.icon) {
+  if (props.workspace.icon && !isUrl(props.workspace.icon)) {
     return props.workspace.icon
   }
   // Fallback to first letter of workspace name, capitalized

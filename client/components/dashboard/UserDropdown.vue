@@ -11,11 +11,11 @@
     
     <template #user-info>
         <div class="flex items-center gap-3">
-          <img
+          <UserAvatar
             :src="user.photo_url"
-            :alt="user.name"
-            class="w-8 h-8 rounded-full"
-          >
+            :name="user.name"
+            size="size-8"
+          />
           <div class="flex-1 min-w-0">
             <p class="text-sm font-medium text-neutral-800 truncate">
               {{ user.name }}

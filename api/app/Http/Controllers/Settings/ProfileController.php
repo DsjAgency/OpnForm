@@ -26,6 +26,7 @@ class ProfileController extends Controller
         $rules = [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'avatar_url' => 'nullable|url:http,https|max:2048',
         ];
 
         if ($emailChanged && $user->canChangeEmail()) {
@@ -70,6 +71,7 @@ class ProfileController extends Controller
         return tap($user)->update([
             'name' => $request->name,
             'email' => strtolower($request->email),
+            'avatar_url' => $request->input('avatar_url') ?: null,
         ]);
     }
 }

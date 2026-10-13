@@ -30,11 +30,12 @@
               aria-label="Menu do usuário"
               class="flex items-center gap-2 p-2 rounded-md hover:bg-neutral-200 transition-colors"
             >
-              <img
+              <UserAvatar
                 :src="user?.photo_url"
-                class="rounded-full w-6 h-6"
-                :alt="user?.name"
-              >
+                :name="user?.name"
+                size="size-6"
+                text-size="text-[10px]"
+              />
             </button>
           </template>
         </UserDropdown>

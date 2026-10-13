@@ -51,7 +51,8 @@ class User extends Authenticatable implements JWTSubject, CachableAttributes, Tw
         'hear_about_us',
         'utm_data',
         'meta',
-        'blocked_at'
+        'blocked_at',
+        'avatar_url',
     ];
 
     protected $dispatchesEvents = [
@@ -129,6 +130,10 @@ class User extends Authenticatable implements JWTSubject, CachableAttributes, Tw
      */
     public function getPhotoUrlAttribute()
     {
+        if ($this->avatar_url) {
+            return $this->avatar_url;
+        }
+
         return vsprintf('https://www.gravatar.com/avatar/%s.jpg?s=200&d=%s', [
             md5(strtolower($this->email)),
             $this->name ? urlencode("https://ui-avatars.com/api/$this->name.jpg") : 'mp',

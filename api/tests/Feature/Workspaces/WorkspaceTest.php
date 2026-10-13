@@ -597,4 +597,17 @@ describe('Workspace member authorization', function () {
         expect($workspace->fresh()->name)->toBe('Shared Workspace');
         expect($workspace->fresh()->icon)->toBe('✏️');
     });
+
+    it('uses an uploaded photo as the workspace icon', function () {
+        $user = $this->actingAsProUser();
+        $workspace = $this->createUserWorkspace($user);
+
+        $this->putJson(route('open.workspaces.update', $workspace), [
+            'name' => 'Workspace com foto',
+            'emoji' => '✏️',
+            'photo' => 'https://example.com/espaco.png',
+        ])->assertSuccessful();
+
+        expect($workspace->fresh()->icon)->toBe('https://example.com/espaco.png');
+    });
 });

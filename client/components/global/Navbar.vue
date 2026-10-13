@@ -51,7 +51,7 @@
                       class="flex items-center"
                       dusk="nav-dropdown-button"
                     >
-                      <img :src="user.photo_url" class="rounded-full w-6 h-6" />
+                      <UserAvatar :src="user.photo_url" :name="user.name" size="size-6" text-size="text-[10px]" />
                       <p class="ml-2 hidden sm:inline max-w-20 truncate">
                         {{ user.name }}
                       </p>

@@ -9,7 +9,7 @@
         class="w-10 h-10 text-blue-800"
       />
       <div class="p-5 text-blue-800 text-center">
-        OpnForm is not optimized for mobile devices. Please open this page on a device with a larger screen.
+        O OpnForm não é otimizado para celulares. Abra esta página em um dispositivo com tela maior.
       </div>
       <div>
         <UButton
@@ -19,7 +19,7 @@
           class="w-full"
           :to="{ name: 'home' }"
         >
-          Back to dashboard
+          Voltar ao painel
         </UButton>
       </div>
     </div>

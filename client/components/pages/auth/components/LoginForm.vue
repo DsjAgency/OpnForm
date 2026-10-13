@@ -21,9 +21,9 @@
       <!-- Email -->
       <text-input
         name="email"
-        label="Email"
+        label="E-mail"
         required
-        placeholder="Your email address"
+        placeholder="Seu endereço de e-mail"
         @blur="checkOidcOptions"
       />
 
@@ -33,8 +33,8 @@
         icon="i-lucide-link"
         color="primary"
         variant="subtle"
-        title="Link your existing account"
-        description="Sign in once with your existing OpnForm password to link it to your SSO account."
+        title="Vincule sua conta existente"
+        description="Entre uma vez com sua senha atual do OpnForm para vinculá-la à sua conta SSO."
       />
 
       <UAlert
@@ -43,7 +43,7 @@
         icon="i-lucide-clock-3"
         color="warning"
         variant="subtle"
-        title="Please wait before trying again"
+        title="Aguarde antes de tentar novamente"
         :description="oidcRateLimitMessage(oidcRetryAfterSeconds)"
       />
 
@@ -53,9 +53,9 @@
         v-if="showPasswordField"
         ref="passwordInputRef"
         native-type="password"
-        placeholder="Your password"
+        placeholder="Sua senha"
         name="password"
-        label="Password"
+        label="Senha"
         required
         @input-filled="login"
       />
@@ -67,7 +67,7 @@
           class="w-full md:w-1/2"
           name="remember"
           size="small"
-          label="Remember me"
+          label="Lembrar de mim"
         />
 
         <div class="w-full md:w-1/2 text-right">
@@ -76,7 +76,7 @@
             class="text-xs hover:underline text-neutral-500 sm:text-sm hover:text-neutral-700"
             @click.prevent="showForgotModal = true"
           >
-            Forgot your password?
+            Esqueceu sua senha?
           </a>
         </div>
       </div>
@@ -104,25 +104,25 @@
         :loading="false"
         @click.prevent="signInwithGoogle"
         icon="devicon:google"
-        label="Sign in with Google"
+        label="Entrar com Google"
       />
       <p
         v-if="!useFeatureFlag('self_hosted')"
         class="text-neutral-500 text-sm text-center mt-4"
       >
-        Don't have an account?
+        Não tem uma conta?
         <a
           v-if="isQuick"
           href="#"
           class="font-semibold ml-1"
           @click.prevent="$emit('openRegister')"
-        >Sign Up</a>
+        >Cadastre-se</a>
         <NuxtLink
           v-else
           :to="{ name: 'register' }"
           class="font-semibold ml-1"
         >
-          Sign Up
+          Cadastre-se
         </NuxtLink>
       </p>
     </v-form>
@@ -188,10 +188,10 @@ const isOidcSignIn = computed(() => oidcAvailable.value && !showPasswordField.va
 const isOidcRateLimited = computed(() => oidcRetryAfterSeconds.value > 0)
 const submitButtonLabel = computed(() => {
   if (isOidcSignIn.value && isOidcRateLimited.value) {
-    return `Try again in ${oidcRetryAfterSeconds.value}s`
+    return `Tente novamente em ${oidcRetryAfterSeconds.value}s`
   }
 
-  return isOidcSignIn.value ? 'Continue' : 'Log in to continue'
+  return isOidcSignIn.value ? 'Continuar' : 'Entrar'
 })
 
 const clearOidcRateLimitTimer = () => {
@@ -276,7 +276,7 @@ const checkOidcOptions = async () => {
             return
           } else if (redirectResponse.error) {
             // Handle error from redirect endpoint
-            useAlert().error(redirectResponse.error || 'Failed to initiate OIDC authentication')
+            useAlert().error(redirectResponse.error || 'Não foi possível iniciar a autenticação OIDC')
             if (!oidcForced.value) showPasswordField.value = true
             return
           }
@@ -284,14 +284,14 @@ const checkOidcOptions = async () => {
           if (handleOidcRateLimitError(error)) return
 
           // Handle network or server errors
-          const errorMessage = error.response?._data?.error || error.response?._data?.message || 'Failed to initiate OIDC authentication'
+          const errorMessage = error.response?._data?.error || error.response?._data?.message || 'Não foi possível iniciar a autenticação OIDC'
           useAlert().error(errorMessage)
           if (!oidcForced.value) showPasswordField.value = true
           return
         }
       } else if (response.action === 'blocked') {
         // OIDC is forced but no connection found
-        useAlert().error('OIDC authentication is required. Please contact your administrator.')
+        useAlert().error('A autenticação OIDC é obrigatória. Fale com o administrador.')
         return
       } else {
         // Fallback to password login
@@ -318,7 +318,7 @@ const login = () => {
 
   // Normal password login
   if (!form.password && showPasswordField.value) {
-    useAlert().error('Password is required')
+    useAlert().error('A senha é obrigatória')
     return
   }
 
@@ -375,7 +375,7 @@ const showOAuthError = (error) => {
   if (error.response?.status === 422 && error.response?.data?.message) {
     useAlert().error(error.response.data.message)
   } else {
-    useAlert().error("Sign-in failed. Please try again.")
+    useAlert().error("Falha no login. Tente novamente.")
   }
 }
 

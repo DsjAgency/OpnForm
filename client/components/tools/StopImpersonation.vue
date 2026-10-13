@@ -1,7 +1,7 @@
 <template>
   <UTooltip
     v-if="isImpersonating"
-    text="Stop Impersonation"
+    text="Parar de navegar como este usuário"
   >
     <UButton
       color="neutral"

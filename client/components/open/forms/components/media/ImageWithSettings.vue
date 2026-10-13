@@ -40,8 +40,8 @@
               <text-input
                 :form="form"
                 :name="altName"
-                label="Alt text"
-                placeholder="Describe the image for accessibility (max 125 characters)"
+                label="Texto alternativo"
+                placeholder="Descreva a imagem para acessibilidade (máx. 125 caracteres)"
                 :max-char-limit="125"
                 :show-char-limit="true"
               />
@@ -68,9 +68,9 @@ const props = defineProps({
   kind: { type: String, default: 'block' } // 'block' | 'cover'
 })
 
-const settingsAriaLabel = computed(() => props.kind === 'cover' ? 'Cover image settings' : 'Image settings')
-const focalLabel = computed(() => 'Focal point')
-const brightnessLabel = computed(() => 'Brightness')
+const settingsAriaLabel = computed(() => props.kind === 'cover' ? 'Configurações da imagem de capa' : 'Configurações da imagem')
+const focalLabel = computed(() => 'Ponto focal')
+const brightnessLabel = computed(() => 'Brilho')
 
 // Derived paths based on kind
 const showAlt = computed(() => props.kind === 'block')

@@ -22,7 +22,7 @@ export function usePlanFeatures() {
     if (!requiredTier) return null
 
     const tierName = getTierDisplayName(requiredTier)
-    return `Upgrade to ${tierName} to unlock this feature`
+    return `Faça upgrade para o ${tierName} para liberar este recurso`
   }
 
   const requireFeature = (feature, modalTitle) => {
@@ -31,7 +31,7 @@ export function usePlanFeatures() {
       const requiredTier = getRequiredTier(feature) || 'pro'
       openSubscriptionModal({
         plan: requiredTier,
-        modal_title: modalTitle || `Upgrade to ${getTierDisplayName(requiredTier)} to unlock this feature`,
+        modal_title: modalTitle || `Faça upgrade para o ${getTierDisplayName(requiredTier)} para liberar este recurso`,
       })
     }
     return false

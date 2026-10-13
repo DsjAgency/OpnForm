@@ -175,7 +175,7 @@ export const useAuthFlow = () => {
     if (authStore.isImpersonating) {
       console.log("Admin token expired, undoing impersonation")
       authStore.stopImpersonating()
-      useAlert().error("User token expired. You have been logged out of the admin account.")
+      useAlert().error("O token do usuário expirou. Você saiu da conta de administrador.")
       await router.push({ name: 'home' })
       return 
     }

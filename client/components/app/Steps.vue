@@ -6,7 +6,7 @@
     <div
       class="uppercase tracking-wide text-xs font-bold dark:text-neutral-400 text-neutral-500 mb-1 leading-tight"
     >
-      Step: {{ Math.min(current + 1, steps.length) }} of {{ steps.length }}
+      Etapa: {{ Math.min(current + 1, steps.length) }} de {{ steps.length }}
     </div>
     <div class="flex flex-col md:flex-row md:items-center md:justify-between">
       <div class="flex-1">

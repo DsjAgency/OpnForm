@@ -1,15 +1,15 @@
 export const SUBMISSION_RETENTION_UNITS = [
-  { name: 'Days', value: 'day' },
-  { name: 'Weeks', value: 'week' },
-  { name: 'Months', value: 'month' },
-  { name: 'Years', value: 'year' }
+  { name: 'Dias', value: 'day' },
+  { name: 'Semanas', value: 'week' },
+  { name: 'Meses', value: 'month' },
+  { name: 'Anos', value: 'year' }
 ]
 
 export const SUBMISSION_RETENTION_SHORTCUTS = [
-  { label: '1 week', value: 1, unit: 'week' },
-  { label: '1 month', value: 1, unit: 'month' },
-  { label: '6 months', value: 6, unit: 'month' },
-  { label: '1 year', value: 1, unit: 'year' }
+  { label: '1 semana', value: 1, unit: 'week' },
+  { label: '1 mês', value: 1, unit: 'month' },
+  { label: '6 meses', value: 6, unit: 'month' },
+  { label: '1 ano', value: 1, unit: 'year' }
 ]
 
 export function setSubmissionRetentionEnabled(form, enabled) {

@@ -83,7 +83,7 @@ export function useTableState(form, withActions = false) {
          baseColumns.push({
            id: 'created_at',
            accessorKey: 'created_at',
-           header: 'Created at',
+           header: 'Criado em',
            type: 'date',
            enableResizing: true,
            minSize: 100,
@@ -126,7 +126,7 @@ export function useTableState(form, withActions = false) {
            baseColumns.push({
             id: 'ip_address',
             accessorKey: 'ip_address',
-            header: 'IP Address',
+            header: 'Endereço IP',
             type: 'ip_address',
             enableResizing: true,
             minSize: 100,

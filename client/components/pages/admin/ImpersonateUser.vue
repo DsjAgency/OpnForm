@@ -3,7 +3,7 @@
     icon="i-heroicons-eye-16-solid"
     :loading="loading"
     @click="impersonate"
-    label="Impersonate User"
+    label="Entrar como este usuário"
   />
 </template>
 
@@ -32,11 +32,11 @@ const impersonate = () => {
     authStore.setToken(data.token, data.expires_in)
     await queryClient.invalidateQueries()
 
-    useAlert().success(`Impersonating ${userData.value.name}`)
+    useAlert().success(`Navegando como ${userData.value.name}`)
     useRouter().push({ name: 'home' })
   })
     .catch((error) => {
-      useAlert().error(error.data?.message || 'Failed to impersonate user')
+      useAlert().error(error.data?.message || 'Não foi possível entrar como este usuário')
       loading.value = false
     })
 }

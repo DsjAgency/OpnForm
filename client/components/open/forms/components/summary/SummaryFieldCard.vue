@@ -37,7 +37,7 @@
             v-for="mode in ['bar', 'pie']"
             :key="mode"
             type="button"
-            :aria-label="`${mode === 'pie' ? 'Pie' : 'Bar'} chart for ${field.name}`"
+            :aria-label="`Gráfico de ${mode === 'pie' ? 'pizza' : 'barras'} de ${field.name}`"
             :aria-pressed="mode === 'pie' ? showPieChart : !showPieChart"
             class="px-2 py-1 rounded-md text-xs font-medium transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
             :class="[

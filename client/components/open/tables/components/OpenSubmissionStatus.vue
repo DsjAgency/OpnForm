@@ -17,7 +17,7 @@ const props = defineProps({
 })
 
 const displayLabel = computed(() => {
-  return props.value === 'partial' ? 'In Progress' : 'Submitted'
+  return props.value === 'partial' ? 'Em andamento' : 'Enviada'
 })
 
 const badgeColor = computed(() => {

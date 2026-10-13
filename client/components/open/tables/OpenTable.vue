@@ -13,7 +13,7 @@
         size="sm"
         variant="ghost"
         class="max-w-sm min-w-[12ch]" 
-        placeholder="Search..." 
+        placeholder="Buscar..." 
         icon="i-heroicons-magnifying-glass-solid"
         v-model="searchInput"
       />
@@ -39,7 +39,7 @@
         size="sm"
         color="error"
         variant="outline"
-        :label="`Delete (${selectedIds.length})`"
+        :label="`Excluir (${selectedIds.length})`"
         :loading="deleteMultiSubmissionsMutation.isPending.value"
         @click="onDeleteMultiClick"
       />
@@ -50,7 +50,7 @@
         :selected-ids="selectedIds"
       />
 
-      <UTooltip text="Refresh" arrow>
+      <UTooltip text="Atualizar" arrow>
         <UButton
           size="sm"
           color="neutral"
@@ -61,7 +61,7 @@
         />
       </UTooltip>
 
-      <UTooltip arrow :text="isExpanded ? 'Exit fullscreen' : 'Fullscreen'">
+      <UTooltip arrow :text="isExpanded ? 'Sair da tela cheia' : 'Tela cheia'">
         <UButton  
           size="sm"
           color="neutral"
@@ -335,7 +335,7 @@ const clearSelection = () => {
   rowSelection.value = {}
 }
 const onDeleteMultiClick = () => {
-  alert.confirm(`Do you really want to delete selected ${selectedIds.value.length} record${selectedIds.value.length > 1 ? 's' : ''}?`, deleteMultiRecord)
+  alert.confirm(`Quer mesmo excluir ${selectedIds.value.length > 1 ? 'as' : 'a'} ${selectedIds.value.length} resposta${selectedIds.value.length > 1 ? 's' : ''} selecionada${selectedIds.value.length > 1 ? 's' : ''}?`, deleteMultiRecord)
 }
 const deleteMultiRecord = () => {
   deleteMultiSubmissionsMutation.mutateAsync({ 
@@ -346,19 +346,19 @@ const deleteMultiRecord = () => {
     if (data.type === "success") {
       alert.success(data.message)
     } else {
-      alert.error("Something went wrong!")
+      alert.error("Algo deu errado!")
     }
   }).catch((error) => {
     clearSelection()
-    alert.error(error.data?.message || "Something went wrong!")
+    alert.error(error.data?.message || "Algo deu errado!")
   })
 }
 
 
 const statusList = [
-  { label: 'All', value: 'all' },
-  { label: 'Submitted', value: 'completed' },
-  { label: 'In Progress', value: 'partial' }
+  { label: 'Todas', value: 'all' },
+  { label: 'Enviadas', value: 'completed' },
+  { label: 'Em andamento', value: 'partial' }
 ]
 
 // Default sort by created_at desc
@@ -434,7 +434,7 @@ const onEditSubmissionModalClose = () => {
 const onDownloadPdf = (submissionId) => {
   const submission = sortedData.value.find(s => s.id === submissionId)
   if (!submission?.submission_id) {
-    alert.error("Something went wrong!")
+    alert.error("Algo deu errado!")
     return
   }
   activeDownloadSubmissionId.value = submission.submission_id
@@ -442,7 +442,7 @@ const onDownloadPdf = (submissionId) => {
     if (downloadPdfRef.value) {
       downloadPdfRef.value.handleDownload()
     } else {
-      alert.error("Something went wrong!")
+      alert.error("Algo deu errado!")
     }
   })
 }

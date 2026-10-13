@@ -14,7 +14,7 @@
             @click="currentPage--"
           />
           <span class="text-sm text-gray-600">
-            Page {{ currentPage }} of {{ template.page_count }}
+            Página {{ currentPage }} de {{ template.page_count }}
           </span>
           <UButton
             icon="i-heroicons-chevron-right"
@@ -74,8 +74,8 @@
         <div class="sticky top-6 space-y-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm font-semibold text-gray-800">Add Zone</p>
-              <p class="text-xs text-gray-500">Draw areas on the PDF preview.</p>
+              <p class="text-sm font-semibold text-gray-800">Adicionar área</p>
+              <p class="text-xs text-gray-500">Desenhe áreas na pré-visualização do PDF.</p>
             </div>
           </div>
           <UButton
@@ -85,10 +85,10 @@
              
             @click="toggleDrawingMode"
           >
-            {{ isDrawingMode ? 'Stop Drawing' : 'Start Drawing' }}
+            {{ isDrawingMode ? 'Parar de desenhar' : 'Começar a desenhar' }}
           </UButton>
           <p v-if="isDrawingMode" class="text-xs text-gray-500">
-            Click and drag on the PDF to create a zone.
+            Clique e arraste no PDF para criar uma área.
           </p>
         </div>
 
@@ -101,7 +101,7 @@
         >
           <div class="flex items-center justify-between">
             <h4 class="text-sm font-semibold">
-              {{ selectedZone ? 'Zone Properties' : 'Select a zone' }}
+              {{ selectedZone ? 'Propriedades da área' : 'Selecione uma área' }}
             </h4>
             <UButton
               v-if="selectedZone"
@@ -114,19 +114,19 @@
           </div>
 
           <p class="text-xs text-gray-500 mb-3">
-            {{ selectedZone ? 'Adjust the visual settings for the selected zone.' : 'Select a zone on the PDF preview to edit its settings.' }}
+            {{ selectedZone ? 'Ajuste as configurações visuais da área selecionada.' : 'Selecione uma área na pré-visualização do PDF para editar.' }}
           </p>
 
           <div v-if="selectedZone" class="space-y-3">
             <div>
-              <label class="block text-xs font-medium text-gray-600 mb-1">Form Field</label>
+              <label class="block text-xs font-medium text-gray-600 mb-1">Campo do formulário</label>
               <select
                 :value="selectedZone.field_id"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
                 @change="updateSelectedZoneField('field_id', $event.target.value)"
               >
-                <option value="">Select a field...</option>
-                <optgroup label="Form Fields">
+                <option value="">Selecione um campo...</option>
+                <optgroup label="Campos do formulário">
                   <option
                     v-for="field in formFields"
                     :key="field.id"
@@ -135,17 +135,17 @@
                     {{ field.name }}
                   </option>
                 </optgroup>
-                <optgroup label="Special Fields">
-                  <option value="submission_id">Submission ID</option>
-                  <option value="submission_date">Submission Date</option>
-                  <option value="form_name">Form Name</option>
+                <optgroup label="Campos especiais">
+                  <option value="submission_id">ID da resposta</option>
+                  <option value="submission_date">Data da resposta</option>
+                  <option value="form_name">Nome do formulário</option>
                 </optgroup>
               </select>
             </div>
 
             <div class="grid grid-cols-2 gap-2">
               <div>
-                <label class="block text-xs font-medium text-gray-600 mb-1">Font Size</label>
+                <label class="block text-xs font-medium text-gray-600 mb-1">Tamanho da fonte</label>
                 <select
                   :value="selectedZone.font_size || 12"
                   class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
@@ -155,7 +155,7 @@
                 </select>
               </div>
               <div>
-                <label class="block text-xs font-medium text-gray-600 mb-1">Font Color</label>
+                <label class="block text-xs font-medium text-gray-600 mb-1">Cor da fonte</label>
                 <input
                   type="color"
                   :value="selectedZone.font_color || '#000000'"
@@ -167,12 +167,12 @@
 
             <div class="grid grid-cols-1">
               <div class="text-xs text-gray-500">
-                Position:
+                Posição:
                 <strong class="text-sm text-gray-700">
                   x={{ selectedZone.x?.toFixed(1) }}%, y={{ selectedZone.y?.toFixed(1) }}%
                 </strong>
                 <br />
-                Size:
+                Tamanho:
                 <strong class="text-sm text-gray-700">
                   {{ selectedZone.width?.toFixed(1) }}% × {{ selectedZone.height?.toFixed(1) }}%
                 </strong>

@@ -6,7 +6,7 @@
     <template #header>
       <div class="flex items-center w-full gap-4 px-2">
         <h2 class="font-semibold">
-          {{ template ? 'Edit Template' : 'Create Template' }}
+          {{ template ? 'Editar modelo' : 'Criar modelo' }}
         </h2>
       </div>
       <UButton
@@ -16,13 +16,13 @@
         size="sm"
         @click="crisp.openHelpdeskArticle('how-to-create-an-opnform-template-1fn84i4')"
       >
-        Help
+        Ajuda
       </UButton>
     </template>
 
     <template #body>
       <p v-if="!template" class="mb-4">
-        New template will be create from your form:
+        O novo modelo será criado a partir do formulário:
         <span class="font-semibold">{{ form.title }}</span>.
       </p>
 
@@ -37,12 +37,12 @@
             v-if="user && (user.admin || user.template_editor)"
             name="publicly_listed"
             :form="templateForm"
-            label="Publicly Listed?"
+            label="Listado publicamente?"
           />
           <text-input
             name="name"
             :form="templateForm"
-            label="Title"
+            label="Título"
             :required="true"
           />
           <text-input
@@ -54,26 +54,26 @@
           <text-area-input
             name="short_description"
             :form="templateForm"
-            label="Short Description"
+            label="Descrição curta"
             :required="true"
           />
           <rich-text-area-input
             name="description"
             :allow-fullscreen="true"
             :form="templateForm"
-            label="Description"
+            label="Descrição"
             :required="true"
           />
           <text-input
             name="image_url"
             :form="templateForm"
-            label="Image"
+            label="Imagem"
             :required="true"
           />
           <select-input
             name="types"
             :form="templateForm"
-            label="Types"
+            label="Tipos"
             :options="typesOptions"
             :multiple="true"
             :searchable="true"
@@ -81,7 +81,7 @@
           <select-input
             name="industries"
             :form="templateForm"
-            label="Industries"
+            label="Setores"
             :options="industriesOptions"
             :multiple="true"
             :searchable="true"
@@ -89,7 +89,7 @@
           <select-input
             name="related_templates"
             :form="templateForm"
-            label="Related Templates"
+            label="Modelos relacionados"
             :options="templatesOptions"
             :multiple="true"
             :searchable="true"
@@ -97,7 +97,7 @@
           <questions-editor
             name="questions"
             :questions="templateForm.questions"
-            label="Frequently asked questions"
+            label="Perguntas frequentes"
           />
         </div>
       </v-form>
@@ -109,7 +109,7 @@
           color="neutral"
           variant="outline"
           @click="close"
-          label="Close"
+          label="Fechar"
         />
         <UButton
           v-if="template"
@@ -117,18 +117,18 @@
           variant="outline"
           @click="
             useAlert().confirm(
-              'Do you really want to delete this template?',
+              'Quer mesmo excluir este modelo?',
               deleteFormTemplate,
             )
           "
-          label="Delete template"
+          label="Excluir modelo"
         />
         <div class="grow"/>
         <UButton
           class="px-8"
           :loading="createMutation.isPending.value || updateMutation.isPending.value"
           @click="onSubmit"
-          :label="template ? 'Update' : 'Create'"
+          :label="template ? 'Atualizar' : 'Criar'"
         />
       </div>
     </template>
@@ -243,7 +243,7 @@ const onSubmit = () => {
 const createFormTemplate = () => {
   templateForm.value.form = props.form
   createMutation.mutateAsync(templateForm.value).then(() => {
-    useAlert().success("Template created successfully")
+    useAlert().success("Modelo criado")
     emit("close")
   }).catch((error) => {
     useAlert().error(error.message)
@@ -252,7 +252,7 @@ const createFormTemplate = () => {
 const updateFormTemplate = () => {
   templateForm.value.form = props.form
   updateMutation.mutateAsync({ id: props.template.id, data: templateForm.value }).then(() => {
-    useAlert().success("Template updated successfully")
+    useAlert().success("Modelo atualizado")
     emit("close")
   }).catch((error) => {
     useAlert().error(error.message)
@@ -261,7 +261,7 @@ const updateFormTemplate = () => {
 const deleteFormTemplate = () => {
   if (!props.template) return
   deleteMutation.mutateAsync(props.template.id).then(() => {
-    useAlert().success("Template deleted successfully")
+    useAlert().success("Modelo excluído")
     router.push({ name: "templates" })
     emit("close")
   }).catch((error) => {

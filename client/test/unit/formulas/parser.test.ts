@@ -243,7 +243,7 @@ describe('Formula Parser', () => {
     })
 
     it('throws on unknown identifier (not followed by parenthesis)', () => {
-      expect(() => Parser.parse('UNKNOWN')).toThrow('Unknown identifier')
+      expect(() => Parser.parse('UNKNOWN')).toThrow('Identificador desconhecido')
     })
 
     it('throws on unexpected token', () => {

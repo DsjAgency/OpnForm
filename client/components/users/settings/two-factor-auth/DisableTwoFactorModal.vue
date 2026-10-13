@@ -4,7 +4,7 @@
     :ui="{ content: 'sm:max-w-md' }"
   >
     <template #header>
-      <h2 class="text-lg font-semibold">Disable Two-Factor Authentication</h2>
+      <h2 class="text-lg font-semibold">Desativar autenticação em duas etapas</h2>
     </template>
 
     <template #body>
@@ -12,12 +12,12 @@
         <UAlert
           color="warning"
           variant="subtle"
-          description="Disabling two-factor authentication will reduce the security of your account. Please verify with a code from your authenticator app."
+          description="Desativar a autenticação em duas etapas reduz a segurança da sua conta. Confirme com um código do seu app autenticador."
         />
 
         <div>
           <p class="text-sm font-medium text-neutral-900 mb-2">
-            Enter the 6-digit code from your authenticator app:
+            Digite o código de 6 dígitos do seu app autenticador:
           </p>
           <div class="flex justify-center mb-4">
             <UPinInput
@@ -35,7 +35,7 @@
               size="sm"
               @click="showRecoveryCode = !showRecoveryCode"
             >
-              Use recovery code instead
+              Usar código de recuperação
             </UButton>
           </div>
         </div>
@@ -44,8 +44,8 @@
           <div v-if="showRecoveryCode" class="mt-4">
             <TextInput
               v-model="recoveryCode"
-              label="Recovery Code"
-              placeholder="Enter recovery code"
+              label="Código de recuperação"
+              placeholder="Digite o código de recuperação"
               @keyup.enter="handleDisable"
             />
           </div>
@@ -60,7 +60,7 @@
           variant="outline"
           @click="handleClose"
         >
-          Cancel
+          Cancelar
         </UButton>
         <UButton
           color="error"
@@ -68,7 +68,7 @@
           :disabled="code.length !== 6 && !recoveryCode"
           @click="handleDisable"
         >
-          Disable 2FA
+          Desativar 2FA
         </UButton>
       </div>
     </template>

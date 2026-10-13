@@ -15,7 +15,7 @@ describe('PasswordStrengthIndicator', () => {
       },
     })
 
-    expect(wrapper.text()).toContain('Strong')
-    expect(wrapper.text()).not.toContain('Good')
+    expect(wrapper.text()).toContain('Forte')
+    expect(wrapper.text()).not.toContain('Boa')
   })
 })

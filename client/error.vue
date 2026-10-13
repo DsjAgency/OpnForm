@@ -4,7 +4,7 @@
       <div class="flex mt-6">
         <div class="w-full md:w-2/3 md:mx-auto md:max-w-md">
           <img
-            alt="Nice plant as we have nothing else to show!"
+            alt="Uma planta, já que não temos mais nada para mostrar!"
             src="/img/icons/plant.png"
             class="w-56 mb-5"
           >
@@ -18,7 +18,7 @@
               :to="{ name: 'index' }"
               class="hover:underline text-neutral-700"
             >
-              Go Home
+              Voltar ao início
             </NuxtLink>
           </div>
         </div>
@@ -31,7 +31,7 @@
 import { captureException } from '@sentry/core'
 
 useOpnSeoMeta({
-  title: "404 - Page not found",
+  title: "404 - Página não encontrada",
 })
 
 const props = defineProps({

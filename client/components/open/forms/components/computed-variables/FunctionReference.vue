@@ -7,7 +7,7 @@
       <div class="flex flex-col h-full">
         <!-- Header -->
         <div class="flex items-center justify-between p-4 border-b">
-          <h3 class="text-lg font-semibold">Function Reference</h3>
+          <h3 class="text-lg font-semibold">Referência de funções</h3>
           <UButton
             icon="i-heroicons-x-mark"
             color="neutral"
@@ -25,7 +25,7 @@
             <div class="p-3 border-b">
               <UInput
                 v-model="search"
-                placeholder="Search functions..."
+                placeholder="Buscar funções..."
                 icon="i-heroicons-magnifying-glass"
                 size="sm"
               />
@@ -72,7 +72,7 @@
                   v-if="func.examples && func.examples.length > 0"
                   class="mt-3"
                 >
-                  <div class="text-xs font-medium text-gray-500 mb-2">Examples:</div>
+                  <div class="text-xs font-medium text-gray-500 mb-2">Exemplos:</div>
                   <div class="bg-gray-50 rounded-md p-3 space-y-1">
                     <code
                       v-for="(example, i) in func.examples"
@@ -117,11 +117,11 @@ const isOpen = computed({
 })
 
 const categories = [
-  { id: 'all', label: 'All' },
-  { id: 'math', label: 'Math' },
-  { id: 'text', label: 'Text' },
-  { id: 'logic', label: 'Logic' },
-  { id: 'array', label: 'Array' }
+  { id: 'all', label: 'Todas' },
+  { id: 'math', label: 'Matemática' },
+  { id: 'text', label: 'Texto' },
+  { id: 'logic', label: 'Lógica' },
+  { id: 'array', label: 'Listas' }
 ]
 
 const activeCategory = ref('all')

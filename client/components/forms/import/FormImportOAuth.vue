@@ -4,7 +4,7 @@
     <div v-if="loadingProviders" class="rounded-lg border border-neutral-200 bg-white py-8 text-center shadow-sm">
       <Loader class="h-6 w-6 mx-auto mb-3" />
       <p class="text-sm text-neutral-500">
-        Checking connection...
+        Verificando conexão...
       </p>
     </div>
 
@@ -21,7 +21,7 @@
         option-key="id"
         emit-key="id"
         :required="true"
-        :label="'Select ' + providerLabel + ' Account'"
+        :label="'Selecione a conta ' + providerLabel"
       >
         <template #help>
           <InputHelp>
@@ -30,9 +30,9 @@
                 class="text-blue-500 cursor-pointer"
                 @click="connectProvider"
               >
-                Click here
+                Clique aqui
               </a>
-              to connect another account.
+              para conectar outra conta.
             </span>
           </InputHelp>
         </template>
@@ -59,7 +59,7 @@
       </div>
       <UButton
         :loading="connecting"
-        :label="'Connect ' + providerLabel"
+        :label="'Conectar ' + providerLabel"
         :icon="connectIcon"
         @click="connectProvider"
       />
@@ -81,7 +81,7 @@ const props = defineProps({
   sourceLabel: { type: String, required: true },
   requiredScope: { type: String, default: null },
   connectIcon: { type: String, default: null },
-  connectHelpText: { type: String, default: 'We need access to import your forms.' },
+  connectHelpText: { type: String, default: 'Precisamos de acesso para importar seus formulários.' },
   helpText: { type: String, default: null },
   urlPlaceholder: { type: String, default: 'https://...' },
   loading: { type: Boolean, default: false },

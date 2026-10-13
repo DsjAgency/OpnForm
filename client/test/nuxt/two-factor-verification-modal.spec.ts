@@ -158,7 +158,7 @@ describe('TwoFactorVerificationModal', () => {
       await wrapper.vm.$nextTick()
       await new Promise(resolve => setTimeout(resolve, 100))
       
-      expect(wrapper.vm.error).toContain('Unable to verify code')
+      expect(wrapper.vm.error).toContain('Não foi possível verificar o código')
     })
 
     it('should show error when pendingAuthToken is missing', async () => {
@@ -166,7 +166,7 @@ describe('TwoFactorVerificationModal', () => {
       
       await wrapper.vm.verifyCode('123456')
       
-      expect(wrapper.vm.error).toContain('Authentication session expired')
+      expect(wrapper.vm.error).toContain('A sessão de autenticação expirou')
       expect(authApi.twoFactor.verify).not.toHaveBeenCalled()
     })
   })

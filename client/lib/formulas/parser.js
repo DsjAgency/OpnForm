@@ -67,21 +67,21 @@ export class Parser {
     if (this.lastPrimaryToken && this.isValueToken(token)) {
       const lastName = this.getTokenDisplayName(this.lastPrimaryToken)
       const currentName = this.getTokenDisplayName(token)
-      return `Missing operator between ${lastName} and ${currentName}. Use +, -, *, / or a function like CONCAT().`
+      return `Falta um operador entre ${lastName} e ${currentName}. Use +, -, *, / ou uma função como CONCAT().`
     }
     
     // For field refs that look like UUIDs, give a cleaner message
     if (token.type === TokenType.FIELD_REF) {
       const fieldName = this.getFieldDisplayName(token.value)
-      return `Unexpected field reference '${fieldName}'`
+      return `Referência de campo inesperada '${fieldName}'`
     }
     
     // For identifiers (which might be function typos)
     if (token.type === TokenType.IDENTIFIER) {
-      return `Unexpected identifier '${token.value}'. Did you mean to call a function? Use ${token.value}()`
+      return `Identificador inesperado '${token.value}'. Você quis chamar uma função? Use ${token.value}()`
     }
     
-    return `Unexpected token '${token.value}'`
+    return `Símbolo inesperado '${token.value}'`
   }
 
   /**
@@ -332,7 +332,7 @@ export class Parser {
 
       // Otherwise it's an unknown identifier
       throw new FormulaError(
-        `Unknown identifier '${name}'. Did you mean to use a field? Use {${name}} or call a function with ${name}()`,
+        `Identificador desconhecido '${name}'. Você quis usar um campo? Use {${name}} ou chame uma função com ${name}()`,
         this.previous().position
       )
     }
@@ -340,7 +340,7 @@ export class Parser {
     // Parenthesized expression
     if (this.match(TokenType.LPAREN)) {
       const expr = this.expression()
-      this.consume(TokenType.RPAREN, "Missing closing parenthesis ')'")
+      this.consume(TokenType.RPAREN, "Falta fechar o parêntese ')'")
       this.lastPrimaryToken = this.previous()
       return expr
     }
@@ -349,27 +349,27 @@ export class Parser {
     const token = this.peek()
     if (token.type === TokenType.RPAREN) {
       throw new FormulaError(
-        "Unexpected ')'. You may have an extra closing parenthesis or missing content.",
+        "')' inesperado. Pode haver um parêntese a mais ou faltar conteúdo.",
         token.position
       )
     }
     
     if (token.type === TokenType.COMMA) {
       throw new FormulaError(
-        "Unexpected ','. Commas should only be used to separate function arguments.",
+        "',' inesperada. Use vírgulas só para separar argumentos de funções.",
         token.position
       )
     }
     
     if (token.type === TokenType.EOF) {
       throw new FormulaError(
-        "Formula is incomplete. Expected a value or expression.",
+        "A fórmula está incompleta. Era esperado um valor ou expressão.",
         token.position
       )
     }
 
     throw new FormulaError(
-      `Unexpected '${token.value}'. Expected a number, text, field, or function.`,
+      `'${token.value}' inesperado. Era esperado um número, texto, campo ou função.`,
       token.position
     )
   }
@@ -378,7 +378,7 @@ export class Parser {
    * Parse function call
    */
   functionCall(name) {
-    this.consume(TokenType.LPAREN, `Expected '(' after function name '${name}'`)
+    this.consume(TokenType.LPAREN, `Era esperado '(' depois do nome da função '${name}'`)
     
     const args = []
     
@@ -389,7 +389,7 @@ export class Parser {
       } while (this.match(TokenType.COMMA))
     }
 
-    this.consume(TokenType.RPAREN, `Missing closing ')' for function ${name.toUpperCase()}()`)
+    this.consume(TokenType.RPAREN, `Falta fechar ')' na função ${name.toUpperCase()}()`)
 
     return {
       type: NodeType.FUNCTION,

@@ -3,27 +3,27 @@
     <template #error="{ error, clearError }">
       <div class="flex-grow w-full flex items-center justify-center flex-col gap-4">
         <h1 class="text-blue-800 text-2xl font-medium">
-          Oops! Something went wrong.
+          Ops! Algo deu errado.
         </h1>
         <p class="text-neutral-500 max-w-lg text-center">
-          It looks like your last action caused an issue on our side. We
-          apologize for
-          the
-          inconvenience.
+          Parece que sua última ação causou um problema do nosso lado.
+          Pedimos
+          desculpas
+          pelo transtorno.
         </p>
         <div class="flex gap-2 mt-4">
           <UButton
             icon="i-material-symbols-undo"
             @click="clearEditorError(error, clearError)"
           >
-            Go back one step
+            Voltar um passo
           </UButton>
           <UButton
             variant="outline"
             icon="i-heroicons-chat-bubble-left-right-16-solid"
             @click="onErrorContact(error)"
           >
-            Report this error
+            Relatar este erro
           </UButton>
         </div>
       </div>

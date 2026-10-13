@@ -32,17 +32,17 @@
     </div>
 
     <p class="mt-3 text-sm text-neutral-600">
-      Issuer URL
+      URL do emissor
       <span class="block font-medium text-neutral-900 truncate">{{ connection.issuer }}</span>
     </p>
 
     <p class="mt-2 text-sm text-neutral-600">
-      Redirect URL
+      URL de redirecionamento
       <span class="block text-xs text-neutral-500 truncate">{{ connection.redirect_url }}</span>
     </p>
 
     <p class="mt-2 text-sm text-neutral-600">
-      Email domain
+      Domínio de e-mail
       <span class="block font-medium text-neutral-900">{{ connection.domain ?? '—' }}</span>
     </p>
   </div>

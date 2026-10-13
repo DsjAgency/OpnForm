@@ -5,7 +5,7 @@
   >
     <EditorSectionHeader
       icon="i-heroicons-table-cells-20-solid"
-      title="Matrix"
+      title="Matriz"
     />
 
     <div class="grid grid-cols-2 gap-4">
@@ -35,7 +35,7 @@
           icon="i-heroicons-plus"
           @click="addMatrixRow"
         >
-          Add row
+          Adicionar linha
         </UButton>
       </div>
       <div class="">
@@ -63,7 +63,7 @@
           icon="i-heroicons-plus"
           @click="addMatrixColumn"
         >
-          Add column
+          Adicionar coluna
         </UButton>
       </div>
     </div>
@@ -98,7 +98,7 @@ function updateField() {
 }
 
 function addMatrixRow() {
-  localField.value.rows.push(generateUniqueLabel(localField.value.rows, 'Row'))
+  localField.value.rows.push(generateUniqueLabel(localField.value.rows, 'Linha'))
   localField.value.selection_data = selectionData.value
   updateField()
 }

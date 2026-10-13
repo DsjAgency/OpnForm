@@ -5,7 +5,7 @@
       class="flex flex-col items-center justify-center py-8 text-neutral-400"
     >
       <UIcon name="i-heroicons-table-cells" class="w-8 h-8 mb-2 opacity-50" />
-      <span class="text-sm">No matrix data collected yet</span>
+      <span class="text-sm">Nenhum dado de matriz coletado ainda</span>
     </div>
 
     <div v-else class="overflow-x-auto custom-scrollbar">
@@ -13,7 +13,7 @@
         <thead>
           <tr>
             <th class="sticky left-0 bg-white z-10 p-3 border-b border-r border-neutral-100 w-1/4 min-w-[150px]">
-              <span class="text-xs font-medium text-neutral-600 uppercase tracking-wider">Rows / Columns</span>
+              <span class="text-xs font-medium text-neutral-600 uppercase tracking-wider">Linhas / Colunas</span>
             </th>
             <th
               v-for="col in columns"

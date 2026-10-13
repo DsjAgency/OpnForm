@@ -81,7 +81,7 @@ const tooltipText = computed(() => {
   if (props.upgradeModalTitle) return props.upgradeModalTitle
 
   const tierName = getTierDisplayName(displayTier.value)
-  return `You need a ${tierName} plan to use this feature`
+  return `Você precisa do plano ${tierName} para usar este recurso`
 })
 
 // Dynamic tag classes based on tier

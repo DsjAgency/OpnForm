@@ -1,12 +1,12 @@
 <template>
   <AdminCard
-    title="Workspaces"
+    title="Espaços de trabalho"
     icon="heroicons:globe-alt"
   >
     <UTable
       :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Loading...' }"
       :progress="{ color: 'primary', animation: 'carousel' }"
-      :empty-state="{ icon: 'i-heroicons-circle-stack-20-solid', label: 'No items.' }"
+      :empty-state="{ icon: 'i-heroicons-circle-stack-20-solid', label: 'Nenhum item.' }"
       :columns="columns"
       :data="rows"
       class="-mx-6"
@@ -53,11 +53,11 @@ const columns = [{
     header: 'ID'
 }, {
     accessorKey: 'name',
-    header: 'Name',
+    header: 'Nome',
     sortable: true
 }, {
     accessorKey: 'plan',
-    header: 'Plan',
+    header: 'Plano',
     sortable: true
 }, {
     accessorKey: 'forms_count',

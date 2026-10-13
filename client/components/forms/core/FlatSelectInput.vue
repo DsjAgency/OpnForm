@@ -16,7 +16,7 @@
         hasImages ? imageContainerClass : ''
       ]"
       :role="multiple ? 'group' : 'radiogroup'"
-      :aria-label="label || `Select ${multiple ? 'options' : 'option'}`"
+      :aria-label="label || `Selecione ${multiple ? 'as opções' : 'uma opção'}`"
     >
       <template
         v-if="options && options.length"
@@ -161,7 +161,7 @@ export default {
     loading: {type: Boolean, default: false},
     multiple: { type: Boolean, default: false },
     disableOptions: { type: Array, default: () => [] },
-    disableOptionsTooltip: { type: String, default: "Not allowed" },
+    disableOptionsTooltip: { type: String, default: "Não permitido" },
     clearable: { type: Boolean, default: false },
     minSelection: { type: Number, default: null },
     maxSelection: { type: Number, default: null },

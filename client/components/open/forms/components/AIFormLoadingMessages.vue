@@ -20,12 +20,12 @@
 
 <script setup>
 const messages = [
-  { text: "Reading your brief", icon: "i-heroicons-document-magnifying-glass" },
-  { text: "Drafting the question flow", icon: "i-heroicons-queue-list" },
-  { text: "Choosing the right field types", icon: "i-heroicons-squares-plus" },
-  { text: "Shaping validation and copy", icon: "i-heroicons-pencil-square" },
-  { text: "Checking the form structure", icon: "i-heroicons-check-badge" },
-  { text: "Polishing the final draft", icon: "i-heroicons-sparkles" },
+  { text: "Lendo sua descrição", icon: "i-heroicons-document-magnifying-glass" },
+  { text: "Montando a sequência de perguntas", icon: "i-heroicons-queue-list" },
+  { text: "Escolhendo os tipos de campo certos", icon: "i-heroicons-squares-plus" },
+  { text: "Ajustando validações e textos", icon: "i-heroicons-pencil-square" },
+  { text: "Conferindo a estrutura do formulário", icon: "i-heroicons-check-badge" },
+  { text: "Finalizando o rascunho", icon: "i-heroicons-sparkles" },
 ]
 
 const currentMessage = ref(messages[0].text)

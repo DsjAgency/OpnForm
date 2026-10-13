@@ -43,7 +43,7 @@ describe('TwoFactorEnableFlow', () => {
       
       expect(wrapper.exists()).toBe(true)
       const button = wrapper.find('button')
-      expect(button.text()).toContain('Enable Two-Factor Authentication')
+      expect(button.text()).toContain('Ativar autenticação em duas etapas')
     })
 
     it('should not show QR code section initially', () => {
@@ -91,7 +91,7 @@ describe('TwoFactorEnableFlow', () => {
       })
       
       // Should show manual entry section
-      expect(wrapper.text()).toContain('Or enter this code manually')
+      expect(wrapper.text()).toContain('Ou digite este código manualmente')
     })
 
     it('should show confirmation section when secret is provided', () => {
@@ -105,7 +105,7 @@ describe('TwoFactorEnableFlow', () => {
       expect(qrSection.exists()).toBe(true)
       
       // Should have text about entering code
-      expect(wrapper.text()).toContain('Enter the 6-digit code')
+      expect(wrapper.text()).toContain('Digite o código de 6 dígitos')
     })
   })
 

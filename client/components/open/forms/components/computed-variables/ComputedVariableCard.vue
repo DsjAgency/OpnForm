@@ -61,18 +61,18 @@ const displayFormula = computed(() => {
 const menuItems = [
   [
     {
-      label: 'Edit',
+      label: 'Editar',
       icon: 'i-heroicons-pencil-square',
       onSelect: () => emit('edit', props.variable)
     }
   ],
   [
     {
-      label: 'Delete',
+      label: 'Excluir',
       icon: 'i-heroicons-trash',
       color: 'error',
       onSelect: () => {
-        useAlert().confirm(`Are you sure you want to delete "${props.variable.name}"?`, () => {
+        useAlert().confirm(`Tem certeza de que quer excluir "${props.variable.name}"?`, () => {
           emit('delete', props.variable)
         })
       }

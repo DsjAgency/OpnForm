@@ -19,7 +19,7 @@
     <!-- Header -->
     <div class="p-3 border-b border-neutral-300 dark:border-neutral-600">
       <p class="text-sm font-medium text-neutral-700 dark:text-neutral-300 truncate">
-        {{ pdfTemplate?.page_count }} page{{ pdfTemplate?.page_count > 1 ? 's' : '' }} •
+        {{ pdfTemplate?.page_count }} página{{ pdfTemplate?.page_count > 1 ? 's' : '' }} •
         {{ (pdfTemplate?.zone_mappings?.length || 0) }} zone{{ (pdfTemplate?.zone_mappings?.length || 0) > 1 ? 's' : '' }}
       </p>
     </div>
@@ -72,7 +72,7 @@
             <button
               type="button"
               class="p-1 rounded bg-neutral-500 hover:bg-neutral-600 text-white shadow"
-              title="Duplicate page"
+              title="Duplicar página"
               @click.stop="duplicatePage(Number(pageNum))"
             >
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@
             <button
               type="button"
               class="p-1 rounded bg-blue-600 hover:bg-blue-700 text-white shadow"
-              title="Add page after this"
+              title="Adicionar página depois desta"
               @click.stop="addPageAfter(Number(pageNum))"
             >
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +93,7 @@
               v-if="pageList.length > 1"
               type="button"
               class="p-1 rounded bg-red-600 hover:bg-red-700 text-white shadow"
-              title="Remove this page"
+              title="Remover esta página"
               @click.stop="removePage(Number(pageNum))"
             >
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -160,7 +160,7 @@ function duplicatePage(pageNum) {
 
 function removePage(pageNum) {
   alert.confirm(
-    'All zones on this page will be permanently deleted. Are you sure you want to remove this page?',
+    'Todas as áreas desta página serão excluídas permanentemente. Tem certeza de que quer remover esta página?',
     () => pdfStore.removePage(pageNum)
   )
 }

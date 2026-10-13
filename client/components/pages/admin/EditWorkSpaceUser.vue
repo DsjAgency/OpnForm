@@ -3,7 +3,7 @@
     v-model:open="showEditUserModal"
     :ui="{ width: 'lg:max-w-lg' }"
     @close="$emit('close')"
-    title="Edit User Role"
+    title="Editar papel do usuário"
   >
     <template #body>
       <UCard>
@@ -15,11 +15,11 @@
               <FlatSelectInput
                 v-model="userNewRole"
                 name="newUserRole"
-                :label="'New Role for '+props.user.name"
+                :label="'Novo papel de '+props.user.name"
                 :options="[
-                  { name: 'User', value: 'user' },
-                  { name: 'Admin', value: 'admin' },
-                  { name: 'Read Only', value: 'readonly' },
+                  { name: 'Usuário', value: 'user' },
+                  { name: 'Administrador', value: 'admin' },
+                  { name: 'Somente leitura', value: 'readonly' },
                 ]"
                 option-key="value"
                 display-key="name"
@@ -31,7 +31,7 @@
                 :loading="updateMutation.isPending.value"
                 class="my-3"
                 block
-                label="Update"
+                label="Atualizar"
               />
             </div>
           </form>
@@ -61,11 +61,11 @@ const updateUserRole = () => {
     userId: props.user.id,
     data: { role: userNewRole.value }
   }).then(() => {
-    useAlert().success("User role updated.")
+    useAlert().success("Papel do usuário atualizado.")
     emit('close')
     // No need to emit 'fetchUsers' - the mutation handles cache updates automatically
   }).catch(() => {
-    useAlert().error("There was an error updating user role")
+    useAlert().error("Ocorreu um erro ao atualizar o papel do usuário")
   })
 }
 </script>

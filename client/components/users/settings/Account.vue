@@ -3,9 +3,9 @@
     <!-- Profile Information Section -->
     <div class="space-y-4">
       <div>
-        <h3 class="text-lg font-medium text-neutral-900">Profile Information</h3>
+        <h3 class="text-lg font-medium text-neutral-900">Informações do perfil</h3>
         <p class="text-sm text-neutral-500 mt-1">
-          Update your account profile information and email address.
+          Atualize as informações do seu perfil e o endereço de e-mail.
         </p>
       </div>
 
@@ -17,16 +17,16 @@
             <text-input
               :form="profileForm"
               name="name"
-              label="Full Name"
-              placeholder="Enter your full name"
+              label="Nome completo"
+              placeholder="Digite seu nome completo"
               :required="true"
             />
             <text-input
               :form="profileForm"
               name="email"
-              label="Email Address"
+              label="Endereço de e-mail"
               type="email"
-              placeholder="Enter your email"
+              placeholder="Digite seu e-mail"
               :required="true"
               :disabled="user?.can_change_email === false"
             >
@@ -34,16 +34,16 @@
                 v-if="user?.can_change_email === false"
                 #help
               >
-                Your email address is managed by your sign-in provider.
+                Seu endereço de e-mail é gerenciado pelo seu provedor de login.
               </template>
             </text-input>
             <TextInput
               v-if="isEmailChanged && user?.can_change_email !== false"
               :form="profileForm"
               name="current_password"
-              label="Current Password"
+              label="Senha atual"
               native-type="password"
-              placeholder="Enter current password"
+              placeholder="Digite a senha atual"
               :required="true"
             />
           </div>
@@ -54,7 +54,7 @@
               :loading="profileForm.busy"
               color="primary"
             >
-              Save Changes
+              Salvar alterações
             </UButton>
           </div>
         </form>
@@ -64,9 +64,9 @@
     <div class="pt-8 border-t border-neutral-200">
       <div class="flex flex-col gap-2 items-start">
         <div>
-          <h4 class="font-medium text-red-800">Delete Account</h4>
+          <h4 class="font-medium text-red-800">Excluir conta</h4>
           <p class="mt-1 text-sm text-neutral-500">
-            This will permanently delete your entire account. This cannot be undone.
+            Isso exclui permanentemente sua conta inteira. Esta ação não pode ser desfeita.
           </p>
         </div>
         
@@ -75,7 +75,7 @@
             :loading="deleteMutation.isPending.value"
             @click="confirmDeleteAccount"
           >
-            Delete Account
+            Excluir conta
           </UButton>
         
       </div>
@@ -113,11 +113,11 @@ const updateProfile = () => {
   profileForm.patch('/settings/profile')
     .then(() => {
       invalidateUser()
-      alert.success('Your info has been updated!')
+      alert.success('Suas informações foram atualizadas!')
     })
     .catch((error) => {
       console.error(error)
-      alert.error(error?.data?.message || 'Error updating profile')
+      alert.error(error?.data?.message || 'Erro ao atualizar o perfil')
     })
     .finally(() => {
       profileForm.current_password = ''
@@ -127,7 +127,7 @@ const updateProfile = () => {
 // Delete account confirmation
 const confirmDeleteAccount = () => {
   alert.confirm(
-    'Do you really want to delete your account?',
+    'Quer mesmo excluir sua conta?',
     deleteAccount
   )
 }
@@ -136,11 +136,11 @@ const confirmDeleteAccount = () => {
 const deleteAccount = () => {
   deleteMutation.mutateAsync()
     .then((data) => {
-      alert.success(data?.message || 'Your account has been deleted')
+      alert.success(data?.message || 'Sua conta foi excluída')
       // Navigation handled by deleteAccount mutation
     })
     .catch((error) => {
-      alert.error(error?.data?.message || 'Error deleting account')
+      alert.error(error?.data?.message || 'Erro ao excluir a conta')
     })
 }
 

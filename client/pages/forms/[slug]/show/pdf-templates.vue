@@ -1,8 +1,8 @@
 <template>
   <PageContainer spacing="md">
     <PageSection
-      title="PDF Templates"
-      description="Create PDF documents from your form submissions."
+      title="Modelos de PDF"
+      description="Gere documentos PDF a partir das respostas do formulário."
     >
       <template #actions>
         <UDropdownMenu
@@ -16,7 +16,7 @@
             trailing-icon="i-heroicons-chevron-down"
             :loading="uploading || creatingFromScratch"
           >
-            Add template
+            Adicionar modelo
           </UButton>
         </UDropdownMenu>
         <input
@@ -72,8 +72,8 @@
                     {{ template.name }}
                   </h3>
                   <p class="text-sm text-neutral-500 truncate">
-                    Format: {{ getFilenamePatternPreview(template) }}.pdf •
-                    {{ template.page_count }} page{{ template.page_count > 1 ? 's' : '' }} •
+                    Formato: {{ getFilenamePatternPreview(template) }}.pdf •
+                    {{ template.page_count }} página{{ template.page_count > 1 ? 's' : '' }} •
                     {{ template.zone_mappings?.length || 0 }} zone{{ template.zone_mappings?.length >= 1 ? 's' : '' }}
                   </p>
                 </div>
@@ -100,8 +100,8 @@
         <DashboardEmptyState
           v-else
           icon="i-heroicons-document-arrow-down"
-          title="No PDF templates yet"
-          description="Upload a PDF template or create one from scratch, then map form fields to create customized documents from submissions."
+          title="Nenhum modelo de PDF ainda"
+          description="Envie um modelo de PDF ou crie um do zero e depois associe os campos do formulário para gerar documentos personalizados a partir das respostas."
         >
           <template #action>
             <UDropdownMenu
@@ -115,7 +115,7 @@
                 trailing-icon="i-heroicons-chevron-down"
                 :loading="uploading || creatingFromScratch"
               >
-                Add template
+                Adicionar modelo
               </UButton>
             </UDropdownMenu>
           </template>
@@ -144,8 +144,8 @@ definePageMeta({
 
 useOpnSeoMeta({
   title: computed(() => props.form 
-    ? `PDF Templates - ${props.form.title}`
-    : 'PDF Templates'
+    ? `Modelos de PDF - ${props.form.title}`
+    : 'Modelos de PDF'
   ),
 })
 
@@ -177,7 +177,7 @@ const decodeTextEntities = (value) => {
 }
 
 const getFilenamePatternPreview = (template) => {
-  const pattern = template.filename_pattern || template.original_filename || template.filename || 'PDF template'
+  const pattern = template.filename_pattern || template.original_filename || template.filename || 'Modelo de PDF'
   return decodeTextEntities(
     String(pattern)
       .replace(/<span[^>]*mention-field-name="([^"]*)"[^>]*>.*?<\/span>/gi, '$1')
@@ -186,19 +186,19 @@ const getFilenamePatternPreview = (template) => {
       .replace(/\.pdf$/i, '')
       .replace(/\s+/g, ' ')
       .trim()
-  ) || 'PDF template'
+  ) || 'Modelo de PDF'
 }
 
 // Create menu items (Upload PDF, Create from scratch)
 const createMenuItems = [
   [
     {
-      label: 'Upload PDF',
+      label: 'Enviar PDF',
       icon: 'i-heroicons-document-arrow-up',
       onClick: () => triggerUpload()
     },
     {
-      label: 'Create from scratch',
+      label: 'Criar do zero',
       icon: 'i-heroicons-document-plus',
       onClick: () => handleCreateFromScratch()
     }
@@ -223,7 +223,7 @@ const handleFileUpload = async (event) => {
     editTemplate(response.data)
     alert.success(response.message)
   } catch (error) {
-    alert.error(error?.data?.message || error?.message || 'Failed to upload PDF template.')
+    alert.error(error?.data?.message || error?.message || 'Não foi possível enviar o modelo de PDF.')
   } finally {
     uploading.value = false
     // Reset input
@@ -240,7 +240,7 @@ const handleCreateFromScratch = async () => {
     editTemplate(response.data)
     alert.success(response.message)
   } catch (error) {
-    alert.error(error?.data?.message || error?.message || 'Failed to create PDF template.')
+    alert.error(error?.data?.message || error?.message || 'Não foi possível criar o modelo de PDF.')
   } finally {
     creatingFromScratch.value = false
   }
@@ -251,19 +251,19 @@ const getTemplateMenuItems = (template) => {
   return [
     [
       {
-        label: 'Preview',
+        label: 'Pré-visualizar',
         icon: 'i-heroicons-eye',
         onClick: () => previewTemplate(template)
       },
       {
-        label: 'Edit',
+        label: 'Editar',
         icon: 'i-heroicons-pencil-square-20-solid',
         onClick: () => editTemplate(template)
       }
     ],
     [
       {
-        label: 'Delete template',
+        label: 'Excluir modelo',
         icon: 'i-heroicons-trash',
         onClick: () => confirmDelete(template),
         class: 'text-red-800 hover:bg-red-50 hover:text-red-600 group',
@@ -287,21 +287,21 @@ const previewTemplate = async (template) => {
     const response = await formsApi.pdfTemplates.getPreviewSignedUrl(props.form.id, template.id)
     window.open(response.url, '_blank')
   } catch (error) {
-    alert.error(error?.data?.message || error?.message || 'Failed to open PDF preview.')
+    alert.error(error?.data?.message || error?.message || 'Não foi possível abrir a pré-visualização do PDF.')
   }
 }
 
 // Delete template
 const confirmDelete = (template) => {
   alert.confirm(
-    'Are you sure you want to delete this PDF template? This action cannot be undone.',
+    'Tem certeza de que quer excluir este modelo de PDF? Esta ação não pode ser desfeita.',
     async () => {
       deletingId.value = template.id
       try {
         const response = await deleteTemplate.mutateAsync(template.id)
         alert.success(response.message)
       } catch (error) {
-        alert.error(error?.data?.message || error?.message || 'Failed to delete template.')
+        alert.error(error?.data?.message || error?.message || 'Não foi possível excluir o modelo.')
       } finally {
         deletingId.value = null
       }

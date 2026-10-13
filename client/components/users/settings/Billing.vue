@@ -3,9 +3,9 @@
     <!-- Header -->
     <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div>
-        <h3 class="text-lg font-medium text-neutral-900">Billing Details</h3>
+        <h3 class="text-lg font-medium text-neutral-900">Cobrança</h3>
         <p class="mt-1 text-sm text-neutral-500">
-          Manage your billing. Download invoices, update your plan, or cancel it at any time.
+          Gerencie a cobrança. Baixe faturas, altere seu plano ou cancele quando quiser.
         </p>
       </div>
     </div>
@@ -17,7 +17,7 @@
           v-if="usersCount"
           class="text-neutral-600"
         >
-          You currently have <span class="font-medium">{{ usersCount }} users</span> in your different workspaces.
+          Você tem <span class="font-medium">{{ usersCount }} usuários</span> nos seus espaços de trabalho.
         </p>
 
         <div class="flex flex-wrap gap-3">
@@ -28,7 +28,7 @@
             target="_blank"
           >
 
-            Billing & Invoices
+            Cobrança e faturas
           </UButton>
         </div>
       </div>

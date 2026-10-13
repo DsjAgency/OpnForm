@@ -2,15 +2,15 @@
   <div class="space-y-4">
     <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div>
-        <h3 class="text-lg font-medium text-neutral-900">Custom Domains Settings</h3>
+        <h3 class="text-lg font-medium text-neutral-900">Domínios personalizados</h3>
         <p class="mt-1 text-sm text-neutral-500">
-          Manage your custom domains.
+          Gerencie seus domínios personalizados.
         </p>
       </div>
 
       <div class="flex shrink-0 items-center gap-2">
         <UButton
-          label="Help"
+          label="Ajuda"
           icon="i-heroicons-question-mark-circle"
           variant="outline"
           color="neutral"
@@ -25,15 +25,15 @@
       class="mb-4"
       color="warning"
       variant="subtle"
-      title="Pro plan required"
-      description="Please upgrade your account to setup a custom domain."
+      title="Plano Pro necessário"
+      description="Faça upgrade da sua conta para configurar um domínio personalizado."
       :actions="[{
-        label: 'Upgrade to Pro',
+        label: 'Upgrade para Pro',
         color: 'warning',
         variant: 'solid',
         onClick: () => openSubscriptionModal({
-          modal_title: 'Upgrade to use your own domain',
-          modal_description: 'Upgrade to our Pro plan to unlock custom domains and other premium features such as advanced customization, forms analytics, integrations, and more!'
+          modal_title: 'Faça upgrade para usar seu próprio domínio',
+          modal_description: 'Faça upgrade para o plano Pro e libere domínios personalizados e outros recursos premium, como personalização avançada, análises de formulários, integrações e muito mais!'
         })
       }]"
     />
@@ -53,7 +53,7 @@
           icon="i-heroicons-plus"
           @click="addDomain"
         >
-          Add
+          Adicionar
         </UButton>
       </div>
 
@@ -76,7 +76,7 @@
       </div>
       <div v-else class="max-w-sm rounded-md border border-dashed border-neutral-300 p-4 text-center">
         <p class="text-sm text-neutral-500">
-          No custom domains added yet.
+          Nenhum domínio personalizado adicionado ainda.
         </p>
       </div>
     </div>
@@ -132,11 +132,11 @@ const addDomain = () => {
     // Supports: example.com, test.co.uk, subdomain.example.co.uk, etc.
     const domainRegex = /^[a-z0-9]+([-.][a-z0-9]+)*\.[a-z]{2,20}$/i
     if (!domainRegex.test(cleanedDomain)) {
-      return alert.error('Invalid domain format. Please use a format like "domain.com" or "subdomain.example.co.uk".')
+      return alert.error('Formato de domínio inválido. Use um formato como "dominio.com.br" ou "subdominio.exemplo.com.br".')
     }
 
     if (domains.value.includes(cleanedDomain)) {
-      return alert.info('Domain already in the list.')
+      return alert.info('Este domínio já está na lista.')
     }
 
     domains.value.push(cleanedDomain)
@@ -159,11 +159,11 @@ const saveChanges = () => {
   updateMutation.mutateAsync({
     custom_domains: domains.value,
   }).then(() => {
-      alert.success('Custom domains saved.')
+      alert.success('Domínios personalizados salvos.')
       isChanged.value = false
       isLoading.value = false
   }).catch((error) => {
-      alert.error(error.response?._data?.message ?? 'Failed to update custom domains')
+      alert.error(error.response?._data?.message ?? 'Não foi possível atualizar os domínios personalizados')
       isLoading.value = false
     })
 }

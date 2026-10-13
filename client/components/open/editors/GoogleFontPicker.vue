@@ -2,13 +2,13 @@
   <UModal
     v-model:open="isOpen"
     :ui="{ content: 'sm:max-w-2xl' }"
-    title="Google fonts"
+    title="Fontes do Google"
   >
     <template #body>
       <text-input
         v-model="search"
         name="search"
-        placeholder="Search fonts"
+        placeholder="Buscar fontes"
       />
 
       <OverlayScrollbarsComponent
@@ -50,14 +50,14 @@
         variant="outline"
         @click="$emit('apply', null)"
       >
-        Reset
+        Redefinir
       </UButton>
       <UButton
         size="md"
         :disabled="!selectedFont"
         @click="$emit('apply', selectedFont)"
       >
-        Apply
+        Aplicar
       </UButton>
     </template>
   </UModal>

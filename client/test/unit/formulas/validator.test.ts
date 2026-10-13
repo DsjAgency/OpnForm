@@ -12,7 +12,7 @@ describe('Formula Validator', () => {
     it('rejects empty formulas', () => {
       const result = validateFormula('')
       expect(result.valid).toBe(false)
-      expect(result.errors[0].message).toContain('empty')
+      expect(result.errors[0].message).toContain('vazia')
     })
 
     it('rejects invalid syntax', () => {
@@ -40,13 +40,13 @@ describe('Formula Validator', () => {
     it('rejects unknown field references', () => {
       const result = validateFormula('{unknown_field}', { availableFields: fields })
       expect(result.valid).toBe(false)
-      expect(result.errors[0].message).toContain('Unknown field')
+      expect(result.errors[0].message).toContain('Campo desconhecido')
     })
 
     it('suggests similar field names', () => {
       const result = validateFormula('{field}', { availableFields: fields })
       expect(result.valid).toBe(false)
-      expect(result.errors[0].message).toContain('Did you mean')
+      expect(result.errors[0].message).toContain('Você quis dizer')
     })
   })
 
@@ -59,13 +59,13 @@ describe('Formula Validator', () => {
     it('rejects unknown functions', () => {
       const result = validateFormula('UNKNOWN_FUNC()')
       expect(result.valid).toBe(false)
-      expect(result.errors[0].message).toContain('Unknown function')
+      expect(result.errors[0].message).toContain('Função desconhecida')
     })
 
     it('suggests similar function names', () => {
       const result = validateFormula('SUMM(1, 2)')
       expect(result.valid).toBe(false)
-      expect(result.errors[0].message).toContain('Did you mean')
+      expect(result.errors[0].message).toContain('Você quis dizer')
     })
 
     it('rejects function calls with too few arguments', () => {
@@ -74,7 +74,7 @@ describe('Formula Validator', () => {
       })
 
       expect(result.valid).toBe(false)
-      expect(result.errors[0].message).toBe('Function MOD() requires exactly 2 arguments, but got 1.')
+      expect(result.errors[0].message).toBe('A função MOD() exige exatamente 2 argumentos, mas recebeu 1.')
     })
 
     it('rejects function calls with too many arguments', () => {
@@ -83,7 +83,7 @@ describe('Formula Validator', () => {
       })
 
       expect(result.valid).toBe(false)
-      expect(result.errors[0].message).toBe('Function COUNT() accepts at most 1 argument, but got 2.')
+      expect(result.errors[0].message).toBe('A função COUNT() aceita no máximo 1 argumento, mas recebeu 2.')
     })
   })
 
@@ -109,7 +109,7 @@ describe('Formula Validator', () => {
         currentVariableId: 'cv_var1'
       })
       expect(result.valid).toBe(false)
-      expect(result.errors[0].message).toContain('reference itself')
+      expect(result.errors[0].message).toContain('referenciar a si mesma')
     })
   })
 

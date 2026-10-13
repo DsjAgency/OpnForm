@@ -43,14 +43,14 @@ export default {
       )
       let baseError
         = this.form.errors.get(this.fieldId)
-        ?? (subErrorsKeys.length ? 'This field has some errors:' : null)
+        ?? (subErrorsKeys.length ? 'Este campo tem erros:' : null)
       // If no error and no sub errors, return
       if (!baseError)
         return null
 
       // Check if baseError starts with "The {field.name} field" and replace if necessary
       if (baseError.startsWith(`The ${this.fieldName} field`)) {
-        baseError = baseError.replace(`The ${this.fieldName} field`, 'This field')
+        baseError = baseError.replace(`The ${this.fieldName} field`, 'Este campo')
       }
 
       const escapedBaseError = escapeHtml(baseError)

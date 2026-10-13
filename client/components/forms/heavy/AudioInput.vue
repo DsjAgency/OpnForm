@@ -23,7 +23,7 @@
             class="h-5 w-5"
           />
           <span class="ml-2">
-            Upload
+            Enviar
           </span>
         </div>
       </button>
@@ -45,7 +45,7 @@
             v-if="!disabled"
             class="text-neutral-500 hover:text-red-500 flex items-center shrink-0"
             type="button"
-            aria-label="Remove audio"
+            aria-label="Remover áudio"
             @click="clearUrl"
           >
             <Icon
@@ -65,7 +65,7 @@
 
     <UModal
       v-model:open="showUploadModal"
-      title="Upload an audio file"
+      title="Enviar arquivo de áudio"
       :ui="{ content: 'sm:max-w-xl', body: 'pt-2!' }"
     >
       <template #body>
@@ -92,7 +92,7 @@
                 >
                   <loader class="h-5 w-5 mx-auto m-10" />
                   <p class="text-center mt-6">
-                    Uploading your file...
+                    Enviando seu arquivo...
                   </p>
                 </div>
                 <template v-else>
@@ -122,12 +122,12 @@
                         class="font-semibold text-blue-500 hover:text-blue-800 focus:outline-hidden focus:underline transition duration-150 ease-in-out"
                         @click="openFileUpload"
                       >
-                        Upload your audio,
+                        Envie seu áudio,
                       </button>
-                      use drag and drop or paste it
+                      arraste e solte ou cole aqui
                     </p>
                     <p class="mt-1 text-xs text-neutral-500">
-                      .mp3, .wav, .ogg, .m4a, .aac, .webm up to 5mb
+                      .mp3, .wav, .ogg, .m4a, .aac, .webm até 5 MB
                     </p>
                   </div>
                 </template>
@@ -139,12 +139,12 @@
             <TextInput
               v-model="urlInput"
               name="audio_url"
-              label="Enter the URL of the audio you want to use"
+              label="Digite a URL do áudio que você quer usar"
               placeholder="https://example.com/audio.mp3"
             />
             <div class="mt-4 flex justify-end gap-2">
               <UButton color="primary" :disabled="!urlInput" @click="insertUrl">
-                Insert
+                Inserir
               </UButton>
             </div>
           </div>
@@ -192,7 +192,7 @@ export default {
     },
     tabItems() {
       return [
-        { label: 'Upload', value: 'upload' },
+        { label: 'Enviar', value: 'upload' },
         { label: 'URL', value: 'url' },
       ]
     },
@@ -284,7 +284,7 @@ export default {
     },
     showUploadError(error) {
       const data = error?.data || error?.response?._data
-      useAlert().error(data?.errors?.url?.[0] || error?.message || 'Failed to upload audio file. Please try again.')
+      useAlert().error(data?.errors?.url?.[0] || error?.message || 'Não foi possível enviar o áudio. Tente novamente.')
     },
   },
 }

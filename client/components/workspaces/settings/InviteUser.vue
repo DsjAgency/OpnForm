@@ -8,7 +8,7 @@
     <template #header>
       <div class="flex items-center w-full gap-4 px-2">
         <h2 class="font-semibold">
-          Invite a new user
+          Convidar novo usuário
         </h2>
       </div>
       <UButton
@@ -18,7 +18,7 @@
         size="sm"
         @click="crisp.openHelpdeskArticle('how-to-invite-users-team-members-to-my-workspace-qyw16g')"
       >
-        Help
+        Ajuda
       </UButton>
     </template>
 
@@ -29,15 +29,15 @@
         class="mb-4"
         color="warning"
         variant="subtle"
-        title="Pro plan required"
-        description="Please upgrade your account to invite users to your workspace."
+        title="Plano Pro necessário"
+        description="Faça upgrade da sua conta para convidar usuários ao espaço de trabalho."
         :actions="[{
-          label: 'Upgrade to Pro',
+          label: 'Upgrade para Pro',
           color: 'warning',
           variant: 'solid',
           onClick: () => openSubscriptionModal({
-            modal_title: 'Upgrade to invite users to your workspace',
-            modal_description: 'Upgrade to our Pro plan to unlock team collaboration features along with customized branding, form analytics, custom domains, and more!'
+            modal_title: 'Faça upgrade para convidar usuários ao seu espaço de trabalho',
+            modal_description: 'Faça upgrade para o plano Pro e libere a colaboração em equipe, marca personalizada, análises de formulários, domínios personalizados e muito mais!'
           })
         }]"
       />
@@ -50,18 +50,18 @@
         <TextInput
           :form="inviteUserForm"
           name="email"
-          label="Email"
+          label="E-mail"
           :required="true"
           :disabled="!canInviteUsers"
-          placeholder="Add a new user by email"
+          placeholder="Adicione um usuário pelo e-mail"
         />
         <FlatSelectInput
           :form="inviteUserForm"
           name="role"
           :options="roleOptions"
           :disabled="!canInviteUsers"
-          placeholder="Select User Role"
-          label="Role"
+          placeholder="Selecione o papel do usuário"
+          label="Papel"
           :required="true"
         />
         <div class="flex justify-center mt-4">
@@ -71,7 +71,7 @@
             :loading="inviteUserMutation.isPending.value"
             icon="i-heroicons-envelope"
           >
-            Invite User
+            Convidar usuário
           </UButton>
         </div>
       </VForm>
@@ -105,9 +105,9 @@ const canInviteUsers = computed(() => hasFeature('invite_user'))
 const emit = defineEmits(['update:modelValue', 'user-added'])
 
 const roleOptions = [
-  {name: "User", value: "user"},
-  {name: "Admin", value: "admin"},
-  {name: "Read Only", value: "readonly"}
+  {name: "Usuário", value: "user"},
+  {name: "Administrador", value: "admin"},
+  {name: "Somente leitura", value: "readonly"}
 ]
 
 // Modal state
@@ -139,20 +139,20 @@ const addUser = () => {
     role: inviteUserForm.role
   }).then((data) => {
     inviteUserForm.reset()
-    alert.success(data.message || 'User invited successfully')
+    alert.success(data.message || 'Usuário convidado')
     emit('user-added')
     closeModal()
   }).catch((error) => {
     const handled = handleLicenseError(error, {
-      title: 'Enterprise license required for more users',
-      description: 'Your self-hosted instance includes up to 2 users without an Enterprise license. Purchase or activate an Enterprise self-hosted license to invite more workspace members.'
+      title: 'Licença Enterprise necessária para mais usuários',
+      description: 'Sua instância auto-hospedada permite até 2 usuários sem licença Enterprise. Compre ou ative uma licença Enterprise auto-hospedada para convidar mais membros.'
     })
     if (handled) {
       closeModal()
       return
     }
 
-    alert.error(error?.data?.message || "There was an error adding user")
+    alert.error(error?.data?.message || "Ocorreu um erro ao adicionar o usuário")
   })
 }
 </script>

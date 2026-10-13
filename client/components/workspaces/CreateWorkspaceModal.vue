@@ -8,7 +8,7 @@
     <template #header>
       <div class="flex items-center w-full gap-4 px-2">
         <h2 class="font-semibold">
-          Create Workspace
+          Criar espaço de trabalho
         </h2>
       </div>
       <UButton
@@ -18,7 +18,7 @@
         size="sm"
         @click="crisp.openHelpdeskArticle('how-many-workspaces-can-i-create-r4dvt6')"
       >
-        Help
+        Ajuda
       </UButton>
     </template>
     
@@ -32,8 +32,8 @@
               :form="form"
               :required="true"
               :disabled="form.busy"
-              label="Workspace Name"
-              placeholder="My Workspace"
+              label="Nome do espaço de trabalho"
+              placeholder="Meu espaço de trabalho"
             />
             <text-input
               name="emoji"
@@ -41,17 +41,17 @@
               :form="form"
               :required="false"
               :disabled="form.busy"
-              label="Emoji (optional)"
+              label="Emoji (opcional)"
               placeholder="🚀"
-              help="Choose an emoji to represent your workspace"
+              help="Escolha um emoji para representar seu espaço de trabalho"
             />
           </form>
         </VForm>
     </template>
     <template #footer>
       <div class="flex gap-2 w-full">
-        <UButton color="neutral" variant="outline" @click="closeModal">Cancel</UButton>
-        <UButton block type="submit" :loading="form.busy" @click="handleSubmit">Create Workspace</UButton>
+        <UButton color="neutral" variant="outline" @click="closeModal">Cancelar</UButton>
+        <UButton block type="submit" :loading="form.busy" @click="handleSubmit">Criar espaço de trabalho</UButton>
       </div>
     </template>
   </UModal>
@@ -93,8 +93,8 @@ const handleSubmit = () => {
     appStore.setCurrentId(newWorkspace.id)
 
     // Show success message
-    alert.success('You are now working in your new workspace.', 10000, {
-      title: 'Workspace created successfully!'
+    alert.success('Agora você está no seu novo espaço de trabalho.', 10000, {
+      title: 'Espaço de trabalho criado!'
     })
 
     // Emit created event and close modal
@@ -102,8 +102,8 @@ const handleSubmit = () => {
     closeModal()
   }).catch((error) => {
     console.error('Error creating workspace:', error)
-    alert.error(error.data?.message || 'Something went wrong. Please try again.', 10000, {
-      title: 'Error creating workspace'
+    alert.error(error.data?.message || 'Algo deu errado. Tente novamente.', 10000, {
+      title: 'Erro ao criar o espaço de trabalho'
     })
   })
 }

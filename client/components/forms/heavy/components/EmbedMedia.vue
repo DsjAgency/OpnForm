@@ -40,7 +40,7 @@
 
     <div v-else>
       <div class="p-4 border border-dashed text-center text-neutral-500">
-        Invalid or unsupported media URL.
+        URL de mídia inválida ou não suportada.
       </div>
     </div>
   </div>

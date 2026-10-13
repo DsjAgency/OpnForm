@@ -3,10 +3,10 @@
     <div class="p-4 border-b">
       <h4 class="font-medium text-gray-900 flex items-center gap-2">
         <Icon name="i-heroicons-code-bracket" class="w-4 h-4" />
-        Formula Definition
+        Definição da fórmula
       </h4>
       <p class="text-xs text-gray-500 mt-1">
-        Define your variable name and formula
+        Defina o nome e a fórmula da variável
       </p>
     </div>
     
@@ -14,11 +14,11 @@
       <!-- Name Input -->
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">
-          Variable Name <span class="text-red-500">*</span>
+          Nome da variável <span class="text-red-500">*</span>
         </label>
         <UInput
           :model-value="localVariable.name"
-          placeholder="e.g., Total Price, Dog Age"
+          placeholder="ex.: Preço total, Idade"
           :color="errors.name ? 'error' : undefined"
           @update:model-value="$emit('update:name', $event)"
         />
@@ -34,7 +34,7 @@
       <div>
         <div class="flex items-center justify-between mb-1">
           <label class="block text-sm font-medium text-gray-700">
-            Formula <span class="text-red-500">*</span>
+            Fórmula <span class="text-red-500">*</span>
           </label>
           <div class="flex items-center gap-1">
             <AiFormulaGenerator
@@ -52,7 +52,7 @@
               icon="i-heroicons-question-mark-circle"
               @click="$emit('show-reference')"
             >
-              Function Reference
+              Referência de funções
             </UButton>
           </div>
         </div>
@@ -90,7 +90,7 @@
             class="text-sm"
             :class="validationResult.valid ? 'text-green-700' : 'text-red-700'"
           >
-            {{ validationResult.valid ? 'Valid formula' : validationResult.errors[0]?.message }}
+            {{ validationResult.valid ? 'Fórmula válida' : validationResult.errors[0]?.message }}
           </span>
         </div>
       </div>

@@ -27,7 +27,7 @@ export function useLicenseUpgradeModal() {
 
     openSubscriptionModal({
       plan: 'self_hosted',
-      modal_title: options.title || 'Enterprise self-hosted license required',
+      modal_title: options.title || 'Licença Enterprise auto-hospedada necessária',
       modal_description: options.description || getErrorMessage(error)
     })
 

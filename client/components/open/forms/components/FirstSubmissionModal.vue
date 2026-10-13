@@ -2,18 +2,18 @@
   <UModal
     v-model:open="isModalOpen"
     :ui="{ content: 'sm:max-w-2xl' }"
-    title="🎉 Your first submission!"
+    title="🎉 Sua primeira resposta!"
   >
     <template #body>
       <div class="text-sm text-neutral-500 mb-6">
-        Congratulations! Your form is now live and ready for action. Share it with others or check your submissions below.
+        Parabéns! Seu formulário está no ar. Compartilhe com outras pessoas ou confira as respostas abaixo.
       </div>
 
       <!-- Quick Actions -->
       <div class="space-y-3 mb-6">
         <div class="flex gap-3 items-center">
           <p class="text-sm w-36 text-neutral-500 flex-shrink-0">
-            Share form URL:
+            Compartilhe o link do formulário:
           </p>
           <ShareFormUrl
             class="flex-grow"
@@ -22,14 +22,14 @@
         </div>
         <div class="flex items-center">
           <p class="text-sm w-36 text-neutral-500 flex-shrink-0">
-            Check submissions:
+            Confira as respostas:
           </p>
           <UButton
             color="neutral"
             variant="outline"
             icon="i-heroicons-table-cells"
             @click="trackOpenDbClick"
-            label="View Submissions"
+            label="Ver respostas"
           />
         </div>
       </div>
@@ -38,7 +38,7 @@
       <div class="border-t border-neutral-200 dark:border-neutral-700 pt-5">
         <div class="flex items-center justify-between mb-3">
           <p class="text-neutral-700 dark:text-neutral-200 font-semibold text-sm">
-            🔗 Connect your form to other apps
+            🔗 Conecte seu formulário a outros apps
           </p>
           <NuxtLink
             :to="integrationsPageUrl"
@@ -46,7 +46,7 @@
             class="text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 hover:underline flex items-center gap-1"
             @click="trackIntegrationsLinkClick"
           >
-            View all integrations
+            Ver todas as integrações
             <Icon
               name="heroicons:arrow-top-right-on-square-16-solid"
               size="12px"
@@ -54,7 +54,7 @@
           </NuxtLink>
         </div>
         <p class="text-xs text-neutral-500 mb-4">
-          Get notified instantly when someone submits your form, or sync data to your favorite tools.
+          Seja avisado na hora quando alguém responder ou sincronize os dados com suas ferramentas favoritas.
         </p>
 
         <!-- Featured Integration: Email -->
@@ -74,18 +74,18 @@
             <div class="flex-grow">
               <div class="flex items-center gap-2">
                 <p class="text-sm font-semibold text-neutral-800 dark:text-white">
-                  Email Notification
+                  Notificação por e-mail
                 </p>
                 <UBadge
                   variant="subtle"
                   color="success"
                   size="xs"
                 >
-                  Recommended
+                  Recomendado
                 </UBadge>
               </div>
               <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">
-                Get an email every time someone submits your form. Perfect for staying on top of responses.
+                Receba um e-mail sempre que alguém responder ao formulário. Ideal para acompanhar as respostas.
               </p>
             </div>
             <Icon
@@ -98,7 +98,7 @@
 
         <!-- Other Popular Integrations -->
         <p class="text-xs text-neutral-500 mb-2">
-          Other popular integrations:
+          Outras integrações populares:
         </p>
         <div class="grid grid-cols-4 gap-2">
           <div
@@ -175,7 +175,7 @@ const popularIntegrations = computed(() => [
   },
   {
     id: 'google_sheets',
-    name: 'Sheets',
+    name: 'Planilhas',
     icon: 'mdi:google-spreadsheet',
     required_tier: 'free'
   },

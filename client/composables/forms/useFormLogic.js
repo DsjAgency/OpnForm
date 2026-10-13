@@ -8,7 +8,7 @@ export const useFormLogic = () => {
         errors.push({
           fieldId,
           error: 'INVALID_CONDITION_GROUP',
-          message: 'Condition group must have children array'
+          message: 'O grupo de condições precisa ter condições'
         })
         return
       }
@@ -25,7 +25,7 @@ export const useFormLogic = () => {
           ruleIndex: parentIndex,
           error: 'INVALID_FIELD_REFERENCE',
           referencedFieldId: condition.value?.property_meta?.id,
-          message: `Referenced field ${condition.value?.property_meta?.id} no longer exists`
+          message: `O campo referenciado ${condition.value?.property_meta?.id} não existe mais`
         })
       }
     }
@@ -47,7 +47,7 @@ export const useFormLogic = () => {
           fieldId: field.id,
           fieldName: field.name,
           error: 'MISSING_CONDITIONS',
-          message: 'No conditions specified'
+          message: 'Nenhuma condição definida'
         })
       }
 
@@ -56,7 +56,7 @@ export const useFormLogic = () => {
           fieldId: field.id,
           fieldName: field.name,
           error: 'MISSING_ACTIONS',
-          message: 'No actions specified'
+          message: 'Nenhuma ação definida'
         })
       }
 
@@ -73,8 +73,8 @@ export const useFormLogic = () => {
           fieldName: field.name,
           error: 'INVALID_LOGIC_RULE',
           message: logicRule.isConditionCorrect ? 
-            'Invalid action configuration' : 
-            'Invalid condition configuration'
+            'Configuração de ação inválida' : 
+            'Configuração de condição inválida'
         })
       }
     })

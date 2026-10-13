@@ -2,7 +2,7 @@
   <UModal
     v-model:open="isOpen"
     :ui="{ content: 'sm:max-w-4xl' }"
-    title="Past Events"
+    title="Eventos anteriores"
   >
     <template #body>
       <UTable
@@ -28,12 +28,12 @@
     </template>
 
     <template #footer>
-      <UButton color="neutral" variant="outline" label="Refresh" :loading="integrationEventsLoading" @click="fetchEvents" />
+      <UButton color="neutral" variant="outline" label="Atualizar" :loading="integrationEventsLoading" @click="fetchEvents" />
       <UButton
         color="neutral"
         variant="outline"
         @click="close"
-        label="Close"
+        label="Fechar"
       />
     </template>
   </UModal>
@@ -67,9 +67,9 @@ const isOpen = computed({
   }
 })
 const columns = [
-  { accessorKey: "date", header: "Date" },
+  { accessorKey: "date", header: "Data" },
   { accessorKey: "status", header: "Status" },
-  { accessorKey: "data", header: "Info" },
+  { accessorKey: "data", header: "Informações" },
 ]
 const integrationEvents = ref([])
 const integrationEventsLoading = ref(false)
@@ -89,7 +89,7 @@ const fetchEvents = () => {
       formsApi.integrations.events(props.form.id, props.formIntegrationId).then((data) => {
         integrationEvents.value = data
       }).catch(() => {
-        alert.error("Could not load integration events. Please refresh.")
+        alert.error("Não foi possível carregar os eventos da integração. Atualize a página.")
       }).finally(() => {
         integrationEventsLoading.value = false
       })

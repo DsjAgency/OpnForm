@@ -5,7 +5,7 @@
     class="shadow-none"
   >
     <UTooltip
-      text="Undo"
+      text="Desfazer"
       :kbds="['meta','Z']"
       :content="{ side: 'left' }"
       arrow
@@ -20,7 +20,7 @@
       />
     </UTooltip>
     <UTooltip
-      text="Redo"
+      text="Refazer"
       :kbds="['meta','Shift','Z']"
       :content="{ side: 'right' }"
       arrow

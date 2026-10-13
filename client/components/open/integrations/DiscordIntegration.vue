@@ -7,27 +7,27 @@
     <text-input
       :form="integrationData"
       name="data.discord_webhook_url"
-      label="Discord webhook url"
+      label="URL do webhook do Discord"
       help="help"
       required
     >
       <template #help>
         <InputHelp>
           <span>
-            Receive a discord message on each form submission.
+            Receba uma mensagem no Discord a cada nova resposta.
             <a
               href="https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks"
               target="_blank"
             >
-              Click here
+              Clique aqui
             </a>
-            to learn how to get a discord webhook url.
+            para saber como obter a URL de webhook do Discord.
           </span>
         </InputHelp>
       </template>
     </text-input>
     <h4 class="font-bold mt-4">
-      Discord message options
+      Opções da mensagem do Discord
     </h4>
     <notifications-message-actions
       v-model="integrationData.data"

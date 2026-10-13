@@ -9,7 +9,7 @@
       class="w-[100px]"
       :items="operators"
       value-key="value"
-      placeholder="Operator"
+      placeholder="Operador"
       size="sm"
       variant="outline"
       :search-input="false"
@@ -27,7 +27,7 @@
         v-model="content.value"
         class="flex-1 min-w-[120px]"
         :name="'value_' + property.id"
-        placeholder="Value"
+        placeholder="Valor"
         wrapper-class="my-0"
         margin-bottom=""
         @update:model-value="emitInput()"
@@ -243,6 +243,51 @@ export default {
       ]
     },
     optionFilterNames(key) {
+      const labels = {
+        after: 'Depois de',
+        at_least_x_days_ago: 'Há pelo menos X dias',
+        at_least_x_days_from_now: 'Daqui a pelo menos X dias',
+        before: 'Antes de',
+        contains: 'Contém',
+        content_length_does_not_equal: 'Tamanho do conteúdo diferente de',
+        content_length_equals: 'Tamanho do conteúdo igual a',
+        content_length_greater_than: 'Tamanho do conteúdo maior que',
+        content_length_greater_than_or_equal_to: 'Tamanho do conteúdo maior ou igual a',
+        content_length_less_than: 'Tamanho do conteúdo menor que',
+        content_length_less_than_or_equal_to: 'Tamanho do conteúdo menor ou igual a',
+        does_not_contain: 'Não contém',
+        does_not_equal: 'Diferente de',
+        does_not_exist_in_submissions: 'Não existe nas respostas',
+        does_not_match_regex: 'Não corresponde à regex',
+        ends_with: 'Termina com',
+        equals: 'Igual a',
+        exists_in_submissions: 'Existe nas respostas',
+        greater_than: 'Maior que',
+        greater_than_or_equal_to: 'Maior ou igual a',
+        is_checked: 'Está marcado',
+        is_empty: 'Está vazio',
+        is_not_checked: 'Não está marcado',
+        is_not_empty: 'Não está vazio',
+        less_than: 'Menor que',
+        less_than_or_equal_to: 'Menor ou igual a',
+        matches_regex: 'Corresponde à regex',
+        next_month: 'Próximo mês',
+        next_week: 'Próxima semana',
+        next_year: 'Próximo ano',
+        not_paid: 'Não pago',
+        on_or_after: 'Em ou depois de',
+        on_or_before: 'Em ou antes de',
+        paid: 'Pago',
+        past_month: 'Último mês',
+        past_week: 'Última semana',
+        past_year: 'Último ano',
+        starts_with: 'Começa com',
+        within_next_x_days: 'Nos próximos X dias',
+        within_past_x_days: 'Nos últimos X dias',
+      }
+      if (labels[key]) {
+        return labels[key]
+      }
       return key
         .split("_")
         .map(function (item) {

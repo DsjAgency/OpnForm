@@ -14,7 +14,7 @@
           @click="closeSidebar"
         />
         <div class="font-medium inline ml-2 flex-grow truncate">
-          Add Block
+          Adicionar bloco
         </div>
         <AiFieldGenerator
           class="py-2 px-4"
@@ -29,7 +29,7 @@
         autofocus
         variant="outline"
         class="w-full"
-        placeholder="Search for a block..."
+        placeholder="Buscar bloco..."
         icon="i-heroicons-magnifying-glass-solid"
         :ui="{ trailing: 'pe-1' }"
         @keydown.down.prevent="handleKeydown"
@@ -43,8 +43,8 @@
             variant="link"
             size="sm"
             icon="i-lucide-circle-x"
-            aria-label="Clear"
-            title="Clear"
+            aria-label="Limpar"
+            title="Limpar"
             @click="searchTerm = ''"
           />
         </template>
@@ -53,7 +53,7 @@
 
     <div class="py-2 px-4">
       <p class="text-neutral-500 text-xs font-medium my-2">
-        Input Blocks
+        Blocos de entrada
       </p>
       <VueDraggable
         :model-value="filteredInputBlocks"
@@ -95,14 +95,14 @@
             v-if="searchTerm && filteredInputBlocks.length === 0"
             class="text-neutral-400 text-xs px-2 py-1"
           >
-            No input blocks match your search.
+            Nenhum bloco de entrada corresponde à busca.
           </p>
         </template>
       </VueDraggable>
     </div>
     <div class="px-4 border-t mb-4">
       <p class="text-neutral-500 text-xs font-medium my-2">
-        Layout Blocks
+        Blocos de layout
       </p>
       <VueDraggable
         :model-value="filteredLayoutBlocks"
@@ -144,7 +144,7 @@
             v-if="searchTerm && filteredLayoutBlocks.length === 0"
             class="text-neutral-400 text-xs px-2 py-1"
           >
-            No layout blocks match your search.
+            Nenhum bloco de layout corresponde à busca.
           </p>
         </template>
       </VueDraggable>

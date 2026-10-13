@@ -13,7 +13,7 @@
       </div>
       
       <p class="mt-2 text-center text-sm text-neutral-600">
-        Welcome to OpnForm! Let's get you set up. Create your admin account to start building beautiful forms.
+        Bem-vindo ao OpnForm! Vamos configurar tudo. Crie sua conta de administrador para começar a criar formulários.
       </p>
     </div>
 
@@ -41,13 +41,13 @@ const selfHosted = useFeatureFlag('self_hosted', false)
 
 // Show 404 if setup not required or not self-hosted
 if (!setupRequired || !selfHosted) {
-  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+  throw createError({ statusCode: 404, statusMessage: 'Página não encontrada' })
 }
 
 // SEO
 useOpnSeoMeta({
-  title: "Setup - OpnForm",
-  description: "Set up your OpnForm instance",
+  title: "Configuração inicial",
+  description: "Configure sua instância do OpnForm",
   robots: "noindex, nofollow"
 })
 
@@ -62,8 +62,8 @@ const handleSetupComplete = async () => {
   
   // Show success message
   useAlert().success({
-    title: "Setup Complete! 🎉",
-    description: "Your OpnForm instance is ready. Time to create your first form!"
+    title: "Configuração concluída! 🎉",
+    description: "Sua instância do OpnForm está pronta. Hora de criar seu primeiro formulário!"
   })
   
   // Redirect to dashboard

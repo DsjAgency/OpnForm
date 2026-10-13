@@ -3,9 +3,9 @@
     <!-- Header -->
     <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div>
-        <h3 class="text-lg font-medium text-neutral-900">External Connections</h3>
+        <h3 class="text-lg font-medium text-neutral-900">Conexões externas</h3>
         <p class="mt-1 text-sm text-neutral-500">
-          Manage your external connections and integrations.
+          Gerencie suas conexões externas e integrações.
         </p>
       </div>
       <div class="flex items-center gap-2">
@@ -19,7 +19,7 @@
           @click="refreshProviders"
         />
         <UButton
-          label="Connect Account"
+          label="Conectar conta"
           icon="i-heroicons-plus"
           :loading="isFetching"
           @click="providerModal = true"
@@ -35,13 +35,13 @@
           class="w-12 h-12 text-neutral-400 mx-auto mb-4" 
         />
         <h4 class="text-lg font-medium text-neutral-900 mb-2">
-          No connections yet
+          Nenhuma conexão ainda
         </h4>
         <p class="text-neutral-500 mb-4">
-          Connect your accounts to enable integrations and streamline your workflow.
+          Conecte suas contas para ativar integrações e agilizar seu trabalho.
         </p>
         <UButton
-          label="Connect Your First Account"
+          label="Conectar primeira conta"
           icon="i-heroicons-plus"
           @click="providerModal = true"
         />
@@ -118,13 +118,13 @@ const tableColumns = [
   {
     id: 'provider',
     accessorKey: 'provider',
-    header: 'Service',
+    header: 'Serviço',
     enableSorting: true
   },
   {
     id: 'email',
     accessorKey: 'email',
-    header: 'Account',
+    header: 'Conta',
     enableSorting: true
   },
   {
@@ -145,15 +145,15 @@ const removeMutation = oAuth.remove()
 
 // Disconnect provider
 const disconnectProvider = (provider) => {
-  alert.confirm("Do you really want to disconnect this account?", () => {
+  alert.confirm("Quer mesmo desconectar esta conta?", () => {
     removeMutation.mutateAsync(provider.id).then(() => {
-      alert.success('Account disconnected successfully')
+      alert.success('Conta desconectada')
       refetch()
     }).catch((error) => {
       try {
         alert.error(error.data.message)
       } catch {
-        alert.error("An error occurred while disconnecting the account")
+        alert.error("Ocorreu um erro ao desconectar a conta")
       }
     })
   })

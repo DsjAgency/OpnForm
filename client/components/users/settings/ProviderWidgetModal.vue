@@ -38,7 +38,7 @@
         variant="outline"
         @click="closeModal"
       >
-        Close
+        Fechar
       </UButton>
     </template>
   </UModal>
@@ -83,7 +83,7 @@ const widgetCallbackMutation = oAuth.widgetCallback()
 
 const handleAuthData = (data) => {
   if (!data) {
-    alert.error('Authentication failed')
+    alert.error('Falha na autenticação')
     return
   }
 
@@ -94,12 +94,12 @@ const handleAuthData = (data) => {
     if (response.intention) {
       router.push(response.intention)
     } else {
-      alert.success('Successfully connected')
+      alert.success('Conectado')
       emit('close')
       oAuth.fetchOAuthProviders()
     }
   }).catch((error) => {
-    alert.error(error?.data?.message || 'Failed to authenticate')
+    alert.error(error?.data?.message || 'Falha na autenticação')
     oAuth.fetchOAuthProviders()
   })
 }

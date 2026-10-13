@@ -8,7 +8,7 @@
           <template #default="{ workspace }">
             <button
               v-if="workspace"
-              aria-label="Workspace menu"
+              aria-label="Menu do espaço de trabalho"
               class="flex items-center gap-2 p-2 rounded-md hover:bg-neutral-200 transition-colors min-w-32 text-left"
             >
               <WorkspaceIcon :workspace="workspace" />
@@ -27,7 +27,7 @@
         <UserDropdown>
           <template #default="{ user }">
             <button
-              aria-label="User menu"
+              aria-label="Menu do usuário"
               class="flex items-center gap-2 p-2 rounded-md hover:bg-neutral-200 transition-colors"
             >
               <img
@@ -103,7 +103,7 @@ const navigationSections = computed(() => [
     name: null,
     items: [
       createNavItem({
-        label: 'Create Form',
+        label: 'Criar formulário',
         icon: 'i-heroicons-plus',
         to: { name: 'forms-create' },
         active: isActiveRoute('forms-create'),
@@ -112,38 +112,38 @@ const navigationSections = computed(() => [
         kbd: ['N'],
       }),
       createNavItem({
-        label: 'Home', 
+        label: 'Início', 
         icon: 'i-heroicons-home',
         to: { name: 'home' },
         active: isActiveRoute('home')
       }),
       createNavItem({
-        label: 'Templates',
+        label: 'Modelos',
         icon: 'i-heroicons-document-duplicate',
         to: { name: 'templates-my-templates' },
         active: isActiveRoute('templates')
       }),
       // Show upgrade for non-pro users
       ...(workspace.value && !can('workspaces.multiple') && !isSelfHosted.value ? [createNavItem({
-        label: 'Upgrade to Pro',
+        label: 'Upgrade para Pro',
         icon: 'i-heroicons-sparkles-solid', 
         onClick: () => {
           useAmplitude().logEvent('app_sidebar_upgrade_click')
           openSubscriptionModal({
             plan: 'pro',
-            modal_title: 'Upgrade to Pro plan',
+            modal_title: 'Upgrade para o plano Pro',
           })
         },
         color: 'primary'
       })] : []),
       ...(workspace.value && can('workspaces.multiple') && !can('multi_user.roles') && !isSelfHosted.value ? [createNavItem({
-        label: 'Upgrade to Business',
+        label: 'Upgrade para Business',
         icon: 'i-heroicons-sparkles-solid',
         onClick: () => {
           useAmplitude().logEvent('app_sidebar_upgrade_click')
           openSubscriptionModal({
             plan: 'business',
-            modal_title: 'Upgrade to Business plan',
+            modal_title: 'Upgrade para o plano Business',
           })
         },
         color: 'primary'

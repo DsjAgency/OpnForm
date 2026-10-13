@@ -40,12 +40,12 @@ definePageMeta({
 })
 
 useOpnSeoMeta({
-  title: "Create a new Form",
+  title: "Criar formulário",
 })
 
 onBeforeRouteLeave((to, from, next) => {
   if (isDirty()) {
-      if (window.confirm('Changes you made may not be saved. Are you sure want to leave?')) {
+      if (window.confirm('As alterações feitas podem não ser salvas. Tem certeza de que quer sair?')) {
         window.onbeforeunload = null
         next()
       } else {

@@ -8,7 +8,7 @@
         <toggle-switch-input
           v-model="statusToggle"
           name="status"
-          label="Enabled"
+          label="Ativada"
         />
       </slot>
     </div>
@@ -37,19 +37,19 @@
               </div>
               <div class="flex-grow">
                 <h3 class="font-semibold">
-                  {{ hasLogic ? 'Logic configured' : 'Add logic' }}
+                  {{ hasLogic ? 'Lógica configurada' : 'Adicionar lógica' }}
                 </h3>
                 <p class="text-neutral-500 text-xs">
-                  {{ hasLogic ? 'Conditions control when integration runs' : 'Set conditions for when to run' }}
+                  {{ hasLogic ? 'Condições controlam quando a integração é executada' : 'Defina condições para quando executar' }}
                 </p>
               </div>
             </div>
           </template>
 
 
-          <p class="text-xs font-medium text-gray-600 mb-2 mt-4">When should this integration run?</p>
+          <p class="text-xs font-medium text-gray-600 mb-2 mt-4">Quando esta integração deve ser executada?</p>
           <p class="text-neutral-500 text-xs mb-3">
-            Set <span class="font-semibold">conditions that control when this integration executes</span>. Leave empty to always run.
+            Defina <span class="font-semibold">condições que controlam quando esta integração é executada</span>. Deixe vazio para executar sempre.
           </p>
           <div class="p-3 border border-gray-200 rounded-lg bg-gray-50/50 mt-4">
             <condition-editor

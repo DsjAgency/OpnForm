@@ -41,11 +41,11 @@ export const useOidcLinking = () => {
 
     return oidcApi.link(linkToken.value)
       .then(() => {
-        alert.success("Your SSO account has been linked.")
+        alert.success("Sua conta SSO foi vinculada.")
         return true
       })
       .catch((error) => {
-        const errorMessage = error.response?._data?.message || 'Failed to link your SSO account.'
+        const errorMessage = error.response?._data?.message || 'Não foi possível vincular sua conta SSO.'
         alert.error(errorMessage)
         return false
       })

@@ -160,7 +160,7 @@ export function useComponentRegistry() {
         template: '<div class="flex items-center justify-center p-4"><USkeleton class="h-8 w-full" /></div>'
       },
       errorComponent: {
-        template: '<div class="text-sm text-red-500 p-4">Failed to load component</div>'
+        template: '<div class="text-sm text-red-500 p-4">Não foi possível carregar o componente</div>'
       },
       delay: 200,
       timeout: 10000

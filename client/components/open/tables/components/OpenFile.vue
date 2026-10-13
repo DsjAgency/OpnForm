@@ -13,7 +13,7 @@
         v-if="file.is_image"
         type="button"
         class="block h-8 w-8 overflow-hidden rounded border border-neutral-200 transition-opacity hover:opacity-80 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
-        :aria-label="`Preview ${file.displayed_file_name}`"
+        :aria-label="`Visualizar ${file.displayed_file_name}`"
         @click="openFilePreview(file)"
       >
         <img
@@ -27,7 +27,7 @@
         v-else-if="file.is_pdf"
         type="button"
         class="rounded focus:outline-hidden focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
-        :aria-label="`Preview ${file.displayed_file_name}`"
+        :aria-label="`Visualizar ${file.displayed_file_name}`"
         @click="openFilePreview(file)"
       >
         <UBadge
@@ -59,7 +59,7 @@
     <UModal
       v-model:open="isFilePreviewOpen"
       :title="selectedFile?.file_name"
-      :description="selectedFile ? `Preview ${selectedFile.file_name}` : undefined"
+      :description="selectedFile ? `Visualizar ${selectedFile.file_name}` : undefined"
       :ui="{ content: 'sm:max-w-5xl', body: 'p-0!', description: 'sr-only' }"
       :dismissible="true"
     >
@@ -72,7 +72,7 @@
           variant="outline"
           size="sm"
           icon="i-heroicons-arrow-down-tray-20-solid"
-          label="Download"
+          label="Baixar"
         />
       </template>
 
@@ -99,7 +99,7 @@
               name="i-heroicons-document-text"
               class="h-10 w-10"
             />
-            <span>Unable to preview this PDF.</span>
+            <span>Não foi possível visualizar este PDF.</span>
           </div>
           <div
             v-else
@@ -110,7 +110,7 @@
               class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 text-neutral-600 dark:text-neutral-300"
             >
               <Loader class="h-8 w-8 text-blue-600" />
-              <span>Loading PDF...</span>
+              <span>Carregando PDF...</span>
             </div>
             <div
               class="mx-auto flex max-w-4xl flex-col items-center gap-4 transition-opacity"
@@ -120,14 +120,14 @@
                 v-if="hasHiddenPdfPages"
                 class="w-full rounded bg-white px-4 py-3 text-center text-sm text-neutral-600 shadow dark:bg-neutral-800 dark:text-neutral-300"
               >
-                Showing first {{ pdfPages.length }} of {{ pdfTotalPages }} pages.
+                Mostrando as primeiras {{ pdfPages.length }} de {{ pdfTotalPages }} páginas.
               </div>
               <canvas
                 v-for="pageNumber in pdfPages"
                 :key="pageNumber"
                 :ref="(element) => setPdfCanvasRef(element, pageNumber)"
                 class="h-auto max-w-full bg-white shadow"
-                :aria-label="`Page ${pageNumber}`"
+                :aria-label="`Página ${pageNumber}`"
               />
             </div>
           </div>

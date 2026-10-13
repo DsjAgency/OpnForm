@@ -18,7 +18,7 @@
     <div class="flex flex-col gap-1 p-2">
       <!-- Pin Actions -->
       <div class="flex items-center justify-between">
-        <span class="text-xs text-neutral-500">Pin Column</span>
+        <span class="text-xs text-neutral-500">Fixar coluna</span>
         <UButton
           size="xs"
           :variant="getColumnPreference().pinned === 'left' ? 'soft' : 'ghost'"
@@ -30,7 +30,7 @@
 
       <!-- Wrap Toggle -->
       <div class="flex items-center justify-between">
-        <span class="text-xs text-neutral-500">Text Wrapping</span>
+        <span class="text-xs text-neutral-500">Quebra de texto</span>
         <UButton
           size="xs"
           :variant="getColumnPreference().wrapped ? 'soft' : 'ghost'"
@@ -42,7 +42,7 @@
 
       <!-- Visibility Toggle -->
       <div class="flex items-center justify-between">
-        <span class="text-xs text-neutral-500">Visibility</span>
+        <span class="text-xs text-neutral-500">Visibilidade</span>
         <UButton
           size="xs"
           variant="ghost"

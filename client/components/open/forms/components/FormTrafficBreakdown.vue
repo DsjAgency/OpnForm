@@ -1,26 +1,26 @@
 <template>
   <div class="w-full">
-    <h3 class="font-medium text-lg mb-4">Traffic Breakdown</h3>
+    <h3 class="font-medium text-lg mb-4">Origem do tráfego</h3>
     
     <div v-if="!canAccessAnalytics" class="border border-neutral-300 rounded-lg shadow-xs p-4 relative overflow-hidden">
       <div class="absolute inset-0 z-10">
         <div class="p-5 max-w-md mx-auto flex flex-col items-center justify-center h-full">
           <p class="text-center">
-            You need a <PlanTag
-              upgrade-modal-title="Upgrade today to access detailed analytics"
+            Você precisa de uma assinatura <PlanTag
+              upgrade-modal-title="Faça upgrade para acessar análises detalhadas"
               class="mx-1"
-            /> subscription to access detailed traffic breakdown.
+            /> para ver a origem detalhada do tráfego.
           </p>
           <UButton
             class="mt-5 flex justify-center"
             @click.prevent="openSubscriptionModal({modal_title: 'Upgrade to unlock detailed Analytics'})"
-            label="Subscribe"
+            label="Assinar"
           />
         </div>
       </div>
       <img
         src="/img/pages/forms/blurred_traffic.png"
-        alt="Sample Graph"
+        alt="Gráfico de exemplo"
         class="mx-auto w-full filter blur-md z-0 pointer-events-none"
       >
     </div>
@@ -46,7 +46,7 @@
           <h4 class="font-medium mb-3">{{ chart.title }}</h4>
           
           <div v-if="Object.keys(metaStats[chart.id] || {}).length === 0" class="text-sm text-gray-500 text-center py-2">
-            No data available
+            Nenhum dado disponível
           </div>
           
           <div v-else class="space-y-4">
@@ -130,23 +130,23 @@ const canAccessAnalytics = computed(() => hasFeature('form_analytics'))
 const chartTypes = [
   {
     id: 'source',
-    title: 'Traffic Sources'
+    title: 'Fontes de tráfego'
   },
   {
     id: 'device',
-    title: 'Devices'
+    title: 'Dispositivos'
   },
   {
     id: 'browser',
-    title: 'Browsers'
+    title: 'Navegadores'
   },
   {
     id: 'os',
-    title: 'Operating Systems'
+    title: 'Sistemas operacionais'
   },
   {
     id: 'country',
-    title: 'Countries'
+    title: 'Países'
   }
 ]
 
@@ -226,7 +226,7 @@ const getDisplayChartData = (chartId) => {
     // Add Others to the result
     topItems.push({
       type: 'others',
-      displayName: 'Others',
+      displayName: 'Outros',
       count: othersCount,
       percentage: othersPercentage,
       color: CHART_COLORS[CHART_COLORS.length - 1] // Last color is for Others

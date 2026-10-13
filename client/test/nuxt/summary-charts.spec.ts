@@ -28,7 +28,7 @@ describe('summary charts', () => {
       const sample = document.createElement('div')
       sample.style.backgroundColor = colors[i]
       expect(swatchColors[i]).toBe(sample.style.backgroundColor)
-      expect(wrapper.findAll('li')[i].text()).toContain(`${item.count} responses (${item.percentage}%)`)
+      expect(wrapper.findAll('li')[i].text()).toContain(`${item.count} respostas (${item.percentage}%)`)
     })
     await wrapper.setProps({ showPieChart: false })
     const bars = wrapper.findAll('[style*="background-color"]')
@@ -46,10 +46,10 @@ describe('summary charts', () => {
       }, global,
     })
     const data = wrapper.findComponent({ name: 'Pie' }).props('data')
-    expect(data.labels).toEqual(['Yes', 'No'])
+    expect(data.labels).toEqual(['Sim', 'Não'])
     expect(data.datasets[0].data).toEqual([1, 9])
-    expect(wrapper.text()).toContain('1 responses (10%)')
-    expect(wrapper.text()).toContain('9 responses (90%)')
+    expect(wrapper.text()).toContain('1 respostas (10%)')
+    expect(wrapper.text()).toContain('9 respostas (90%)')
   })
 
   it('shows the percentage of small boolean segments outside the bar', () => {
@@ -66,7 +66,7 @@ describe('summary charts', () => {
   it('preserves the empty state', () => {
     for (const component of [DistributionSummary, BooleanSummary]) {
       const wrapper = mount(component, { props: { field: { data: {} }, showPieChart: true }, global })
-      expect(wrapper.text()).toContain('No responses yet')
+      expect(wrapper.text()).toContain('Nenhuma resposta ainda')
       expect(wrapper.find('canvas').exists()).toBe(false)
     }
   })

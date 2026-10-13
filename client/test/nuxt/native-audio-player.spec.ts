@@ -16,6 +16,6 @@ describe('NativeAudioPlayer', () => {
     await wrapper.setProps({ src: 'https://example.test/second.mp3' })
 
     expect(audio.muted).toBe(false)
-    expect(wrapper.get('button[aria-label="Mute"]').exists()).toBe(true)
+    expect(wrapper.get('button[aria-label="Silenciar"]').exists()).toBe(true)
   })
 })

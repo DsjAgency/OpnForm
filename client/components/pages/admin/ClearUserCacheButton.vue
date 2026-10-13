@@ -3,7 +3,7 @@
     color="gray"
     variant="outline"
     :loading="loading"
-    label="Clear Cache"
+    label="Limpar cache"
     icon="i-heroicons-arrow-path-20-solid"
     @click="clearUserCache"
   />
@@ -25,10 +25,10 @@ async function clearUserCache() {
   loading.value = true
   try {
     const response = await adminApi.clearUserCache({ user_id: props.user.id })
-    alert.success(response.message || 'User cache cleared.')
+    alert.success(response.message || 'Cache do usuário limpo.')
     emit('cache-cleared')
   } catch (error) {
-    alert.error(error.data?.message || 'An error occurred.')
+    alert.error(error.data?.message || 'Ocorreu um erro.')
   } finally {
     loading.value = false
   }

@@ -52,7 +52,7 @@ const workspacesLoading = computed(() => {
 const form = storeToRefs(workingFormStore).content
 
 useOpnSeoMeta({
-  title: "Create a new Form for free",
+  title: "Crie um formulário grátis",
 })
 definePageMeta({
   middleware: ["guest", "self-hosted"],

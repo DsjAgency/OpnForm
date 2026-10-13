@@ -13,7 +13,7 @@
             <div class="h-6 bg-neutral-200 dark:bg-neutral-800 rounded-md" />
           </div>
           <p class="text-sm text-neutral-500 dark:text-neutral-400 text-center">
-            Connect Stripe account to continue
+            Conecte uma conta Stripe para continuar
           </p>
         </div>
       </div>
@@ -34,14 +34,14 @@
           v-if="shouldShowPreviewMessage || (props.isAdminPreview && (!stripeState.stripeAccountId || !publishableKey || !isStripeJsLoaded))"
           :class="ui.section({ class: props.ui?.slots?.section }) + ' p-4 text-center text-sm text-blue-700 bg-blue-100 dark:bg-blue-900/50 dark:text-blue-300 rounded-md'"
         >
-          <p v-if="shouldShowPreviewMessage">Please save the form to activate the payment preview.</p>
+          <p v-if="shouldShowPreviewMessage">Salve o formulário para ativar a pré-visualização do pagamento.</p>
           <p v-else>
-            Payment component configuration incomplete. 
-            {{ !stripeState?.stripeAccountId ? 'Stripe account not connected': 'Stripe account connected' }}.
-            {{ !publishableKey ? 'Missing Stripe publishable key.' : '' }}
-            {{ !isStripeJsLoaded ? 'Stripe.js not loaded.' : '' }}
+            Configuração do pagamento incompleta. 
+            {{ !stripeState?.stripeAccountId ? 'Conta Stripe não conectada': 'Conta Stripe conectada' }}.
+            {{ !publishableKey ? 'Chave pública do Stripe ausente.' : '' }}
+            {{ !isStripeJsLoaded ? 'Stripe.js não carregado.' : '' }}
           </p>
-          <p class="mt-2">The complete payment form will be visible to users when viewing the published form.</p>
+          <p class="mt-2">O formulário de pagamento completo aparece para as pessoas no formulário publicado.</p>
         </div>
         <div
           v-else-if="stripeState && stripeState.isLoadingAccount"
@@ -53,7 +53,7 @@
           v-else-if="stripeState && stripeState.hasAccountLoadingError"
           :class="ui.section({ class: props.ui?.slots?.section }) + ' p-4 text-center text-sm text-red-700 bg-red-100 dark:bg-red-900/50 dark:text-red-300 rounded-md'"
         >
-          <p>{{ stripeState.errorMessage || 'Failed to load payment configuration' }}</p>
+          <p>{{ stripeState.errorMessage || 'Não foi possível carregar a configuração de pagamento' }}</p>
         </div>
         <div
           v-else-if="stripeState && stripeState.stripeAccountId && isStripeJsLoaded && publishableKey"
@@ -110,14 +110,14 @@
         </div>
         <div v-else>
           <div v-if="props.isAdminPreview" class="my-4 p-4 text-center text-sm text-blue-700 bg-blue-100 dark:bg-blue-900/50 dark:text-blue-300 rounded-md">
-            <p>Payment component initializing. {{ !!stripeState?.stripeAccountId ? 'Stripe account connected': 'No Stripe account connected' }}.</p>
-            <p class="mt-2">The payment form will be visible to users when viewing the published form.</p>
-            <p v-if="!publishableKey" class="mt-2 text-red-500">Missing Stripe publishable key in configuration.</p>
-            <p v-if="!stripeState?.stripeAccountId" class="mt-2 text-red-500">Missing Stripe account connection. ID: {{ props.oauthProviderId }}</p>
+            <p>Iniciando o pagamento. {{ !!stripeState?.stripeAccountId ? 'Conta Stripe conectada': 'Nenhuma conta Stripe conectada' }}.</p>
+            <p class="mt-2">O formulário de pagamento aparece para as pessoas no formulário publicado.</p>
+            <p v-if="!publishableKey" class="mt-2 text-red-500">Chave pública do Stripe ausente na configuração.</p>
+            <p v-if="!stripeState?.stripeAccountId" class="mt-2 text-red-500">Conta Stripe não conectada. ID: {{ props.oauthProviderId }}</p>
           </div>
           <div v-else class="flex flex-col items-center justify-center py-4">
             <Loader class="mx-auto h-6 w-6" />
-            <p class="text-sm text-neutral-500 mt-2">Initializing payment system...</p>
+            <p class="text-sm text-neutral-500 mt-2">Iniciando sistema de pagamento...</p>
           </div>
         </div>
       </template>
@@ -249,7 +249,7 @@ onMounted(async () => {
       // Set error state if publishable key is missing
       if (!publishableKey.value && stripeState.value) {
         stripeState.value.hasAccountLoadingError = true
-        stripeState.value.errorMessage = 'Missing Stripe configuration. Please check your settings.'
+        stripeState.value.errorMessage = 'Configuração do Stripe ausente. Confira as configurações.'
       }
       return
     }
@@ -280,9 +280,9 @@ onMounted(async () => {
     console.error('[PaymentInput] Stripe initialization error:', error)
     if (stripeState.value) {
       stripeState.value.hasAccountLoadingError = true
-      stripeState.value.errorMessage = 'Failed to initialize Stripe. Please refresh and try again.'
+      stripeState.value.errorMessage = 'Não foi possível iniciar o Stripe. Atualize a página e tente novamente.'
     }
-    alert.error('Failed to initialize Stripe. Please refresh and try again.')
+    alert.error('Não foi possível iniciar o Stripe. Atualize a página e tente novamente.')
   }
 })
 
@@ -327,9 +327,9 @@ const onStripeReady = ({ stripe, elements }) => {
 
 const onStripeError = (error) => {
   console.error('[PaymentInput] Stripe initialization error:', error)
-  const errorMessage = error?.message || 'Failed to load payment component'
+  const errorMessage = error?.message || 'Não foi possível carregar o pagamento'
   
-  alert.error('Failed to load payment component. ' + errorMessage)
+  alert.error('Não foi possível carregar o pagamento. ' + errorMessage)
   
   if (stripeState.value) {
     stripeState.value.hasAccountLoadingError = true

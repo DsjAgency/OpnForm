@@ -6,7 +6,7 @@
     <template #header>
       <div class="flex items-center w-full gap-4 px-2">
         <h2 class="font-semibold">
-          Connect account
+          Conectar conta
         </h2>
       </div>
     </template>
@@ -15,15 +15,15 @@
       <div v-if="loading" class="text-center py-8">
         <Loader class="h-8 w-8 mx-auto mb-4" />
         <h3 class="text-lg font-medium text-neutral-900 mb-2">
-          Connecting your account...
+          Conectando sua conta...
         </h3>
         <p class="text-sm text-neutral-500">
-          Complete the authentication in the new tab that opened.
+          Conclua a autenticação na nova aba que foi aberta.
         </p>
       <UButton
         color="neutral"
         variant="soft"
-        label="Cancel"
+        label="Cancelar"
         class="mt-4"
         @click="loading = false"
       />
@@ -99,7 +99,7 @@ onMounted(() => {
     // OAuth connection completed, close modal and refresh
     loading.value = false
     closeModal()
-    alert.success('Account connected successfully!')
+    alert.success('Conta conectada!')
   }, {
     useMessageChannel: false,
     acknowledge: false
@@ -119,7 +119,7 @@ const closeModal = () => {
 
 function connect(service) {
   if (!service.enabled) {
-    useAlert().error('This service is not enabled. Please contact support.')
+    useAlert().error('Este serviço não está ativado. Fale com o suporte.')
     return
   }
 

@@ -18,7 +18,7 @@
       color="neutral"
       variant="outline"
       icon="i-heroicons-arrow-down-tray-20-solid"
-      aria-label="Download PDF"
+      aria-label="Baixar PDF"
       @click="emit('download-pdf', submissionId)"
     />
     <TrackClick

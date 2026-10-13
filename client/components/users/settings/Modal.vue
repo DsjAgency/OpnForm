@@ -7,7 +7,7 @@
     <!-- Settings Pages - Auto-register themselves -->
     <SettingsModalPage
       id="account"
-      label="Account"
+      label="Conta"
       icon="i-heroicons-user"
     >
       <LazyUsersSettingsAccount />
@@ -15,7 +15,7 @@
 
     <SettingsModalPage
       id="security"
-      label="Security"
+      label="Segurança"
       icon="i-heroicons-shield-check"
     >
       <LazyUsersSettingsSecurity />
@@ -24,7 +24,7 @@
     <SettingsModalPage
       v-if="workspace && !workspace.is_readonly"
       id="connections"
-      label="Connections"
+      label="Conexões"
       icon="i-heroicons-link"
     >
       <LazyUsersSettingsConnections />
@@ -33,7 +33,7 @@
     <SettingsModalPage
       v-if="workspace && !workspace.is_readonly"
       id="access-tokens"
-      label="Access Tokens"
+      label="Tokens de acesso"
       icon="i-heroicons-key"
     >
       <LazyUsersSettingsAccessTokens />
@@ -42,7 +42,7 @@
     <SettingsModalPage
       v-if="canManageLicense"
       id="license"
-      label="License"
+      label="Licença"
       icon="i-heroicons-check-circle"
     >
       <LazyUsersSettingsLicense />
@@ -51,7 +51,7 @@
     <SettingsModalPage
       v-if="canViewMcpSettings"
       id="mcp"
-      label="MCP & AI agents"
+      label="MCP e agentes de IA"
       icon="i-heroicons-cpu-chip"
     >
       <LazyUsersSettingsMcp />
@@ -60,7 +60,7 @@
     <SettingsModalPage
       v-if="!isSelfHosted && user && (user.has_customer_id || user.active_license)"
       id="billing"
-      label="Billing"
+      label="Cobrança"
       icon="i-heroicons-credit-card"
     >
       <LazyUsersSettingsBilling />

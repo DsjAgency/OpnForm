@@ -4,7 +4,7 @@
     icon="i-heroicons-key-16-solid"
     :loading="form.busy"
     @click="resetPassword"
-    label="Reset Password"
+    label="Redefinir senha"
   />
 </template>
 
@@ -19,7 +19,7 @@ const form = useForm({
 
 const resetPassword = () => {
     return useAlert().confirm(
-        "Are you sure you want to send a password reset email?",
+        "Tem certeza de que quer enviar um e-mail de redefinição de senha?",
         () => {
             form
                 .patch('/moderator/send-password-reset-email')
@@ -27,7 +27,7 @@ const resetPassword = () => {
                     useAlert().success(data.message)
                 })
                 .catch((error) => {
-                    useAlert().error(error.data?.message || 'Failed to send password reset email')
+                    useAlert().error(error.data?.message || 'Não foi possível enviar o e-mail de redefinição de senha')
                 })
         })
 }

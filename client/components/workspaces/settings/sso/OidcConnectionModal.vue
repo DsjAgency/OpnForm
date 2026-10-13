@@ -8,13 +8,13 @@
       <div class="flex justify-center">
         <VForm :form="form" size="sm" @submit.prevent="handleSave" class="w-full max-w-md space-y-6">
           <div class="space-y-4 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-600">
-            <p class="text-xs uppercase tracking-wide text-neutral-500">General</p>
+            <p class="text-xs uppercase tracking-wide text-neutral-500">Geral</p>
             <TextInput
               name="name"
               :form="form"
-              label="Connection Name"
+              label="Nome da conexão"
               :required="true"
-              placeholder="Company SSO"
+              placeholder="SSO da empresa"
             />
 
             <TextInput
@@ -23,34 +23,34 @@
               label="Slug"
               :required="true"
               placeholder="company-sso"
-              help="Lowercase, hyphens-only identifier that shows up in the redirect URLs."
+              help="Identificador em minúsculas, só com hífens, que aparece nas URLs de redirecionamento."
             />
 
             <TextInput
               name="domain"
               :form="form"
-              label="Email Domain"
+              label="Domínio de e-mail"
               :required="true"
-              :placeholder="userEmailDomain || 'example.com'"
+              :placeholder="userEmailDomain || 'exemplo.com.br'"
             >
               <template #help>
                 <div class="space-y-1">
                   <p v-if="userEmailDomain" class="text-xs text-neutral-500">
-                    Must match your email domain ('{{ userEmailDomain }}' or another subdomain of it).
+                    Deve corresponder ao seu domínio de e-mail ('{{ userEmailDomain }}' ou um subdomínio dele).
                   </p>
                   <p v-else class="text-xs text-neutral-500">
-                    Must match your email domain (e.g., if your email is user@company.com, use 'company.com' or another subdomain of it).
+                    Deve corresponder ao seu domínio de e-mail (por exemplo, se seu e-mail é usuario@empresa.com.br, use 'empresa.com.br' ou um subdomínio dele).
                   </p>
                   <p class="text-xs text-neutral-500">
-                    Common email providers are not allowed.
+                    Provedores de e-mail comuns não são permitidos.
                     <button
                       type="button"
                       class="text-blue-600 hover:text-blue-700 underline"
                       @click="openSupportChat"
                     >
-                      Contact support
+                      Fale com o suporte
                     </button>
-                    if you need help.
+                    se precisar de ajuda.
                   </p>
                 </div>
               </template>
@@ -58,28 +58,28 @@
           </div>
 
           <div class="space-y-4 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-600">
-            <p class="text-xs uppercase tracking-wide text-neutral-500">Security</p>
+            <p class="text-xs uppercase tracking-wide text-neutral-500">Segurança</p>
             
             <!-- Redirect URI Display -->
             <div v-if="redirectUri" class="rounded-lg border border-blue-200 bg-blue-50 p-3">
-              <p class="text-xs font-medium text-blue-900 mb-1">Redirect URI</p>
+              <p class="text-xs font-medium text-blue-900 mb-1">URI de redirecionamento</p>
               <p class="text-xs text-blue-700 mb-2">
-                Copy this URL and add it to your OIDC provider's allowed redirect URIs:
+                Copie esta URL e adicione-a às URIs de redirecionamento permitidas no seu provedor OIDC:
               </p>
               <CopyContent
                 :content="redirectUri"
-                label="Copy"
+                label="Copiar"
               />
               <div v-if="isEditing" class="mt-3 border-t border-blue-200 pt-3">
                 <p class="mb-2 text-xs text-blue-700">
-                  If your instance URL changed, refresh this callback URL, update it in your provider, then save this connection.
+                  Se a URL da instância mudou, atualize esta URL de retorno, atualize-a no provedor e salve a conexão.
                 </p>
                 <UButton
                   type="button"
                   size="xs"
                   color="primary"
                   variant="soft"
-                  label="Use current app URL"
+                  label="Usar a URL atual do app"
                   @click="useCurrentAppUrl"
                 />
               </div>
@@ -88,10 +88,10 @@
             <TextInput
               name="issuer"
               :form="form"
-              label="Issuer URL"
+              label="URL do emissor"
               :required="true"
               placeholder="https://idp.example.com"
-              help="The issuer published by your OIDC provider, usually available in its OpenID configuration."
+              help="O emissor publicado pelo seu provedor OIDC, geralmente disponível na configuração OpenID dele."
             />
 
             <TextInput
@@ -105,31 +105,31 @@
             <TextInput
               name="client_secret"
               :form="form"
-              :label="isEditing ? 'Client Secret (optional)' : 'Client Secret'"
+              :label="isEditing ? 'Client Secret (opcional)' : 'Client Secret'"
               :required="!isEditing"
               native-type="password"
               placeholder="your-client-secret"
-              :help="isEditing ? 'Leave blank to keep the existing client secret.' : undefined"
+              :help="isEditing ? 'Deixe em branco para manter o client secret atual.' : undefined"
             />
 
             <ToggleSwitchInput
               name="options.require_state"
               :form="form"
-              label="Require state parameter"
-              help="Recommended: validates the state parameter on callback. Disable only if your IdP cannot send state."
+              label="Exigir parâmetro state"
+              help="Recomendado: valida o parâmetro state no retorno. Desative só se o seu IdP não enviar state."
             />
 
             <ToggleSwitchInput
               name="enabled"
               class="mt-2"
               :form="form"
-              label="Enabled"
+              label="Ativado"
             />
           </div>
 
           <Collapse v-model="showFieldMappings" class="rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-600">
             <template #title>
-              <p class="text-xs uppercase tracking-wide text-neutral-500">Field Mappings</p>
+              <p class="text-xs uppercase tracking-wide text-neutral-500">Mapeamento de campos</p>
             </template>
             <div class="space-y-4 pt-2">
               <p class="text-xs text-neutral-500">
@@ -140,17 +140,17 @@
                 <TextInput
                   name="options.field_mappings.email"
                   :form="form"
-                  label="Email Field"
+                  label="Campo de e-mail"
                   placeholder="email"
-                  help="IdP claim name for email (e.g., 'email', 'preferred_username', 'mail'). Leave empty to use default 'email'."
+                  help="Nome da claim do IdP para o e-mail (ex.: 'email', 'preferred_username', 'mail'). Deixe vazio para usar o padrão 'email'."
                   size="sm"
                 />
                 <TextInput
                   name="options.field_mappings.name"
                   :form="form"
-                  label="Name Field"
+                  label="Campo de nome"
                   placeholder="name"
-                  help="IdP claim name for full name (e.g., 'name', 'display_name'). Leave empty to use default 'name'."
+                  help="Nome da claim do IdP para o nome completo (ex.: 'name', 'display_name'). Deixe vazio para usar o padrão 'name'."
                   size="sm"
                 />
               </div>
@@ -159,11 +159,11 @@
 
           <Collapse v-model="showRoleMapping" class="rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-600">
             <template #title>
-              <p class="text-xs uppercase tracking-wide text-neutral-500">Role Mapping</p>
+              <p class="text-xs uppercase tracking-wide text-neutral-500">Mapeamento de papéis</p>
             </template>
             <div class="space-y-4 pt-2">
               <p class="text-xs text-neutral-500">
-                Map IdP groups to workspace roles. Users will be assigned the highest privilege role from their groups.
+                Associe grupos do IdP a papéis no espaço de trabalho. Cada usuário recebe o papel de maior privilégio entre os seus grupos.
               </p>
               
               <div v-if="roleMappings.length === 0" class="text-center py-4 text-sm text-neutral-400">
@@ -180,16 +180,16 @@
                     <TextInput
                       :name="`options.group_role_mappings.${index}.idp_group`"
                       :form="form"
-                      label="Token group value"
+                      label="Valor do grupo no token"
                       placeholder="group-id-or-name"
-                      help="Exact, case-sensitive value from the ID token's groups or group claim."
+                      help="Valor exato (diferencia maiúsculas de minúsculas) da claim groups ou group do ID token."
                       :required="true"
                       size="sm"
                     />
                     <SelectInput
                       :name="`options.group_role_mappings.${index}.role`"
                       :form="form"
-                      label="Role"
+                      label="Papel"
                       :required="true"
                       size="sm"
                       :options="roleOptions"
@@ -214,7 +214,7 @@
                   icon="i-heroicons-plus"
                   @click="addRoleMapping"
                 >
-                  Add Mapping
+                  Adicionar mapeamento
                 </UButton>
               </div>
             </div>
@@ -225,7 +225,7 @@
 
     <template #footer>
       <div class="flex justify-between gap-2 w-full">
-        <UButton variant="ghost" color="neutral" @click="handleCancel">Cancel</UButton>
+        <UButton variant="ghost" color="neutral" @click="handleCancel">Cancelar</UButton>
         <UButton type="submit" :loading="isBusy" :disabled="isBusy" @click="handleSave">
           {{ actionLabel }}
         </UButton>
@@ -249,8 +249,8 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue', 'save', 'cancel'])
 
 const isEditing = computed(() => !!props.connection)
-const modalTitle = computed(() => (isEditing.value ? 'Edit OIDC Connection' : 'Add OIDC Connection'))
-const actionLabel = computed(() => (isEditing.value ? 'Update' : 'Create'))
+const modalTitle = computed(() => (isEditing.value ? 'Editar conexão OIDC' : 'Adicionar conexão OIDC'))
+const actionLabel = computed(() => (isEditing.value ? 'Atualizar' : 'Criar'))
 
 const isOpen = computed({
   get: () => props.modelValue,
@@ -279,10 +279,10 @@ const openSupportChat = () => {
 }
 
 const roleOptions = [
-  { value: 'member', name: 'Member' },
+  { value: 'member', name: 'Membro' },
   { value: 'editor', name: 'Editor' },
-  { value: 'admin', name: 'Admin' },
-  { value: 'owner', name: 'Owner' },
+  { value: 'admin', name: 'Administrador' },
+  { value: 'owner', name: 'Proprietário' },
 ]
 
 const roleMappings = computed({

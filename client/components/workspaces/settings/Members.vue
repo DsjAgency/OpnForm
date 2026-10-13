@@ -2,16 +2,16 @@
   <div class="space-y-4">
     <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div>
-        <h3 class="text-lg font-medium text-neutral-900">Workspace Members</h3>
+        <h3 class="text-lg font-medium text-neutral-900">Membros do espaço de trabalho</h3>
         <p class="mt-1 text-sm text-neutral-500">
-          Manage your workspace members and their roles.
+          Gerencie os membros do espaço de trabalho e seus papéis.
         </p>
       </div>
 
       <div class="flex shrink-0 items-center gap-2">
         <UButton
           v-if="canManageMembers"
-          label="Invite User"
+          label="Convidar usuário"
           icon="i-heroicons-user-plus-20-solid"
           :loading="isLoadingData"
           @click="showInviteUserModal = true"
@@ -36,7 +36,7 @@
               -
             </p>
             <div v-else class="flex items-center gap-1">
-              <UTooltip text="Edit user">
+              <UTooltip text="Editar usuário">
                 <UButton
                   icon="i-heroicons-pencil-square"
                   color="primary"
@@ -46,7 +46,7 @@
                   @click="editUser(item)"
                 />
               </UTooltip>
-              <UTooltip text="Remove user">
+              <UTooltip text="Remover usuário">
                 <UButton
                   v-if="item.type == 'user'"
                   color="error" 
@@ -64,7 +64,7 @@
             v-else-if="item.type == 'invitee'"
             class="flex items-center gap-1"
           >
-            <UTooltip text="Resend Invite">
+            <UTooltip text="Reenviar convite">
               <UButton
                 icon="i-heroicons-envelope"
                 color="neutral"
@@ -74,7 +74,7 @@
                 @click="resendInviteHandler(item)"
               />
             </UTooltip>
-            <UTooltip text="Cancel Invite">
+            <UTooltip text="Cancelar convite">
               <UButton
                 icon="i-heroicons-x-mark"
                 color="error"
@@ -92,7 +92,7 @@
     <UModal
       v-model:open="showEditUserModal"
       @close="showEditUserModal = false"
-      title="Edit User Role"
+      title="Editar papel do usuário"
     > 
       <template #body>
         <form
@@ -102,11 +102,11 @@
             <FlatSelectInput
               :form="editUserForm"
               name="role"
-              :label="'New Role for '+selectedUser.name"
+              :label="'Novo papel de '+selectedUser.name"
               :options="[
-                { name: 'User', value: 'user' },
-                { name: 'Admin', value: 'admin' },
-                { name: 'Read Only', value: 'readonly' },
+                { name: 'Usuário', value: 'user' },
+                { name: 'Administrador', value: 'admin' },
+                { name: 'Somente leitura', value: 'readonly' },
               ]"
               option-key="value"
               display-key="name"
@@ -118,7 +118,7 @@
               type="submit"
               :loading="updateMutation.isPending.value"
             >
-              Update
+              Atualizar
             </UButton>
           </div>
         </form>
@@ -205,7 +205,7 @@ const combinedUsers = computed(() => {
     .filter(i => i.status !== 'accepted')
     .map(i => ({
       ...i,
-      name: 'Invitee',
+      name: 'Convidado',
       email: i.email,
       status: i.status,
       type: 'invitee'
@@ -220,17 +220,18 @@ const tableColumns = computed(() => {
     {
       id: 'name',
       accessorKey: 'name',
-      header: 'Name'
+      header: 'Nome'
     },
     {
       id: 'email',
       accessorKey: 'email',
-      header: 'Email'
+      header: 'E-mail'
     },
     {
       id: 'role',
       accessorKey: 'role',
-      header: 'Role'
+      header: 'Papel',
+      cell: ({ row }) => ({ user: 'Usuário', admin: 'Administrador', readonly: 'Somente leitura' })[row.original.role] ?? row.original.role
     },
     ...(canManageMembers.value ? [
       {
@@ -256,21 +257,21 @@ const updateUserRole = () => {
     userId: selectedUser.value.id,
     data: { role: editUserForm.role }
   }).then((data) => {
-    alert.success(data.message || 'User role updated successfully')
+    alert.success(data.message || 'Papel do usuário atualizado')
     showEditUserModal.value = false
   }).catch((error) => {
-    alert.error(error.response?.data?.message || "There was an error updating user role")
+    alert.error(error.response?.data?.message || "Ocorreu um erro ao atualizar o papel do usuário")
   })
 }
 
 const removeUserHandler = (user) => {
   if (!workspaceId.value || !canManageMembers.value) return
 
-  alert.confirm("Do you really want to remove " + user.name + " from this workspace?", () => {
+  alert.confirm("Quer mesmo remover " + user.name + " deste espaço de trabalho?", () => {
     removeMutation.mutateAsync(user.id).then(() => {
-      alert.success("User successfully removed.")
+      alert.success("Usuário removido.")
     }).catch((error) => {
-      alert.error(error.response?.data?.message || "There was an error removing user")
+      alert.error(error.response?.data?.message || "Ocorreu um erro ao remover o usuário")
     })
   })
 }
@@ -279,11 +280,11 @@ const removeUserHandler = (user) => {
 const resendInviteHandler = (invite) => {
   if (!workspaceId.value || !canManageMembers.value) return
 
-  alert.confirm("Do you really want to resend invite email to this user?", () => {
+  alert.confirm("Quer mesmo reenviar o convite por e-mail para este usuário?", () => {
     resendMutation.mutateAsync(invite.id).then(() => {
-      alert.success("Invitation resent successfully.")
+      alert.success("Convite reenviado.")
     }).catch((error) => {
-      alert.error(error.response?.data?.message || "Failed to resend invitation")
+      alert.error(error.response?.data?.message || "Não foi possível reenviar o convite")
     })
   })
 }
@@ -291,11 +292,11 @@ const resendInviteHandler = (invite) => {
 const cancelInviteHandler = (invite) => {
   if (!workspaceId.value || !canManageMembers.value) return
 
-  alert.confirm("Do you really want to cancel this user's invitation to this workspace?", () => {
+  alert.confirm("Quer mesmo cancelar o convite deste usuário para o espaço de trabalho?", () => {
     cancelMutation.mutateAsync(invite.id).then(() => {
-      alert.success("Invitation cancelled successfully.")
+      alert.success("Convite cancelado.")
     }).catch((error) => {
-      alert.error(error.response?.data?.message || "Failed to cancel invitation")
+      alert.error(error.response?.data?.message || "Não foi possível cancelar o convite")
     })
   })
 }

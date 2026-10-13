@@ -11,7 +11,7 @@
     >
       <template #label>
         <div class="flex items-center gap-0.5">
-          <span class="text-neutral-700 font-semibold text-xs">Form Style</span>
+          <span class="text-neutral-700 font-semibold text-xs">Estilo do formulário</span>
           <UButton
             color="neutral"
             variant="ghost"
@@ -27,7 +27,7 @@
     <UModal
       v-model:open="showConfirmModal"
       :dismissible="false"
-      :title="`Switch to ${pendingStyleLabel} style?`"
+      :title="`Mudar para o estilo ${pendingStyleLabel}?`"
       :description="modalDescription"
     >
       <template #body>
@@ -44,12 +44,12 @@
             </div>
           </div>
         </div>
-        <div v-else class="text-sm text-neutral-600">No blocks will be removed.</div>
+        <div v-else class="text-sm text-neutral-600">Nenhum bloco será removido.</div>
       </template>
       <template #footer>
         <div class="flex justify-between w-full">
-          <UButton color="neutral" variant="outline" label="Cancel" @click="cancelSwitch" />
-          <UButton color="primary" :label="`Switch to ${pendingStyleLabel}`" @click="confirmSwitch" />
+          <UButton color="neutral" variant="outline" label="Cancelar" @click="cancelSwitch" />
+          <UButton color="primary" :label="`Mudar para ${pendingStyleLabel}`" @click="confirmSwitch" />
         </div>
       </template>
     </UModal>
@@ -73,17 +73,17 @@ const currentStyle = computed(() => form.value.presentation_style || 'classic')
 const styleOptions = [
   {
     name: 'classic',
-    label: 'Classic',
+    label: 'Clássico',
     icon: 'opnform:form-style-classic',
     iconClass: 'w-[91px] h-[65px] rounded shadow *:transition-colors duration-150 ease-out [--icon-fg:#737373] [--icon-muted:#D4D4D4] group-hover:[--icon-fg:#1d4ed8] group-hover:[--icon-muted:#60a5fa] group-aria-selected:[--icon-fg:#1d4ed8] group-aria-selected:[--icon-muted:#60a5fa] group-[aria-selected=true]:[--icon-fg:#1d4ed8] group-[aria-selected=true]:[--icon-muted:#60a5fa]',
-    tooltip: 'Classic form: multiple inputs per page, multi-line layout, supports multiple pages and layout blocks.'
+    tooltip: 'Formulário clássico: vários campos por página, layout em várias linhas, com suporte a várias páginas e blocos de layout.'
   },
   {
     name: 'focused',
-    label: 'Focused',
+    label: 'Focado',
     icon: 'opnform:form-style-focused',
     iconClass: 'w-[91px] h-[65px] rounded shadow *:transition-colors duration-150 ease-out [--icon-fg:#737373] [--icon-muted:#D4D4D4] group-hover:[--icon-fg:#1d4ed8] group-hover:[--icon-muted:#60a5fa] group-aria-selected:[--icon-fg:#1d4ed8] group-aria-selected:[--icon-muted:#60a5fa] group-[aria-selected=true]:[--icon-fg:#1d4ed8] group-[aria-selected=true]:[--icon-muted:#60a5fa]',
-    tooltip: 'Typeform-like, one question per step.'
+    tooltip: 'Estilo Typeform: uma pergunta por etapa.'
   }
 ]
 
@@ -94,13 +94,13 @@ const selectorKey = ref(0)
 
 // No local selection state. Display follows the actual form style (currentStyle).
 
-const pendingStyleLabel = computed(() => pendingStyle.value === 'focused' ? 'Focused' : 'Classic')
+const pendingStyleLabel = computed(() => pendingStyle.value === 'focused' ? 'Focado' : 'Clássico')
 
 const modalDescription = computed(() => {
   const count = removalList.value.length
   return count > 0
-    ? `Switching to Focused will remove ${count} block${count>1?'s':''} not supported in this mode.`
-    : 'Switch to Focused style.'
+    ? `Mudar para Focado vai remover ${count} bloco${count>1?'s':''} não suportado${count>1?'s':''} neste modo.`
+    : 'Mudar para o estilo Focado.'
 })
 
 // Use shared helper to seed first block image for focused mode

@@ -1,9 +1,9 @@
 <template>
   <div v-if="isFocusedMode" class="px-4 mt-6">
-    <EditorSectionHeader icon="i-heroicons-photo" :icon-class="headerIconClass" title="Image" />
+    <EditorSectionHeader icon="i-heroicons-photo" :icon-class="headerIconClass" title="Imagem" />
 
     <!-- Unified image input with settings popover (focus/brightness/alt) -->
-    <ImageWithSettings :form="model" name="image.url" label="Image" kind="block" />
+    <ImageWithSettings :form="model" name="image.url" label="Imagem" kind="block" />
 
     <!-- Layout selection appears only when an image is present -->
     <template v-if="model?.image && model.image.url">

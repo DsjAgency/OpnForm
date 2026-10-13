@@ -104,7 +104,7 @@
         </div>
         <!-- Page number label below -->
         <span class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
-          Page {{ pageNum }}
+          Página {{ pageNum }}
         </span>
       </div>
     </div>

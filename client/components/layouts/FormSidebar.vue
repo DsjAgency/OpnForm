@@ -30,7 +30,7 @@
         <NavigationList
           :items="section.items"
           :loading="loading"
-          :skeleton-filter="(item) => section.name === null && item.label !== 'Dashboard'"
+          :skeleton-filter="(item) => section.name === null && item.label !== 'Painel'"
           tracking-name="sidebar_nav_click"
           :tracking-properties="(item) => ({ label: item.label, form_id: form?.id })"
         />
@@ -70,7 +70,7 @@ function isActiveRoute(routeName) {
 const formNavigationItems = computed(() => [
   // Dashboard back button - always show
   createNavItem({
-    label: 'Dashboard',
+    label: 'Painel',
     icon: 'i-heroicons-arrow-left',
     to: { name: 'home' },
     active: false
@@ -79,76 +79,76 @@ const formNavigationItems = computed(() => [
   ...(props.loading ? [
     // These will be rendered as skeletons via the template
     createNavItem({
-      label: 'Submissions',
+      label: 'Respostas',
       icon: 'i-heroicons-document-text',
       to: '#',
       active: false
     }),
     createNavItem({
-      label: 'Integrations',
+      label: 'Integrações',
       icon: 'i-heroicons-puzzle-piece',
       to: '#',
       active: false
     }),
     createNavItem({
-      label: 'PDF Templates',
+      label: 'Modelos de PDF',
       icon: 'i-heroicons-document-arrow-down',
       to: '#',
       active: false
     }),
     createNavItem({
-      label: 'Analytics',
+      label: 'Análises',
       icon: 'i-heroicons-chart-bar',
       to: '#',
       active: false
     }),
     createNavItem({
-      label: 'Summary',
+      label: 'Resumo',
       icon: 'i-heroicons-chart-pie',
       to: '#',
       active: false
     }),
     createNavItem({
-      label: 'Share',
+      label: 'Compartilhar',
       icon: 'i-heroicons-share',
       to: '#',
       active: false
     })
   ] : [
     createNavItem({
-      label: 'Submissions',
+      label: 'Respostas',
       icon: 'i-heroicons-document-text',
       to: { name: 'forms-slug-show-submissions', params: { slug: props.form?.slug } },
       active: isActiveRoute('forms-slug-show-submissions')
     }),
     // Hide integrations for read-only workspaces
     ...(workspace.value?.is_readonly ? [] : [createNavItem({
-      label: 'Integrations',
+      label: 'Integrações',
       icon: 'i-heroicons-puzzle-piece',
       to: { name: 'forms-slug-show-integrations', params: { slug: props.form?.slug } },
       active: isActiveRoute('forms-slug-show-integrations')
     })]),
     // Hide PDF Templates for read-only workspaces
     ...(workspace.value?.is_readonly ? [] : [createNavItem({
-      label: 'PDF Templates',
+      label: 'Modelos de PDF',
       icon: 'i-heroicons-document-arrow-down',
       to: { name: 'forms-slug-show-pdf-templates', params: { slug: props.form?.slug } },
       active: isActiveRoute('forms-slug-show-pdf-templates')
     })]),
     createNavItem({
-      label: 'Analytics',
+      label: 'Análises',
       icon: 'i-heroicons-chart-bar',
       to: { name: 'forms-slug-show-stats', params: { slug: props.form?.slug } },
       active: isActiveRoute('forms-slug-show-stats')
     }),
     createNavItem({
-      label: 'Summary',
+      label: 'Resumo',
       icon: 'i-heroicons-chart-pie',
       to: { name: 'forms-slug-show-summary', params: { slug: props.form?.slug } },
       active: isActiveRoute('forms-slug-show-summary')
     }),
     createNavItem({
-      label: 'Share',
+      label: 'Compartilhar',
       icon: 'i-heroicons-share',
       to: { name: 'forms-slug-show-share', params: { slug: props.form?.slug } },
       active: isActiveRoute('forms-slug-show-share')

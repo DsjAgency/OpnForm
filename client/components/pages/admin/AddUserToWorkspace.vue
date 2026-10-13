@@ -7,18 +7,18 @@
     <text-input
       v-model="newUser"
       name="email"
-      label="Email"
+      label="E-mail"
       :required="true"
       :disabled="disabled"
-      placeholder="Add a new user by email"
+      placeholder="Adicione um usuário pelo e-mail"
     />
     <select-input
       v-model="newUserRole"
       name="newUserRole"
       :options="roleOptions"
       :disabled="disabled"
-      placeholder="Select User Role"
-      label="Role"
+      placeholder="Selecione o papel do usuário"
+      label="Papel"
       :required="true"
     />
     <div class="flex justify-center mt-2">
@@ -28,7 +28,7 @@
         :loading="addMutation.isPending.value"
         icon="i-heroicons-envelope"
       >
-        Invite User
+        Convidar usuário
       </UButton>
     </div>
   </form>
@@ -47,9 +47,9 @@ const { currentId } = useCurrentWorkspace()
 const { addUser: addUserMutation } = useWorkspaceUsers()
 
 const roleOptions = [
-  {name: "User", value: "user"},
-  {name: "Admin", value: "admin"},
-  {name: "Read Only", value: "readonly"}
+  {name: "Usuário", value: "user"},
+  {name: "Administrador", value: "admin"},
+  {name: "Somente leitura", value: "readonly"}
 ]
 
 const newUser = ref("")
@@ -69,7 +69,7 @@ const addUser = () => {
     useAlert().success(data.message)
     // No need to emit 'fetchUsers' - the mutation handles cache updates automatically
   }).catch((error) => {
-    useAlert().error("There was an error adding user: " + error.data.message)
+    useAlert().error("Ocorreu um erro ao adicionar o usuário: " + error.data.message)
   })
 }
 </script>

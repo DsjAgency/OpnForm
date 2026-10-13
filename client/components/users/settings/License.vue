@@ -3,15 +3,15 @@
     <!-- Header -->
     <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div>
-        <h3 class="text-lg font-medium text-neutral-900">Enterprise License</h3>
+        <h3 class="text-lg font-medium text-neutral-900">Licença Enterprise</h3>
         <p class="mt-1 text-sm text-neutral-500">
-          Manage your self-hosted Enterprise license.
+          Gerencie sua licença Enterprise auto-hospedada.
         </p>
       </div>
 
       <div class="flex shrink-0 items-center gap-2">
         <UButton
-          label="Help"
+          label="Ajuda"
           icon="i-heroicons-question-mark-circle"
           variant="outline"
           color="primary"
@@ -20,7 +20,7 @@
 
         <UButton
           v-if="!canAccessEnterprise || isGracePeriod"
-          :label="(isExpired || isGracePeriod) ? 'Renew License' : 'Purchase License'"
+          :label="(isExpired || isGracePeriod) ? 'Renovar licença' : 'Comprar licença'"
           icon="i-heroicons-shopping-cart"
           @click="openPurchase"
         />
@@ -42,10 +42,10 @@
             </div>
             <div>
               <p class="text-sm font-semibold text-neutral-900">
-                {{ isGracePeriod ? 'License in grace period' : 'License activated' }}
+                {{ isGracePeriod ? 'Licença em período de carência' : 'Licença ativada' }}
               </p>
               <p class="mt-1 text-sm text-neutral-600">
-                {{ isGracePeriod ? 'Renew now to avoid losing enterprise features.' : 'Your Enterprise license is active and all licensed features are enabled.' }}
+                {{ isGracePeriod ? 'Renove agora para não perder os recursos Enterprise.' : 'Sua licença Enterprise está ativa e todos os recursos licenciados estão liberados.' }}
               </p>
             </div>
           </div>
@@ -58,7 +58,7 @@
           :disabled="managingSubscription"
           @click="openPortal"
         >
-          Manage Subscription
+          Gerenciar assinatura
         </UButton>
       </div>
     </div>
@@ -88,7 +88,7 @@
 
       <div class="space-y-2">
         <TextInput
-          label="License Key"
+          label="Chave de licença"
           name="license_key"
           :form="licenseKeyForm"
           placeholder="lic_xxxxxxxxxxxxxxxxxxxxxxxx"
@@ -99,7 +99,7 @@
           icon="i-heroicons-check-circle"
           @click="activateLicense"
         >
-          Activate License
+          Ativar licença
         </UButton>
       </div>
     </div>
@@ -147,23 +147,23 @@ const inactiveIcon = computed(() => {
 })
 
 const inactiveTitle = computed(() => {
-  if (isActivationLimitReached.value) return 'License Already Activated'
-  if (isExpired.value) return 'License Expired'
-  if (hasLicense.value) return 'License Inactive'
-  return 'No Active License'
+  if (isActivationLimitReached.value) return 'Licença já ativada'
+  if (isExpired.value) return 'Licença expirada'
+  if (hasLicense.value) return 'Licença inativa'
+  return 'Nenhuma licença ativa'
 })
 
 const inactiveDescription = computed(() => {
   if (isActivationLimitReached.value) {
-    return 'This license key is already activated on another self-hosted instance. Contact support to reset it or activate a different key.'
+    return 'Esta chave de licença já está ativada em outra instância auto-hospedada. Fale com o suporte para reiniciá-la ou ative outra chave.'
   }
   if (isExpired.value) {
-    return 'Enterprise features are currently disabled. Renew or activate a valid license key to restore access.'
+    return 'Os recursos Enterprise estão desativados. Renove ou ative uma chave de licença válida para recuperar o acesso.'
   }
   if (hasLicense.value) {
-    return 'Enterprise features are currently disabled. Activate a valid license key to restore access.'
+    return 'Os recursos Enterprise estão desativados. Ative uma chave de licença válida para recuperar o acesso.'
   }
-  return 'Enter your license key below to enable Enterprise features for this self-hosted instance.'
+  return 'Digite sua chave de licença abaixo para liberar os recursos Enterprise nesta instância auto-hospedada.'
 })
 
 const openPortal = () => {
@@ -171,7 +171,7 @@ const openPortal = () => {
   licenseApi.portal().then((response) => {
     window.open(response.portalUrl, '_blank')
   }).catch((error) => {
-    alert.error(error?.data?.message || 'Failed to open billing portal.')
+    alert.error(error?.data?.message || 'Não foi possível abrir o portal de cobrança.')
   }).finally(() => {
     managingSubscription.value = false
   })
@@ -187,7 +187,7 @@ const activateLicense = () => {
       alert.error(result.message)
     }
   }).catch((error) => {
-    alert.error(error?.data?.message || 'Failed to activate license. Please check your key.')
+    alert.error(error?.data?.message || 'Não foi possível ativar a licença. Confira a chave.')
   }).finally(() => {
     activating.value = false
   })

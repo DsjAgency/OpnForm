@@ -212,7 +212,7 @@ describe('OIDC link flow', () => {
         vi.runAllTimers()
         await flushPromises()
 
-        expect(wrapper.text()).toContain('Link existing account')
+        expect(wrapper.text()).toContain('Vincular conta existente')
         expect(oidcApi.callback).toHaveBeenCalledOnce()
         vi.useRealTimers()
     })
@@ -254,7 +254,7 @@ describe('OIDC link flow', () => {
         vi.runAllTimers()
         await flushPromises()
 
-        expect(wrapper.text()).toContain('Reconnecting securely...')
+        expect(wrapper.text()).toContain('Reconectando com segurança...')
         expect(oidcApi.redirect).toHaveBeenCalledOnce()
         expect(markOidcAutomaticRetrySpy).toHaveBeenCalledOnce()
         expect(storeOidcStateVerifierSpy).toHaveBeenCalledOnce()
@@ -296,8 +296,8 @@ describe('OIDC link flow', () => {
         await flushPromises()
 
         expect(oidcApi.redirect).not.toHaveBeenCalled()
-        expect(wrapper.text()).toContain('We could not reconnect automatically')
-        expect(wrapper.text()).toContain('Back to sign in')
+        expect(wrapper.text()).toContain('Não foi possível reconectar automaticamente')
+        expect(wrapper.text()).toContain('Voltar para o login')
         vi.useRealTimers()
     })
 
@@ -338,7 +338,7 @@ describe('OIDC link flow', () => {
         await flushPromises()
 
         expect(oidcApi.redirect).not.toHaveBeenCalled()
-        expect(wrapper.text()).toContain('Too many sign-in requests. Please try again in 42 seconds.')
+        expect(wrapper.text()).toContain('Muitas tentativas de login. Tente novamente em 42 segundos.')
         vi.useRealTimers()
     })
 
@@ -382,7 +382,7 @@ describe('OIDC link flow', () => {
         await flushPromises()
 
         expect(oidcApi.redirect).toHaveBeenCalledOnce()
-        expect(wrapper.text()).toContain('Too many sign-in requests. Please try again in 30 seconds.')
+        expect(wrapper.text()).toContain('Muitas tentativas de login. Tente novamente em 30 segundos.')
         vi.useRealTimers()
     })
 
@@ -442,14 +442,14 @@ describe('OIDC link flow', () => {
         await (wrapper.vm as any).checkOidcOptions()
         await flushPromises()
 
-        expect(wrapper.text()).toContain('Please wait before trying again')
-        expect(wrapper.text()).toContain('Try again in 30s')
+        expect(wrapper.text()).toContain('Aguarde antes de tentar novamente')
+        expect(wrapper.text()).toContain('Tente novamente em 30s')
         expect(wrapper.find('button').attributes('disabled')).toBeDefined()
         expect(wrapper.find('input[name="password"]').exists()).toBe(false)
 
         vi.advanceTimersByTime(1000)
         await flushPromises()
-        expect(wrapper.text()).toContain('Try again in 29s')
+        expect(wrapper.text()).toContain('Tente novamente em 29s')
         vi.useRealTimers()
     })
 
@@ -530,7 +530,7 @@ describe('OIDC link flow', () => {
         vm.login()
         await flushPromises()
 
-        expect(wrapper.text()).toContain('Link your existing account')
+        expect(wrapper.text()).toContain('Vincule sua conta existente')
         expect(wrapper.find('input[name="password"]').exists()).toBe(true)
         expect(vm.form.oidc_link_token).toBe('link-token-123')
         expect(vm.form.mutate).toHaveBeenCalledOnce()

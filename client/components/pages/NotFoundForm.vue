@@ -8,14 +8,14 @@
           class="w-full max-w-[250px] mb-5 mx-auto"
         >
         <h1 class="text-dark text-2xl md:text-4xl leading-none font-medium text-center pt-4 md:pt-0 mx-auto md:max-w-full">
-          We're sorry! This Form Is No Longer Here
+          Desculpe! Este formulário não está mais disponível
         </h1>
         <p class="text-neutral-500 mt-3 max-w-xl mx-auto">
-          It may have been deleted, deactivated, or the form URL might have been regenerated or updated by its owner. But don't worry—you've got plenty of other options!
+          Ele pode ter sido excluído, desativado, ou o endereço pode ter sido alterado pelo responsável.
         </p>
         
         <h3 class="my-8 text-dark text-xl font-semibold text-center md:pt-0 mx-auto md:max-w-full">
-          What can you do?
+          O que você pode fazer?
         </h3>
         <div class="mt-8 grid grid-cols-2 md:grid-cols-5 gap-4">
           <NuxtLink
@@ -38,37 +38,37 @@
         
         <div class="mt-10 text-neutral-700">
           <h3 class="mt-8 text-dark text-xl font-semibold text-center md:pt-0 mx-auto md:max-w-full">
-            Still not sure what to do? Here are more ways to get started!
+            Ainda não sabe o que fazer? Veja outras opções!
           </h3>
           <p class="mt-4 text-neutral-500">
-            No worries! Here are some other options for you:
+            Sem problemas! Aqui vão algumas opções:
           </p>
           <ul class="mt-4 space-y-2 text-sm">
             <li>
-              Do you want to know why users choose OpnForm? 
+              Quer saber por que as pessoas escolhem o OpnForm? 
               <NuxtLink
                 class="text-blue-500 hover:text-blue-600"
                 :to="{ name: 'ai-form-builder' }"
               >
-                Learn more here!
+                Saiba mais aqui!
               </NuxtLink>
             </li>
             <li>
-              Browse Templates
+              Ver modelos
               <NuxtLink
                 class="text-blue-500 hover:text-blue-600"
                 :to="{ name: 'templates' }"
               >
-                Get inspired with ready-to-use form templates!
+                Inspire-se com modelos de formulário prontos!
               </NuxtLink>
             </li>
             <li>
-              Check Out Our Help Center
+              Central de ajuda
               <NuxtLink
                 class="text-blue-500 hover:text-blue-600"
                 to="https://help.opnform.com/en/"
               >
-                Find quick answers to common questions.
+                Respostas rápidas para dúvidas comuns.
               </NuxtLink>
             </li>
           </ul>
@@ -89,28 +89,28 @@ const actions = [
   {
     to: { name: 'forms-create-guest' },
     icon: 'i-heroicons-rocket-launch',
-    text: 'Create Form'
+    text: 'Criar formulário'
   },
   {
     to: { name: 'login' },
     icon: 'i-heroicons-list-bullet',
-    text: 'Find Your Forms'
+    text: 'Encontrar seus formulários'
   },
   {
     href: '#',
     icon: 'i-heroicons-book-open',
-    text: 'Documentation',
+    text: 'Documentação',
     onClick: () => crisp.openHelpdesk()
   },
   {
     to: { name: 'index' },
     icon: 'i-heroicons-document-magnifying-glass',
-    text: 'Explore OpnForm'
+    text: 'Conhecer o OpnForm'
   },
   {
     href: '#',
     icon: 'i-heroicons-chat-bubble-left-right',
-    text: 'Need Assistance?',
+    text: 'Precisa de ajuda?',
     onClick: () => crisp.openChat()
   }
 ]

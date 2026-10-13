@@ -6,7 +6,7 @@
       class="flex flex-col items-center justify-center py-8 text-neutral-400"
     >
       <UIcon name="i-heroicons-scale" class="w-8 h-8 mb-2 opacity-50" />
-      <span class="text-sm">No responses yet</span>
+      <span class="text-sm">Nenhuma resposta ainda</span>
     </div>
 
     <!-- Bar Chart View -->
@@ -32,13 +32,13 @@
         <div class="flex items-center gap-2">
           <div class="w-3 h-3 rounded-full" :style="{ backgroundColor: chartColors[0] }" aria-hidden="true" />
           <div class="text-sm">
-            <span class="font-medium text-neutral-900">Yes</span>
+            <span class="font-medium text-neutral-900">Sim</span>
             <span class="text-neutral-600 ml-1">{{ yesCount }} ({{ yesPercentage }}%)</span>
           </div>
         </div>
         <div class="flex items-center gap-2">
           <div class="text-sm text-right">
-            <span class="font-medium text-neutral-900">No</span>
+            <span class="font-medium text-neutral-900">Não</span>
             <span class="text-neutral-600 ml-1">{{ noCount }} ({{ noPercentage }}%)</span>
           </div>
           <div class="w-3 h-3 rounded-full" :style="{ backgroundColor: chartColors[1] }" aria-hidden="true" />
@@ -57,15 +57,15 @@
         <div class="flex items-center gap-3">
           <div class="w-3 h-3 rounded-full" :style="{ backgroundColor: chartColors[0] }" aria-hidden="true" />
           <div class="flex flex-col">
-            <span class="text-sm font-medium text-neutral-900">Yes</span>
-            <span class="text-xs text-neutral-600">{{ yesCount }} responses ({{ yesPercentage }}%)</span>
+            <span class="text-sm font-medium text-neutral-900">Sim</span>
+            <span class="text-xs text-neutral-600">{{ yesCount }} respostas ({{ yesPercentage }}%)</span>
           </div>
         </div>
         <div class="flex items-center gap-3">
           <div class="w-3 h-3 rounded-full" :style="{ backgroundColor: chartColors[1] }" aria-hidden="true" />
           <div class="flex flex-col">
-            <span class="text-sm font-medium text-neutral-900">No</span>
-            <span class="text-xs text-neutral-600">{{ noCount }} responses ({{ noPercentage }}%)</span>
+            <span class="text-sm font-medium text-neutral-900">Não</span>
+            <span class="text-xs text-neutral-600">{{ noCount }} respostas ({{ noPercentage }}%)</span>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@ const noPercentage = computed(() => noItem.value.percentage)
 const hasData = computed(() => yesCount.value > 0 || noCount.value > 0)
 
 const chartData = computed(() => ({
-  labels: ['Yes', 'No'],
+  labels: ['Sim', 'Não'],
   datasets: [{
     data: [yesCount.value, noCount.value],
     backgroundColor: chartColors,
@@ -121,7 +121,7 @@ const chartOptions = {
         label: (context) => {
           const label = context.label
           const count = context.raw
-          const percentage = label === 'Yes' ? yesPercentage.value : noPercentage.value
+          const percentage = label === 'Sim' ? yesPercentage.value : noPercentage.value
           return `${label}: ${count} (${percentage}%)`
         }
       }

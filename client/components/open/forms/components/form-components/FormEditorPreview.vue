@@ -24,7 +24,7 @@
         <div class="bg-yellow-500 rounded-full w-2.5 h-2.5" />
         <div class="bg-green-500 rounded-full w-2.5 h-2.5" />
         <p class="text-sm text-neutral-500/70 text-sm ml-4 select-none">
-          Form Preview
+          Pré-visualização
         </p>
         <div class="flex-grow" />
         <UButton
@@ -41,7 +41,7 @@
             name="form_editor_toggle_expand"
             :properties="{toggle: !isExpanded}"
           >
-        <UTooltip arrow :text="isExpanded ? 'Collapse' : 'Expand'">
+        <UTooltip arrow :text="isExpanded ? 'Recolher' : 'Expandir'">
          
             <UButton
               :icon="isExpanded ? 'i-heroicons-arrows-pointing-in' : 'i-heroicons-arrows-pointing-out'"
@@ -90,7 +90,7 @@
             class="absolute top-2 right-2 z-20 flex items-center gap-2"
           >
             <UTooltip
-              text="Add block"
+              text="Adicionar bloco"
               :kbds="['meta', 'B']"
               arrow
             >
@@ -103,12 +103,12 @@
               />
             </UTooltip>
             <UButtonGroup size="sm">
-              <UTooltip text="Edit question">
+              <UTooltip text="Editar pergunta">
                 <UButton
                   icon="i-heroicons-cog-6-tooth"
                   color="neutral"
                   variant="outline"
-                  label="Edit"
+                  label="Editar"
                   @click.stop="handleEditCurrent"
                 />
               </UTooltip>
@@ -357,14 +357,14 @@ function handleEditCurrent() {
 const moreMenuItems = computed(() => ([
   [
     {
-      label: 'Duplicate',
+      label: 'Duplicar',
       icon: 'i-heroicons-document-duplicate-20-solid',
       onClick: handleDuplicateCurrent
     }
   ],
   [
     {
-      label: 'Delete',
+      label: 'Excluir',
       icon: 'i-heroicons-trash-20-solid',
       color: 'error',
       onClick: handleDeleteCurrent

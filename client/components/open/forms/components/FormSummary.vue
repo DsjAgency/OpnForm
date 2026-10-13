@@ -1,8 +1,8 @@
 <template>
   <div class="max-w-5xl mx-auto space-y-6">
     <PageSection
-      title="Summary"
-      description="Overview of your form submissions and statistics"
+      title="Resumo"
+      description="Visão geral das respostas e estatísticas do formulário"
     >
       <template #actions>
         <div class="flex items-center gap-2">
@@ -31,7 +31,7 @@
         <div v-if="summaryData" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <DashboardPanel padding="sm">
             <div class="text-sm font-medium text-neutral-500 mb-1">
-              Total Submissions
+              Total de respostas
             </div>
             <div class="text-3xl font-bold text-neutral-900">
               {{ summaryData.total_submissions }}
@@ -39,7 +39,7 @@
           </DashboardPanel>
           <DashboardPanel padding="sm" class="opacity-50">
             <div class="text-sm font-medium text-neutral-500 mb-1">
-              Completion Rate
+              Taxa de conclusão
             </div>
             <div class="text-3xl font-bold text-neutral-900">
               -
@@ -47,7 +47,7 @@
           </DashboardPanel>
           <DashboardPanel padding="sm" class="opacity-50">
             <div class="text-sm font-medium text-neutral-500 mb-1">
-              Avg. Completion Time
+              Tempo médio de preenchimento
             </div>
             <div class="text-3xl font-bold text-neutral-900">
               -
@@ -68,10 +68,10 @@
       </div>
       <div class="text-sm text-neutral-500">
         <template v-if="summaryData?.is_limited">
-          Showing stats for <span class="font-medium text-neutral-900">{{ summaryData?.processed_submissions?.toLocaleString() }}</span> of {{ summaryData?.total_submissions?.toLocaleString() }} submissions
+          Estatísticas de <span class="font-medium text-neutral-900">{{ summaryData?.processed_submissions?.toLocaleString() }}</span> de {{ summaryData?.total_submissions?.toLocaleString() }} respostas
         </template>
         <template v-else>
-          Showing stats for <span class="font-medium text-neutral-900">{{ summaryData?.total_submissions?.toLocaleString() || 0 }}</span> submissions
+          Estatísticas de <span class="font-medium text-neutral-900">{{ summaryData?.total_submissions?.toLocaleString() || 0 }}</span> respostas
         </template>
       </div>
     </div>
@@ -98,16 +98,16 @@
       color="error"
       variant="subtle"
       icon="i-heroicons-exclamation-triangle"
-      title="Failed to load summary"
-      :description="error?.message || 'Please try again later.'"
+      title="Não foi possível carregar o resumo"
+      :description="error?.message || 'Tente novamente mais tarde.'"
     />
 
     <!-- Empty State -->
     <DashboardEmptyState
       v-else-if="!summaryData?.fields?.length"
       icon="i-heroicons-document-chart-bar"
-      title="No data available"
-      description="There are no submissions to display for the selected period."
+      title="Nenhum dado disponível"
+      description="Não há respostas para mostrar no período selecionado."
     />
 
     <!-- Summary Content -->
@@ -120,7 +120,7 @@
         icon="i-heroicons-information-circle"
       >
         <template #title>
-          Summary based on {{ summaryData.processed_submissions.toLocaleString() }} most recent submissions
+          Resumo baseado nas {{ summaryData.processed_submissions.toLocaleString() }} respostas mais recentes
         </template>
         <template #description>
           {{ limitationDescription }}
@@ -165,9 +165,9 @@ const filterForm = useForm({
 })
 
 const statusOptions = [
-  { value: 'all', name: 'All' },
-  { value: 'completed', name: 'Completed' },
-  { value: 'partial', name: 'Partial' },
+  { value: 'all', name: 'Todas' },
+  { value: 'completed', name: 'Concluídas' },
+  { value: 'partial', name: 'Parciais' },
 ]
 
 const localDateFormat = computed(() => {
@@ -228,6 +228,6 @@ const limitationDescription = computed(() => {
   if (hasDateFilter) {
     return `${total} submissions match your selected period. For performance, the summary is calculated from the most recent entries.`
   }
-  return `Your form has ${total} total submissions. For performance, the summary is calculated from the most recent entries.`
+  return `Seu formulário tem ${total} respostas no total. Por desempenho, o resumo é calculado a partir das mais recentes.`
 })
 </script>

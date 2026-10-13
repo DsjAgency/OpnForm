@@ -154,7 +154,7 @@ export function useParseMention(content, mentionsAllowed, form, formData, comput
         element.textContent = value.join(', ')
       } else if (typeof value === 'boolean') {
         // Render booleans in a user-friendly way
-        element.textContent = value ? 'Yes' : 'No'
+        element.textContent = value ? 'Sim' : 'Não'
       } else {
         // String, number (including 0), etc.
         element.textContent = String(value)

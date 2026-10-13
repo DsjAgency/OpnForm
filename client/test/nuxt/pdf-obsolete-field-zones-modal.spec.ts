@@ -35,18 +35,18 @@ describe('PdfObsoleteFieldZonesModal', () => {
     const wrapper = createWrapper()
 
     expect(wrapper.text()).toContain('Account Number')
-    expect(wrapper.text()).toContain('Page 1')
-    expect(wrapper.text()).toContain('Deleted field 2')
+    expect(wrapper.text()).toContain('Página 1')
+    expect(wrapper.text()).toContain('Campo excluído 2')
     expect(wrapper.text()).not.toContain(zones[1].field_id)
-    expect(wrapper.text()).toContain('Page 2')
+    expect(wrapper.text()).toContain('Página 2')
   })
 
   it('closes when the acknowledgement is clicked without emitting a removal action', async () => {
     const wrapper = createWrapper()
 
-    expect(wrapper.text()).toContain('have been removed')
+    expect(wrapper.text()).toContain('foram removidas')
     expect(wrapper.findAll('button')).toHaveLength(1)
-    expect(wrapper.get('button').text()).toBe('Got it')
+    expect(wrapper.get('button').text()).toBe('Entendi')
 
     await wrapper.get('button').trigger('click')
 

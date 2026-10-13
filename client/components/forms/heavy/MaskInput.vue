@@ -20,7 +20,7 @@
       :min="min"
       :max="max"
       :maxlength="maxCharLimit"
-      :aria-label="mask && isValidMask ? `${label || name}, expected format: ${getMaskPlaceholder}` : (label || name)"
+      :aria-label="mask && isValidMask ? `${label || name}, formato esperado: ${getMaskPlaceholder}` : (label || name)"
       :aria-describedby="mask && help ? `${name}-mask-help` : null"
       @input="onInput"
       @change="onChange"

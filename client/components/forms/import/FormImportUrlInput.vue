@@ -34,10 +34,10 @@
 defineProps({
   form: { type: Object, required: true },
   urlPlaceholder: { type: String, default: 'https://...' },
-  label: { type: String, default: 'Form URL' },
+  label: { type: String, default: 'URL do formulário' },
   loading: { type: Boolean, default: false },
-  helpText: { type: String, default: 'Make sure your form URL is public and accessible without a login.' },
-  buttonLabel: { type: String, default: 'Import Form' },
+  helpText: { type: String, default: 'Confira se a URL do formulário é pública e acessível sem login.' },
+  buttonLabel: { type: String, default: 'Importar formulário' },
 })
 
 defineEmits(['submit'])

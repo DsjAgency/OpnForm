@@ -19,14 +19,14 @@
         <h3 class="font-semibold text-medium">
           QR Code
         </h3>
-        <p class="text-sm text-neutral-600">Scan the QR code to open the form.</p>
+        <p class="text-sm text-neutral-600">Escaneie o QR Code para abrir o formulário.</p>
         <div class="flex justify-center">
           <img
             v-if="QrUrl"
             ref="qrImage"
             :src="QrUrl"
             class="max-w-full h-auto"
-            alt="QR Code for form"
+            alt="QR Code do formulário"
           >
         </div>
         <div class="space-y-2">
@@ -41,7 +41,7 @@
               variant="outline"
               block
             >
-              {{ imageCopied ? 'Image Copied!' : 'Copy Image' }}
+              {{ imageCopied ? 'Imagem copiada!' : 'Copiar imagem' }}
             </UButton>
           </TrackClick>
         </div>

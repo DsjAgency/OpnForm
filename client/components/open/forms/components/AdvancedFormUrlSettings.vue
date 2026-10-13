@@ -20,7 +20,7 @@
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
-          Show advanced sharing options
+          Mostrar opções avançadas de compartilhamento
         </h3>
       </div>
     </template>
@@ -28,8 +28,8 @@
       :model-value="modelValue.auto_submit"
       name="auto_submit"
       class="mt-4"
-      label="Auto Submit Form"
-      help="Form will auto submit immediate after open URL"
+      label="Enviar formulário automaticamente"
+      help="O formulário é enviado assim que o link é aberto"
       @update:model-value="onChangeAutoSubmit"
     />
   </collapse>

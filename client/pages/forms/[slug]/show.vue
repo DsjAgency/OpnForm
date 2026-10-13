@@ -75,7 +75,7 @@
                     icon="i-heroicons-eye"
                     @click="showDraftFormWarningNotification"
                   >
-                    <span class="hidden sm:inline">Open <span class="hidden md:inline">form</span></span>
+                    <span class="hidden sm:inline">Abrir <span class="hidden md:inline">formulário</span></span>
                   </UButton>
                   <TrackClick
                     v-else
@@ -90,7 +90,7 @@
                       class="hover:no-underline"
                       icon="i-heroicons-arrow-top-right-on-square"
                     >
-                      <span class="hidden sm:inline">Open <span class="hidden md:inline">form</span></span>
+                      <span class="hidden sm:inline">Abrir <span class="hidden md:inline">formulário</span></span>
                     </UButton>
                   </TrackClick>
                   <TrackClick
@@ -104,7 +104,7 @@
                       class="hover:no-underline"
                       :to="{ name: 'forms-slug-edit', params: { slug: form.slug } }"
                     >
-                      Edit <span class="hidden md:inline">form</span>
+                      Editar <span class="hidden md:inline">formulário</span>
                     </UButton>
                   </TrackClick>
                   <extra-menu
@@ -116,21 +116,21 @@
               </div>
 
               <div class="flex flex-wrap items-center gap-2 text-neutral-500 text-xs mt-2 sm:mt-0">
-                <UTooltip :text="`${formatNumberWithCommas(form.views_count)} views`">
+                <UTooltip :text="`${formatNumberWithCommas(form.views_count)} visualizações`">
                   <div class="flex items-center gap-1">
                     <UIcon name="i-heroicons-eye" />
                     <span>{{ formatNumber(form.views_count) }}</span>
                   </div>
                 </UTooltip>
 
-                <UTooltip :text="`${formatNumberWithCommas(form.submissions_count)} submissions`">
+                <UTooltip :text="`${formatNumberWithCommas(form.submissions_count)} respostas`">
                   <div class="flex items-center gap-1">
                     <UIcon name="i-heroicons-document-text" />
                     <span>{{ formatNumber(form.submissions_count) }}</span>
                   </div>
                 </UTooltip>
 
-                <span class="whitespace-nowrap">Edited {{ form.last_edited_human }}</span>
+                <span class="whitespace-nowrap">Editado {{ form.last_edited_human }}</span>
               </div>
               
               <!-- Status Badges and Form Cleanings -->
@@ -158,8 +158,8 @@
         >
           <DashboardEmptyState
             icon="i-heroicons-document-magnifying-glass"
-            title="Form not found"
-            description="The form you're looking for doesn't exist or has been deleted."
+            title="Formulário não encontrado"
+            description="O formulário que você procura não existe ou foi excluído."
           >
             <template #action>
               <UButton
@@ -168,7 +168,7 @@
                 icon="i-heroicons-arrow-left"
                 :to="{ name: 'home' }"
               >
-                Go to Dashboard
+                Ir para o painel
               </UButton>
             </template>
           </DashboardEmptyState>
@@ -194,7 +194,7 @@ definePageMeta({
 })
 
 useOpnSeoMeta({
-  title: "Home",
+  title: "Início",
 })
 
 // Composables
@@ -231,7 +231,7 @@ watch(
 
 const showDraftFormWarningNotification = () => {
   useAlert().warning(
-    "This form is currently in Draft mode and is not publicly accessible, You can change the form status on the edit form page.",
+    "Este formulário está em rascunho e não está acessível publicamente. Você pode mudar o status na página de edição do formulário.",
   )
 }
 </script>

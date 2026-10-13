@@ -60,22 +60,22 @@ export const useWorkingFormStore = defineStore("working_form", {
       let message = ''
       if (selfHosted) {
         // Self-hosted: safety notice + docs
-        message = 'Custom code is disabled for safety on self-hosted. See technical docs to learn more.'
+        message = 'Por segurança, o código personalizado vem desativado na versão auto-hospedada. Veja a documentação técnica para saber mais.'
         actions.push({
-          label: 'View docs',
+          label: 'Ver documentação',
           icon: 'i-heroicons-book-open',
           onclick: () => { if (import.meta.client) window.open('https://docs.opnform.com/deployment/enterprise-features/custom-code', '_blank') }
         })
       } else {
         // Cloud: require custom domain + Crisp help
-        message = 'Your form needs to be using a custom domain to add a code block.'
+        message = 'O formulário precisa usar um domínio personalizado para ter um bloco de código.'
         actions.push({
-          label: 'Help',
+          label: 'Ajuda',
           icon: 'i-heroicons-question-mark-circle',
           onclick: () => { try { useCrisp().openHelpdeskArticle('how-do-i-add-custom-code-to-my-form-1amadj3') } catch { /* noop */ } }
         })
       }
-      useAlert().error(message, 10000, { title: 'Custom code disabled', actions })
+      useAlert().error(message, 10000, { title: 'Código personalizado desativado', actions })
     },
     set(form) {
       this.content = form
@@ -217,15 +217,15 @@ export const useWorkingFormStore = defineStore("working_form", {
       data.name = uniqueName
       
       if (data.type === "nf-text") {
-        data.content = "<p>This is a text block.</p>"
+        data.content = "<p>Este é um bloco de texto.</p>"
       } else if (data.type === "nf-page-break") {
         data.next_btn_text = null
         data.previous_btn_text = null
       } else if (data.type === "nf-code") {
         data.content =
-          '<div class="text-blue-500 italic">This is a code block.</div>'
+          '<div class="text-blue-500 italic">Este é um bloco de código.</div>'
       } else if (data.type === "signature") {
-        data.help = "Draw your signature above"
+        data.help = "Desenhe sua assinatura acima"
       }
       return data
     },
@@ -247,25 +247,25 @@ export const useWorkingFormStore = defineStore("working_form", {
       }
 
       if (originalBlockDefinition?.self_hosted !== undefined && !originalBlockDefinition.self_hosted && useFeatureFlag('self_hosted')) {
-        useAlert().error(block?.title + ' is not allowed on self hosted. Please use our hosted version.')
+        useAlert().error(block?.title + ' não é permitido na versão auto-hospedada.')
         return
       }
       if (originalBlockDefinition?.auth_required && !useIsAuthenticated().isAuthenticated.value) {
-        useAlert().error('Please login to add this block.')
+        useAlert().error('Entre na sua conta para adicionar este bloco.')
         return
       }
 
       if (originalBlockDefinition?.max_count !== undefined) {
         const currentCount = this.content.properties.filter(prop => prop && prop.type === type).length
         if (currentCount >= originalBlockDefinition.max_count) {
-          useAlert().error(`Only ${originalBlockDefinition.max_count} '${originalBlockDefinition.title}' block(s) allowed per form.`)
+          useAlert().error(`Só é permitido ${originalBlockDefinition.max_count} bloco(s) '${originalBlockDefinition.title}' por formulário.`)
           return
         }
         openSettings = true 
       }
       
       this.blockForm.type = effectiveType
-      this.blockForm.name = originalBlockDefinition?.default_block_name ?? effectiveBlockDefinition?.default_block_name ?? 'New Block'
+      this.blockForm.name = originalBlockDefinition?.default_block_name ?? effectiveBlockDefinition?.default_block_name ?? 'Novo bloco'
       const newBlock = this.prefillDefault({ ...this.blockForm.data() })
       newBlock.id = generateUUID()
       newBlock.hidden = false
@@ -313,7 +313,7 @@ export const useWorkingFormStore = defineStore("working_form", {
       const source = fields[index]
       const cloned = clonedeep(source)
       cloned.id = generateUUID()
-      if (cloned.name) cloned.name = `Copy of ${cloned.name}`
+      if (cloned.name) cloned.name = `Cópia de ${cloned.name}`
       fields.splice(index + 1, 0, cloned)
       this.setProperties(fields)
       this.openSettingsForField(index + 1)
@@ -322,10 +322,10 @@ export const useWorkingFormStore = defineStore("working_form", {
       const index = this.objectToIndex(field)
 
       if (index !== -1 && this.content?.properties) {
-        useAlert().success('Ctrl + Z to undo',10000,{
-          title: 'Field removed',
+        useAlert().success('Ctrl + Z para desfazer',10000,{
+          title: 'Campo removido',
           actions: [{
-            label: 'Undo',
+            label: 'Desfazer',
             icon:"i-material-symbols-undo",
             onclick: () => {
               this.undo()

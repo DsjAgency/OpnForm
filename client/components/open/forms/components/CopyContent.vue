@@ -56,7 +56,7 @@ const props = defineProps({
   },
   label: {
     type: String,
-    default: "Copy Link",
+    default: "Copiar link",
   },
   trackingEvent: {
     type: String,

@@ -5,9 +5,9 @@
         <img src="/img/logo.svg" alt="" class="h-10 w-10">
         <span class="text-lg font-semibold tracking-tight text-neutral-950">OpnForm</span>
       </div>
-      <h1 class="mt-4 text-xl font-semibold text-neutral-950">Connecting your OpnForm account</h1>
+      <h1 class="mt-4 text-xl font-semibold text-neutral-950">Conectando sua conta do OpnForm</h1>
       <p class="mt-2 text-sm text-neutral-600">
-        You will be redirected to review the access requested by your AI assistant.
+        Você será redirecionado para revisar o acesso solicitado pelo seu assistente de IA.
       </p>
       <UProgress class="mt-6" animation="carousel" />
       <p v-if="error" class="mt-4 text-sm text-red-600">{{ error }}</p>
@@ -25,7 +25,7 @@ onMounted(() => {
   const requestToken = typeof route.query.request === 'string' ? route.query.request : ''
 
   if (!/^[A-Za-z0-9]{64}$/.test(requestToken)) {
-    error.value = 'This authorization request is invalid or has expired.'
+    error.value = 'Este pedido de autorização é inválido ou expirou.'
     return
   }
 
@@ -37,12 +37,12 @@ onMounted(() => {
       window.location.assign(response.authorization_url)
     })
     .catch((requestError) => {
-      error.value = requestError?.data?.message || 'Unable to continue the authorization flow.'
+      error.value = requestError?.data?.message || 'Não foi possível continuar o fluxo de autorização.'
     })
 })
 
 useOpnSeoMeta({
-  title: 'Connect your OpnForm account',
+  title: 'Conecte sua conta do OpnForm',
   robots: 'noindex, nofollow',
 })
 </script>

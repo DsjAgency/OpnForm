@@ -14,8 +14,8 @@ definePageMeta({
 })
 useOpnSeoMeta({
   title: props.form
-    ? "Form Submissions - " + props.form.title
-    : "Form Submissions",
+    ? "Respostas - " + props.form.title
+    : "Respostas",
 })
 
 

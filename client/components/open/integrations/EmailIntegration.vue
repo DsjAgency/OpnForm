@@ -5,12 +5,12 @@
     :form="form"
   >
     <p class="text-neutral-500 text-sm mb-3">
-      You can <a
+      Você pode <a
         class="underline cursor-pointer"
         @click="openEmailsModal"
       >
-        use our custom SMTP feature
-      </a> to send emails from your own domain.
+        usar o recurso de SMTP personalizado
+      </a> para enviar e-mails do seu próprio domínio.
     </p>
 
     <MentionInput
@@ -21,19 +21,19 @@
       :disabled="!canUseAdvancedEmail"
       name="data.send_to"
       required
-      label="Send To"
+      label="Enviar para"
     >
       <template #help>
         <InputHelp>
         <span v-if="canUseAdvancedEmail">
-          Add one email per line
+          Adicione um e-mail por linha
         </span>
         <span v-else>
-          You can only send email notification to your own email address. 
-          Please <a
+          Você só pode enviar notificações para o seu próprio e-mail. 
+          <a
             class="underline cursor-pointer"
             @click="openSubscriptionModal"
-          >upgrade to the Pro plan</a> to send to other email addresses.
+          >Faça upgrade para o plano Pro</a> para enviar a outros endereços.
         </span>
         </InputHelp>
       </template>
@@ -44,15 +44,15 @@
         :mentions="form.properties"
         :computed-variables="form.computed_variables"
         name="data.sender_name"
-        label="Sender Name"
+        label="Nome do remetente"
         class="flex-1"
       />
       <text-input
         v-if="selfHosted"
         :form="integrationData"
         name="data.sender_email"
-        label="Sender Email"
-        help="If supported by email provider - default otherwise"
+        label="E-mail do remetente"
+        help="Se o provedor de e-mail permitir; caso contrário, usa o padrão"
         class="flex-1"
       />
     </div>
@@ -62,7 +62,7 @@
       :computed-variables="form.computed_variables"
       required
       name="data.subject"
-      label="Subject"
+      label="Assunto"
     />
     <rich-text-area-input
       :form="integrationData"
@@ -71,7 +71,7 @@
       :mentions="form.properties"
       :computed-variables="form.computed_variables"
       name="data.email_content"
-      label="Email Content"
+      label="Conteúdo do e-mail"
       class="mt-4"
     />
     <collapse
@@ -94,14 +94,14 @@
           </div>
           <div class="grow">
             <h4 class="font-semibold flex items-center gap-2">
-              Email appearance
+              Aparência do e-mail
               <PlanTag
                 feature="branding.advanced"
                 upgrade-modal-title="Upgrade to customise email appearance"
               />
             </h4>
             <p class="text-gray-400 dark:text-neutral-500 text-xs">
-              Logo, fonts and colors for your email notifications
+              Logo, fontes e cores das notificações por e-mail
             </p>
           </div>
         </div>
@@ -111,25 +111,25 @@
           v-if="!canUseAdvancedBranding"
           class="rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-100"
         >
-          Email appearance customisation is part of the Business plan.
+          A personalização da aparência do e-mail faz parte do plano Business.
           <a
             class="underline cursor-pointer"
             @click="openSubscriptionModal"
           >
-            Upgrade to Business
+            Faça upgrade para o Business
           </a>
-          to add your logo, custom fonts and colors.
+          para adicionar seu logo, fontes e cores.
         </div>
         <image-input
           :form="integrationData"
           :disabled="!canUseAdvancedBranding"
           name="data.logo_url"
           label="Logo"
-          help="Display your logo in the email header (replaces app name)"
+          help="Mostra seu logo no cabeçalho do e-mail (substitui o nome do app)"
         />
         <div class="grid grid-cols-2 gap-4 mt-4">
           <div>
-            <label class="text-neutral-700 dark:text-neutral-300 font-semibold text-xs mb-2 block">Font family</label>
+            <label class="text-neutral-700 dark:text-neutral-300 font-semibold text-xs mb-2 block">Fonte</label>
             <UButton
               color="neutral"
               block
@@ -153,8 +153,8 @@
             :form="integrationData"
             :disabled="!canUseAdvancedBranding"
             name="data.font_color"
-            label="Font color"
-            help="Color of the text in the email"
+            label="Cor do texto"
+            help="Cor do texto no e-mail"
           />
         </div>
         <div class="grid grid-cols-2 gap-4">
@@ -162,15 +162,15 @@
             :form="integrationData"
             :disabled="!canUseAdvancedBranding"
             name="data.outer_background_color"
-            label="Outer background color"
-            help="Background around the email content area"
+            label="Cor de fundo externa"
+            help="Fundo ao redor da área de conteúdo do e-mail"
           />
           <ColorInput
             :form="integrationData"
             :disabled="!canUseAdvancedBranding"
             name="data.inner_background_color"
-            label="Inner background color"
-            help="Background of the email content area"
+            label="Cor de fundo interna"
+            help="Fundo da área de conteúdo do e-mail"
           />
         </div>
       </div>
@@ -180,19 +180,19 @@
       :form="integrationData"
       name="data.include_submission_data"
       class="mt-4"
-      label="Include submission data"
-      help="If enabled the email will contain form submission answers"
+      label="Incluir dados da resposta"
+      help="Se ativado, o e-mail terá as respostas enviadas no formulário"
     />
     <p
       v-if="integrationData.data.include_submission_data"
       class="mt-2 text-xs text-neutral-500"
     >
-      Uploaded-file links follow your workspace security policy ({{ externalFileLinkExpirationLabel }}).
+      Os links de arquivos enviados seguem a política de segurança do espaço de trabalho ({{ externalFileLinkExpirationLabel }}).
       <a
         class="cursor-pointer underline"
         @click="openWorkspaceSettings('external-file-links')"
       >
-        Change policy
+        Alterar política
       </a>
     </p>
     <toggle-switch-input
@@ -200,23 +200,23 @@
       :form="integrationData"
       name="data.include_hidden_fields_submission_data"
       class="mt-4"
-      label="Include hidden fields"
-      help="If enabled the email will contain hidden fields"
+      label="Incluir campos ocultos"
+      help="Se ativado, o e-mail terá os campos ocultos"
     />
     <toggle-switch-input
       v-if="integrationData.data.include_submission_data"
       :form="integrationData"
       name="data.embed_uploaded_images"
       class="mt-4"
-      label="Display uploaded images inline"
-      help="Show GIF, JPEG, and PNG uploads up to 6 MB directly in the email. Other images remain secure links. Embedded images remain available in the recipient's email."
+      label="Mostrar imagens enviadas no corpo do e-mail"
+      help="Mostra imagens GIF, JPEG e PNG de até 6 MB direto no e-mail. As demais imagens continuam como links seguros. Imagens incorporadas ficam disponíveis no e-mail do destinatário."
     />
     <toggle-switch-input
       v-if="form.editable_submissions"
       :form="integrationData"
       name="data.link_edit_submission"
       class="mt-4"
-      label="Edit Submission Link"
+      label="Link para editar a resposta"
     />
      
     <SelectInput
@@ -226,8 +226,8 @@
       multiple
       clearable
       class="mt-4"
-      label="Attach PDF templates"
-      help="Generate PDFs from selected templates and attach them to the email. Leave empty to not attach any PDF."
+      label="Anexar modelos de PDF"
+      help="Gera PDFs a partir dos modelos selecionados e anexa ao e-mail. Deixe vazio para não anexar nenhum PDF."
     />
 
     <MentionInput
@@ -236,8 +236,8 @@
       :computed-variables="form.computed_variables"
       class="mt-4"
       name="data.reply_to"
-      label="Reply To"
-      help="If empty, Reply-to will be your own email."
+      label="Responder para"
+      help="Se vazio, as respostas irão para o seu próprio e-mail."
     />
   </IntegrationWrapper>
 </template>
@@ -295,11 +295,11 @@ function openSubscriptionModal () {
   useAppModals().openSubscriptionModal({
     plan: canUseAdvancedEmail.value ? 'business' : 'pro',
     modal_title: canUseAdvancedEmail.value
-      ? 'Upgrade to unlock email appearance customisation'
-      : 'Upgrade to unlock powerful email integration',
+      ? 'Faça upgrade para personalizar a aparência do e-mail'
+      : 'Faça upgrade para liberar a integração de e-mail completa',
     modal_description: canUseAdvancedEmail.value
-      ? 'Upgrade to Business to add your logo, custom fonts, and colors to email notifications.'
-      : 'Upgrade to Pro to customize email notification recipients, send confirmation email to form respondents, and more: form customization, custom domain, collaboration, etc.'
+      ? 'Faça upgrade para o Business e adicione seu logo, fontes e cores às notificações por e-mail.'
+      : 'Faça upgrade para o Pro e personalize os destinatários das notificações, envie e-mail de confirmação para quem respondeu e muito mais: personalização de formulários, domínio próprio, colaboração etc.'
   })
 }
 
@@ -307,8 +307,8 @@ onBeforeMount(() => {
   for (const [keyname, defaultValue] of Object.entries({
     send_to: user.value.email || '',
     sender_name: "OpnForm",
-    subject: "We saved your answers",
-    email_content: "Hello there 👋 <br>This is a confirmation that your submission was successfully saved.",
+    subject: "Recebemos suas respostas",
+    email_content: "Olá 👋 <br>Confirmamos que suas respostas foram registradas com sucesso.",
     include_submission_data: true,
     include_hidden_fields_submission_data: false,
     embed_uploaded_images: false,

@@ -12,13 +12,13 @@
           <div class="rounded-[32px] border border-white/80 bg-white/90 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.12)] backdrop-blur sm:p-8">
             <div class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700">
               <UIcon name="i-heroicons-lock-closed" class="h-4 w-4" />
-              Account access
+              Acesso à conta
             </div>
             <h2
               data-testid="login-page"
               class="mt-4 text-3xl font-semibold tracking-[-1%] text-neutral-950"
             >
-              Log in to OpnForm
+              Entrar no OpnForm
             </h2>
 
             <div class="mt-6">
@@ -41,6 +41,6 @@ definePageMeta({
 })
 
 useOpnSeoMeta({
-  title: "Login",
+  title: "Entrar",
 })
 </script>

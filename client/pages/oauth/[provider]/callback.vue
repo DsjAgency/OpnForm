@@ -14,7 +14,7 @@
         class="m-10"
       >
         <h3 class="my-6 text-center">
-          {{ showTwoFactorModal ? 'Verifying your code...' : 'Please wait...' }}
+          {{ showTwoFactorModal ? 'Verificando seu código...' : 'Aguarde...' }}
         </h3>
         <Loader class="h-6 w-6 mx-auto m-10" />
       </div>
@@ -23,11 +23,11 @@
         class="m-6 flex flex-col items-center space-y-4"
       >
         <p class="text-center">
-          Unable to sign in at the moment.
+          Não foi possível entrar agora.
         </p>
         <UButton
           :to="{ name: 'login' }"
-          label="Back to login"
+          label="Voltar para o login"
         />
       </div>
     </div>
@@ -121,7 +121,7 @@ const handleCallback = async () => {
       } else {
         // Handle new user registration
         router.push({ name: "forms-create" })
-        useAlert().success("Success! You're now registered with your Google account! Welcome to OpnForm.")
+        useAlert().success("Pronto! Você se cadastrou com sua conta Google. Bem-vindo ao OpnForm.")
       }
     } else if (response.provider) {
       // Integration flow - user was already logged in, provider was connected
@@ -159,7 +159,7 @@ const handleCallback = async () => {
     }
   } catch (error) {
     console.error("[OAuth Callback] Social login error:", error)
-    useAlert().error(error.response?._data?.message || "Authentication failed")
+    useAlert().error(error.response?._data?.message || "Falha na autenticação")
     loading.value = false
   }
 }
@@ -175,7 +175,7 @@ const handleTwoFactorVerifiedAndRedirect = async (tokenData) => {
   // Handle redirect based on user status
   if (tokenData.new_user) {
     router.push({ name: "forms-create" })
-    useAlert().success("Success! You're now registered with your Google account! Welcome to OpnForm.")
+    useAlert().success("Pronto! Você se cadastrou com sua conta Google. Bem-vindo ao OpnForm.")
   } else {
     if (window.opener) {
       try {

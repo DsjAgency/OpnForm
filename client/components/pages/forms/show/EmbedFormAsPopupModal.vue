@@ -13,14 +13,14 @@
         icon="i-heroicons-chat-bubble-bottom-center-text"
         @click="onOpenClick"
       >
-        Embed as popup
+        Incorporar como pop-up
       </UButton>
     </TrackClick>
 
     <UModal
       v-model:open="isModalOpen"
       :ui="{ content: 'sm:max-w-2xl' }"
-      title="Add the popup to your website"
+      title="Adicione o pop-up ao seu site"
       :content="{
         onPointerDownOutside: (event) => { if (event.target?.closest('.nf-main')) {return event.preventDefault()}}
       }"
@@ -30,17 +30,17 @@
           Demo
         </h3>
         <p class="pb-6">
-          A live preview of your form popup was just added to this page.
-          <span class="font-semibold text-blue-800">Click on the button on the bottom
+          Uma prévia do pop-up do formulário foi adicionada a esta página.
+          <span class="font-semibold text-blue-800">Clique no botão no canto inferior
             {{ advancedOptions.position }} corner to try it</span>.
         </p>
 
         <h3 class="border-t text-xl font-semibold mb-2 pt-6">
-          How does it work?
+          Como funciona?
         </h3>
         <p>
-          Paste the following code snippet in the <b>&lt;head&gt;</b> section of
-          your website.
+          Cole o trecho de código abaixo na seção <b>&lt;head&gt;</b>
+          do seu site.
         </p>
 
         <div class="border border-blue-300 bg-blue-50 dark:bg-notion-dark-light rounded-md p-4 mb-5 w-full mx-auto mt-4 select-all">
@@ -63,13 +63,13 @@
         <div class="border-t my-4" />
         <VForm size="sm">
           <h3 class="text-xl font-semibold mb-2">
-            Customization
+            Personalização
           </h3>
           
           <ColorInput
             v-model="advancedOptions.bgcolor"
             name="bgcolor"
-            label="Circle Background Color"
+            label="Cor de fundo do círculo"
           />
           <TextInput
             v-model="advancedOptions.emoji"
@@ -82,17 +82,17 @@
             v-model="advancedOptions.position"
             name="position"
             class="mt-4 max-w-xs"
-            label="Position"
+            label="Posição"
             :options="[
-              { name: 'Bottom Right', value: 'right' },
-              { name: 'Bottom Left', value: 'left' },
+              { name: 'Inferior direito', value: 'right' },
+              { name: 'Inferior esquerdo', value: 'left' },
             ]"
           />
           <TextInput
             v-model="advancedOptions.width"
             name="width"
             class="mt-4 max-w-xs"
-            label="Form pop max width (px)"
+            label="Largura máxima do pop-up (px)"
             native-type="number"
           />
         </VForm>
@@ -168,7 +168,7 @@ const onClose = () => {
 const onOpenClick = () => {
   const style = props.form?.presentation_style || 'classic'
   if (style === 'focused') {
-    useAlert().warning('Popup mode is not currently supported for forms in Focused mode.')
+    useAlert().warning('O modo pop-up ainda não é compatível com formulários no estilo Focado.')
     return
   }
   showEmbedFormAsPopupModal.value = true
@@ -176,7 +176,7 @@ const onOpenClick = () => {
 const copyToClipboard = () => {
   if (import.meta.server) return
   copy(embedPopupCode.value)
-  useAlert().success("Copied!")
+  useAlert().success("Copiado!")
 }
 const removePreview = () => {
   if (import.meta.server) return

@@ -6,7 +6,7 @@
   >
     <SettingsModalPage
       id="general"
-      label="General"
+      label="Geral"
       icon="i-heroicons-information-circle"
     >
       <FormInformation />
@@ -14,7 +14,7 @@
 
     <SettingsModalPage
       id="submission"
-      label="Submission Settings"
+      label="Envio de respostas"
       icon="i-heroicons-paper-airplane"
     >
       <FormSubmissionSettings />
@@ -22,7 +22,7 @@
 
     <SettingsModalPage
       id="security"
-      label="Security & Access"
+      label="Segurança e acesso"
       icon="i-heroicons-shield-check"
     >
       <FormSecurityAccess />
@@ -30,7 +30,7 @@
 
     <SettingsModalPage
       id="seo"
-      label="SEO & Social Sharing"
+      label="SEO e redes sociais"
       icon="i-heroicons-link"
     >
       <FormCustomSeo />
@@ -38,7 +38,7 @@
 
     <SettingsModalPage
       id="analytics"
-      label="Analytics"
+      label="Análises"
       icon="i-heroicons-chart-bar"
     >
       <FormAnalyticsSettings />
@@ -46,7 +46,7 @@
 
     <SettingsModalPage
       id="custom-code"
-      label="Custom Code"
+      label="Código personalizado"
       icon="i-heroicons-code-bracket"
     >
       <FormCustomCode />
@@ -54,7 +54,7 @@
 
     <SettingsModalPage
       id="variables"
-      label="Variables"
+      label="Variáveis"
       icon="i-heroicons-variable"
     >
       <ComputedVariablesTab :edit-request="computedVariableEditRequest" />

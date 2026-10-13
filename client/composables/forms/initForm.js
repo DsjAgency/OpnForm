@@ -5,14 +5,14 @@ export const DEFAULT_COLOR = '#3B82F6'
 
 export const initForm = (defaultValue = {}, withDefaultProperties = false) => {
   return useForm({
-    title: "Contact Form",
+    title: "Formulário de contato",
     visibility: "public",
     workspace_id: null,
     properties: withDefaultProperties ? getDefaultProperties() : [],
 
     // Customization
     presentation_style: 'classic',
-    language: 'en',
+    language: 'pt',
     font_family: null,
     theme: "default",
     width: "centered",
@@ -24,7 +24,7 @@ export const initForm = (defaultValue = {}, withDefaultProperties = false) => {
     transparent_background: false,
     closes_at: null,
     closed_text:
-      "This form has now been closed by its owner and does not accept submissions anymore.",
+      "Este formulário foi encerrado pelo responsável e não aceita mais respostas.",
     auto_save: true,
     auto_focus: true,
     border_radius: 'small',
@@ -35,15 +35,15 @@ export const initForm = (defaultValue = {}, withDefaultProperties = false) => {
     re_fillable: false,
     re_fill_button_text: null,
     submitted_text:
-      "Amazing, we saved your answers. Thank you for your time and have a great day!",
+      "Pronto, recebemos suas respostas. Obrigado pelo seu tempo e tenha um ótimo dia!",
     use_captcha: false,
     captcha_provider: 'recaptcha',
     max_submissions_count: null,
     max_submissions_reached_text:
-      "This form has now reached the maximum number of allowed submissions and is now closed.",
+      "Este formulário atingiu o número máximo de respostas e foi encerrado.",
     submission_retention_value: null,
     submission_retention_unit: null,
-    editable_submissions_button_text: "Edit submission",
+    editable_submissions_button_text: "Editar resposta",
     confetti_on_submission: false,
 
     // Security & Privacy
@@ -63,31 +63,31 @@ function getDefaultProperties() {
   return [
     {
       type: "nf-text",
-      content: "<h1>Contact Form</h1><p>Please fill out this form to contact us.</p>",
-      name: "Title",
+      content: "<h1>Formulário de contato</h1><p>Preencha este formulário para falar com a gente.</p>",
+      name: "Título",
       id: generateUUID(),
     },
     {
-      name: "Name",
+      name: "Nome",
       type: "text",
       hidden: false,
       required: true,
-      placeholder: "Enter your full name",
+      placeholder: "Digite seu nome completo",
       id: generateUUID(),
     },
     {
-      name: "Email",
+      name: "E-mail",
       type: "email",
       hidden: false,
-      placeholder: "Enter your email address",
+      placeholder: "Digite seu e-mail",
       id: generateUUID(),
     },
     {
-      name: "Message",
+      name: "Mensagem",
       type: "text",
       hidden: false,
       multi_lines: true,
-      placeholder: "Type your message here",
+      placeholder: "Digite sua mensagem",
       id: generateUUID(),
     },
   ]
@@ -103,7 +103,7 @@ function getDefaultProperties() {
  */
 export function setFormDefaults(formData) {
   const defaultValues = {
-    title: 'Untitled Form',
+    title: 'Formulário sem título',
     visibility: 'public',
     theme: 'default',
     width: 'centered',

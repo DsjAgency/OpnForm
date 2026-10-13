@@ -6,7 +6,7 @@
       <div class="p-2">
         <UInput
           v-model="search"
-          placeholder="Search functions..."
+          placeholder="Buscar funções..."
           icon="i-heroicons-magnifying-glass"
           size="sm"
         />
@@ -31,7 +31,7 @@
     <!-- Functions List -->
     <div class="p-2 space-y-1 overflow-y-auto flex-1">
       <div v-if="filteredFunctions.length === 0" class="text-center text-sm text-gray-500 py-4">
-        No functions found
+        Nenhuma função encontrada
       </div>
       <button
         v-for="func in filteredFunctions"
@@ -56,11 +56,11 @@ import { functionMeta } from '~/lib/formulas/index.js'
 const emit = defineEmits(['select'])
 
 const categories = [
-  { id: 'all', label: 'All' },
-  { id: 'math', label: 'Math' },
-  { id: 'text', label: 'Text' },
-  { id: 'logic', label: 'Logic' },
-  { id: 'array', label: 'Array' }
+  { id: 'all', label: 'Todas' },
+  { id: 'math', label: 'Matemática' },
+  { id: 'text', label: 'Texto' },
+  { id: 'logic', label: 'Lógica' },
+  { id: 'array', label: 'Listas' }
 ]
 
 const activeCategory = ref('all')

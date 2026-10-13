@@ -67,7 +67,8 @@ useHead({
     }
   ],
   htmlAttrs: () => ({
-    dir: 'ltr'
+    dir: 'ltr',
+    lang: 'pt-BR'
   })
 })
 </script>

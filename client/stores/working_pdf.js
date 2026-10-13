@@ -2,7 +2,7 @@ import { defineStore } from "pinia"
 import clonedeep from "clone-deep"
 import { generateUUID } from "../lib/utils.js"
 
-const DEFAULT_FILENAME_PATTERN = '<span mention="true" mention-field-id="form_name" mention-field-name="Form Name" mention-fallback="" contenteditable="false" class="mention-item">Form Name</span>-<span mention="true" mention-field-id="submission_id" mention-field-name="Submission ID" mention-fallback="" contenteditable="false" class="mention-item">Submission ID</span>'
+const DEFAULT_FILENAME_PATTERN = '<span mention="true" mention-field-id="form_name" mention-field-name="Nome do formulário" mention-fallback="" contenteditable="false" class="mention-item">Nome do formulário</span>-<span mention="true" mention-field-id="submission_id" mention-field-name="ID da resposta" mention-fallback="" contenteditable="false" class="mention-item">ID da resposta</span>'
 const DEFAULT_ZOOM_SCALE = 1.5
 const MIN_ZOOM_SCALE = 0.5
 const MAX_ZOOM_SCALE = 3
@@ -74,16 +74,16 @@ export const useWorkingPdfStore = defineStore("working_pdf", {
         .filter(p => !p.type.startsWith('nf-'))
         .map(p => ({
           id: p.id,
-          name: p.name + (p.hidden ? ' (Hidden Field)' : ''),
+          name: p.name + (p.hidden ? ' (campo oculto)' : ''),
           type: p.type
         }))
     },
 
     specialFields() {
       return [
-        { id: 'submission_id', name: 'Submission ID' },
-        { id: 'submission_date', name: 'Submission Date' },
-        { id: 'form_name', name: 'Form Name' },
+        { id: 'submission_id', name: 'ID da resposta' },
+        { id: 'submission_date', name: 'Data da resposta' },
+        { id: 'form_name', name: 'Nome do formulário' },
       ]
     },
 
@@ -249,11 +249,11 @@ export const useWorkingPdfStore = defineStore("working_pdf", {
     },
 
     getZoneLabel(zone) {
-      if (zone.static_text !== undefined) return 'Static Text'
-      if (zone.static_image !== undefined) return 'Image'
+      if (zone.static_text !== undefined) return 'Texto fixo'
+      if (zone.static_image !== undefined) return 'Imagem'
       const allFields = [...this.formFields, ...this.computedVariables, ...this.specialFields]
       const field = allFields.find(f => f.id === zone.field_id)
-      return field?.name || zone.field_id || 'Unmapped'
+      return field?.name || zone.field_id || 'Sem associação'
     },
 
     addPageAfter(afterPageNum) {

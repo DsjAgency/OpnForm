@@ -1,7 +1,7 @@
 <template>
   <CopyContent
     :content="share_url"
-    label="Copy"
+    label="Copiar"
     class="w-auto"
   />
 </template>

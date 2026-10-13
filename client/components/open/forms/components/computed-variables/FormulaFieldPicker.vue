@@ -4,7 +4,7 @@
     <div class="p-2 border-b">
       <UInput
         v-model="search"
-        placeholder="Search fields..."
+        placeholder="Buscar campos..."
         icon="i-heroicons-magnifying-glass"
         size="sm"
       />
@@ -13,7 +13,7 @@
     <!-- Fields Section -->
     <div v-if="filteredFields.length > 0" class="p-2">
       <div class="text-xs font-medium text-gray-500 uppercase mb-2">
-        Form Fields
+        Campos do formulário
       </div>
       <div class="space-y-1">
         <button
@@ -34,7 +34,7 @@
     <!-- Variables Section -->
     <div v-if="filteredVariables.length > 0" class="p-2 border-t">
       <div class="text-xs font-medium text-gray-500 uppercase mb-2">
-        Variables
+        Variáveis
       </div>
       <div class="space-y-1">
         <button
@@ -57,7 +57,7 @@
       v-if="filteredFields.length === 0 && filteredVariables.length === 0"
       class="p-4 text-center text-sm text-gray-500"
     >
-      No fields found
+      Nenhum campo encontrado
     </div>
   </div>
 </template>

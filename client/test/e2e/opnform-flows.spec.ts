@@ -220,14 +220,14 @@ async function openRegister(page: Page) {
 }
 
 async function selectHearAboutUs(page: Page) {
-  const select = page.getByRole("button", { name: "How did you hear about us?", exact: true })
+  const select = page.getByRole("button", { name: "Como você nos conheceu?", exact: true })
 
   await expect(async () => {
     await select.click()
     await expect(select).toHaveAttribute("aria-expanded", "true")
   }).toPass({ timeout: 15_000 })
 
-  await page.getByRole("option", { name: "Friend or Colleague", exact: true }).click()
+  await page.getByRole("option", { name: "Amigo ou colega", exact: true }).click()
 }
 
 async function registerUi(page: Page, email: string) {
@@ -239,7 +239,7 @@ async function registerUi(page: Page, email: string) {
   await page.locator('input[name="password_confirmation"]').fill("Abcd@1234")
   await page.locator('input[name="agree_terms"]').check({ force: true })
 
-  await page.getByRole("button", { name: "Create account", exact: true }).click()
+  await page.getByRole("button", { name: "Criar conta", exact: true }).click()
   await expect(page).toHaveURL(/\/forms\/create$/, { timeout: 30_000 })
 }
 
@@ -255,15 +255,15 @@ async function loginUi(page: Page, email = seededUser.email, password = seededUs
   await page.locator('input[name="email"]').fill(email)
   await page.locator('input[name="password"]').fill(password)
 
-  await page.getByRole("button", { name: /log in to continue/i }).click()
+  await page.getByRole("button", { name: "Entrar", exact: true }).click()
   await expect(page).toHaveURL(/\/home$/, { timeout: 20_000 })
   await dismissBlockingModals(page)
   await expect(page.getByTestId("home-page")).toBeVisible()
 }
 
 async function logoutUi(page: Page) {
-  await page.getByRole("button", { name: "User menu" }).click()
-  await page.getByText("Logout", { exact: true }).click()
+  await page.getByRole("button", { name: "Menu do usuário" }).click()
+  await page.getByText("Sair", { exact: true }).click()
   await expect(page).toHaveURL(/\/login$/, { timeout: 20_000 })
 }
 
@@ -278,10 +278,10 @@ async function renameEditorTitle(page: Page, title: string) {
 
 async function createFormThroughUi(page: Page, options: { title: string, style: "classic" | "focused" }) {
   await page.goto("/forms/create")
-  await expect(page.getByText("Choose a form style")).toBeVisible()
+  await expect(page.getByText("Escolha o estilo do formulário")).toBeVisible()
 
   await page.getByTestId(options.style === "classic" ? "form-style-classic" : "form-style-focused").click()
-  await expect(page.getByText("How do you want to start?")).toBeVisible()
+  await expect(page.getByText("Como você quer começar?")).toBeVisible()
   await page.getByTestId("form-base-simple-contact").click()
 
   await expect(page.locator("#form-editor")).toBeVisible()
@@ -478,12 +478,12 @@ test("register succeeds and lands in the form creation flow", async ({ page }) =
   await registerUi(page, uniqueEmail("register"))
 
   await expect(page).toHaveURL(/\/forms\/create$/, { timeout: 20_000 })
-  await expect(page.getByText("Choose a form style")).toBeVisible()
+  await expect(page.getByText("Escolha o estilo do formulário")).toBeVisible()
 })
 
 test("login succeeds for the seeded user", async ({ page }) => {
   await loginUi(page)
-  await expect(page.getByTestId("home-page").getByRole("link", { name: "Create Form" }).first()).toBeVisible()
+  await expect(page.getByTestId("home-page").getByRole("link", { name: "Criar formulário" }).first()).toBeVisible()
 })
 
 test("invalid login stays on the login page", async ({ page }) => {
@@ -491,7 +491,7 @@ test("invalid login stays on the login page", async ({ page }) => {
   await page.locator('input[name="email"]').fill(seededUser.email)
   await page.locator('input[name="password"]').fill("wrong-password")
 
-  await page.getByRole("button", { name: /log in to continue/i }).click()
+  await page.getByRole("button", { name: "Entrar", exact: true }).click()
   await expect(page).toHaveURL(/\/login$/)
   await expect(page.getByText(/credentials/i)).toBeVisible()
 })
@@ -582,16 +582,16 @@ test("font picker opens from Design and applies a font", async ({ page, request 
   const pageErrors: string[] = []
   page.on("pageerror", error => pageErrors.push(error.message))
 
-  await page.getByText("Design", { exact: true }).click()
-  const fontFamily = page.getByText("Font Family", { exact: true }).locator("..")
+  await page.getByText("Aparência", { exact: true }).click()
+  const fontFamily = page.getByText("Fonte", { exact: true }).locator("..")
   await fontFamily.getByRole("button").click()
-  await expect(page.getByText("The quick brown fox jumped over the lazy dog").first()).toBeVisible()
+  await expect(page.getByText("Um pequeno jabuti xereta viu dez cegonhas felizes").first()).toBeVisible()
   await page.getByText("Roboto", { exact: true }).last().click()
-  await page.getByRole("button", { name: "Apply", exact: true }).click()
+  await page.getByRole("button", { name: "Aplicar", exact: true }).click()
 
   await expect(fontFamily.getByRole("button")).toContainText("Roboto")
   await fontFamily.getByRole("button").click()
-  await expect(page.getByText("The quick brown fox jumped over the lazy dog").first()).toBeVisible()
+  await expect(page.getByText("Um pequeno jabuti xereta viu dez cegonhas felizes").first()).toBeVisible()
   expect(pageErrors).toEqual([])
 })
 
@@ -665,7 +665,7 @@ test("form save errors open the invalid field section and computed variable", as
 
   const errorModal = page.getByTestId("form-save-error-modal")
   await expect(errorModal).toBeVisible()
-  await expect(page.getByText("Fix 1 field before saving", { exact: true })).toBeVisible()
+  await expect(page.getByText("Corrija 1 campo antes de salvar", { exact: true })).toBeVisible()
   await expect(errorModal).toContainText("Problematic dropdown")
   await expect(errorModal).toContainText("At least one option is required.")
   await expect(errorModal).not.toContainText("One or more properties have validation errors.")
@@ -677,7 +677,7 @@ test("form save errors open the invalid field section and computed variable", as
   const fieldSettings = page.getByTestId("form-field-settings")
   await expect(fieldSettings).toBeVisible()
   await expect(fieldSettings).toBeFocused()
-  await expect(fieldSettings).toContainText("Select Options")
+  await expect(fieldSettings).toContainText("Opções de seleção")
 
   await page.getByTestId("save-form-button").click()
   await expect(errorModal).toBeVisible()
@@ -685,19 +685,19 @@ test("form save errors open the invalid field section and computed variable", as
   await page.getByTestId("edit-form-field-problematic-dropdown").click()
 
   await expect(errorModal).toBeHidden()
-  await expect(fieldSettings).toContainText("When following condition(s) are true")
+  await expect(fieldSettings).toContainText("Quando as condições abaixo forem verdadeiras")
 
   await page.getByTestId("save-form-button").click()
   await expect(errorModal).toBeVisible()
-  await expect(page.getByText("Fix 1 variable before saving", { exact: true })).toBeVisible()
+  await expect(page.getByText("Corrija 1 variável antes de salvar", { exact: true })).toBeVisible()
   await expect(errorModal).toContainText("Order total")
   await expect(errorModal).toContainText("The formula is required.")
   await page.getByTestId("edit-computed-variable-cv_order_total").click()
 
   const variableModal = page.getByTestId("computed-variable-modal")
   await expect(variableModal).toBeVisible()
-  await expect(variableModal.getByText("Edit Variable", { exact: true })).toBeVisible()
-  await expect(variableModal.getByPlaceholder("e.g., Total Price, Dog Age")).toHaveValue("Order total")
+  await expect(variableModal.getByText("Editar variável", { exact: true })).toBeVisible()
+  await expect(variableModal.getByPlaceholder("ex.: Preço total, Idade")).toHaveValue("Order total")
 })
 
 test("public submissions are accepted and visible in the submissions dashboard", async ({ page, request }) => {
@@ -760,20 +760,20 @@ test("public form URL attribution is stored separately from submitted answers", 
   await loginUi(page)
   await page.goto(`/forms/${form.slug}/show/submissions`)
   await expect(page.getByTestId("form-submissions-page")).toBeVisible()
-  await page.getByRole("button", { name: "Columns", exact: true }).click()
+  await page.getByRole("button", { name: "Colunas", exact: true }).click()
 
-  const columnsDialog = page.getByRole("dialog", { name: "Columns" })
+  const columnsDialog = page.getByRole("dialog", { name: "Colunas" })
   await expect(columnsDialog.getByText("utm_source", { exact: true })).toHaveCount(0)
-  await columnsDialog.getByRole("button", { name: /Attribution & tracking/ }).click()
+  await columnsDialog.getByRole("button", { name: /Atribuição e rastreamento/ }).click()
   await expect(columnsDialog.getByText("utm_source", { exact: true })).toBeVisible()
-  await columnsDialog.getByRole("button", { name: "Show detected", exact: true }).click()
+  await columnsDialog.getByRole("button", { name: "Mostrar detectados", exact: true }).click()
 
   const attributedRow = page.getByRole("row").filter({ hasText: visitorName })
   await expect(attributedRow).toContainText("playwright")
   await expect(attributedRow).toContainText("e2e")
   await expect(attributedRow).toContainText("browser-click")
 
-  await columnsDialog.getByRole("button", { name: "Hide URL parameters", exact: true }).click()
+  await columnsDialog.getByRole("button", { name: "Ocultar parâmetros de URL", exact: true }).click()
   await expect(page.getByRole("columnheader", { name: "utm_source", exact: true })).toHaveCount(0)
   await expect(page.getByRole("columnheader", { name: "utm_campaign", exact: true })).toHaveCount(0)
   await expect(page.getByRole("columnheader", { name: "gclid", exact: true })).toHaveCount(0)

@@ -6,7 +6,7 @@
       class="flex flex-col items-center justify-center py-8 text-neutral-400"
     >
       <UIcon name="i-heroicons-star" class="w-8 h-8 mb-2 opacity-50" />
-      <span class="text-sm">No ratings yet</span>
+      <span class="text-sm">Nenhuma avaliação ainda</span>
     </div>
 
     <template v-else>
@@ -23,7 +23,7 @@
               :style="{ color: getSummaryChartColor(6) }"
             />
           </div>
-          <span class="text-xs text-neutral-500 uppercase tracking-wider font-medium">Average Rating</span>
+          <span class="text-xs text-neutral-500 uppercase tracking-wider font-medium">Avaliação média</span>
         </div>
 
         <!-- Distribution bars -->

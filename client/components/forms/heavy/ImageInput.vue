@@ -31,7 +31,7 @@
             class="h-5 w-5"
           />
           <span class="ml-2">
-            Upload
+            Enviar
           </span>
 
         </div>
@@ -86,7 +86,7 @@
     <!--  Modal  -->
     <UModal
       v-model:open="showUploadModal"
-      title="Upload an image"
+      title="Enviar imagem"
       :ui="{ content: 'sm:max-w-xl', body: 'pt-2!' }"
     >
       <template #body>
@@ -113,7 +113,7 @@
                 >
                   <loader class="h-5 w-5 mx-auto m-10" />
                   <p class="text-center mt-6">
-                    Uploading your file...
+                    Enviando seu arquivo...
                   </p>
                 </div>
                 <template v-else>
@@ -143,12 +143,12 @@
                         class="font-semibold text-blue-500 hover:text-blue-800 focus:outline-hidden focus:underline transition duration-150 ease-in-out"
                         @click="openFileUpload"
                       >
-                        Upload your image,
+                        Envie sua imagem,
                       </button>
-                      use drag and drop or paste it
+                      arraste e solte ou cole aqui
                     </p>
                     <p class="mt-1 text-xs text-neutral-500">
-                      .jpg, .jpeg, .png, .bmp, .gif, .svg up to 5mb
+                      .jpg, .jpeg, .png, .bmp, .gif, .svg até 5 MB
                     </p>
                   </div>
                 </template>
@@ -164,12 +164,12 @@
             <TextInput
               v-model="urlInput"
               name="image_url"
-              label="Enter the URL of the image you want to use"
+              label="Digite a URL da imagem que você quer usar"
               placeholder="https://example.com/image.jpg"
             />
             <div class="mt-4 flex justify-end gap-2">
               <UButton color="primary" :disabled="!urlInput" @click="insertUrl">
-                Insert
+                Inserir
               </UButton>
             </div>
           </div>
@@ -221,7 +221,7 @@ export default {
     },
     tabItems() {
       const baseTabs = [
-        { label: 'Upload', value: 'upload' },
+        { label: 'Enviar', value: 'upload' },
         { label: 'URL', value: 'url' },
       ]
       if (useFeatureFlag('services.unsplash')) {

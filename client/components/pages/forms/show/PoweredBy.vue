@@ -19,7 +19,7 @@ const props = defineProps({
   },
   label: {
     type: String,
-    default: "Made with OpnForm",
+    default: "Feito com OpnForm",
   },
   color: {
     type: String,

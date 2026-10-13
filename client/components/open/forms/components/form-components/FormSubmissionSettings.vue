@@ -3,9 +3,9 @@
     <div class="space-y-4">
       <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <h3 class="text-lg font-medium text-neutral-900">Submission Settings</h3>
+          <h3 class="text-lg font-medium text-neutral-900">Envio de respostas</h3>
           <p class="mt-1 text-sm text-neutral-500">
-            Configure how form submissions are handled.
+            Configure como as respostas do formulário são tratadas.
           </p>
         </div>
       </div>
@@ -15,22 +15,22 @@
           name="submit_button_text"
           :form="form"
           class="max-w-xs"
-          label="Submit button text"
+          label="Texto do botão de enviar"
         />
         <TextInput
           v-if="isFocused"
           v-model="focusedNextText"
           name="focused_next_button_text"
           class="max-w-xs"
-          label="Next button text"
+          label="Texto do botão de próximo"
           :placeholder="$t('forms.buttons.next')"
         />
       </div>
       <ToggleSwitchInput
         name="auto_save"
         :form="form"
-        label="Auto save form response"
-        help="Saves form progress, allowing respondents to resume later."
+        label="Salvar resposta automaticamente"
+        help="Salva o progresso para que a pessoa possa continuar depois."
         class="mt-4"
         :disabled="hasPaymentBlock"
       />
@@ -38,7 +38,7 @@
         v-if="hasPaymentBlock"
         color="primary"
         variant="subtle"
-        title="Must be enabled with a payment block."
+        title="Deve ficar ativado quando há um bloco de pagamento."
         class="max-w-md"
       />
       
@@ -46,10 +46,10 @@
         :form="submissionOptions"
         name="databaseAction"
         class="mt-4 max-w-xs"
-        label="Database Submission Action"
+        label="Ação ao gravar a resposta"
         :options="[
-          { name: 'Create new record', value: 'create' },
-          { name: 'Update existing record', value: 'update' }
+          { name: 'Criar novo registro', value: 'create' },
+          { name: 'Atualizar registro existente', value: 'update' }
         ]"
         :required="true"
       />
@@ -61,20 +61,20 @@
           class="w-auto max-w-lg"
         >
           <p class="mb-2 mt-2 text-neutral-500 text-sm">
-            When matching values are found in the selected column(s), the (first) existing record will be updated instead of creating a new record. If there's no match, a new record will be created.
+            Quando valores iguais forem encontrados nas colunas selecionadas, o (primeiro) registro existente é atualizado em vez de criar um novo. Se não houver correspondência, um novo registro é criado.
             <a
               href="#"
               class="text-blue-500 hover:underline"
               @click.prevent="crisp.openHelpdeskArticle('how-to-update-a-record-on-form-submission-1t1jwmn')"
             >
-              Learn more.
+              Saiba mais.
             </a>
           </p>
           <select-input
             v-if="filterableFields.length"
             :form="form"
             name="database_fields_update"
-            label="Properties to check on update"
+            label="Campos para comparar na atualização"
             :options="filterableFields"
             multiple
             clearable
@@ -83,8 +83,8 @@
           <toggle-switch-input
             v-model="clearEmptyFieldsOnUpdate"
             class="mt-4"
-            label="Clear empty fields on update"
-            help="When enabled, fields left empty in submission will clear existing values in Submission. When disabled, only filled fields are updated."
+            label="Limpar campos vazios ao atualizar"
+            help="Se ativado, campos deixados vazios apagam os valores existentes na resposta. Se desativado, só os campos preenchidos são atualizados."
           />
         </div>
       </div>
@@ -92,20 +92,20 @@
       <!-- Advanced Submission Settings -->
       <div class="mb-8">
         <h4 class="font-semibold mt-4 border-t pt-4">
-          Advanced Submission Options
+          Opções avançadas de envio
         </h4>
         <p class="text-gray-500 text-sm mb-4">
-          Configure advanced options for form submissions and data collection.
+          Configure opções avançadas de envio e coleta de dados.
         </p>
         
         <ToggleSwitchInput
           name="enable_partial_submissions"
           :form="form"
-          help="Capture incomplete form submissions to analyze user drop-off points and collect partial data even when users don't complete the entire form."
+          help="Registra respostas incompletas para analisar onde as pessoas desistem e coletar dados parciais mesmo quando o formulário não é concluído."
         >
           <template #label>
             <span class="text-sm">
-              Collect partial submissions
+              Coletar respostas parciais
             </span>
             <PlanTag
               feature="enable_partial_submissions"
@@ -119,17 +119,17 @@
 
       <div class="mb-8 border-t pt-4">
         <h4 class="font-semibold">
-          Submission Retention
+          Retenção de respostas
         </h4>
         <p class="text-neutral-500 text-sm mb-4">
-          Control how long submitted data remains stored in OpnForm.
+          Defina por quanto tempo as respostas ficam armazenadas.
         </p>
 
         <ToggleSwitchInput
           v-model="retentionEnabled"
           name="submission_retention_enabled"
-          label="Automatically delete old submissions"
-          help="Permanently deletes submissions after the selected period, measured from their last update."
+          label="Excluir respostas antigas automaticamente"
+          help="Exclui permanentemente as respostas após o período escolhido, contado a partir da última atualização."
         />
 
         <div
@@ -144,7 +144,7 @@
               :min="1"
               :max="3650"
               :required="true"
-              label="Delete after"
+              label="Excluir após"
               class="w-full sm:max-w-40"
             />
             <SelectInput
@@ -173,8 +173,8 @@
             color="warning"
             icon="i-heroicons-exclamation-triangle"
             variant="subtle"
-            title="Permanent deletion"
-            description="Changing to a shorter period can delete existing submissions during the next hourly cleanup. Deleted data and uploaded files cannot be restored."
+            title="Exclusão permanente"
+            description="Diminuir o período pode excluir respostas existentes na próxima limpeza (feita a cada hora). Dados e arquivos excluídos não podem ser recuperados."
             class="mt-4"
           />
         </div>
@@ -184,11 +184,11 @@
         class="mt-4"
         name="enable_ip_tracking"
         :form="form"
-        help="Collect and store submitter IP addresses for analytics, fraud prevention, and geographic insights. Helps identify submission patterns and improve security."
+        help="Coleta e armazena o endereço IP de quem responde, para análises, prevenção de fraudes e dados geográficos. Ajuda a identificar padrões e melhorar a segurança."
       >
         <template #label>
           <span class="text-sm">
-            Collect IP addresses
+            Coletar endereços IP
           </span>
           <PlanTag
             class="ml-1"
@@ -203,29 +203,29 @@
         color="neutral"
         icon="i-heroicons-shield-exclamation"
         variant="subtle"
-        title="GDPR and Privacy Compliance"
-        description="Ensure your privacy policy discloses IP address collection and obtain proper user consent where required."
+        title="LGPD e privacidade"
+        description="Garanta que sua política de privacidade informe a coleta de endereços IP e obtenha o consentimento das pessoas quando necessário."
         class="mt-4 max-w-md"
       />
 
       <!-- Post-Submission Behavior -->
       <div class="mb-8">
         <h4 class="font-semibold mt-4 border-t pt-4">
-          After Submission <PlanTag
+          Após o envio <PlanTag
             upgrade-modal-title="Upgrade to customize post-submission behavior"
             upgrade-modal-description="Customize post-submission behavior: redirect users, show custom messages, or trigger actions. Upgrade to unlock advanced options for a seamless user experience. We have plenty of other pro features to enhance your form functionality and user engagement."
           />
         </h4>
         <p class="text-neutral-500 text-sm mb-4">
-          Customize the user experience after form submission.
+          Personalize o que acontece depois que a pessoa envia o formulário.
         </p>
 
         <OptionSelectorInput
-          label="Action after form submission"
+          label="Ação após o envio"
           v-model="submissionOptions.submissionMode"
           :options="[
-            { name: 'default', label: 'Show Success page' },
-            { name: 'redirect', label: 'Redirect' }
+            { name: 'default', label: 'Mostrar página de sucesso' },
+            { name: 'redirect', label: 'Redirecionar' }
           ]"
           option-key="name"
           :columns="2"
@@ -244,7 +244,7 @@
                 :mentions="form.properties"
                 :computed-variables="form.computed_variables"
                 class="w-full max-w-xs"
-                label="Redirect URL"
+                label="URL de redirecionamento"
                 placeholder="https://www.google.com"
                 :required="true"
               />
@@ -258,7 +258,7 @@
                 name="submitted_text"
                 class="w-full"
                 :form="form"
-                label="Success page text"
+                label="Texto da página de sucesso"
                 :required="false"
                 :max-char-limit="10000"
                 :show-char-limit="true"
@@ -268,14 +268,14 @@
                   name="re_fillable"
                   class="w-full max-w-xs"
                   :form="form"
-                  label="Re-fillable form"
-                  help="Allows user to fill the form multiple times"
+                  label="Permitir preencher de novo"
+                  help="Permite preencher o formulário várias vezes"
                 />
                 <text-input
                   v-if="form.re_fillable"
                   name="re_fill_button_text"
                   :form="form"
-                  label="Text of re-start button"
+                  label="Texto do botão de recomeçar"
                 />
               </div>
 
@@ -288,24 +288,24 @@
                   name="pdf_download_enabled"
                   class="w-full max-w-xs"
                   :form="form"
-                  label="Show PDF download button"
-                  help="Allow respondents to download a PDF on the success page"
+                  label="Mostrar botão de baixar PDF"
+                  help="Permite baixar um PDF na página de sucesso"
                 />
                 <template v-if="form.pdf_download_enabled">
                   <text-input
                     name="pdf_download_button_text"
                     :form="form"
-                    label="Text of download button"
-                    placeholder="Download PDF"
+                    label="Texto do botão de download"
+                    placeholder="Baixar PDF"
                   />
                   <select-input
                     name="pdf_template_id"
                     class="w-full mt-4"
                     :form="form"
-                    label="PDF template"
+                    label="Modelo de PDF"
                     :options="pdfTemplateOptions"
                     :required="true"
-                    help="Select the PDF template to use for the download button"
+                    help="Selecione o modelo de PDF usado no botão de download"
                   />
                 </template>
               </div>
@@ -317,28 +317,28 @@
       <!-- Editable Submissions Settings -->
       <div class="mb-8">
         <h4 class="font-semibold mt-4 border-t pt-4">
-          Editable Submissions <PlanTag
+          Respostas editáveis <PlanTag
               class="ml-1"
               upgrade-modal-title="Upgrade to use Editable Submissions"
               upgrade-modal-description="On the Free plan, you can try out all paid features only within the form editor. Upgrade your plan to allow users to update their submissions via a unique URL, and much more. Gain full access to all advanced features."
             />
         </h4>
         <p class="text-gray-500 text-sm mb-4">
-          Allow respondents to edit and update their submissions via a unique link.
+          Permite editar e atualizar a resposta por meio de um link único.
         </p>
         <toggle-switch-input
           name="editable_submissions"
           class="w-full max-w-sm"
-          help="Allows users to edit submissions via unique URL"
+          help="Permite editar a resposta por uma URL única"
           :form="form"
-          label="Enable editable submissions"
+          label="Ativar respostas editáveis"
         />
         <text-input
           v-if="form.editable_submissions"
           name="editable_submissions_button_text"
           class="w-full max-w-64 mt-4"
           :form="form"
-          label="Edit submission button text"
+          label="Texto do botão de editar resposta"
           :required="true"
         />
       </div>

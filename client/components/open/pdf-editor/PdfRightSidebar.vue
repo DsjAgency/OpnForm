@@ -18,7 +18,7 @@
               v-model="formFieldsSearch"
               variant="outline"
               class="w-full"
-              placeholder="Search fields & variables..."
+              placeholder="Buscar campos e variáveis..."
               icon="i-heroicons-magnifying-glass-solid"
               :ui="{ trailing: 'pe-1' }"
               @click.stop
@@ -30,8 +30,8 @@
                   variant="link"
                   size="sm"
                   icon="i-lucide-circle-x"
-                  aria-label="Clear"
-                  title="Clear"
+                  aria-label="Limpar"
+                  title="Limpar"
                   @click="formFieldsSearch = ''"
                 />
               </template>
@@ -46,7 +46,7 @@
           block
           trailing-icon="i-heroicons-chevron-down"
         >
-          Add Zone
+          Adicionar área
         </UButton>
       </UDropdownMenu>
     </div>
@@ -65,7 +65,7 @@
                 class="font-medium text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 transition-colors"
                 @click="goBackToZones"
               >
-                Zones
+                Áreas
               </button>
               <UIcon name="i-heroicons-chevron-right" class="w-3 h-3 text-neutral-400" />
               <span class="font-medium text-neutral-900 dark:text-white truncate">
@@ -89,8 +89,8 @@
           v-if="selectedZone.static_text !== undefined"
           v-model="selectedZone.static_text"
           name="static_text"
-          label="Static Text"
-          placeholder="Enter text..."
+          label="Texto fixo"
+          placeholder="Digite o texto..."
           size="sm"
           :editor-options="richTextOptions"
         />
@@ -98,14 +98,14 @@
           v-else-if="selectedZone.static_image !== undefined"
           v-model="selectedZone.static_image"
           name="static_image"
-          label="Image"
+          label="Imagem"
           size="sm"
         />
         <SelectInput
           v-else
           v-model="selectedZone.field_id"
           name="field_id"
-          label="Mapped Field"
+          label="Campo associado"
           :options="fieldOptions"
           size="sm"
         />
@@ -116,7 +116,7 @@
             <TextInput
               v-model="selectedZone.font_size"
               name="font_size"
-              label="Font Size (px)"
+              label="Tamanho da fonte (px)"
               native-type="number"
               :min="6"
               :max="72"
@@ -125,7 +125,7 @@
             />
             <div class="shrink-0">
               <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
-                Color
+                Cor
               </label>
               <input
                 v-model="selectedZone.font_color"
@@ -147,7 +147,7 @@
             <UIcon name="i-heroicons-cursor-arrow-ripple" class="w-6 h-6 text-neutral-400" />
           </div>
           <p class="text-sm text-neutral-500 dark:text-neutral-400">
-            No zones yet on this page
+            Nenhuma área nesta página ainda
           </p>
           <p class="text-xs text-neutral-400 dark:text-neutral-500 mt-1">
             Click "Add Zone" to map form fields to PDF locations
@@ -173,10 +173,10 @@
                 {{ getZoneListLabel(zone) }}
               </p>
               <p class="text-[11px] text-neutral-500 dark:text-neutral-400 mt-1">
-                Page {{ zone.page }} • {{ zone.font_size }}px
+                Página {{ zone.page }} • {{ zone.font_size }}px
               </p>
             </div>
-            <UTooltip arrow text="Open settings">
+            <UTooltip arrow text="Abrir configurações">
               <button
                 class="shrink-0 cursor-pointer rounded-sm p-1 transition-colors hover:bg-blue-100 text-neutral-300 hover:text-blue-500 flex items-center justify-center field-settings-button"
                 @click.stop="pdfStore.setSelectedZone(zone.id)"
@@ -234,7 +234,7 @@ const addZoneMenuItems = computed(() => {
 
   if (formFields.value.length) {
     const formFieldItems = [
-      { type: 'label', label: 'Form Fields' },
+      { type: 'label', label: 'Campos do formulário' },
       ...filteredFormFields.value.map((field) => ({
         label: field.name,
         onSelect: () => addZoneWithField(field),
@@ -244,8 +244,8 @@ const addZoneMenuItems = computed(() => {
       items.push(formFieldItems)
     } else if (formFieldsSearch.value.trim()) {
       items.push([
-        { type: 'label', label: 'Form Fields' },
-        { type: 'label', label: `No fields match "${formFieldsSearch.value}"` },
+        { type: 'label', label: 'Campos do formulário' },
+        { type: 'label', label: `Nenhum campo corresponde a "${formFieldsSearch.value}"` },
       ])
     }
   }
@@ -253,7 +253,7 @@ const addZoneMenuItems = computed(() => {
   if (computedVariables.value.length) {
     if (filteredComputedVariables.value.length) {
       items.push([
-        { type: 'label', label: 'Computed Variables' },
+        { type: 'label', label: 'Variáveis calculadas' },
         ...filteredComputedVariables.value.map((variable) => ({
           label: variable.name,
           icon: 'i-heroicons-variable',
@@ -262,15 +262,15 @@ const addZoneMenuItems = computed(() => {
       ])
     } else if (formFieldsSearch.value.trim()) {
       items.push([
-        { type: 'label', label: 'Computed Variables' },
-        { type: 'label', label: `No variables match "${formFieldsSearch.value}"` },
+        { type: 'label', label: 'Variáveis calculadas' },
+        { type: 'label', label: `Nenhuma variável corresponde a "${formFieldsSearch.value}"` },
       ])
     }
   }
 
   if (!hasSearchableItems || !formFieldsSearch.value.trim()) {
     items.push([
-      { type: 'label', label: 'Special Fields' },
+      { type: 'label', label: 'Campos especiais' },
       ...specialFields.value.map((field) => ({
         label: field.name,
         onSelect: () => addZoneWithField(field),
@@ -278,11 +278,11 @@ const addZoneMenuItems = computed(() => {
     ])
 
     items.push([{
-      label: 'Static Text',
+      label: 'Texto fixo',
       icon: 'i-heroicons-pencil',
       onSelect: () => addZoneWithField(null, 'static_text'),
     }, {
-      label: 'Image',
+      label: 'Imagem',
       icon: 'i-heroicons-photo',
       onSelect: () => addZoneWithField(null, 'static_image'),
     }])
@@ -320,7 +320,7 @@ const getStaticTextPreview = (zone) => {
       .trim()
   )
 
-  return text || 'Empty static text'
+  return text || 'Texto fixo vazio'
 }
 
 const getZoneListLabel = (zone) => {

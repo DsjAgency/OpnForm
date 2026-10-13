@@ -12,7 +12,7 @@
         class="text-neutral-500"
         @click="showCopyFormModal = true"
       >
-        Copy from
+        Copiar de
       </UButton>
       <UButton
         color="neutral"
@@ -22,7 +22,7 @@
         class="text-neutral-500"
         @click="showCopyToModal = true"
       >
-        Copy to
+        Copiar para
       </UButton>
       <UButton
         color="neutral"
@@ -32,7 +32,7 @@
         class="text-neutral-500"
         @click="clearAll"
       >
-        Clear
+        Limpar
       </UButton>
       <UButton
         color="neutral"
@@ -46,7 +46,7 @@
 
     <!-- Conditions Card -->
     <div class="mt-4">
-      <p class="text-xs font-medium text-gray-600 mb-2">When following condition(s) are true</p>
+      <p class="text-xs font-medium text-gray-600 mb-2">Quando as condições abaixo forem verdadeiras</p>
       <div class="p-3 border border-gray-200 rounded-lg bg-gray-50/50 hover:bg-gray-50 transition-colors">
       <UPopover
         :content="{ 
@@ -66,7 +66,7 @@
           size="sm"
           class="w-full justify-start font-medium hover:bg-white transition-colors"
         >
-          {{ hasConditions ? `${conditionsCount} rule${conditionsCount > 1 ? 's' : ''}` : 'Add rule' }}
+          {{ hasConditions ? `${conditionsCount} regra${conditionsCount > 1 ? 's' : ''}` : 'Adicionar regra' }}
         </UButton>
 
         <template #content>
@@ -109,7 +109,7 @@
           v-model="logic.actions"
           name="actions"
           :multiple="true"
-          placeholder="Select actions..."
+          placeholder="Selecione as ações..."
           :options="actionOptions"
           @update:model-value="onActionInput"
           clearable
@@ -118,20 +118,20 @@
     </div>
 
     <p class="text-neutral-400 text-xs mt-2">
-      Note that hidden fields can never be required.
+      Campos ocultos nunca podem ser obrigatórios.
     </p>
 
     <UModal
       v-model:open="showCopyFormModal"
-      title="Copy logic from another field"
-      :description="`Select another field/block to copy its logic and apply it to '${field.name}'.`"
+      title="Copiar lógica de outro campo"
+      :description="`Selecione outro campo/bloco para copiar a lógica dele e aplicá-la a '${field.name}'.`"
     >
       <template #body>
         <USelectMenu
           v-model="copyFrom"
           :items="copyFromOptions"
           value-key="value"
-          placeholder="Choose a field/block..."
+          placeholder="Escolha um campo/bloco..."
           searchable
         />
       </template>
@@ -140,28 +140,28 @@
         <UButton
           color="neutral"
           variant="outline"
-          label="Close"
+          label="Fechar"
           @click="showCopyFormModal = false"
         />
         <UButton
           color="primary"
           @click="copyLogic"
-          label="Confirm & Copy"
+          label="Confirmar e copiar"
         />
       </template>
     </UModal>
 
     <UModal
       v-model:open="showCopyToModal"
-      title="Copy logic to other fields"
-      :description="`Select other fields to copy the logic from '${field.name}' to.`"
+      title="Copiar lógica para outros campos"
+      :description="`Selecione os campos que vão receber a lógica de '${field.name}'.`"
     >
       <template #body>
         <USelectMenu
           v-model="copyTo"
           :items="copyToOptions"
           value-key="value"
-          placeholder="Choose fields..."
+          placeholder="Escolha os campos..."
           :multiple="true"
           searchable
         />
@@ -171,13 +171,13 @@
         <UButton
           color="neutral"
           variant="outline"
-          label="Close"
+          label="Fechar"
           @click="showCopyToModal = false"
         />
         <UButton
           color="primary"
           @click="copyLogicToFields"
-          label="Confirm & Copy"
+          label="Confirmar e copiar"
         />
       </template>
     </UModal>
@@ -270,35 +270,35 @@ export default {
         ].includes(this.field.type)
       ) {
         if (this.field.hidden) {
-          return [{ name: "Show Block", value: "show-block" }]
+          return [{ name: "Mostrar bloco", value: "show-block" }]
         } else {
-          return [{ name: "Hide Block", value: "hide-block" }]
+          return [{ name: "Ocultar bloco", value: "hide-block" }]
         }
       }
 
       if (this.field.hidden) {
         return [
-          { name: "Show Block", value: "show-block" },
-          { name: "Require answer", value: "require-answer" },
+          { name: "Mostrar bloco", value: "show-block" },
+          { name: "Exigir resposta", value: "require-answer" },
         ]
       } else if (this.field.disabled) {
         return [
-          { name: "Enable Block", value: "enable-block" },
+          { name: "Ativar bloco", value: "enable-block" },
           this.field.required
-            ? { name: "Make it optional", value: "make-it-optional" }
+            ? { name: "Tornar opcional", value: "make-it-optional" }
             : {
-                name: "Require answer",
+                name: "Exigir resposta",
                 value: "require-answer",
               },
         ]
       } else {
         return [
-          { name: "Hide Block", value: "hide-block" },
-          { name: "Disable Block", value: "disable-block" },
+          { name: "Ocultar bloco", value: "hide-block" },
+          { name: "Desativar bloco", value: "disable-block" },
           this.field.required
-            ? { name: "Make it optional", value: "make-it-optional" }
+            ? { name: "Tornar opcional", value: "make-it-optional" }
             : {
-                name: "Require answer",
+                name: "Exigir resposta",
                 value: "require-answer",
               },
         ]

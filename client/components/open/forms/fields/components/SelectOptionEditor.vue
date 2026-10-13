@@ -5,7 +5,7 @@
   >
     <EditorSectionHeader
       icon="i-heroicons-chevron-up-down-20-solid"
-      title="Select Options"
+      title="Opções de seleção"
     />
 
     <div class="space-y-4">
@@ -17,24 +17,24 @@
           name="option_display_mode"
           seamless
           :options="[
-            { name: 'text_only', label: 'Text only' },
-            { name: 'text_and_image', label: 'Text & Image' },
-            { name: 'image_only', label: 'Image only' }
+            { name: 'text_only', label: 'Somente texto' },
+            { name: 'text_and_image', label: 'Texto e imagem' },
+            { name: 'image_only', label: 'Somente imagem' }
           ]"
-          label="Option display style"
+          label="Estilo de exibição das opções"
         />
 
         <!-- Image Size (when images enabled) -->
         <OptionSelectorInput
           v-if="hasImages"
           seamless
-          label="Image Size"
+          label="Tamanho da imagem"
           v-model="field.option_image_size"
           name="option_image_size"
           :options="[
-            { name: 'sm', label:'Small'},
-            { name: 'md', label:'Medium' },
-            { name: 'lg', label:'Large' },
+            { name: 'sm', label:'Pequena'},
+            { name: 'md', label:'Média' },
+            { name: 'lg', label:'Grande' },
           ]"
           :multiple="false"
           :columns="3"
@@ -45,7 +45,7 @@
       <!-- Options list editor -->
       <div class="space-y-2">
         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Options
+          Opções
         </label>
         
         <div class="rounded-md border border-neutral-200 dark:border-neutral-700 overflow-hidden">
@@ -94,7 +94,7 @@
                       input: '!border-0 !ring-0 !shadow-none !px-0 !bg-transparent',
                       wrapper: '!shadow-none'
                     }"
-                    placeholder="Option Text"
+                    placeholder="Texto da opção"
                     @update:model-value="updateOptionName(index, $event)"
                   />
                 </div>
@@ -107,7 +107,7 @@
                   size="2xs"
                   class="shrink-0 opacity-50 hover:opacity-100 transition-opacity"
                   :disabled="options.length <= 1"
-                  title="Remove option"
+                  title="Remover opção"
                   @click="removeOption(index)"
                 />
               </div>
@@ -118,7 +118,7 @@
         <!-- Add option button -->
         <UButton
           icon="i-heroicons-plus"
-          label="Add Option"
+          label="Adicionar opção"
           color="neutral"
           variant="outline"
           size="xs"
@@ -134,8 +134,8 @@
         <toggle-switch-input
           v-if="isFocused"
           :model-value="field.use_focused_selector === false"
-          label="Use dropdown instead"
-          help="Use classic dropdown instead of focused selector with keyboard shortcuts"
+          label="Usar lista suspensa"
+          help="Usa a lista suspensa clássica em vez do seletor com atalhos de teclado"
           @update:model-value="onUseDropdownChange"
         />
 
@@ -144,7 +144,7 @@
           v-if="!isFocusedSelectorActive && !hasImages"
           :form="field"
           name="allow_creation"
-          label="Allow respondent to create new options"
+          label="Permitir que a pessoa crie novas opções"
           @update:model-value="onAllowCreationChange"
         />
 
@@ -153,7 +153,7 @@
           v-if="!isFocusedSelectorActive"
           :form="field"
           name="without_dropdown"
-          label="Use radio buttons"
+          label="Usar botões de opção"
           @update:model-value="onWithoutDropdownChange"
         />
 
@@ -161,7 +161,7 @@
         <toggle-switch-input
           :form="field"
           name="shuffle_options"
-          label="Randomize options order"
+          label="Ordem aleatória das opções"
         />
 
         <!-- Min/Max Selection Constraints for multi_select only -->
@@ -173,7 +173,7 @@
               :min="0"
               class="flex-1"
               :form="field"
-              label="Min. required"
+              label="Mín. obrigatório"
               placeholder="1"
               @update:model-value="onMinSelectionChange"
             />
@@ -183,7 +183,7 @@
               :min="1"
               class="flex-1"
               :form="field"
-              label="Max. allowed"
+              label="Máx. permitido"
               placeholder="2"
               @update:model-value="onMaxSelectionChange"
             />
@@ -192,11 +192,11 @@
               color="neutral"
               variant="outline"
               class="self-end mb-1"
-              title="Clear both values"
+              title="Limpar os dois valores"
               @click="clearMinMaxSelection"
             />
           </div>
-          <InputHelp help="Set min/max options allowed, or leave empty for unlimited. Save form to test changes." />
+          <InputHelp help="Defina o mínimo/máximo de opções, ou deixe vazio para sem limite. Salve o formulário para testar." />
         </template>
       </div>
     </div>
@@ -241,10 +241,10 @@ function addOption() {
   // Generate a unique default name
   const existingNames = new Set(options.value.map(o => o.name))
   let counter = options.value.length + 1
-  let defaultName = `Option ${counter}`
+  let defaultName = `Opção ${counter}`
   while (existingNames.has(defaultName)) {
     counter++
-    defaultName = `Option ${counter}`
+    defaultName = `Opção ${counter}`
   }
 
   const newOption = {

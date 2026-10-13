@@ -1,6 +1,6 @@
 <template>
   <AdminCard
-    :title="isBlocked ? 'Unblock User' : 'Block User'"
+    :title="isBlocked ? 'Desbloquear usuário' : 'Bloquear usuário'"
     :icon="isBlocked ? 'heroicons:lock-open-20-solid' : 'heroicons:no-symbol-20-solid'"
   >
     <div class="space-y-6 flex flex-col justify-between">
@@ -16,11 +16,11 @@
 
       <VForm @submit.prevent="submit">
         <TextAreaInput
-          label="Reason"
+          label="Motivo"
           name="reason"
           :form="form"
           :required="true"
-          help="Reason will be sent to the user via email."
+          help="O motivo será enviado ao usuário por e-mail."
         />
         <div class="flex space-x-2 mt-4">
           <UButton
@@ -28,14 +28,14 @@
             :loading="form.busy"
             type="submit"
             class="grow"
-            :label="isBlocked ? 'Unblock User' : 'Block User'"
+            :label="isBlocked ? 'Desbloquear usuário' : 'Bloquear usuário'"
           />
           <UButton
             v-if="blockingHistory && blockingHistory.length"
             variant="outline"
             icon="i-heroicons-clock"
             @click="isModalOpen = true"
-            label="View History"
+            label="Ver histórico"
           />
         </div>
       </VForm>
@@ -43,7 +43,7 @@
     <UModal 
       v-model:open="isModalOpen"
       :ui="{ content: 'sm:max-w-4xl' }"
-      title="Blocking History"
+      title="Histórico de bloqueios"
     >
       <template #body>
         <UTable 
@@ -76,36 +76,36 @@ const form = useForm({
 const historyColumns = [
   {
     accessorKey: 'blocked_at',
-    header: 'Blocked At',
+    header: 'Bloqueado em',
     cell: ({ row }) => {
       return row.original.blocked_at ? new Date(row.original.blocked_at).toLocaleString() : ''
     }
   },
   {
     accessorKey: 'blocked_by',
-    header: 'Blocked By',
+    header: 'Bloqueado por',
     cell: ({ row }) => {
       return row.original.blocked_by ? row.original.blocked_by : 'AI'
     }
   },
   {
     accessorKey: 'reason',
-    header: 'Reason'
+    header: 'Motivo'
   },
   {
     accessorKey: 'unblocked_at',
-    header: 'Unblocked At',
+    header: 'Desbloqueado em',
     cell: ({ row }) => {
       return row.original.unblocked_at ? new Date(row.original.unblocked_at).toLocaleString() : ''
     }
   },
   {
     accessorKey: 'unblocked_by',
-    header: 'Unblocked By'
+    header: 'Desbloqueado por'
   },
   {
     accessorKey: 'unblock_reason',
-    header: 'Unblock Reason'
+    header: 'Motivo do desbloqueio'
   }
 ]
 
@@ -120,7 +120,7 @@ const lastBlock = computed(() => {
 
 const alertContent = computed(() => {
   if (isBlocked.value) {
-    const blockedBy = escapeHtml(lastBlock.value?.blocked_by || 'Automatically blocked by our AI')
+    const blockedBy = escapeHtml(lastBlock.value?.blocked_by || 'Bloqueado automaticamente pela IA')
     const blockedOn = escapeHtml(new Date(props.user.blocked_at).toLocaleString())
     const reason = escapeHtml(lastBlock.value?.reason || '')
     return {
@@ -143,7 +143,7 @@ const alertContent = computed(() => {
       icon: 'i-heroicons-exclamation-triangle',
       color: 'warning',
       variant: 'subtle',
-      content: 'This will block the user from accessing their account and set all their forms to draft.'
+      content: 'O usuário perderá o acesso à conta e todos os formulários dele passarão para rascunho.'
     }
   }
 })
@@ -161,7 +161,7 @@ async function submit() {
     emit('user-updated', response.user)
     form.reset()
   } catch (error) {
-    alert.error(error.data?.message || 'An error occurred.')
+    alert.error(error.data?.message || 'Ocorreu um erro.')
   }
 }
 </script> 

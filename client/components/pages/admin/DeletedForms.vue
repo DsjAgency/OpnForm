@@ -1,13 +1,13 @@
 <template>
   <AdminCard
-    title="Deleted forms"
+    title="Formulários excluídos"
     icon="heroicons:trash-16-solid"
   >
     <UTable
       :loading="loading"
       :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Loading...' }"
       :progress="{ color: 'primary', animation: 'carousel' }"
-      :empty-state="{ icon: 'i-heroicons-circle-stack-20-solid', label: 'No items.' }"
+      :empty-state="{ icon: 'i-heroicons-circle-stack-20-solid', label: 'Nenhum item.' }"
       :columns="columns"
       :data="rows"
       class="-mx-6"
@@ -20,7 +20,7 @@
           variant="outline"
           @click.prevent="restoreForm(row.original.slug)"
         >
-          Restore
+          Restaurar
         </UButton>
       </template>
     </UTable>
@@ -70,7 +70,7 @@ const getDeletedForms = () => {
 
 const restoreForm = (slug) => {
     return useAlert().confirm(
-        "Are you sure you want to restore this form?",
+        "Tem certeza de que quer restaurar este formulário?",
         () => {
             restoringForm.value = true
             adminApi.forms.restore(slug).then(data => {
@@ -94,19 +94,19 @@ const columns = [{
     sortable: true
 }, {
     accessorKey: 'title',
-    header: 'Title',
+    header: 'Título',
     sortable: true
 }, {
     accessorKey: 'created_by',
-    header: 'Created by',
+    header: 'Criado por',
     sortable: true
 }, {
     accessorKey: 'deleted_at',
-    header: 'Deleted at',
+    header: 'Excluído em',
     sortable: true,
 }, {
     id: 'actions',
-    header: 'Restore',
+    header: 'Restaurar',
     sortable: false,
 }]
 

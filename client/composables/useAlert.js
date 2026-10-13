@@ -13,12 +13,12 @@ export function useAlert() {
     const shareUrl = form?.share_url || options.shareUrl
     if (form && shareUrl) {
       composedActions.push({
-        label: options.openFormLabel ?? 'Open form',
+        label: options.openFormLabel ?? 'Abrir formulário',
         icon: 'i-heroicons-arrow-top-right-on-square',
         onClick: () => {
           if (form.visibility === 'draft') {
             useAlert().warning(
-              'This form is currently in Draft mode and is not publicly accessible, You can change the form status on the edit form page.'
+              'Este formulário está em rascunho e não está acessível publicamente. Você pode mudar o status na página de edição do formulário.'
             )
           } else if (import.meta.client) {
             window.open(shareUrl, '_blank')
@@ -34,7 +34,7 @@ export function useAlert() {
 
     return useToast().add({
       icon: 'i-heroicons-check-circle',
-      title: options.title ?? 'Success',
+      title: options.title ?? 'Sucesso',
       description: message,
       color: 'success',
       closeIcon: 'i-heroicons-x-mark-20-solid',
@@ -46,7 +46,7 @@ export function useAlert() {
   function error (message, autoClose = 10000, options = {}) {
     return useToast().add({
       icon: 'i-heroicons-exclamation-circle',
-      title: options.title ?? 'Error',
+      title: options.title ?? 'Erro',
       description: message,
       color: 'error',
       duration: autoClose,
@@ -58,7 +58,7 @@ export function useAlert() {
   function warning (message, autoClose = 10000, options = {}) {
     return useToast().add({
       icon: 'i-heroicons-exclamation-triangle',
-      title: options.title ?? 'Warning',
+      title: options.title ?? 'Atenção',
       description: message,
       color: 'warning',
       duration: autoClose,
@@ -76,13 +76,13 @@ export function useAlert() {
   ) {
     return useToast().add({
       icon: 'i-heroicons-question-mark-circle',
-      title: options.title ?? 'Are you sure?',
+      title: options.title ?? 'Tem certeza?',
       description: message,
       color: 'info',
       duration: autoClose,
       actions: [
-        { label: options.successLabel ?? 'Yes', onClick: onSuccess },
-        { label: options.failureLabel ?? 'No', onClick: onFailure }
+        { label: options.successLabel ?? 'Sim', onClick: onSuccess },
+        { label: options.failureLabel ?? 'Não', onClick: onFailure }
       ],
       ...options
     })
@@ -119,7 +119,7 @@ export function useAlert() {
 
   function formValidationError(error, form, autoClose = 10000, options = {}) {
     if (!error || !error.errors) {
-      return error(error.message || 'An unknown validation error occurred', autoClose, options)
+      return error(error.message || 'Ocorreu um erro de validação desconhecido', autoClose, options)
     }
 
     const t = useNuxtApp().$i18n.t

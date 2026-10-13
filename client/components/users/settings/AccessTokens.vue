@@ -3,15 +3,15 @@
     <!-- Header -->
     <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div>
-        <h3 class="text-lg font-medium text-neutral-900">API Access Tokens</h3>
+        <h3 class="text-lg font-medium text-neutral-900">Tokens de acesso à API</h3>
         <p class="mt-1 text-sm text-neutral-500">
-          Manage your API access tokens for programmatic access.
+          Gerencie seus tokens de acesso para usar a API.
         </p>
       </div>
 
       <div class="flex shrink-0 items-center gap-2">
         <UButton
-          label="API Docs"
+          label="Documentação da API"
           icon="i-heroicons-book-open"
           variant="outline"
           color="primary"
@@ -20,7 +20,7 @@
         />
 
         <UButton
-          label="Create New Token"
+          label="Criar novo token"
           icon="i-heroicons-plus"
           :loading="loading"
           @click="accessTokenModal = true"
@@ -36,13 +36,13 @@
           class="w-12 h-12 text-neutral-400 mx-auto mb-4" 
         />
         <h4 class="text-lg font-medium text-neutral-900 mb-2">
-          No access tokens yet
+          Nenhum token de acesso ainda
         </h4>
         <p class="text-neutral-500 mb-4">
-          Create your first API access token to start using our API programmatically.
+          Crie seu primeiro token de acesso para começar a usar a API.
         </p>
         <UButton
-          label="Create Your First Token"
+          label="Criar primeiro token"
           icon="i-heroicons-plus"
           @click="accessTokenModal = true"
         />
@@ -58,7 +58,7 @@
       >
         <template #name-cell="{ row: { original: item } }">
           <span class="font-semibold">{{ item.name }}</span>
-          <p v-if="item.expires_at" class="text-xs text-neutral-500">Expires {{ new Date(item.expires_at).toLocaleString() }}</p>
+          <p v-if="item.expires_at" class="text-xs text-neutral-500">Expira em {{ new Date(item.expires_at).toLocaleString() }}</p>
         </template>
 
         <template #abilities-cell="{ row: { original: item } }">
@@ -83,9 +83,9 @@
     <!-- API Information -->
     <div class="space-y-4 pt-8 border-t border-neutral-200">
       <div>
-        <h3 class="text-lg font-medium text-neutral-900">API Information</h3>
+        <h3 class="text-lg font-medium text-neutral-900">Sobre a API</h3>
         <p class="text-sm text-neutral-500 mt-1">
-          Learn how to use your access tokens with our API.
+          Saiba como usar seus tokens de acesso com a API.
         </p>
       </div>
 
@@ -94,9 +94,9 @@
           <div class="flex items-start gap-3">
             <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
             <div>
-              <h4 class="text-sm font-medium text-neutral-900">Getting Started</h4>
+              <h4 class="text-sm font-medium text-neutral-900">Primeiros passos</h4>
               <p class="text-sm text-neutral-600 mt-1">
-                Use your access tokens in the Authorization header: <code class="bg-neutral-200 px-1 rounded text-xs">Bearer YOUR_TOKEN</code>
+                Use o token no cabeçalho Authorization: <code class="bg-neutral-200 px-1 rounded text-xs">Bearer YOUR_TOKEN</code>
               </p>
             </div>
           </div>
@@ -104,9 +104,9 @@
           <div class="flex items-start gap-3">
             <UIcon name="i-heroicons-shield-check" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
             <div>
-              <h4 class="text-sm font-medium text-neutral-900">Security</h4>
+              <h4 class="text-sm font-medium text-neutral-900">Segurança</h4>
               <p class="text-sm text-neutral-600 mt-1">
-                Keep your tokens secure and never share them publicly. Rotate them regularly for better security.
+                Guarde seus tokens com segurança e nunca os compartilhe publicamente. Troque-os regularmente.
               </p>
             </div>
           </div>
@@ -114,9 +114,9 @@
           <div class="flex items-start gap-3">
             <UIcon name="i-heroicons-clock" class="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
             <div>
-              <h4 class="text-sm font-medium text-neutral-900">Rate Limits</h4>
+              <h4 class="text-sm font-medium text-neutral-900">Limites de uso</h4>
               <p class="text-sm text-neutral-600 mt-1">
-                API requests are rate limited. <a href="https://docs.opnform.com/api-reference/introduction#rate-limits" target="_blank" class="text-blue-500 hover:underline">Check our documentation</a> for current limits and best practices.
+                As requisições à API têm limite de taxa. <a href="https://docs.opnform.com/api-reference/introduction#rate-limits" target="_blank" class="text-blue-500 hover:underline">Veja a documentação</a> para conhecer os limites atuais e boas práticas.
               </p>
             </div>
           </div>
@@ -159,13 +159,13 @@ const tableColumns = [
   {
     id: 'name',
     accessorKey: 'name',
-    header: 'Name',
+    header: 'Nome',
     enableSorting: true
   },
   {
     id: 'abilities',
     accessorKey: 'abilities',
-    header: 'Abilities',
+    header: 'Permissões',
     enableSorting: false
   },
   {
@@ -177,11 +177,11 @@ const tableColumns = [
 ]
 
 const deleteToken = (token) => {
-  alert.confirm("Do you really want to delete this token?", () => {
+  alert.confirm("Quer mesmo excluir este token?", () => {
     deleteTokenMutation.mutateAsync(token.id).then(() => {
-      alert.success("Token deleted successfully")
+      alert.success("Token excluído")
     }).catch(() => {
-      alert.error("An error occurred while deleting the token")
+      alert.error("Ocorreu um erro ao excluir o token")
     })
   })
 }

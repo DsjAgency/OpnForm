@@ -103,7 +103,7 @@
         :items="addMenuItems"
       >
         <UButton
-          label="Add rule"
+          label="Adicionar regra"
           icon="i-heroicons-plus"
           size="sm"
           color="neutral"
@@ -134,7 +134,7 @@ const props = defineProps({
   },
   whereText: {
     type: String,
-    default: 'Where'
+    default: 'Onde'
   }
 })
 
@@ -143,11 +143,11 @@ const emit = defineEmits(['query-update'])
 const addMenuItems = [
   [
     {
-      label: 'Add Rule',
+      label: 'Adicionar regra',
       onClick: () => handleAddRule()
     },
     {
-      label: 'Add Rule Group',
+      label: 'Adicionar grupo de regras',
       onClick: () => addGroup()
     }
   ]
@@ -265,18 +265,18 @@ function getRuleMenuItems(index) {
   return [
     [
       {
-        label: 'Remove',
+        label: 'Remover',
         icon: 'i-heroicons-trash',
         color: 'error',
         onClick: () => removeRule(index)
       },
       {
-        label: 'Duplicate',
+        label: 'Duplicar',
         icon: 'i-heroicons-document-duplicate',
         onClick: () => duplicateRule(index)
       },
       {
-        label: 'Turn into group',
+        label: 'Transformar em grupo',
         icon: 'i-heroicons-arrow-path',
         onClick: () => turnIntoGroup(index)
       }
@@ -290,13 +290,13 @@ function getGroupMenuItems(index) {
   
   const items = [
     {
-      label: 'Remove',
+      label: 'Remover',
       icon: 'i-heroicons-trash',
       color: 'error',
       onClick: () => removeRule(index)
     },
     {
-      label: 'Duplicate',
+      label: 'Duplicar',
       icon: 'i-heroicons-document-duplicate',
       onClick: () => duplicateGroup(index)
     }
@@ -304,7 +304,7 @@ function getGroupMenuItems(index) {
 
   if (canTurnIntoRule) {
     items.push({
-      label: 'Turn into rule',
+      label: 'Transformar em regra',
       icon: 'i-heroicons-arrow-path',
       onClick: () => turnIntoRule(index)
     })

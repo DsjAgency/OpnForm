@@ -2,7 +2,7 @@
   <div class="relative min-h-0">
     <div class="flex gap-2 sticky top-0 bg-white border-b z-10 p-4">
       <UTooltip
-        text="Shortcut"
+        text="Atalho"
         :kbds="['meta', 'B']"
         arrow
       >
@@ -13,7 +13,7 @@
           class="flex-grow justify-center"
           @click.prevent="openAddFieldSidebar"
         >
-          Add Block
+          Adicionar bloco
         </UButton>
       </UTooltip>
     </div>
@@ -64,7 +64,7 @@
                 </EditableTag>
               </div>
 
-              <UTooltip arrow :text="element.hidden ? 'Show Block' : 'Hide Block'">
+              <UTooltip arrow :text="element.hidden ? 'Mostrar bloco' : 'Ocultar bloco'">
                 <button
                   class="hidden !cursor-pointer rounded-sm p-1 transition-colors hover:bg-blue-100 items-center justify-center"
                   :class="{
@@ -89,7 +89,7 @@
               </UTooltip>
               <UTooltip
                 v-if="element.type && typeof element.type === 'string' && !element.type.startsWith('nf-')"
-                :text="element.required ? 'Make it optional' : 'Make it required'"
+                :text="element.required ? 'Tornar opcional' : 'Tornar obrigatório'"
                 arrow
               >
                 <button
@@ -107,7 +107,7 @@
                   </div>
                 </button>
               </UTooltip>
-              <UTooltip arrow text="Open settings">
+              <UTooltip arrow text="Abrir configurações">
                 <button
                   class="cursor-pointer rounded-sm p-1 transition-colors hover:bg-blue-100 text-neutral-300 hover:text-blue-500 flex items-center justify-center field-settings-button"
                   @click="editOptions(index)"

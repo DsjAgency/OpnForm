@@ -4,7 +4,7 @@
     :ui="{ content: 'sm:max-w-md' }"
   >
     <template #header>
-      <h2 class="text-lg font-semibold">Recovery Codes</h2>
+      <h2 class="text-lg font-semibold">Códigos de recuperação</h2>
     </template>
 
     <template #body>
@@ -14,7 +14,7 @@
           <UAlert
             color="warning"
             variant="subtle"
-            description="These recovery codes will only be shown once. Please save them in a safe place. You can use them to access your account if you lose access to your authenticator device."
+            description="Estes códigos de recuperação só serão exibidos uma vez. Guarde-os em um lugar seguro. Você pode usá-los para entrar na sua conta se perder o acesso ao app autenticador."
           />
 
           <div class="space-y-2">
@@ -28,7 +28,7 @@
                 v-if="typeof codeItem === 'object' && codeItem.used_at"
                 class="text-xs text-neutral-500 ml-2 font-sans"
               >
-                Used {{ formatDate(codeItem.used_at) }}
+                Usado em {{ formatDate(codeItem.used_at) }}
               </span>
             </div>
           </div>
@@ -40,14 +40,14 @@
               variant="outline"
               @click="handleCopy"
             >
-              Copy All Codes
+              Copiar todos os códigos
             </UButton>
             <UButton
               block
               color="primary"
               @click="handleClose"
             >
-              I've Saved These Codes
+              Já guardei os códigos
             </UButton>
           </div>
         </div>

@@ -19,15 +19,15 @@
       v-model="activeTab"
       :content="false"
       :items="[
-        { label: 'Build', value: 'build' },
-        { label: 'Design', value: 'design'}
+        { label: 'Construir', value: 'build' },
+        { label: 'Aparência', value: 'design'}
       ]"
     />
     <UButton
       color="neutral"
       variant="subtle"
       icon="i-heroicons-cog-6-tooth"
-      label="Settings"
+      label="Configurações"
       @click="settingsModal = true"
     />
     <FormSettingsModal
@@ -56,14 +56,14 @@
         color="warning"
         variant="soft"
         icon="i-heroicons-pencil-square"
-        label="Draft"
+        label="Rascunho"
       />
       <UBadge
         v-else-if="form.visibility == 'closed'"
         color="neutral"
         variant="soft"
         icon="i-heroicons-lock-closed-20-solid"
-        label="Closed"
+        label="Encerrado"
       />
     </div>
 
@@ -76,7 +76,7 @@
     >
       <TrackClick name="form_editor_help_button_clicked">
         <UTooltip
-          text="Help"
+          text="Ajuda"
           class="items-center relative"
           :content="{ side: 'bottom' }"
           arrow
@@ -112,7 +112,7 @@
             data-testid="save-form-button"
             icon="i-ic-outline-save"
             @click="emit('save-form')"
-            :label="form.visibility === 'public' ? 'Publish Form' : 'Save Changes'"
+            :label="form.visibility === 'public' ? 'Publicar formulário' : 'Salvar alterações'"
           />
         </TrackClick>
       </UTooltip>

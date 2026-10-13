@@ -21,7 +21,7 @@
           class="w-10 h-10 text-blue-800"
         />
         <div class="p-5 text-blue-800 text-center">
-          OpnForm is not optimized for mobile devices. Please open this page on a device with a larger screen.
+          O OpnForm não é otimizado para celulares. Abra esta página em um dispositivo com tela maior.
         </div>
         <div>
           <UButton
@@ -31,7 +31,7 @@
             class="w-full"
             :to="{ name: 'home' }"
           >
-            Back to dashboard
+            Voltar ao painel
           </UButton>
         </div>
       </div>
@@ -60,7 +60,7 @@
             class="size-5 shrink-0 text-amber-600"
           />
           <p class="text-sm">
-            This form has {{ backgroundValidationIssueCount }} {{ backgroundValidationIssueCount === 1 ? 'issue' : 'issues' }} to fix before it can be saved again.
+            Este formulário tem {{ backgroundValidationIssueCount }} {{ backgroundValidationIssueCount === 1 ? 'problema' : 'problemas' }} para corrigir antes de ser salvo novamente.
           </p>
         </div>
         <UButton
@@ -69,7 +69,7 @@
           size="sm"
           @click="showValidationErrors"
         >
-          Review issues
+          Revisar problemas
         </UButton>
       </div>
 
@@ -475,7 +475,7 @@ const saveFormEdit = () => {
     } else {
       console.error(error)
       useAlert().error(
-        "An error occurred while saving the form, please try again.",
+        "Ocorreu um erro ao salvar o formulário. Tente novamente.",
       )
       captureException(error)
     }
@@ -486,7 +486,7 @@ const saveFormCreate = () => {
   if (form.value.busy) return
 
   if (!workspace.value?.id) {
-    useAlert().error("Your workspace is still loading, please try again.")
+    useAlert().error("Seu espaço de trabalho ainda está carregando. Tente novamente.")
     return
   }
 
@@ -540,7 +540,7 @@ const saveFormCreate = () => {
       showValidationErrors()
     } else {
       useAlert().error(
-        "An error occurred while saving the form, please try again.",
+        "Ocorreu um erro ao salvar o formulário. Tente novamente.",
       )
       captureException(error)
     }

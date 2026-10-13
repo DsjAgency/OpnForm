@@ -78,15 +78,15 @@ const aiFormula = useForm({
 })
 
 const hasExistingFormula = computed(() => Boolean(props.currentFormula?.trim()))
-const actionLabel = computed(() => hasExistingFormula.value ? 'Update with AI' : 'Generate with AI')
-const popoverTitle = computed(() => hasExistingFormula.value ? 'Update formula with AI' : 'Generate formula with AI')
+const actionLabel = computed(() => hasExistingFormula.value ? 'Atualizar com IA' : 'Gerar com IA')
+const popoverTitle = computed(() => hasExistingFormula.value ? 'Atualizar fórmula com IA' : 'Gerar fórmula com IA')
 const popoverDescription = computed(() => hasExistingFormula.value
-  ? 'Describe the change you want. AI will use the current formula and your form fields.'
-  : 'Describe what you want to calculate and AI will generate a formula using your form fields.'
+  ? 'Descreva a mudança que você quer. A IA vai usar a fórmula atual e os campos do formulário.'
+  : 'Descreva o que você quer calcular e a IA vai gerar uma fórmula usando os campos do formulário.'
 )
 const promptPlaceholder = computed(() => hasExistingFormula.value
-  ? 'e.g., Apply a 10% discount when quantity is over 100'
-  : 'e.g., Multiply price by quantity and apply 10% discount when quantity is over 100'
+  ? 'ex.: Aplicar 10% de desconto quando a quantidade for maior que 100'
+  : 'ex.: Multiplicar o preço pela quantidade e aplicar 10% de desconto quando a quantidade for maior que 100'
 )
 
 const availableFields = computed(() => {
@@ -128,7 +128,7 @@ const handleGenerate = () => {
   if (loading.value) return
 
   if (!aiFormula.formula_prompt?.trim()) {
-    useAlert().warning('Please describe the formula you want to generate.')
+    useAlert().warning('Descreva a fórmula que você quer gerar.')
     return
   }
 
@@ -143,7 +143,7 @@ const handleGenerate = () => {
     fetchGeneratedFormula(data.ai_form_completion_id)
   }).catch(error => {
     console.error('Failed to generate formula:', error)
-    useAlert().error(error.response?.data?.message ?? 'Failed to generate formula.')
+    useAlert().error(error.response?.data?.message ?? 'Não foi possível gerar a fórmula.')
     loading.value = false
   })
 }
@@ -176,17 +176,17 @@ const fetchGeneratedFormula = (generationId) => {
         }
         loading.value = false
         isPopoverOpen.value = false
-        useAlert().success(hasExistingFormula.value ? 'Formula updated successfully.' : 'Formula generated successfully.')
+        useAlert().success(hasExistingFormula.value ? 'Fórmula atualizada.' : 'Fórmula gerada.')
         aiFormula.formula_prompt = ''
       } else if (data.ai_form_completion.status === 'failed') {
-        useAlert().error(data.ai_form_completion.error ?? 'Something went wrong, please try again.')
+        useAlert().error(data.ai_form_completion.error ?? 'Algo deu errado. Tente novamente.')
         loading.value = false
       } else {
         setTimeout(checkFormulaStatus, 4000)
       }
     }).catch(error => {
       console.error(error)
-      useAlert().error(error.response?.data?.message ?? 'Failed to generate formula.')
+      useAlert().error(error.response?.data?.message ?? 'Não foi possível gerar a fórmula.')
       loading.value = false
     })
   }

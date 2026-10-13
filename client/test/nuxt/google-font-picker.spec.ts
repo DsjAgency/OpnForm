@@ -69,7 +69,7 @@ describe('GoogleFontPicker', () => {
     await flushPromises()
 
     expect(vi.mocked(useElementVisibility).mock.calls.at(-1)?.[1]?.root).toBeInstanceOf(HTMLElement)
-    expect(wrapper.text()).toContain('The quick brown fox jumped over the lazy dog')
+    expect(wrapper.text()).toContain('Um pequeno jabuti xereta viu dez cegonhas felizes')
     wrapper.unmount()
   })
 
@@ -80,7 +80,7 @@ describe('GoogleFontPicker', () => {
     await wrapper.setProps({ show: true })
     await flushPromises()
 
-    expect(wrapper.text()).toContain('The quick brown fox jumped over the lazy dog')
+    expect(wrapper.text()).toContain('Um pequeno jabuti xereta viu dez cegonhas felizes')
     wrapper.unmount()
   })
 })

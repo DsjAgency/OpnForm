@@ -5,7 +5,7 @@
     :form="form"
   >
     <div class="my-5">
-      Coming Soon...
+      Em breve...
     </div>
   </IntegrationWrapper>
 </template>

@@ -15,16 +15,16 @@
     <template #content>
       <div class="p-4 w-80">
         <h3 class="font-semibold text-medium">
-          Advanced Settings
+          Configurações avançadas
         </h3>
-        <p class="text-sm text-neutral-600">Configure advanced sharing options for your form.</p>
+        <p class="text-sm text-neutral-600">Configure opções avançadas de compartilhamento do formulário.</p>
         
         <div class="space-y-4">
           <toggle-switch-input
             :model-value="modelValue.auto_submit"
             name="auto_submit"
-            label="Auto Submit Form"
-            help="Submits immediately after opening URL"
+            label="Enviar formulário automaticamente"
+            help="Envia assim que o link é aberto"
             @update:model-value="onChangeAutoSubmit"
           />
         </div>

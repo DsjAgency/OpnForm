@@ -4,7 +4,7 @@
     :ui="{ content: 'sm:max-w-md' }"
   >
     <template #header>
-      <h2 class="text-lg font-semibold">Regenerate Recovery Codes</h2>
+      <h2 class="text-lg font-semibold">Gerar novos códigos de recuperação</h2>
     </template>
 
     <template #body>
@@ -12,12 +12,12 @@
         <UAlert
           color="warning"
           variant="subtle"
-          description="Regenerating recovery codes will invalidate all existing codes. You'll need to save the new codes immediately."
+          description="Gerar novos códigos invalida todos os códigos atuais. Você precisará guardar os novos códigos imediatamente."
         />
 
         <div>
           <p class="text-sm font-medium text-neutral-900 mb-2">
-            Enter the 6-digit code from your authenticator app:
+            Digite o código de 6 dígitos do seu app autenticador:
           </p>
           <div class="flex justify-center mb-4">
             <UPinInput
@@ -36,7 +36,7 @@
               size="sm"
               @click="showRecoveryCode = !showRecoveryCode"
             >
-              Use recovery code instead
+              Usar código de recuperação
             </UButton>
           </div>
         </div>
@@ -45,8 +45,8 @@
           <div v-if="showRecoveryCode" class="mt-4">
             <TextInput
               v-model="recoveryCode"
-              label="Recovery Code"
-              placeholder="Enter recovery code"
+              label="Código de recuperação"
+              placeholder="Digite o código de recuperação"
               @keyup.enter="handleSubmit"
             />
           </div>
@@ -61,7 +61,7 @@
           variant="outline"
           @click="handleClose"
         >
-          Cancel
+          Cancelar
         </UButton>
         <UButton
           color="primary"
@@ -69,7 +69,7 @@
           :disabled="code.length !== 6 && !recoveryCode"
           @click="handleSubmit"
         >
-          Regenerate Codes
+          Gerar novos códigos
         </UButton>
       </div>
     </template>

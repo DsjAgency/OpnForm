@@ -50,7 +50,7 @@
       v-else
       class="font-semibold text-2xl text-neutral-900 mb-4"
     >
-      Admin settings
+      Configurações de administração
     </h3>
 
 
@@ -63,16 +63,16 @@
         <TextInput
           name="identifier"
           :form="fetchUserForm"
-          label="Identifier"
+          label="Identificador"
           :required="true"
-          help="User Id, User Email, Form Slug or View Slug"
+          help="ID do usuário, e-mail do usuário, slug do formulário ou slug de visualização"
         />
         <UButton
           type="submit"
           :loading="loading"
           block
           class="mt-4"
-          label="Fetch User"
+          label="Buscar usuário"
         />
       </VForm>
 
@@ -84,16 +84,16 @@
         <TextAreaInput
           name="template_prompt"
           :form="createTemplateForm"
-          label="Template Description"
+          label="Descrição do modelo"
           :required="true"
-          help="Describe the template you want to create"
+          help="Descreva o modelo que você quer criar"
         />
         <UButton
           type="submit"
           :loading="templateLoading"
           block
           class="mt-4"
-          label="Create Template"
+          label="Criar modelo"
         />
       </VForm>
     </template>
@@ -209,7 +209,7 @@ onMounted(() => {
 
 async function fetchUser() {
   if (!fetchUserForm.identifier) {
-    alert.error('Identifier is required.')
+    alert.error('O identificador é obrigatório.')
     return
   }
 
@@ -218,7 +218,7 @@ async function fetchUser() {
     loading.value = false
     userInfo.value = { ...data.user, workspaces: data.workspaces }
     getUserPlan(data.workspaces)
-    alert.success(`User Fetched: ${userInfo.value.name}`)
+    alert.success(`Usuário encontrado: ${userInfo.value.name}`)
   })
     .catch((error) => {
       alert.error(error.data.message)
@@ -254,7 +254,7 @@ function refreshUser() {
 
 async function createTemplate() {
   if (!createTemplateForm.template_prompt) {
-    alert.error('Template prompt is required.')
+    alert.error('A descrição do modelo é obrigatória.')
     return
   }
 
@@ -264,7 +264,7 @@ async function createTemplate() {
   }).then((data) => {
     templateLoading.value = false
     createTemplateForm.reset()
-    alert.success('Template created.')
+    alert.success('Modelo criado.')
     router.push({ name: 'templates-slug', params: { slug: data.template_slug } })
   })
     .catch((error) => {

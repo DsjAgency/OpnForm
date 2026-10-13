@@ -6,13 +6,13 @@
     @close="handleCancel"
   >
     <template #header>
-      <h2 class="text-lg font-semibold">Two-Factor Authentication</h2>
+      <h2 class="text-lg font-semibold">Autenticação em duas etapas</h2>
     </template>
 
     <template #body>
       <div class="space-y-4">
         <p class="text-sm text-neutral-600">
-          Enter the 6-digit code from your authenticator app.
+          Digite o código de 6 dígitos do seu app autenticador.
         </p>
 
         <div class="flex justify-center">
@@ -43,7 +43,7 @@
             size="sm"
             @click="showRecoveryCode = !showRecoveryCode"
           >
-            Use recovery code instead
+            Usar código de recuperação
           </UButton>
         </div>
 
@@ -51,8 +51,8 @@
           <div v-if="showRecoveryCode" class="mt-4">
             <TextInput
               v-model="recoveryCode"
-              label="Recovery Code"
-              placeholder="Enter recovery code"
+              label="Código de recuperação"
+              placeholder="Digite o código de recuperação"
               @keyup.enter="verifyRecoveryCode"
             />
             <UButton
@@ -61,7 +61,7 @@
               :loading="verifying"
               @click="verifyRecoveryCode"
             >
-              Verify Recovery Code
+              Verificar código de recuperação
             </UButton>
           </div>
         </VTransition>
@@ -75,7 +75,7 @@
           variant="outline"
           @click="handleCancel"
         >
-          Cancel
+          Cancelar
         </UButton>
       </div>
     </template>
@@ -140,7 +140,7 @@ const verifyCode = async (codeValue) => {
 
   // Validate pending auth token exists
   if (!props.pendingAuthToken) {
-    error.value = 'Authentication session expired. Please try logging in again.'
+    error.value = 'A sessão de autenticação expirou. Faça login novamente.'
     return
   }
 
@@ -158,13 +158,13 @@ const verifyCode = async (codeValue) => {
   } catch (err) {
     // TanStack Query errors have different structure - check for response or data
     if (err.response) {
-      error.value = err.response?._data?.message || err.response?._data?.errors?.code?.[0] || 'Invalid code. Please try again.'
+      error.value = err.response?._data?.message || err.response?._data?.errors?.code?.[0] || 'Código inválido. Tente novamente.'
     } else if (err.data) {
-      error.value = err.data?.message || err.data?.errors?.code?.[0] || 'Invalid code. Please try again.'
+      error.value = err.data?.message || err.data?.errors?.code?.[0] || 'Código inválido. Tente novamente.'
     } else {
       // Network error or other issue
       console.error('2FA verification error:', err)
-      error.value = 'Unable to verify code. Please check your connection and try again.'
+      error.value = 'Não foi possível verificar o código. Confira sua conexão e tente novamente.'
     }
     code.value = []
   } finally {

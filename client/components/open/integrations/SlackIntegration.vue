@@ -7,27 +7,27 @@
     <text-input
       :form="integrationData"
       name="data.slack_webhook_url"
-      label="Slack webhook url"
+      label="URL do webhook do Slack"
       help="help"
       required
     >
       <template #help>
         <InputHelp>
           <span>
-            Receive slack message on each form submission.
+            Receba uma mensagem no Slack a cada nova resposta.
             <a
               href="https://api.slack.com/messaging/webhooks"
               target="_blank"
             >
-              Click here
+              Clique aqui
             </a>
-            to learn how to get a slack webhook url
+            para saber como obter a URL de webhook do Slack
           </span>
         </InputHelp>
       </template>
     </text-input>
     <h4 class="font-bold mt-4">
-      Slack message actions
+      Ações da mensagem do Slack
     </h4>
     <notifications-message-actions
       v-model="integrationData.data"

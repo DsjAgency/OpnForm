@@ -65,7 +65,7 @@ const dropdownItems = computed(() => {
 
   // Settings
   navItems.push({
-    label: 'Settings',
+    label: 'Configurações',
     icon: 'i-heroicons-cog-6-tooth',
     onSelect: () => openUserSettings('account')
   })
@@ -73,7 +73,7 @@ const dropdownItems = computed(() => {
   // Admin - only show for moderators
   if (user.value.moderator) {
     navItems.push({
-      label: 'Admin',
+      label: 'Administração',
       icon: 'i-heroicons-shield-check',
       to: { name: 'admin' }
     })
@@ -86,7 +86,7 @@ const dropdownItems = computed(() => {
   // Logout
   items.push([
     {
-      label: 'Logout',
+      label: 'Sair',
       icon: 'i-heroicons-arrow-right-start-on-rectangle',
       onSelect: logout
     }

@@ -6,10 +6,10 @@
     <div class="flex justify-between items-start gap-4 mb-4">
       <div class="min-w-0">
         <h3 class="text-lg font-semibold text-gray-900">
-          Variables
+          Variáveis
         </h3>
         <p class="text-sm text-gray-500 mt-1">
-          Create calculated values from your form fields. Use them in emails, thank you messages, and integrations.
+          Crie valores calculados a partir dos campos do formulário. Use-os em e-mails, mensagens de agradecimento e integrações.
         </p>
       </div>
       <UButton
@@ -18,7 +18,7 @@
         class="flex-shrink-0 whitespace-nowrap"
         @click="openCreateModal"
       >
-        Add Variable
+        Adicionar variável
       </UButton>
     </div>
 
@@ -32,17 +32,17 @@
         class="h-12 w-12 mx-auto text-gray-400"
       />
       <h3 class="mt-4 text-sm font-semibold text-gray-900">
-        No variables yet
+        Nenhuma variável ainda
       </h3>
       <p class="mt-2 text-sm text-gray-500 max-w-sm mx-auto">
-        Variables let you calculate values from form responses. Use them in emails, thank you messages, and integrations.
+        Variáveis calculam valores a partir das respostas. Use-as em e-mails, mensagens de agradecimento e integrações.
       </p>
       <div class="mt-4 text-sm text-gray-500">
-        <p class="font-medium mb-2">Examples:</p>
+        <p class="font-medium mb-2">Exemplos:</p>
         <ul class="space-y-1">
-          <li>• Calculate order totals</li>
-          <li>• Create personalized greetings</li>
-          <li>• Categorize responses with IF conditions</li>
+          <li>• Calcular o total de um pedido</li>
+          <li>• Criar saudações personalizadas</li>
+          <li>• Classificar respostas com condições SE</li>
         </ul>
       </div>
       <UButton
@@ -51,7 +51,7 @@
         color="primary"
         @click="openCreateModal"
       >
-        Create Variable
+        Criar variável
       </UButton>
     </div>
 
@@ -81,7 +81,7 @@
           class="h-5 w-5 text-blue-500 shrink-0 mt-0.5"
         />
         <p class="text-sm text-blue-700">
-          Insert variables anywhere you can use @ mentions - in emails, thank you messages, redirect URLs, and integrations.
+          Insira variáveis onde for possível usar menções com @: e-mails, mensagens de agradecimento, URLs de redirecionamento e integrações.
         </p>
       </div>
     </div>

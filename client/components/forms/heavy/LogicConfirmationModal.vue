@@ -2,11 +2,11 @@
   <UModal
     v-model:open="isOpen"
     :ui="{ content: 'sm:max-w-lg' }"
-    title="Incomplete Form Logic"
+    title="Lógica do formulário incompleta"
   >
     <template #body>
       <p class="text-neutral-700">
-        Some logic rules are incomplete or invalid and will be cleaned up to ensure that the form works correctly.
+        Algumas regras de lógica estão incompletas ou inválidas e serão removidas para o formulário funcionar corretamente.
       </p>
 
       <div class="mt-4 space-y-3">
@@ -21,7 +21,7 @@
                 class="h-5 w-5 text-yellow-400"
               />
               <h4 class="ml-2 text-sm font-medium text-yellow-800">
-                Field: {{ error.fieldName }}
+                Campo: {{ error.fieldName }}
               </h4>
             </div>
             <div class="mt-2 text-sm text-yellow-700">
@@ -45,7 +45,7 @@
           variant="outline"
           @click="closeModal"
         >
-          Cancel
+          Cancelar
         </UButton>
         <UButton
           color="primary"

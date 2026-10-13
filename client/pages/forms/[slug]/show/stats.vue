@@ -1,8 +1,8 @@
 <template>
   <PageContainer spacing="lg">
     <PageSection
-      title="Analytics"
-      description="View form performance and submission statistics."
+      title="Análises"
+      description="Veja o desempenho do formulário e as estatísticas de respostas."
     >
       <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
         <DashboardPanel
@@ -57,17 +57,17 @@ const props = defineProps({
 })
 
 const statItems = computed(() => [
-  { label: 'Views', value: totalViews.value, placeholder: '123' },
-  { label: 'Submissions', value: totalSubmissions.value, placeholder: '123' },
-  { label: 'Completion', value: completionRate.value + '%', placeholder: '100%' },
-  { label: 'Avg. Duration', value: averageDuration.value, placeholder: '10 seconds' },
+  { label: 'Visualizações', value: totalViews.value, placeholder: '123' },
+  { label: 'Respostas', value: totalSubmissions.value, placeholder: '123' },
+  { label: 'Conclusão', value: completionRate.value + '%', placeholder: '100%' },
+  { label: 'Duração média', value: averageDuration.value, placeholder: '10 segundos' },
 ])
 
 definePageMeta({
   middleware: "auth",
 })
 useOpnSeoMeta({
-  title: props.form ? "Form Analytics - " + props.form.title : "Form Analytics",
+  title: props.form ? "Análises - " + props.form.title : "Análises",
 })
 
 const { hasFeature } = usePlanFeatures()

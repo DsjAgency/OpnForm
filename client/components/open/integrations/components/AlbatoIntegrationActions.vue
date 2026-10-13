@@ -12,7 +12,7 @@
         target="_blank"
         external
       >
-        Edit Workflow
+        Editar fluxo
       </UButton>
     </div>
   </div>

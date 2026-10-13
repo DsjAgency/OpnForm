@@ -64,9 +64,9 @@ describe('FormErrorModal', () => {
       fieldCount: 1,
     })
 
-    expect(wrapper.get('h2').text()).toBe('Fix 1 field before saving')
+    expect(wrapper.get('h2').text()).toBe('Corrija 1 campo antes de salvar')
     expect(wrapper.text()).toContain('siehe Pride-Liste')
-    expect(wrapper.text()).toContain('Select')
+    expect(wrapper.text()).toContain('Seleção')
     expect(wrapper.text()).toContain('At least one option is required.')
     expect(wrapper.text()).not.toContain('One or more properties have validation errors.')
     expect(wrapper.text()).not.toContain('and 1 more error')
@@ -89,7 +89,7 @@ describe('FormErrorModal', () => {
       fieldCount: 2,
     })
 
-    expect(wrapper.get('h2').text()).toBe('Fix 2 fields before saving')
+    expect(wrapper.get('h2').text()).toBe('Corrija 2 campos antes de salvar')
   })
 
   it('emits the selected field when Edit field is clicked', async () => {
@@ -100,7 +100,7 @@ describe('FormErrorModal', () => {
     })
 
     const editButton = wrapper.get('[data-testid="edit-form-field-pride-list"]')
-    expect(editButton.attributes('aria-label')).toBe('Edit siehe Pride-Liste')
+    expect(editButton.attributes('aria-label')).toBe('Editar siehe Pride-Liste')
 
     await editButton.trigger('click')
 
@@ -119,7 +119,7 @@ describe('FormErrorModal', () => {
       fieldCount: 1,
     })
 
-    expect(wrapper.get('h2').text()).toBe('Fix 2 issues before saving')
+    expect(wrapper.get('h2').text()).toBe('Corrija 2 problemas antes de salvar')
     expect(wrapper.get('[data-testid="form-save-general-errors"]').text())
       .toContain('The title field is required.')
   })
@@ -131,12 +131,12 @@ describe('FormErrorModal', () => {
       computedVariableCount: 1,
     })
 
-    expect(wrapper.get('h2').text()).toBe('Fix 1 variable before saving')
+    expect(wrapper.get('h2').text()).toBe('Corrija 1 variável antes de salvar')
     expect(wrapper.text()).toContain('Tax')
     expect(wrapper.text()).toContain('The formula is required.')
 
     const editButton = wrapper.get('[data-testid="edit-computed-variable-cv_tax"]')
-    expect(editButton.attributes('aria-label')).toBe('Edit Tax')
+    expect(editButton.attributes('aria-label')).toBe('Editar Tax')
 
     await editButton.trigger('click')
 
@@ -148,7 +148,7 @@ describe('FormErrorModal', () => {
       fallbackMessage: 'Unable to validate the form.',
     })
 
-    expect(wrapper.get('h2').text()).toBe("We couldn't save your form")
+    expect(wrapper.get('h2').text()).toBe('Não foi possível salvar o formulário')
     expect(wrapper.text()).toContain('Unable to validate the form.')
   })
 

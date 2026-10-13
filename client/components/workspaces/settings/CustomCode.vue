@@ -3,15 +3,15 @@
     <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div class="flex-1">
         <h3 class="text-lg font-medium text-neutral-900">
-          Custom Code
+          Código personalizado
         </h3>
         <p class="mt-1 text-sm text-neutral-500">
-          The code will be injected in the <b>head</b> section of all forms in this workspace. Workspace code is applied first, then form-specific code (if any).
+          O código será inserido na seção <b>head</b> de todos os formulários deste espaço de trabalho. O código do espaço é aplicado primeiro e depois o código específico de cada formulário (se houver).
         </p>
       </div>
       <div class="flex gap-2">
         <UButton
-          label="SDK Docs"
+          label="Documentação do SDK"
           icon="i-heroicons-code-bracket"
           variant="outline"
           color="neutral"
@@ -19,7 +19,7 @@
           target="_blank"
         />
         <UButton
-          label="Help"
+          label="Ajuda"
           icon="i-heroicons-question-mark-circle"
           variant="outline"
           color="neutral"
@@ -57,7 +57,7 @@
               :form="customCodeForm"
               :disabled="!canUseCustomCode"
               :help="customCodeHelp"
-              label="Custom Code"
+              label="Código personalizado"
               placeholder="<script>console.log('Hello World!')</script>"
             />
           </div>
@@ -66,14 +66,14 @@
             <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
               <div>
                 <h3 class="text-lg font-medium text-neutral-900">
-                  Custom CSS
+                  CSS personalizado
                 </h3>
                 <p class="mt-1 text-sm text-neutral-500">
-                  The CSS will be injected in the <b>head</b> of all forms in this workspace.
+                  O CSS será inserido no <b>head</b> de todos os formulários deste espaço de trabalho.
                 </p>
               </div>
               <UButton
-                label="Help"
+                label="Ajuda"
                 icon="i-heroicons-question-mark-circle"
                 variant="outline"
                 color="neutral"
@@ -87,8 +87,8 @@
               class="mt-4"
               :form="customCodeForm"
               :disabled="!canAccessCustomCode"
-              help="CSS only. Example: body { background: #f8fafc }"
-              label="Custom CSS"
+              help="Somente CSS. Exemplo: body { background: #f8fafc }"
+              label="CSS personalizado"
               placeholder="body { background: #f8fafc }"
             />
           </div>
@@ -101,7 +101,7 @@
             :disabled="!canAccessCustomCode"
             color="primary"
           >
-            Save Changes
+            Salvar alterações
           </UButton>
         </div>
       </form>
@@ -120,25 +120,25 @@ const isSelfHosted = computed(() => useFeatureFlag('self_hosted'))
 const { openSubscriptionModal } = useAppModals()
 
 const upgradeCalloutTitle = computed(() => {
-  return isSelfHosted.value ? 'Enterprise license required' : 'Business plan required'
+  return isSelfHosted.value ? 'Licença Enterprise necessária' : 'Plano Business necessário'
 })
 
 const upgradeCalloutDescription = computed(() => {
   if (isSelfHosted.value) {
-    return 'Workspace-level custom code and CSS require an Enterprise self-hosted license. Purchase or activate a license to inject scripts and styles across all forms in this workspace.'
+    return 'Código e CSS personalizados no nível do espaço de trabalho exigem uma licença Enterprise auto-hospedada. Compre ou ative uma licença para inserir scripts e estilos em todos os formulários deste espaço.'
   }
 
-  return 'Workspace-level custom code and CSS require a Business plan. Upgrade to inject scripts, styles, analytics snippets, and advanced tracking across all forms in this workspace.'
+  return 'Código e CSS personalizados no nível do espaço de trabalho exigem o plano Business. Faça upgrade para inserir scripts, estilos, códigos de análise e rastreamento avançado em todos os formulários deste espaço.'
 })
 
 const upgradeCalloutActionLabel = computed(() => {
-  return isSelfHosted.value ? 'Purchase license' : 'Upgrade to Business'
+  return isSelfHosted.value ? 'Comprar licença' : 'Upgrade para Business'
 })
 
 const openUpgradeModal = () => {
   openSubscriptionModal({
     plan: isSelfHosted.value ? 'self_hosted' : 'business',
-    modal_title: isSelfHosted.value ? 'Enterprise license required for custom code' : 'Upgrade to use workspace-level custom code',
+    modal_title: isSelfHosted.value ? 'Licença Enterprise necessária para código personalizado' : 'Faça upgrade para usar código personalizado no espaço de trabalho',
     modal_description: upgradeCalloutDescription.value
   })
 }
@@ -161,12 +161,12 @@ const canUseCustomCode = computed(() => {
 
 const customCodeHelp = computed(() => {
   if (canUseCustomCode.value) {
-    return 'Saves changes and visit any form page to test. Workspace code is applied to all forms in this workspace.'
+    return 'Salve as alterações e abra qualquer formulário para testar. O código do espaço de trabalho é aplicado a todos os formulários deste espaço.'
   }
   if (isSelfHosted.value && !allowSelfHosted.value && !hasCustomDomain.value) {
-    return 'Custom code is disabled for safety on self-hosted. Enable via CUSTOM_CODE_ENABLE_SELF_HOSTED=true. See technical docs: https://docs.opnform.com/deployment/enterprise-features/custom-code'
+    return 'Por segurança, o código personalizado vem desativado na versão auto-hospedada. Ative com CUSTOM_CODE_ENABLE_SELF_HOSTED=true. Veja a documentação técnica: https://docs.opnform.com/deployment/enterprise-features/custom-code'
   }
-  return 'Custom code requires a Pro plan and a custom domain configured for this workspace.'
+  return 'O código personalizado exige o plano Pro e um domínio personalizado configurado neste espaço de trabalho.'
 })
 
 const saveChanges = () => {
@@ -180,12 +180,12 @@ const saveChanges = () => {
       },
     })
     .then((_data) => {
-      alert.success("Custom code settings saved.")
+      alert.success("Configurações de código personalizado salvas.")
       // Invalidate workspace cache to refresh data
       invalidateAll()
     })
     .catch((error) => {
-      alert.error("Failed to update custom code settings: " + (error?.data?.message || error.message))
+      alert.error("Não foi possível atualizar o código personalizado: " + (error?.data?.message || error.message))
     })
 }
 

@@ -24,7 +24,7 @@ class Form {
     this.update(data)
   }
 
-  static errorMessage = "Something went wrong. Please try again."
+  static errorMessage = "Algo deu errado. Tente novamente."
   static recentlySuccessfulTimeout = 2000
   static ignore = [
     "busy",

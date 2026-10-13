@@ -9,7 +9,7 @@
         :form="field"
         wrapper-class="mb-2"
         :required="true"
-        label="Block Name"
+        label="Nome do bloco"
       />
 
       <HiddenRequiredDisabled
@@ -25,11 +25,11 @@
           name="width"
           class="grow mt-4"
           :form="field"
-          label="Block Width"
+          label="Largura do bloco"
           seamless
           v-if="!isFocused"
           :options="[
-            { name: 'full', label: 'Full' },
+            { name: 'full', label: 'Inteira' },
             { name: '1/2', label: '1/2' },
             { name: '1/3', label: '1/3' },
             { name: '2/3', label: '2/3' },
@@ -45,13 +45,13 @@
           name="align"
           class="mt-4 w-2/3"
           :form="field"
-          label="Text Alignment"
+          label="Alinhamento do texto"
           seamless
           :options="[
-            { name: 'left', icon: 'i-heroicons-bars-3-bottom-left', tooltip: 'Align left' },
-            { name: 'center', icon: 'i-heroicons-bars-3', tooltip: 'Align center' },
-            { name: 'right', icon: 'i-heroicons-bars-3-bottom-right', tooltip: 'Align right' },
-            { name: 'justify', icon: 'i-heroicons-bars-4', tooltip: 'Justify text' },
+            { name: 'left', icon: 'i-heroicons-bars-3-bottom-left', tooltip: 'Alinhar à esquerda' },
+            { name: 'center', icon: 'i-heroicons-bars-3', tooltip: 'Centralizar' },
+            { name: 'right', icon: 'i-heroicons-bars-3-bottom-right', tooltip: 'Alinhar à direita' },
+            { name: 'justify', icon: 'i-heroicons-bars-4', tooltip: 'Justificar' },
           ]"
           :multiple="false"
           :columns="4"
@@ -72,7 +72,7 @@
         :allow-fullscreen="true"
         name="content"
         :form="field"
-        label="Content"
+        label="Conteúdo"
         :required="false"
         enable-mentions
         :mentions="form.properties"
@@ -87,14 +87,14 @@
       <text-input
         name="next_btn_text"
         :form="field"
-        label="Next button label"
+        label="Texto do botão de próximo"
         :required="true"
       />
       <text-input
         name="previous_btn_text"
         :form="field"
-        label="Previous button label"
-        help="Displayed on the next page"
+        label="Texto do botão de voltar"
+        help="Aparece na página seguinte"
         :required="true"
       />
     </div>
@@ -107,7 +107,7 @@
         name="image_block"
         class="mx-4"
         :form="field"
-        label="Upload Image"
+        label="Enviar imagem"
         :required="false"
       />
     </div>
@@ -120,8 +120,8 @@
         name="video_block"
         class="mx-4"
         :form="field"
-        label="Video URL"
-        help="You can add a video URL here. It will be displayed as a video block."
+        label="URL do vídeo"
+        help="Adicione a URL de um vídeo. Ele será exibido como um bloco de vídeo."
       />
     </div>
 
@@ -133,8 +133,8 @@
         name="audio_block"
         class="mx-4"
         :form="field"
-        label="Audio"
-        help="Upload an audio file or paste a URL. It will be displayed as an audio block."
+        label="Áudio"
+        help="Envie um arquivo de áudio ou cole uma URL. Ele será exibido como um bloco de áudio."
       />
     </div>
 
@@ -147,8 +147,8 @@
         name="content"
         class="mt-4 mx-4"
         :form="field"
-        label="Content"
-        help="You can add any html code, including iframes"
+        label="Conteúdo"
+        help="Você pode adicionar qualquer código HTML, inclusive iframes"
       />
     </div>
   </div>

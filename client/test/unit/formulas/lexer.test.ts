@@ -60,7 +60,7 @@ describe('Formula Lexer', () => {
 
     it('throws on unterminated strings', () => {
       const lexer = new Lexer('"unterminated')
-      expect(() => lexer.tokenize()).toThrow('Unterminated string')
+      expect(() => lexer.tokenize()).toThrow('Texto sem aspas de fechamento')
     })
   })
 
@@ -125,7 +125,7 @@ describe('Formula Lexer', () => {
 
     it('throws on unterminated field references', () => {
       const lexer = new Lexer('{field_id')
-      expect(() => lexer.tokenize()).toThrow('Unterminated field reference')
+      expect(() => lexer.tokenize()).toThrow('Referência de campo sem fechamento')
     })
   })
 
@@ -205,7 +205,7 @@ describe('Formula Lexer', () => {
   describe('error handling', () => {
     it('throws on unexpected characters', () => {
       const lexer = new Lexer('1 @ 2')
-      expect(() => lexer.tokenize()).toThrow('Unexpected character')
+      expect(() => lexer.tokenize()).toThrow('Caractere inesperado')
     })
   })
 })

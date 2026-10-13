@@ -71,7 +71,7 @@ watch(() => props.formManager.state.currentPage, () => {
 watch(() => props.formManager.state.isProcessing, (isProcessing, wasProcessing) => {
   // Case 1: Form is starting to process and captcha is required but missing
   if (isProcessing && isCaptchaRequired.value && !form.value[captchaFieldName.value]) {
-    form.value.errors.set(captchaFieldName.value, 'Please complete the captcha verification')
+    form.value.errors.set(captchaFieldName.value, 'Conclua a verificação do captcha')
   }
   
   // Case 2: Form submission just ended AND there are errors

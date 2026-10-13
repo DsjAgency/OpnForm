@@ -5,12 +5,12 @@
   >
     <EditorSectionHeader
       icon="i-heroicons-credit-card-20-solid"
-      title="Payment"
+      title="Pagamento"
     />
 
     <select-input
       name="currency"
-      label="Currency"
+      label="Moeda"
       :options="currencyList"
       :form="field"
       :required="true"
@@ -20,7 +20,7 @@
     <MentionInput
       class="mt-4"
       name="amount"
-      label="Amount"
+      label="Valor"
       native-type="number"
       :form="field"
       :mentions="form.properties"
@@ -30,7 +30,7 @@
     <MentionInput
       class="mt-4"
       name="prefill_name"
-      label="Name on Card"
+      label="Nome no cartão"
       :form="field"
       :mentions="form.properties"
       :disabled="stripeAccounts.length === 0"
@@ -38,7 +38,7 @@
     <MentionInput
       class="mt-4"
       name="prefill_email"
-      label="Billing Email"
+      label="E-mail de cobrança"
       :form="field"
       :mentions="form.properties"
       :disabled="stripeAccounts.length === 0"
@@ -48,13 +48,13 @@
       <select-input
         class="mt-4"
         name="stripe_account_id"
-        label="Stripe Account"
+        label="Conta Stripe"
         :options="stripeAccounts"
         :form="field"
         :required="true"
       />
       <p class="mt-4 text-sm text-center text-bold">
-        OR
+        OU
       </p>
     </div>
     <UButton
@@ -65,7 +65,7 @@
       :loading="stripeLoading"
       @click.prevent="connectStripe"
     >
-      Connect Stripe Account
+      Conectar conta Stripe
     </UButton>
     <p class="text-sm text-neutral-500 mt-3">
       <a
@@ -77,7 +77,7 @@
           name="heroicons:information-circle-16-solid"
           class="h-3 w-3 mt-1"
         />
-        Learn how to accept payments
+        Saiba como receber pagamentos
       </a>
     </p>
   </div>
@@ -129,7 +129,7 @@ onMounted(async () => {
     if (stripeAccounts.value.length > 0) {
       props.field.stripe_account_id = stripeAccounts.value[0].value
     }
-    useAlert().success('Stripe accounts updated.')
+    useAlert().success('Contas Stripe atualizadas.')
   }, { 
     useMessageChannel: false, 
     acknowledge: false 

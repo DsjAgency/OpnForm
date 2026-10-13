@@ -6,7 +6,7 @@
       class="flex flex-col items-center justify-center py-8 text-neutral-400"
     >
       <UIcon name="i-heroicons-chart-pie" class="w-8 h-8 mb-2 opacity-50" />
-      <span class="text-sm">No responses yet</span>
+      <span class="text-sm">Nenhuma resposta ainda</span>
     </div>
 
     <template v-else>
@@ -20,7 +20,7 @@
           <div class="flex items-center justify-between text-sm mb-1">
             <span class="font-medium text-neutral-700 break-words min-w-0 max-w-[70%]">{{ item.value }}</span>
             <div class="flex items-center gap-3 shrink-0">
-              <span class="text-neutral-600"><span class="sr-only">Responses: </span>{{ item.count }}</span>
+              <span class="text-neutral-600"><span class="sr-only">Respostas: </span>{{ item.count }}</span>
               <span class="font-medium text-neutral-900 w-10 text-right">{{ item.percentage }}%</span>
             </div>
           </div>
@@ -54,7 +54,7 @@
             />
             <div class="text-sm min-w-0 break-words">
               <span class="text-neutral-900 font-medium">{{ item.value }}</span>
-              <span class="block text-xs text-neutral-600">{{ item.count }} responses ({{ item.percentage }}%)</span>
+              <span class="block text-xs text-neutral-600">{{ item.count }} respostas ({{ item.percentage }}%)</span>
             </div>
           </li>
         </ul>

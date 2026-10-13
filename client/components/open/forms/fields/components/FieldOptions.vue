@@ -11,7 +11,7 @@
         :form="field"
         :required="true"
         wrapper-class="mb-2"
-        label="Field Name"
+        label="Nome do campo"
       />
       <HiddenRequiredDisabled
         class="mt-4"
@@ -31,14 +31,14 @@
     >
       <EditorSectionHeader
         icon="i-heroicons-check-circle"
-        title="Checkbox"
+        title="Caixa de seleção"
       />
       <toggle-switch-input
         v-if="!isFocused"
         :form="field"
         name="use_toggle_switch"
-        label="Use toggle switch"
-        help="If enabled, checkbox will be replaced with a toggle switch"
+        label="Usar botão de alternância"
+        help="Se ativado, a caixa de seleção vira um botão de alternância"
       />
       <template v-else>
         <flat-select-input
@@ -47,8 +47,8 @@
           class="mt-3"
           :form="field"
           :options="focusedCheckboxStyleOptions"
-          label="Checkbox style"
-          help="Choose how the checkbox appears in focused mode"
+          label="Estilo da caixa de seleção"
+          help="Escolha como a caixa de seleção aparece no estilo Focado"
           @update:model-value="onFieldFocusedCheckboxStyleChange"
         />
       </template>
@@ -61,25 +61,25 @@
     >
       <EditorSectionHeader
         icon="i-heroicons-paper-clip"
-        title="File uploads"
+        title="Envio de arquivos"
       />
       <toggle-switch-input
         :form="field"
         name="multiple"
-        label="Allow multiple files"
+        label="Permitir vários arquivos"
       />
       <toggle-switch-input
         :form="field"
         name="camera_upload"
-        label="Allow Camera uploads"
+        label="Permitir envio pela câmera"
       />
       <text-input
         name="allowed_file_types"
         class="mt-3"
         :form="field"
-        label="Allowed file types"
+        label="Tipos de arquivo permitidos"
         placeholder="jpg,jpeg,png,gif"
-        help="Comma separated values, leave blank to allow all file types"
+        help="Separe por vírgulas; deixe em branco para permitir todos os tipos"
       />
 
       <text-input
@@ -89,9 +89,9 @@
         native-type="number"
         :min="1"
         :max="mbLimit"
-        label="Maximum file size (in MB)"
+        label="Tamanho máximo do arquivo (em MB)"
         :placeholder="`1MB - ${mbLimit}MB`"
-        help="Set the maximum file size that can be uploaded"
+        help="Defina o tamanho máximo de arquivo que pode ser enviado"
       />
     </div>
 
@@ -102,17 +102,17 @@
     >
       <EditorSectionHeader
         icon="i-material-symbols-barcode-scanner-rounded"
-        title="Barcode Reader"
+        title="Leitor de código de barras"
       />
       <select-input
         name="decoders"
         class="mt-4"
         :form="field"
         :options="barcodeDecodersOptions"
-        label="Decoders"
+        label="Decodificadores"
         :searchable="true"
         :multiple="true"
-        help="Select the decoders you want to use"
+        help="Selecione os decodificadores que quer usar"
       />
     </div>
 
@@ -122,7 +122,7 @@
     >
       <EditorSectionHeader
         icon="i-heroicons-star"
-        title="Rating"
+        title="Avaliação"
       />
       <text-input
         name="rating_max_value"
@@ -131,7 +131,7 @@
         class="mt-3"
         :form="field"
         required
-        label="Max rating value"
+        label="Nota máxima"
       />
     </div>
 
@@ -141,7 +141,7 @@
     >
       <EditorSectionHeader
         icon="i-heroicons-scale-20-solid"
-        title="Scale"
+        title="Escala"
       />
       <text-input
         name="scale_min_value"
@@ -149,7 +149,7 @@
         class="mt-4"
         :form="field"
         required
-        label="Min scale value"
+        label="Valor mínimo da escala"
       />
       <text-input
         name="scale_max_value"
@@ -158,7 +158,7 @@
         class="mt-4"
         :form="field"
         required
-        label="Max scale value"
+        label="Valor máximo da escala"
       />
       <text-input
         name="scale_step_value"
@@ -167,7 +167,7 @@
         class="mt-4"
         :form="field"
         required
-        label="Scale steps value"
+        label="Intervalo da escala"
       />
     </div>
 
@@ -177,7 +177,7 @@
     >
       <EditorSectionHeader
         icon="i-heroicons-adjustments-horizontal"
-        title="Slider"
+        title="Controle deslizante"
       />
       <text-input
         name="slider_min_value"
@@ -185,7 +185,7 @@
         class="mt-4"
         :form="field"
         required
-        label="Min slider value"
+        label="Valor mínimo"
       />
       <text-input
         name="slider_max_value"
@@ -194,7 +194,7 @@
         class="mt-4"
         :form="field"
         required
-        label="Max slider value"
+        label="Valor máximo"
       />
       <text-input
         name="slider_step_value"
@@ -204,7 +204,7 @@
         class="mt-4"
         :form="field"
         required
-        label="Slider steps value"
+        label="Intervalo"
       />
     </div>
 
@@ -226,23 +226,23 @@
     >
       <EditorSectionHeader
         icon="i-heroicons-bars-3-bottom-left"
-        title="Text Options"
+        title="Opções de texto"
       />
       <toggle-switch-input
         :form="field"
         name="multi_lines"
-        label="Multi-lines input"
+        label="Texto com várias linhas"
         @update:model-value="onFieldMultiLinesChange"
       />
       <toggle-switch-input
         :form="field"
         name="secret_input"
-        help="Hide input content with * for privacy"
+        help="Oculta o conteúdo digitado com * por privacidade"
         @update:model-value="onFieldSecretInputChange"
       >
         <template #label>
           <span class="text-sm">
-            Secret input
+            Campo secreto
           </span>
           <PlanTag
             upgrade-modal-title="Upgrade today to enable secret input"
@@ -259,37 +259,37 @@
     >
       <EditorSectionHeader
         icon="i-heroicons-calendar-20-solid"
-        title="Date Options"
+        title="Opções de data"
       />
       <toggle-switch-input
         :form="field"
         class="mt-3"
         name="date_range"
-        label="Include end date"
+        label="Incluir data final"
         @update:model-value="onFieldDateRangeChange"
       />
       <toggle-switch-input
         :form="field"
         name="prefill_today"
-        label="Prefill with 'today'"
+        label="Preencher com a data de hoje"
         @update:model-value="onFieldPrefillTodayChange"
       />
       <toggle-switch-input
         :form="field"
         name="disable_past_dates"
-        label="Disable past dates"
+        label="Bloquear datas passadas"
         @update:model-value="onFieldDisablePastDatesChange"
       />
       <toggle-switch-input
         :form="field"
         name="disable_future_dates"
-        label="Disable future dates"
+        label="Bloquear datas futuras"
         @update:model-value="onFieldDisableFutureDatesChange"
       />
       <toggle-switch-input
         :form="field"
         name="with_time"
-        label="Include time"
+        label="Incluir horário"
       />
       <select-input
         v-if="field.with_time"
@@ -297,9 +297,9 @@
         class="mt-4"
         :form="field"
         :options="timezonesOptions"
-        label="Timezone"
+        label="Fuso horário"
         :searchable="true"
-        help="Make sure to select the same timezone you're using in Notion. Leave blank otherwise."
+        help="Selecione o mesmo fuso horário usado no Notion. Caso contrário, deixe em branco."
       />
       <flat-select-input
         v-if="field.with_time"
@@ -307,14 +307,14 @@
         class="mt-4"
         :form="field"
         :options="timeFormatOptions"
-        label="Time format"
+        label="Formato de hora"
       />
       <flat-select-input
         name="date_format"
         class="mt-4"
         :form="field"
         :options="dateFormatOptions"
-        label="Date format"
+        label="Formato de data"
       />
     </div>
 
@@ -332,20 +332,20 @@
     >
       <EditorSectionHeader
         icon="i-heroicons-adjustments-horizontal"
-        title="Customization"
+        title="Personalização"
       />
 
       <toggle-switch-input
         :form="field"
         name="hide_field_name"
-        label="Hide field name"
+        label="Ocultar nome do campo"
       />
 
       <toggle-switch-input
         v-if="field.type === 'phone_number'"
         :form="field"
         name="use_simple_text_input"
-        label="Use simple text input"
+        label="Usar campo de texto simples"
       />
 
       <template v-if="field.type === 'phone_number' && !field.use_simple_text_input">
@@ -360,9 +360,9 @@
           :search-keys="['name']"
           :option-key="'code'"
           :emit-key="'code'"
-          label="Disabled countries"
-          :placeholder="'Select a country'"
-          help="Remove countries from the phone input"
+          label="Países desativados"
+          :placeholder="'Selecione um país'"
+          help="Remove países do campo de telefone"
         >
           <template #selected="{ option }">
             <div class="flex items-center space-x-2 justify-center overflow-hidden">
@@ -402,11 +402,11 @@
             href="#"
             class="grow"
             @click.prevent="selectAllCountries"
-          >Select All</a>
+          >Selecionar todos</a>
           <a
             href="#"
             @click.prevent="field.unavailable_countries = null"
-          >Un-select All</a>
+          >Desmarcar todos</a>
         </small>
       </template>
 
@@ -415,7 +415,7 @@
         v-if="field.type == 'checkbox'"
         :form="field"
         name="prefill"
-        label="Pre-filled value"
+        label="Valor pré-preenchido"
         @update:model-value="field.prefill = $event"
       />
       <select-input
@@ -424,7 +424,7 @@
         class="mt-3"
         :form="field"
         :options="prefillSelectsOptions"
-        label="Pre-filled value"
+        label="Valor pré-preenchido"
         :searchable="shouldEnableSelectSearch"
         :multiple="field.type === 'multi_select'"
       />
@@ -434,7 +434,7 @@
           :rows="field.rows"
           :columns="field.columns"
           name="prefill"
-          label="Pre-filled value"
+          label="Valor pré-preenchido"
         />
       </template>
       <date-input
@@ -445,7 +445,7 @@
         :time-format="field.time_format"
         :with-time="field.with_time === true"
         :date-range="field.date_range === true"
-        label="Pre-filled value"
+        label="Valor pré-preenchido"
       />
       <text-input
         v-else-if="field.type==='date' && field.prefill_today===true"
@@ -453,8 +453,8 @@
         class="mt-4"
         disabled
         :form="field"
-        label="Pre-filled value"
-        placeholder="Pre-filled with current date"
+        label="Valor pré-preenchido"
+        placeholder="Preenchido com a data atual"
       />
       <phone-input
         v-else-if="field.type === 'phone_number' && !field.use_simple_text_input"
@@ -463,21 +463,21 @@
         :form="field"
         :can-only-country="true"
         :unavailable-countries="field.unavailable_countries ?? []"
-        label="Pre-filled value"
+        label="Valor pré-preenchido"
       />
       <text-area-input
         v-else-if="field.type === 'text' && field.multi_lines"
         name="prefill"
         class="mt-3"
         :form="field"
-        label="Pre-filled value"
+        label="Valor pré-preenchido"
       />
       <file-input
         v-else-if="field.type === 'files'"
         name="prefill"
         class="mt-4"
         :form="field"
-        label="Pre-filled file"
+        label="Arquivo pré-preenchido"
         :multiple="field.multiple === true"
         :move-to-form-assets="true"
       />
@@ -487,24 +487,24 @@
         name="prefill"
         class="mt-3"
         :form="field"
-        label="Pre-filled value"
+        label="Valor pré-preenchido"
       />
       <text-input
         v-else-if="!['files', 'signature', 'rich_text', 'payment'].includes(field.type)"
         name="prefill"
         class="mt-3"
         :form="field"
-        label="Pre-filled value"
+        label="Valor pré-preenchido"
       />
       <div
         v-if="['select', 'multi_select'].includes(field.type)"
         class="-mt-3 mb-3 text-neutral-400 dark:text-neutral-500"
       >
         <small>
-          A problem? <a
+          Algum problema? <a
             href="#"
             @click.prevent="field.prefill = null"
-          >Click here to clear your pre-fill</a>
+          >Clique aqui para limpar o pré-preenchimento</a>
         </small>
       </div>
 
@@ -516,7 +516,7 @@
         :form="field"
         :mentions="form.properties"
         :computed-variables="form.computed_variables"
-        label="Empty Input Text - Placeholder"
+        label="Texto do campo vazio (placeholder)"
       />
 
       <OptionSelectorInput
@@ -524,11 +524,11 @@
         name="width"
         class="mt-4"
         :form="field"
-        label="Block Width"
+        label="Largura do bloco"
         seamless
         v-if="!isFocused"
         :options="[
-          { name: 'full', label: 'Full' },
+          { name: 'full', label: 'Inteira' },
           { name: '1/2', label: '1/2' },
           { name: '1/3', label: '1/3' },
           { name: '2/3', label: '2/3' },
@@ -545,7 +545,7 @@
         class="mt-3"
         :allow-fullscreen="true"
         :form="field"
-        label="Help Text"
+        label="Texto de ajuda"
         enable-mentions
         :mentions="form.properties"
         :computed-variables="form.computed_variables"
@@ -568,7 +568,7 @@
             ]
           }
         }"
-        help="Displayed below/above the field, like this text"
+        help="Aparece abaixo/acima do campo, como este texto"
         :help-position="field.help_position"
       />
       <OptionSelectorInput
@@ -576,11 +576,11 @@
         name="help_position"
         class="mt-4 w-2/3"
         :form="field"
-        label="Help Text Position"
+        label="Posição do texto de ajuda"
         seamless
         :options="[
-          { name: 'below_input', label: 'Below input'},
-          { name: 'above_input', label: 'Above input'},
+          { name: 'below_input', label: 'Abaixo do campo'},
+          { name: 'above_input', label: 'Acima do campo'},
         ]"
         :multiple="false"
         :columns="2"
@@ -593,7 +593,7 @@
           native-type="number"
           :min="1"
           :form="field"
-          label="Max character limit"
+          label="Limite máximo de caracteres"
           :required="false"
           class="mt-3"
           @update:model-value="onFieldMaxCharLimitChange"
@@ -603,7 +603,7 @@
           name="show_char_limit"
           :form="field"
           class="mt-3"
-          label="Always show character limit"
+          label="Sempre mostrar o limite de caracteres"
         />
       </template>
     </div>
@@ -615,21 +615,21 @@
     >
       <EditorSectionHeader
         icon="i-heroicons-bars-3-bottom-left"
-        title="Advanced Options"
+        title="Opções avançadas"
       />
       
       <toggle-switch-input
         :form="field"
         name="generates_uuid"
-        label="Generates a unique id"
-        help="If you enable this, we will hide this field and fill it with a unique id (UUID format) on each new form submission"
+        label="Gerar ID único"
+        help="Se ativado, o campo fica oculto e é preenchido com um ID único (formato UUID) a cada nova resposta"
         @update:model-value="onFieldGenUIdChange"
       />
       <toggle-switch-input
         :form="field"
         name="generates_auto_increment_id"
-        label="Generates an auto-incremented id"
-        help="If you enable this, we will hide this field and fill it a unique incrementing number on each new form submission"
+        label="Gerar ID sequencial"
+        help="Se ativado, o campo fica oculto e é preenchido com um número sequencial único a cada nova resposta"
         @update:model-value="onFieldGenAutoIdChange"
       />
 
@@ -680,10 +680,10 @@ export default {
       allCountries: countryCodes,
       barcodeDecodersOptions: [
         { name: 'QR Code', value: 'qr_reader' },
-        { name: 'EAN-13 (European Article Number)', value: 'ean_reader' },
-        { name: 'EAN-8 (European Article Number)', value: 'ean_8_reader' },
-        { name: 'UPC-A (Universal Product Code)', value: 'upc_reader' },
-        { name: 'UPC-E (Universal Product Code)', value: 'upc_e_reader' },
+        { name: 'EAN-13 (código de barras de produtos)', value: 'ean_reader' },
+        { name: 'EAN-8 (código de barras de produtos)', value: 'ean_8_reader' },
+        { name: 'UPC-A (código universal de produtos)', value: 'upc_reader' },
+        { name: 'UPC-E (código universal de produtos)', value: 'upc_e_reader' },
         { name: 'Code 128', value: 'code_128_reader' },
         { name: 'Code 39', value: 'code_39_reader' }
       ]
@@ -699,9 +699,9 @@ export default {
     },
     focusedCheckboxStyleOptions() {
       return [
-        { name: 'Yes/No selector (Y/N shortcuts)', value: 'focused_toggle' },
-        { name: 'Toggle switch', value: 'toggle_switch' },
-        { name: 'Classic checkbox', value: 'checkbox' }
+        { name: 'Seletor Sim/Não (atalhos Y/N)', value: 'focused_toggle' },
+        { name: 'Botão de alternância', value: 'toggle_switch' },
+        { name: 'Caixa de seleção clássica', value: 'checkbox' }
       ]
     },
     mbLimit() {

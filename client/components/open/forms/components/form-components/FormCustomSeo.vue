@@ -4,7 +4,7 @@
       <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h3 class="text-lg font-medium text-neutral-900">
-            SEO & Social Sharing - Meta <PlanTag
+            SEO e redes sociais - Meta <PlanTag
             class="ml-2"
             feature="seo_meta"
             upgrade-modal-title="Upgrade to Enhance Your Form's SEO"
@@ -12,11 +12,11 @@
           />
           </h3>
           <p class="mt-1 text-sm text-neutral-500">
-            Customize the image and text that appear when you share your form on other sites (Open Graph).
+            Personalize a imagem e o texto que aparecem quando o formulário é compartilhado em outros sites (Open Graph).
           </p>
         </div>
       <UButton
-        label="Help"
+        label="Ajuda"
         icon="i-heroicons-question-mark-circle"
         variant="outline"
         color="neutral"
@@ -35,32 +35,32 @@
               :disabled="customDomainOptions.length <= 0"
               :options="customDomainOptions"
               name="type"
-              label="Form Domain"
+              label="Domínio do formulário"
               placeholder="yourdomain.com"
             />
             <text-input
               v-model="form.seo_meta.page_title"
               name="page_title"
-              label="Page Title"
-              help="Max 60 characters recommended"
+              label="Título da página"
+              help="Recomendado no máximo 60 caracteres"
             />
             <text-area-input
               v-model="form.seo_meta.page_description"
               name="page_description"
-              label="Page Description"
-              help="Between 150 and 160 characters"
+              label="Descrição da página"
+              help="Entre 150 e 160 caracteres"
             />
             <image-input
               v-model="form.seo_meta.page_thumbnail"
               name="page_thumbnail"
-              label="Thumbnail Image"
+              label="Imagem de miniatura"
               help="og:image - 1200px X 630px"
             />
             <image-input
               v-model="form.seo_meta.page_favicon"
               name="page_favicon"
-              label="Favicon Image"
-              help="Public form page favicon"
+              label="Favicon"
+              help="Favicon da página pública do formulário"
             />
           </div>
           
@@ -71,31 +71,31 @@
 
       <div class="w-full border-t pt-4 mt-4">
         <h4 class="font-semibold">
-          Link Privacy
+          Privacidade do link
         </h4>
         <p class="text-neutral-500 text-sm mb-4">
-          Disable to prevent Google from listing your form in search results.
+          Desative para impedir que o Google mostre o formulário nos resultados de busca.
         </p>
         <ToggleSwitchInput
           name="can_be_indexed"
           :form="form"
-          label="Indexable by Google"
+          label="Indexável pelo Google"
         />
       </div>
 
       <div v-if="useFeatureFlag('self_hosted')" class="w-full border-t pt-4 mt-4">
         <h4 class="font-semibold">
-          Custom Form URL
+          URL personalizada do formulário
         </h4>
         <p class="text-neutral-500 text-sm mb-4">
-          Create a custom URL for your form. This will be the unique identifier in your form's URL.
+          Crie uma URL personalizada para o formulário. Ela será o identificador único no endereço do formulário.
         </p>
         <text-input
           :form="form"
           name="slug"
           class="mt-4 max-w-xs"
-          label="Custom Form URL"
-          help="Use only lowercase letters, numbers, and hyphens. Example: my-custom-form"
+          label="URL personalizada do formulário"
+          help="Use apenas letras minúsculas, números e hífens. Exemplo: meu-formulario"
         />
       </div>
     </div>

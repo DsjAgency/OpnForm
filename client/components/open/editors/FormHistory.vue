@@ -22,10 +22,10 @@
       <div class="flex items-center justify-between w-full">
         <div class="grow w-full">
           <h3 class="text-base font-semibold leading-6 text-neutral-900 dark:text-white">
-            Form History
+            Histórico do formulário
           </h3>
           <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-            View and restore previous versions of your form
+            Veja e restaure versões anteriores do formulário
           </p>
         </div>
         <UButton color="neutral" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="isHistoryModalOpen = false" />
@@ -43,7 +43,7 @@
                   <img
                     v-if="version.user?.photo_url"
                     :src="version.user.photo_url"
-                    :alt="version.user?.name || 'User'"
+                    :alt="version.user?.name || 'Usuário'"
                     class="h-8 w-8 rounded-full bg-neutral-50 dark:bg-neutral-800 ring-2 ring-white dark:ring-neutral-900"
                   />
                   <div
@@ -61,7 +61,7 @@
                     <div class="flex justify-between items-start mb-2">
                       <div class="text-sm text-neutral-500 dark:text-neutral-400">
                         <span class="font-medium text-neutral-900 dark:text-white mr-1">
-                          {{ version.user?.name || 'Unknown user' }}
+                          {{ version.user?.name || 'Usuário desconhecido' }}
                         </span>
                         
                         <UTooltip :text="formatDate(version.created_at)">
@@ -73,7 +73,7 @@
                         size="xs"
                         variant="soft"
                         color="neutral"
-                        label="Restore"
+                        label="Restaurar"
                         icon="i-heroicons-arrow-path"
                         @click="onRestore(version)"
                       />
@@ -89,7 +89,7 @@
                       </span>
                     </div>
                     <p v-else class="text-xs text-neutral-500 italic mt-1">
-                      No tracked changes
+                      Nenhuma alteração registrada
                     </p>
                   </div>
                 </div>
@@ -116,9 +116,9 @@ const versions = ref([])
 const isLoading = ref(false)
 
 const tooltipText = computed(() => {
-  if (isLoading.value) return 'Form History'
-  if (!versions.value.length) return 'No versions available'
-  return 'Form History'
+  if (isLoading.value) return 'Histórico do formulário'
+  if (!versions.value.length) return 'Nenhuma versão disponível'
+  return 'Histórico do formulário'
 })
 
 onMounted(() => {
@@ -142,7 +142,7 @@ const fetchVersions = async () => {
 
 const formatDate = (val) => {
   try {
-    return format(new Date(val), 'MMM dd, yyyy h:mm a')
+    return format(new Date(val), 'dd/MM/yyyy HH:mm')
   } catch {
     return ''
   }
@@ -175,8 +175,8 @@ const humanizeKey = (key, change) => {
 }
 
 const onRestore = async (version) => {
-  if(!requireFeature('form_versioning', 'Upgrade to restore form history')) return
-  useAlert().confirm('Are you sure you want to restore this version?', () => restoreVersion(version))
+  if(!requireFeature('form_versioning', 'Faça upgrade para restaurar o histórico do formulário')) return
+  useAlert().confirm('Tem certeza de que quer restaurar esta versão?', () => restoreVersion(version))
 }
 
 const restoreVersion = async (version) => {
@@ -184,10 +184,10 @@ const restoreVersion = async (version) => {
     const response = await formsApi.get(form.value.slug, { params: { version_id: version.id } })
     workingFormStore.reset()
     workingFormStore.set(useForm(response))
-    useAlert().success('Version restored successfully on editor. Please publish form to save the changes.')
+    useAlert().success('Versão restaurada no editor. Publique o formulário para salvar as alterações.')
     isHistoryModalOpen.value = false
   } catch (error) {
-    useAlert().error(error.data?.message || 'Failed to restore version')
+    useAlert().error(error.data?.message || 'Não foi possível restaurar a versão')
   }
 }
 </script>

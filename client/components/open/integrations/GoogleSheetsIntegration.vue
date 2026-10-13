@@ -6,7 +6,7 @@
   >
     <div class="mb-4">
       <p class="text-neutral-500 mb-4">
-        Adds new entry to spreadsheets on each form submission.
+        Adiciona uma nova linha na planilha a cada nova resposta.
       </p>
       <FlatSelectInput
         v-if="providers.length"
@@ -19,7 +19,7 @@
         option-key="id"
         emit-key="id"
         :required="true"
-        label="Select Google Account"
+        label="Selecione a conta Google"
       >
         <template #help>
           <InputHelp>
@@ -28,9 +28,9 @@
                 class="text-blue-500 cursor-pointer"
                 @click="openConnectionsModal"
               >
-                Click here
+                Clique aqui
               </a>
-              to connect another account.
+              para conectar outra conta.
             </span>
           </InputHelp>
         </template>
@@ -42,7 +42,7 @@
         variant="outline"
         :loading="isLoading"
         @click.prevent="connect"
-        label="Connect Google account"
+        label="Conectar conta Google"
       />
     </div>
   </IntegrationWrapper>

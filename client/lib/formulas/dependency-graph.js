@@ -119,7 +119,7 @@ export class DependencyGraph {
     const cycles = this.detectCycles()
     if (cycles.length > 0) {
       const cycleStr = cycles[0].join(' → ')
-      throw new FormulaError(`Circular dependency detected: ${cycleStr}`)
+      throw new FormulaError(`Dependência circular detectada: ${cycleStr}`)
     }
 
     const sorted = []

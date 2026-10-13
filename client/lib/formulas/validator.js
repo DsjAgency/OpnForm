@@ -85,7 +85,7 @@ export class Validator {
     const result = new ValidationResult()
 
     if (!formula || formula.trim() === '') {
-      result.addError('Formula cannot be empty')
+      result.addError('A fórmula não pode ficar vazia')
       return result
     }
 
@@ -104,7 +104,7 @@ export class Validator {
         result.addError(message)
       } else {
         const message = this.cleanErrorMessage(error.message)
-        result.addError(`Syntax error: ${message}`)
+        result.addError(`Erro de sintaxe: ${message}`)
       }
     }
 
@@ -159,7 +159,7 @@ export class Validator {
     // Check for self-reference
     if (fieldId === this.currentVariableId) {
       const varName = this.getFieldDisplayName(fieldId)
-      result.addError(`Variable '${varName}' cannot reference itself. This would create a circular dependency.`)
+      result.addError(`A variável '${varName}' não pode referenciar a si mesma. Isso criaria uma dependência circular.`)
       return
     }
 
@@ -171,14 +171,14 @@ export class Validator {
       // Check if it looks like a UUID (deleted field)
       const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(fieldId)
       if (isUuid) {
-        result.addError(`This field was deleted or renamed. Please select a different field.`)
+        result.addError(`Este campo foi excluído ou renomeado. Selecione outro campo.`)
       } else {
         // Try to suggest similar field names
         const suggestion = this.findSimilarFieldByName(fieldId)
         if (suggestion) {
-          result.addError(`Unknown field '${fieldId}'. Did you mean '${suggestion}'?`)
+          result.addError(`Campo desconhecido '${fieldId}'. Você quis dizer '${suggestion}'?`)
         } else {
-          result.addError(`Unknown field '${fieldId}'`)
+          result.addError(`Campo desconhecido '${fieldId}'`)
         }
       }
     }
@@ -194,9 +194,9 @@ export class Validator {
     if (!hasFunction(funcName)) {
       const suggestion = this.findSimilarFunction(funcName)
       if (suggestion) {
-        result.addError(`Unknown function '${funcName}'. Did you mean '${suggestion}'?`)
+        result.addError(`Função desconhecida '${funcName}'. Você quis dizer '${suggestion}'?`)
       } else {
-        result.addError(`Unknown function '${funcName}'. Check the function reference for available functions.`)
+        result.addError(`Função desconhecida '${funcName}'. Consulte a referência de funções para ver as disponíveis.`)
       }
       return
     }
@@ -207,14 +207,14 @@ export class Validator {
       const argCount = node.args.length
       if (argReqs.min !== undefined && argCount < argReqs.min) {
         if (argReqs.max === argReqs.min) {
-          result.addError(`Function ${funcName}() requires exactly ${argReqs.min} argument${argReqs.min === 1 ? '' : 's'}, but got ${argCount}.`)
+          result.addError(`A função ${funcName}() exige exatamente ${argReqs.min} argumento${argReqs.min === 1 ? '' : 's'}, mas recebeu ${argCount}.`)
         } else {
-          result.addError(`Function ${funcName}() requires at least ${argReqs.min} argument${argReqs.min === 1 ? '' : 's'}, but got ${argCount}.`)
+          result.addError(`A função ${funcName}() exige pelo menos ${argReqs.min} argumento${argReqs.min === 1 ? '' : 's'}, mas recebeu ${argCount}.`)
         }
         return
       }
       if (argReqs.max !== undefined && argCount > argReqs.max) {
-        result.addError(`Function ${funcName}() accepts at most ${argReqs.max} argument${argReqs.max === 1 ? '' : 's'}, but got ${argCount}.`)
+        result.addError(`A função ${funcName}() aceita no máximo ${argReqs.max} argumento${argReqs.max === 1 ? '' : 's'}, mas recebeu ${argCount}.`)
         return
       }
     }
@@ -281,7 +281,7 @@ export class Validator {
    */
   cleanErrorMessage(message) {
     // Remove "at position X" since positions are confusing with field pills
-    return message.replace(/\s+at position \d+/gi, '')
+    return message.replace(/\s+(at position|na posição) \d+/gi, '')
   }
 
   /**

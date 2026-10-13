@@ -99,7 +99,7 @@
         :name="isFileType ? 'i-heroicons-document' : 'i-heroicons-chat-bubble-bottom-center-text'" 
         class="w-8 h-8 mb-2 opacity-50" 
       />
-      <span class="text-sm">{{ isFileType ? 'No files uploaded' : 'No responses' }}</span>
+      <span class="text-sm">{{ isFileType ? 'Nenhum arquivo enviado' : 'Nenhuma resposta' }}</span>
     </div>
 
     <!-- Load More Button -->
@@ -113,7 +113,7 @@
         @click="loadMore"
       >
         <template v-if="!isLoadingMore">
-          Load more responses ({{ remainingCount }} remaining)
+          Carregar mais respostas ({{ remainingCount }} restantes)
         </template>
       </UButton>
     </div>
@@ -143,7 +143,7 @@ const isLoadingMore = ref(false)
 const remainingCount = computed(() => totalCount.value - displayedValues.value.length)
 
 const getDisplayFileName = (url) => {
-  if (!url) return 'Unknown file'
+  if (!url) return 'Arquivo desconhecido'
   try {
     const parts = url.split('/')
     let fileName = parts[parts.length - 1]
@@ -153,7 +153,7 @@ const getDisplayFileName = (url) => {
     const uuidSuffixPattern = /_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(\.[^.]+)?$/i
     return fileName.replace(uuidSuffixPattern, '$1')
   } catch {
-    return 'File'
+    return 'Arquivo'
   }
 }
 
@@ -178,7 +178,7 @@ const loadMore = async () => {
     totalCount.value = response.total_count
   } catch (error) {
     console.error(error)
-    useAlert().error('Failed to load more values')
+    useAlert().error('Não foi possível carregar mais valores')
   } finally {
     isLoadingMore.value = false
   }
@@ -194,7 +194,7 @@ watch(() => props.field.data, (newData) => {
 
 const menuItems = (item) => [
   {
-    label: 'View Submission',
+    label: 'Ver resposta',
     onClick: () => {
       navigateTo({
         name: 'forms-slug-show-submissions',

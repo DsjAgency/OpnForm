@@ -3,20 +3,20 @@
   <UModal
     v-model:open="isOpen"
     :ui="{ content: 'sm:max-w-lg' }"
-    :title="isMailSent ? 'Check your email' : 'Forgot password?'"
-    :description="isMailSent ? '' : 'No worries, we\'ll send you reset instructions.'"
+    :title="isMailSent ? 'Verifique seu e-mail' : 'Esqueceu a senha?'"
+    :description="isMailSent ? '' : 'Sem problemas, enviaremos as instruções para redefinir.'"
   >
     <template #body>
       <template v-if="isMailSent">
         <div class="text-center">
-          We sent a password reset link to <br><span class="font-bold">{{ form.email }}</span>
+          Enviamos um link para redefinir a senha para <br><span class="font-bold">{{ form.email }}</span>
         </div>
         <div class="w-full mt-4 text-center">
           <UButton
             icon="heroicons:arrow-path"
             variant="outline"
             color="neutral"
-            label="Resend email"
+            label="Reenviar e-mail"
             @click="send"
           />
         </div>
@@ -28,8 +28,8 @@
           <text-input
             name="email"
             :form="form"
-            label="Email"
-            placeholder="Your email address"
+            label="E-mail"
+            placeholder="Seu endereço de e-mail"
             :required="true"
           />
 
@@ -38,7 +38,7 @@
               type="submit"
               block
               :loading="form.busy"
-              label="Reset password"
+              label="Redefinir senha"
             />
           </div>
         </form>
@@ -52,7 +52,7 @@
         variant="link"
         color="neutral"
         @click="close"
-        label="Back to log in"
+        label="Voltar para o login"
       />
     </template>
   </UModal>

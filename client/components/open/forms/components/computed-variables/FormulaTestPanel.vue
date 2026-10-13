@@ -3,10 +3,10 @@
     <div class="p-4 border-b">
       <h4 class="font-medium text-gray-900 flex items-center gap-2">
         <Icon name="i-heroicons-beaker" class="w-4 h-4" />
-        Test Your Formula
+        Teste sua fórmula
       </h4>
       <p class="text-xs text-gray-500 mt-1">
-        Enter sample values to preview the calculation
+        Digite valores de exemplo para ver o resultado do cálculo
       </p>
     </div>
     
@@ -17,7 +17,7 @@
         class="text-center py-8 text-gray-500 flex-1"
       >
         <Icon name="i-heroicons-information-circle" class="w-8 h-8 mx-auto mb-2 text-gray-400" />
-        <p class="text-sm">Add fields to your formula to test with sample values</p>
+        <p class="text-sm">Adicione campos à fórmula para testar com valores de exemplo</p>
         <p class="text-xs text-gray-400 mt-2">Use the "Field" button in the formula editor</p>
       </div>
       
@@ -26,7 +26,7 @@
         <div v-if="hasTestableFields" class="rounded-lg border border-gray-200 overflow-hidden">
           <div class="px-4 py-2 bg-gray-50 border-b border-gray-200">
             <h5 class="text-xs font-medium text-gray-500 uppercase tracking-wide">
-              Form Field Values
+              Valores dos campos
             </h5>
           </div>
           <div class="p-4 bg-white">
@@ -47,7 +47,7 @@
         <!-- Computed Variables in Formula -->
         <div v-if="referencedVariables.length > 0" class="rounded-lg p-4 border border-purple-200">
           <h5 class="text-xs font-medium text-purple-600 uppercase tracking-wide mb-3">
-            Referenced Variables
+            Variáveis referenciadas
           </h5>
           <div class="space-y-2">
             <div 
@@ -70,7 +70,7 @@
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
               <Icon name="i-heroicons-calculator" class="w-5 h-5 text-blue-600" />
-              <span class="text-sm font-medium text-blue-900">Result</span>
+              <span class="text-sm font-medium text-blue-900">Resultado</span>
             </div>
             <span class="text-lg font-mono font-bold text-blue-700">
               {{ computedResult }}
@@ -241,7 +241,7 @@ function getComputedVariableValue(cv) {
     const result = evaluateFormula(cv.formula, context)
     return formatResult(result)
   } catch {
-    return 'Error'
+    return 'Erro'
   }
 }
 </script>

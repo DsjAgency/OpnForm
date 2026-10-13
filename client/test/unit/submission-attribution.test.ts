@@ -70,7 +70,7 @@ describe('submission attribution', () => {
     expect(attributionParameterFromColumnId('meta.attribution.utm_campaign')).toBe('utm_campaign')
     expect(attributionParameterFromColumnId('utm_campaign')).toBeNull()
     expect(attributionParameterFromColumnId('default_email')).toBeNull()
-    expect(ATTRIBUTION_PARAMETER_LABELS.utm_campaign).toBe('Campaign')
+    expect(ATTRIBUTION_PARAMETER_LABELS.utm_campaign).toBe('Campanha')
   })
 
   it('detects only parameters containing submission values', () => {

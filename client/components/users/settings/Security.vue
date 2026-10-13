@@ -3,9 +3,9 @@
     <!-- Password Section -->
     <div class="space-y-4">
       <div>
-        <h3 class="text-lg font-medium text-neutral-900">Change Password</h3>
+        <h3 class="text-lg font-medium text-neutral-900">Alterar senha</h3>
         <p class="text-sm text-neutral-500 mt-1">
-          Update your password to keep your account secure.
+          Atualize sua senha para manter a conta segura.
         </p>
       </div>
 
@@ -17,18 +17,18 @@
             <TextInput
               :form="passwordForm"
               name="current_password"
-              label="Current Password"
+              label="Senha atual"
               native-type="password"
-              placeholder="Enter current password"
+              placeholder="Digite a senha atual"
               :required="true"
             />
 
             <TextInput
               :form="passwordForm"
               name="password"
-              label="New Password"
+              label="Nova senha"
               native-type="password"
-              placeholder="Enter new password"
+              placeholder="Digite a nova senha"
               :required="true"
               @focus="isPasswordFocused = true"
               @blur="isPasswordFocused = false"
@@ -41,9 +41,9 @@
             <TextInput
               :form="passwordForm"
               name="password_confirmation"
-              label="Confirm Password"
+              label="Confirmar senha"
               native-type="password"
-              placeholder="Confirm new password"
+              placeholder="Confirme a nova senha"
               :required="true"
             />
           </div>
@@ -54,7 +54,7 @@
               :loading="passwordForm.busy"
               color="primary"
             >
-              Update Password
+              Atualizar senha
             </UButton>
           </div>
         </form>
@@ -86,7 +86,7 @@ const updatePassword = () => {
     .patch('/settings/password')
     .then(() => {
       passwordForm.reset()
-      alert.success('Password updated.')
+      alert.success('Senha atualizada.')
     })
     .catch((error) => {
       console.error(error)

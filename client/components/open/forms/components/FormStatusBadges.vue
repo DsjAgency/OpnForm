@@ -4,49 +4,49 @@
     class="flex items-center flex-wrap gap-1"
   >
     <!-- Draft Badge -->
-    <UTooltip v-if="form.visibility === 'draft'" text="Not publicly accessible">
+    <UTooltip v-if="form.visibility === 'draft'" text="Não está acessível publicamente">
       <UBadge
         color="warning"
         variant="subtle"
         icon="i-heroicons-pencil-square"
         :size="size"
       >
-        Draft
+        Rascunho
       </UBadge>
     </UTooltip>
     
     <!-- Closed Badge -->
-    <UTooltip v-else-if="form.visibility === 'closed'" text="Won't accept new submissions">
+    <UTooltip v-else-if="form.visibility === 'closed'" text="Não aceita novas respostas">
       <UBadge
         color="neutral"
         variant="subtle"
         icon="i-heroicons-lock-closed"
         :size="size"
       >
-        Closed
+        Encerrado
       </UBadge>
     </UTooltip>
     
     <!-- Time Limited Badge -->
      <template v-else-if="form.closes_at">
-      <UTooltip v-if="!form.is_closed" :text="`Will close on ${closesDate}`">
+      <UTooltip v-if="!form.is_closed" :text="`Será encerrado em ${closesDate}`">
         <UBadge
           color="warning"
           variant="subtle"
           icon="i-heroicons-clock"
           :size="size"
         >
-          Time limited
+          Prazo limitado
         </UBadge>
       </UTooltip>
-      <UTooltip v-else :text="`Closed on ${closesDate}`">
+      <UTooltip v-else :text="`Encerrado em ${closesDate}`">
         <UBadge
           color="neutral"
           variant="subtle"
           icon="i-heroicons-clock"
           :size="size"
         >
-          Closed
+          Encerrado
         </UBadge>
       </UTooltip>
   </template>
@@ -55,7 +55,7 @@
     <template v-else-if="form.max_submissions_count > 0">
       <UTooltip 
         v-if="!form.max_number_of_submissions_reached"
-        :text="`Limited to ${form.max_submissions_count} submissions`"
+        :text="`Limitado a ${form.max_submissions_count} respostas`"
       >
         <UBadge
           color="warning"
@@ -63,12 +63,12 @@
           icon="i-heroicons-chart-bar"
           :size="size"
         >
-          Submission limited
+          Respostas limitadas
         </UBadge>
       </UTooltip>
       <UTooltip 
         v-else
-        :text="`Maximum ${form.max_submissions_count} submissions reached`"
+        :text="`Limite de ${form.max_submissions_count} respostas atingido`"
       >
         <UBadge
           color="neutral"
@@ -76,7 +76,7 @@
           icon="i-heroicons-lock-closed"
           :size="size"
         >
-          Limit reached
+          Limite atingido
         </UBadge>
       </UTooltip>
     </template>

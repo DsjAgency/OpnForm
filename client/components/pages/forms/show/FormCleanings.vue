@@ -17,11 +17,11 @@
             id="notification-title"
             class="font-medium max-md:max-w-full text-blue-500"
           >
-            Upgrade to unlock all features
+            Faça upgrade para liberar todos os recursos
           </h5>
           <p class="mt-2 max-md:max-w-full text-slate-500">
-            <span v-if="specifyFormOwner">Only you are seeing this notification, as owner of the form.</span> The
-            following features are disabled on the published form:
+            <span v-if="specifyFormOwner">Só você está vendo este aviso, como dono do formulário.</span> Os
+            recursos a seguir estão desativados no formulário publicado:
           </p>
           <div
             class="text-slate-500 break-words whitespace-break-spaces"
@@ -37,7 +37,7 @@
               icon="i-heroicons-check-badge-16-solid"
               @click.prevent="onUpgradeClick"
             >
-              Unlock all features
+              Liberar todos os recursos
             </UButton>
           </TrackClick>
           <UButton
@@ -45,7 +45,7 @@
             variant="link"
             @click.prevent="dismissWarning"
           >
-            Dismiss
+            Dispensar
           </UButton>
         </div>
       </div>
@@ -106,7 +106,7 @@ const cleaningContent = computed(() => {
   Object.keys(cleanings.value).forEach((key) => {
     let fieldName = key.charAt(0).toUpperCase() + key.slice(1)
     if (fieldName !== 'Form') {
-      fieldName = '"' + fieldName + '" field'
+      fieldName = 'Campo "' + fieldName + '"'
     }
     const safeFieldName = escapeHtml(fieldName)
     let fieldInfo = '<br><span class="font-semibold">' + safeFieldName + '</span><br/><ul class=\'list-disc list-inside\'>'
@@ -125,8 +125,8 @@ const cleaningContent = computed(() => {
 const onUpgradeClick = () => {
   openSubscriptionModal({
     plan: 'business',
-    modal_title: 'Upgrade to unlock all features for your form',
-    modal_description: 'Some features are disabled on the published form. Upgrade your plan to unlock these features and much more. Gain full access to all advanced features.',
+    modal_title: 'Faça upgrade para liberar todos os recursos do formulário',
+    modal_description: 'Alguns recursos estão desativados no formulário publicado. Faça upgrade do plano para liberar esses e outros recursos avançados.',
     show_requirement_hints: false,
   })
 }

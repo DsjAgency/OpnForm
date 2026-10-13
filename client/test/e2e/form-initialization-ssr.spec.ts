@@ -111,7 +111,7 @@ for (const style of ['classic', 'focused']) {
         await expect(firstRender.locator('label[for="control"]')).toBeVisible()
         await expect(firstRender.locator('label[for="dependent"]')).toHaveCount(0)
         if (item.type === 'scale') {
-          await expect(firstRender.getByRole('radio', { name: `Scale value ${item.value}`, exact: true }))
+          await expect(firstRender.getByRole('radio', { name: `Valor ${item.value} da escala`, exact: true }))
             .toHaveAttribute('aria-checked', 'true')
         }
       } finally {
@@ -124,7 +124,7 @@ for (const style of ['classic', 'focused']) {
       await expect(page.locator('label[for="dependent"]')).toHaveCount(0)
       await expect(page.locator('label[for="static_hidden"]')).toHaveCount(0)
       if (item.type === 'scale') {
-        await expect(page.getByRole('radio', { name: `Scale value ${item.value}`, exact: true }))
+        await expect(page.getByRole('radio', { name: `Valor ${item.value} da escala`, exact: true }))
           .toHaveAttribute('aria-checked', 'true')
       }
       expect(warnings).toEqual([])
@@ -180,7 +180,7 @@ for (const toggle of [false, true]) {
       const control = page.getByRole(toggle ? 'switch' : 'checkbox', { name: 'Choice', exact: true })
       await expect(control).toBeChecked({ checked })
       await expect(page.getByLabel('Feedback', { exact: true })).toHaveValue('Saved answer')
-      await expect(page.getByRole('radio', { name: 'Scale value 2.5', exact: true })).toHaveAttribute('aria-checked', 'true')
+      await expect(page.getByRole('radio', { name: 'Valor 2.5 da escala', exact: true })).toHaveAttribute('aria-checked', 'true')
       await expect(page.getByTestId('open-form-field-details')).toHaveCount(checked ? 1 : 0)
       expect(warnings).toEqual([])
 
@@ -227,7 +227,7 @@ test('focused drafts restore No and lazy numeric controls before stepping and su
   await nextFocusedStep(page)
   await expect(page.getByRole('slider')).toHaveAttribute('aria-valuenow', '4')
   await nextFocusedStep(page)
-  await expect(page.getByRole('radio', { name: 'Scale value 2.5', exact: true })).toHaveAttribute('aria-checked', 'true')
+  await expect(page.getByRole('radio', { name: 'Valor 2.5 da escala', exact: true })).toHaveAttribute('aria-checked', 'true')
   await nextFocusedStep(page)
   await expect(page.getByLabel('Feedback', { exact: true })).toHaveValue('Saved answer')
   const submission = page.waitForRequest(request => request.method() === 'POST' && request.url().endsWith(`/forms/${form.slug}/answer`))

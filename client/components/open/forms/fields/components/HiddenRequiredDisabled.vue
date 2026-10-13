@@ -36,20 +36,20 @@ const emit = defineEmits(['update:field'])
 const options = [
   {
     name: 'required',
-    label: 'Required',
+    label: 'Obrigatório',
     icon: 'ph:asterisk-bold',
     selectedIcon: 'ph:asterisk-bold',
     iconClass: (isActive) => isActive ? 'text-red-500' : '',
   },
   {
     name: 'hidden',
-    label: 'Hidden',
+    label: 'Oculto',
     icon: 'heroicons:eye',
     selectedIcon: 'heroicons:eye-slash-solid',
   },
   {
     name: 'disabled',
-    label: 'Disabled',
+    label: 'Desativado',
     icon: 'heroicons:lock-open',
     selectedIcon: 'heroicons:lock-closed-solid',
   }

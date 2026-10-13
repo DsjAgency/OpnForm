@@ -6,7 +6,7 @@
     <template #header>
       <div class="flex items-center w-full gap-4 px-2">
         <h2 class="font-semibold">
-          Change form's workspace
+          Mudar o espaço de trabalho do formulário
         </h2>
       </div>
       <UButton
@@ -16,13 +16,13 @@
         size="sm"
         @click="crisp.openHelpdeskArticle('how-to-move-a-form-to-another-workspace-1twq0kg')"
       >
-        Help
+        Ajuda
       </UButton>
     </template>
 
     <template #body>
       <div class="flex space-x-4 items-center">
-        <p>Current workspace:</p>
+        <p>Espaço de trabalho atual:</p>
         <div class="flex items-center cursor group p-2 rounded-sm border">
           <WorkspaceIcon :workspace="workspace" />
           <p
@@ -40,7 +40,7 @@
             class=""
             :options="workspacesSelectOptions"
             :required="true"
-            label="Select destination workspace"
+            label="Selecione o espaço de trabalho de destino"
           />
         </div>
       </form>
@@ -52,12 +52,12 @@
           color="neutral"
           variant="outline"
           @click="close"
-          label="Close"
+          label="Fechar"
         />
         <UButton
           :loading="loading"
           @click="onSubmit"
-          label="Change workspace"
+          label="Mudar de espaço de trabalho"
         />
       </div>
     </template>
@@ -112,7 +112,7 @@ const close = () => {
 
 const onSubmit = () => {
   if (!selectedWorkspace.value) {
-    useAlert().error("Please select a workspace!")
+    useAlert().error("Selecione um espaço de trabalho!")
     return
   }
   
@@ -125,7 +125,7 @@ const onSubmit = () => {
   }).then(() => {
     loading.value = false
     emit("close")
-    useAlert().success("Form workspace updated successfully.")
+    useAlert().success("Espaço de trabalho do formulário atualizado.")
     
     // Switch to the new workspace
     switchTo(selectedWorkspace.value)
@@ -138,7 +138,7 @@ const onSubmit = () => {
     }
   }).catch((error) => {
     useAlert().error(
-      error?.data?.message ?? "Something went wrong, please try again!",
+      error?.data?.message ?? "Algo deu errado. Tente novamente!",
     )
     loading.value = false
   })

@@ -23,12 +23,12 @@
     <UModal
       v-model:open="showDeleteFormModal"
       :ui="{ content: 'sm:max-w-sm' }"
-      title="Delete form"
+      title="Excluir formulário"
     >
       <template #body>
         <p>
-          If you want to permanently delete this form and all of its data, you
-          can do so below.
+          Se quiser excluir permanentemente este formulário e todos os seus dados,
+          faça isso abaixo.
         </p>
       </template>
 
@@ -38,13 +38,13 @@
             color="neutral"
             variant="outline"
             @click="showDeleteFormModal = false"
-            label="Cancel"
+            label="Cancelar"
           />
           <UButton
             color="error"
             :loading="deleteFormMutation.isPending.value"
             @click="deleteForm"
-            label="Yes, delete it"
+            label="Sim, excluir"
           />
         </div>
       </template>
@@ -100,7 +100,7 @@ const items = computed(() => {
   return [
     [
       ...props.isMainPage ? [{
-        label: 'Open form',
+        label: 'Abrir formulário',
         icon: 'i-heroicons-arrow-top-right-on-square',
         onClick: () => {
           if (props.isMainPage && props.form.visibility === 'draft') {
@@ -111,7 +111,7 @@ const items = computed(() => {
         }
       }] : [],
       {
-        label: 'Copy link to share',
+        label: 'Copiar link para compartilhar',
         icon: 'i-heroicons-clipboard-document-check-20-solid',
         onClick: copyLink
       }
@@ -119,26 +119,26 @@ const items = computed(() => {
     ...workspace.value?.is_readonly ? [] : [
       [
         ...props.isMainPage ? [{
-        label: 'Edit',
+        label: 'Editar',
         icon: 'i-heroicons-pencil-square-20-solid',
         to: { name: 'forms-slug-edit', params: { slug: props.form.slug } }
       }] : [],
       {
-        label: 'Duplicate form',
+        label: 'Duplicar formulário',
         icon: 'i-heroicons-document-duplicate-20-solid',
         onClick: duplicateForm
         
       }], 
     [
       ...props.isMainPage ? [] : [{
-        label: 'Create Template',
+        label: 'Criar modelo',
         icon: 'i-heroicons-document-plus-20-solid',
         onClick: () => {
           showFormTemplateModal.value = true
         }
       }],
       {
-        label: 'Change workspace',
+        label: 'Mudar de espaço de trabalho',
         icon: 'i-heroicons-building-office-2-20-solid',
         onClick: () => {
           showFormWorkspaceModal.value = true
@@ -146,7 +146,7 @@ const items = computed(() => {
       },
     ],[
       {
-        label: 'Delete form',
+        label: 'Excluir formulário',
         icon: 'i-heroicons-trash-20-solid',
         onClick: () => {
           showDeleteFormModal.value = true
@@ -161,7 +161,7 @@ const items = computed(() => {
 
 const copyLink = () => {
   copy(props.form.share_url)
-  useAlert().success("Copied!")
+  useAlert().success("Copiado!")
 }
 
 const duplicateForm = () => {
@@ -172,7 +172,7 @@ const duplicateForm = () => {
     })
     useAlert().success(data.message)
   }).catch((error) => {
-    useAlert().error(error.data?.message || "Failed to duplicate form")
+    useAlert().error(error.data?.message || "Não foi possível duplicar o formulário")
   })
 }
 
@@ -183,13 +183,13 @@ const deleteForm = () => {
     emitFormDeleted(props.form)
     router.push({ name: "home" })
   }).catch((error) => {
-    useAlert().error(error.data?.message || "Failed to delete form")
+    useAlert().error(error.data?.message || "Não foi possível excluir o formulário")
   })
 }
 
 const showDraftFormWarningNotification = () => {
   useAlert().warning(
-    "This form is currently in Draft mode and is not publicly accessible, You can change the form status on the edit form page.",
+    "Este formulário está em rascunho e não está acessível publicamente. Você pode mudar o status na página de edição do formulário.",
   )
 }
 </script>

@@ -3,10 +3,10 @@ import assert from 'node:assert/strict'
 import { eventLabel, eventColor, isStale, recipientLabel } from '../lib/integration-email-status.js'
 
 test('acceptance and legacy success do not imply mailbox delivery', () => {
-  assert.equal(eventLabel({ status: 'Accepted' }), 'Accepted · delivery unconfirmed')
-  assert.equal(eventLabel({ status: 'Success', legacy_email: true }), 'Completed · delivery untracked')
+  assert.equal(eventLabel({ status: 'Accepted' }), 'Aceito · entrega não confirmada')
+  assert.equal(eventLabel({ status: 'Success', legacy_email: true }), 'Concluído · entrega não rastreada')
   assert.equal(eventColor({ status: 'Success', legacy_email: true }), 'neutral')
-  assert.equal(eventLabel({ status: 'Success' }), 'Success')
+  assert.equal(eventLabel({ status: 'Success' }), 'Sucesso')
 })
 
 test('abandoned processing becomes explicitly uncertain', () => {
@@ -19,8 +19,8 @@ test('abandoned processing becomes explicitly uncertain', () => {
 test('a partial failure does not conceal an abandoned recipient', () => {
   const event = { email_tracking: true, status: 'Error', data: { email: { recipients: { a: { status: 'sending', updated_at: '2026-01-01T00:00:00Z' } } } } }
   assert.equal(isStale(event, Date.parse('2026-01-01T00:11:00Z')), true)
-  assert.equal(recipientLabel('bounced'), 'Bounced')
-  assert.equal(recipientLabel('unknown'), 'Outcome unknown')
+  assert.equal(recipientLabel('bounced'), 'Devolvido')
+  assert.equal(recipientLabel('unknown'), 'Resultado desconhecido')
 })
 
 
@@ -45,17 +45,17 @@ test('renders recipient evidence and the inbox limitation in the actual Vue comp
         second: { address: 'two@example.com', status: 'bounced', reason: 'Receiving server rejected the email.' },
       } } },
     } }))
-    assert.match(html, /Delivered to mail server/)
-    assert.match(html, /Bounced/)
+    assert.match(html, /Entregue ao servidor de e-mail/)
+    assert.match(html, /Devolvido/)
     const [summary, details] = html.split('<details')
     assert.match(summary, /one@example.com/)
-    assert.match(summary, /Delivered to mail server/)
+    assert.match(summary, /Entregue ao servidor de e-mail/)
     assert.match(summary, /Receiving server rejected the email/)
-    assert.doesNotMatch(summary, /Message ID:|Event ID:/)
+    assert.doesNotMatch(summary, /ID da mensagem:|ID do evento:/)
     assert.doesNotMatch(details.split('>')[0], /\bopen\b/)
-    assert.match(details, /Delivery details/)
+    assert.match(details, /Detalhes da entrega/)
     assert.match(details, /ses-123/)
-    assert.match(html, /not inbox placement/)
+    assert.match(html, /não que ela chegou à caixa de entrada/)
   } finally {
     await rm(generatedPath)
   }
@@ -64,6 +64,6 @@ test('renders recipient evidence and the inbox limitation in the actual Vue comp
 
 test('confirmed errors stay prominent when another recipient has an uncertain stale result', () => {
   const event = { email_tracking: true, status: 'Error', data: { email: { recipients: { a: { status: 'sending', updated_at: '2020-01-01T00:00:00Z' } } } } }
-  assert.equal(eventLabel(event), 'Action needed')
+  assert.equal(eventLabel(event), 'Ação necessária')
   assert.equal(eventColor(event), 'error')
 })

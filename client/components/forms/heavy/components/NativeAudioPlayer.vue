@@ -3,7 +3,7 @@
     <button
       type="button"
       :class="ui.button({ class: props.ui?.slots?.button })"
-      :aria-label="isPlaying ? 'Pause' : 'Play'"
+      :aria-label="isPlaying ? 'Pausar' : 'Reproduzir'"
       @click="togglePlay"
     >
       <Icon
@@ -34,7 +34,7 @@
     <button
       type="button"
       :class="ui.button({ class: props.ui?.slots?.button })"
-      :aria-label="isMuted ? 'Unmute' : 'Mute'"
+      :aria-label="isMuted ? 'Ativar som' : 'Silenciar'"
       @click="toggleMute"
     >
       <Icon

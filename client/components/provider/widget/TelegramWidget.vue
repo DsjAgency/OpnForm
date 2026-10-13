@@ -8,8 +8,8 @@
         href="https://telegram.org"
         target="_blank"
         class="text-primary-500 hover:underline"
-      >Telegram</a> is a secure messaging app that works across all devices and platforms. 
-      Connect your account to receive instant notifications whenever someone submits this form!
+      >Telegram</a> é um app de mensagens seguro que funciona em todos os dispositivos e plataformas. 
+      Conecte sua conta para receber notificações na hora sempre que alguém responder a este formulário!
     </p>
     <div class="flex justify-center">
       <UButton
@@ -17,7 +17,7 @@
         icon="i-mdi-telegram"
         @click.prevent="handleAuth"
       >
-        Log in with Telegram
+        Entrar com o Telegram
       </UButton>
     </div>
   </div>
@@ -54,7 +54,7 @@ const handleAuth = () => {
       }
     )
   } else {
-    useAlert().error('Telegram login is not available')
+    useAlert().error('O login com Telegram não está disponível')
   }
 }
 

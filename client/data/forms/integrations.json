@@ -1,44 +1,44 @@
 {
   "email": {
-    "name": "Email Notification",
+    "name": "Notificação por e-mail",
     "icon": "heroicons:envelope-20-solid",
-    "section_name": "Notifications",
+    "section_name": "Notificações",
     "file_name": "EmailIntegration",
     "actions_file_name": "EmailIntegrationActions",
     "required_tier": "free",
     "crisp_help_page_slug": "can-i-receive-notifications-on-form-submissions-134svqv"
   },
   "slack": {
-    "name": "Slack Notification",
+    "name": "Notificação no Slack",
     "icon": "mdi:slack",
-    "section_name": "Notifications",
+    "section_name": "Notificações",
     "file_name": "SlackIntegration",
     "actions_file_name": "SlackIntegrationActions",
     "required_tier": "pro",
     "crisp_help_page_slug": "do-you-want-to-get-notified-of-new-submissions-via-slack-21mhhh"
   },
   "discord": {
-    "name": "Discord Notification",
+    "name": "Notificação no Discord",
     "icon": "ic:baseline-discord",
-    "section_name": "Notifications",
+    "section_name": "Notificações",
     "file_name": "DiscordIntegration",
     "actions_file_name": "DiscordIntegrationActions",
     "required_tier": "pro",
     "crisp_help_page_slug": "do-you-want-to-get-notified-of-new-submissions-via-discord-1b2oxcx"
   },
   "telegram": {
-    "name": "Telegram Notification",
+    "name": "Notificação no Telegram",
     "icon": "mdi:telegram",
-    "section_name": "Notifications",
+    "section_name": "Notificações",
     "file_name": "TelegramIntegration",
     "actions_file_name": "TelegramIntegrationActions",
     "required_tier": "pro",
     "crisp_help_page_slug": "how-to-connect-telegram-to-your-opnform-bxqqq2"
   },
   "webhook": {
-    "name": "Webhook Notification",
+    "name": "Webhook",
     "icon": "material-symbols:webhook",
-    "section_name": "Automation",
+    "section_name": "Automação",
     "file_name": "WebhookIntegration",
     "actions_file_name": "WebhookIntegrationActions",
     "required_tier": "free",
@@ -47,7 +47,7 @@
   "zapier": {
     "name": "Zapier",
     "icon": "cib:zapier",
-    "section_name": "Automation",
+    "section_name": "Automação",
     "file_name": "ZapierIntegration",
     "required_tier": "free",
     "is_external": true,
@@ -58,7 +58,7 @@
   "n8n": {
     "name": "n8n",
     "icon": "simple-icons:n8n",
-    "section_name": "Automation",
+    "section_name": "Automação",
     "file_name": "N8nIntegration",
     "actions_file_name": "N8nIntegrationActions",
     "required_tier": "free",
@@ -69,7 +69,7 @@
   "activepieces": {
     "name": "Activepieces",
     "icon": "opnform:activepieces",
-    "section_name": "Automation",
+    "section_name": "Automação",
     "file_name": "ActivepiecesIntegration",
     "actions_file_name": "ActivepiecesIntegrationActions",
     "required_tier": "free",
@@ -80,7 +80,7 @@
   "make": {
     "name": "Make",
     "icon": "simple-icons:make",
-    "section_name": "Automation",
+    "section_name": "Automação",
     "file_name": "MakeIntegration",
     "actions_file_name": "MakeIntegrationActions",
     "required_tier": "free",
@@ -91,7 +91,7 @@
   "pabbly": {
     "name": "Pabbly",
     "icon": "opnform:pabbly",
-    "section_name": "Automation",
+    "section_name": "Automação",
     "file_name": "PabblyIntegration",
     "actions_file_name": "PabblyIntegrationActions",
     "required_tier": "free",
@@ -102,7 +102,7 @@
   "albato": {
     "name": "Albato",
     "icon": "opnform:albato",
-    "section_name": "Automation",
+    "section_name": "Automação",
     "file_name": "AlbatoIntegration",
     "actions_file_name": "AlbatoIntegrationActions",
     "required_tier": "free",
@@ -113,7 +113,7 @@
   "google_sheets": {
     "name": "Google Sheets",
     "icon": "mdi:google-spreadsheet",
-    "section_name": "Databases",
+    "section_name": "Planilhas",
     "file_name": "GoogleSheetsIntegration",
     "actions_file_name": "GoogleSheetsIntegrationActions",
     "required_tier": "free",

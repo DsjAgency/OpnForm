@@ -11,19 +11,19 @@
       <div class="p-2 max-h-[300px] flex flex-col">
         <div class="flex items-center border-b -mx-2 px-2">
           <div class="font-semibold w-1/2 mb-2 flex-grow">
-            Insert Mention
+            Inserir menção
           </div>
           <input
             v-model="fallbackValue"
             class="p-1 mb-2 text-sm w-1/2 border rounded-md hover:bg-neutral-50"
-            placeholder="Fallback value"
+            placeholder="Valor padrão"
           >
         </div>
         <div class="overflow-scroll pt-2">
           <!-- Form Fields -->
           <div class="w-full max-w-xs mb-2">
             <div class="text-sm text-neutral-500 mb-1">
-              Select a field
+              Selecione um campo
             </div>
             <div class="space-y-1">
               <div
@@ -48,7 +48,7 @@
           <!-- Computed Variables -->
           <div v-if="computedVariables && computedVariables.length > 0" class="w-full max-w-xs mb-2 border-t pt-2 mt-2">
             <div class="text-sm text-neutral-500 mb-1">
-              Variables
+              Variáveis
             </div>
             <div class="space-y-1">
               <div
@@ -81,7 +81,7 @@
               block
               @click="createComputedVariable"
             >
-              Create variable
+              Criar variável
             </UButton>
           </div>
         </div>
@@ -94,7 +94,7 @@
             :disabled="!selectedField"
             @click="insertMention" 
           >
-            Insert
+            Inserir
           </UButton>
           <UButton
             size="sm"
@@ -102,7 +102,7 @@
             variant="outline"
             @click="cancel"
           >
-            Cancel
+            Cancelar
           </UButton>
         </div>
       </div>

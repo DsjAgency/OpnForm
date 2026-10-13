@@ -45,6 +45,6 @@ describe('usePlanFeatures', () => {
 
     expect(hasFeature('branding.removal')).toBe(false)
     expect(getRequiredTier('branding.removal')).toBe('pro')
-    expect(getUpgradeMessage('branding.removal')).toBe('Upgrade to Pro to unlock this feature')
+    expect(getUpgradeMessage('branding.removal')).toBe('Faça upgrade para o Pro para liberar este recurso')
   })
 })

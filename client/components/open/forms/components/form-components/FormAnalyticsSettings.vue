@@ -4,7 +4,7 @@
       <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h3 class="text-lg font-medium text-neutral-900">
-            Analytics
+            Análises
             <PlanTag
               class="ml-2"
               upgrade-modal-title="Upgrade to Unlock Analytics"
@@ -12,11 +12,11 @@
             />
           </h3>
           <p class="mt-1 text-sm text-neutral-500">
-            Add your analytics tracking code to measure form performance.
+            Adicione seu código de rastreamento para medir o desempenho do formulário.
           </p>
         </div>
         <UButton
-          label="Help"
+          label="Ajuda"
           icon="i-heroicons-question-mark-circle"
           variant="outline"
           color="neutral"
@@ -29,9 +29,9 @@
           <FlatSelectInput
             v-model="form.analytics.provider"
             name="provider"
-            label="Analytics Provider"
+            label="Provedor de análises"
             :options="providerOptions"
-            placeholder="Select Provider"
+            placeholder="Selecione o provedor"
             :clearable="true"
           />
           <TextInput
@@ -77,23 +77,23 @@ const providerConfig = {
   meta_pixel: {
     label: 'Pixel ID',
     placeholder: '1234567890123456',
-    help: 'Find your Pixel ID in Meta Events Manager'
+    help: 'Encontre o Pixel ID no Gerenciador de Eventos da Meta'
   },
   google_analytics: {
     label: 'Measurement ID',
     placeholder: 'G-XXXXXXXXXX',
-    help: 'Find your Measurement ID in Google Analytics'
+    help: 'Encontre o Measurement ID no Google Analytics'
   },
   gtm: {
     label: 'Container ID',
     placeholder: 'GTM-XXXXXXX',
-    help: 'Find your Container ID in Google Tag Manager'
+    help: 'Encontre o Container ID no Google Tag Manager'
   }
 }
 
 const trackingIdConfig = computed(() => {
   const provider = form.value?.analytics?.provider
-  return providerConfig[provider] || { label: 'Tracking ID', placeholder: '', help: '' }
+  return providerConfig[provider] || { label: 'ID de rastreamento', placeholder: '', help: '' }
 })
 
 // Clear tracking_id when provider is cleared

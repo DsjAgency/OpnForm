@@ -7,10 +7,10 @@
       <div class="flex items-center justify-between w-full">
         <div class="grow w-full">
           <h3 class="text-base font-semibold leading-6 text-neutral-900 dark:text-white">
-            Submission History
+            Histórico da resposta
           </h3>
           <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-            View and restore previous versions of this submission
+            Veja e restaure versões anteriores desta resposta
           </p>
         </div>
         <UButton color="neutral" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="isModalOpen = false" />
@@ -20,7 +20,7 @@
     <template #body>
       <div class="flow-root">
         <p v-if="versions.length === 0" class="text-center">
-          No history found for this submission.
+          Nenhum histórico encontrado para esta resposta.
         </p>
         <ul v-else role="list" class="-mb-8">
           <li v-for="(version, index) in versions" :key="version.id">
@@ -31,7 +31,7 @@
                   <img
                     v-if="version.user?.photo_url"
                     :src="version.user.photo_url"
-                    :alt="version.user?.name || 'User'"
+                    :alt="version.user?.name || 'Usuário'"
                     class="h-8 w-8 rounded-full bg-neutral-50 dark:bg-neutral-800 ring-2 ring-white dark:ring-neutral-900"
                   />
                   <div
@@ -49,7 +49,7 @@
                     <div class="flex justify-between items-start mb-2">
                       <div class="text-sm text-neutral-500 dark:text-neutral-400">
                         <span class="font-medium text-neutral-900 dark:text-white mr-1">
-                          {{ version.user?.name || 'Unknown user' }}
+                          {{ version.user?.name || 'Usuário desconhecido' }}
                         </span>
                         
                         <UTooltip :text="formatDate(version.created_at)">
@@ -61,7 +61,7 @@
                         size="xs"
                         variant="soft"
                         color="neutral"
-                        label="Restore"
+                        label="Restaurar"
                         icon="i-heroicons-arrow-path"
                         @click="onRestore(version)"
                       />
@@ -77,7 +77,7 @@
                       </span>
                     </div>
                     <p v-else class="text-xs text-neutral-500 italic mt-1">
-                      No tracked changes
+                      Nenhuma alteração registrada
                     </p>
                   </div>
                 </div>
@@ -148,7 +148,7 @@ const fetchVersions = async () => {
 
 const formatDate = (val) => {
   try {
-    return format(new Date(val), 'MMM dd, yyyy h:mm a')
+    return format(new Date(val), 'dd/MM/yyyy HH:mm')
   } catch {
     return ''
   }
@@ -177,8 +177,8 @@ const getFieldName = (key) => {
 }
 
 const onRestore = async (version) => {
-  if(!requireFeature('form_versioning', 'Upgrade to restore submission history')) return
-  useAlert().confirm('Are you sure you want to restore this version?', () => restoreVersion(version))
+  if(!requireFeature('form_versioning', 'Faça upgrade para restaurar o histórico de respostas')) return
+  useAlert().confirm('Tem certeza de que quer restaurar esta versão?', () => restoreVersion(version))
 }
 
 const restoreVersion = async (version) => {
@@ -191,11 +191,11 @@ const restoreVersion = async (version) => {
     // Emit event with the inner data object (field values) so parent modal can update its view
     // The API returns { data: {...fields}, id, form_id, ... } but form manager expects just the data object
     emit('restored', restoredSubmission.data)
-    useAlert().success('Submission restored successfully')
+    useAlert().success('Resposta restaurada')
     await fetchVersions()
     isModalOpen.value = false
   } catch (error) {
-    useAlert().error(error.data?.message || 'Failed to restore version')
+    useAlert().error(error.data?.message || 'Não foi possível restaurar a versão')
   }
 }
 </script>

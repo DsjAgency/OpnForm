@@ -1,6 +1,6 @@
 <template>
   <p class="font-semibold">
-    Prefilled values
+    Valores pré-preenchidos
   </p>
   <select-input
     v-for="row in matrixData"

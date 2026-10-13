@@ -1,8 +1,8 @@
 <template>
   <UModal
     v-model:open="isOpen"
-    title="Some fields were removed"
-    description="These fields no longer exist in your form. Their PDF zones have been removed. Add any replacements to the template."
+    title="Alguns campos foram removidos"
+    description="Estes campos não existem mais no formulário e as áreas deles no PDF foram removidas. Adicione substitutos ao modelo, se precisar."
     :close="false"
     :ui="{ content: 'sm:max-w-lg' }"
   >
@@ -11,7 +11,7 @@
         <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-400">
           <Icon name="i-heroicons-document-minus" class="size-5" aria-hidden="true" />
         </span>
-        <span>Some fields were removed</span>
+        <span>Alguns campos foram removidos</span>
       </div>
     </template>
 
@@ -29,19 +29,19 @@
             {{ getZoneLabel(zone, index) }}
           </span>
           <span class="shrink-0 text-xs text-neutral-500 dark:text-neutral-400">
-            Page {{ zone.page }}
+            Página {{ zone.page }}
           </span>
         </li>
       </ul>
       <p class="mt-3 text-xs text-neutral-500 dark:text-neutral-400">
-        Save the template to keep these changes.
+        Salve o modelo para manter estas alterações.
       </p>
     </template>
 
     <template #footer>
       <div class="flex w-full justify-end">
         <UButton color="primary" @click="close">
-          Got it
+          Entendi
         </UButton>
       </div>
     </template>
@@ -70,7 +70,7 @@ const isOpen = computed({
 const getZoneLabel = (zone, index) => {
   const label = [zone.field_name, zone.field_label, zone.label]
     .find(value => typeof value === 'string' && value.trim())
-  return label?.trim() || `Deleted field ${index + 1}`
+  return label?.trim() || `Campo excluído ${index + 1}`
 }
 
 const close = () => {

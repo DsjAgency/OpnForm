@@ -1,7 +1,7 @@
 <template>
   <CopyContent
     :content="preFillUrl"
-    label="Copy URL"
+    label="Copiar URL"
     tracking-event="url_form_prefill_copy"
     :tracking-properties="{
       form_id: form.id,

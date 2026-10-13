@@ -42,7 +42,7 @@ const allSources = [
   {
     id: 'typeform',
     label: 'Typeform',
-    description: 'Import public Typeform forms from a share URL.',
+    description: 'Importe formulários públicos do Typeform pela URL de compartilhamento.',
     icon: 'i-simple-icons-typeform',
     iconClass: 'w-5 h-5 text-[#262627]',
     iconWrapClass: 'border-neutral-200',
@@ -50,7 +50,7 @@ const allSources = [
   {
     id: 'tally',
     label: 'Tally',
-    description: 'Bring over a Tally form structure quickly.',
+    description: 'Traga rapidamente a estrutura de um formulário do Tally.',
     icon: 'opnform:tally',
     iconClass: 'w-5 h-5 text-[#725BFF]',
     iconWrapClass: 'border-violet-100 bg-violet-50',
@@ -58,7 +58,7 @@ const allSources = [
   {
     id: 'fillout',
     label: 'Fillout',
-    description: 'Start from an existing Fillout form URL.',
+    description: 'Comece a partir da URL de um formulário do Fillout.',
     icon: 'i-simple-icons-fillout',
     iconClass: 'w-5 h-5 text-[#FFC738]',
     iconWrapClass: 'border-amber-100 bg-amber-50',
@@ -66,7 +66,7 @@ const allSources = [
   {
     id: 'google_forms',
     label: 'Google Forms',
-    description: 'Connect Google and import from an edit URL.',
+    description: 'Conecte o Google e importe pela URL de edição.',
     icon: 'i-simple-icons-googleforms',
     iconClass: 'w-5 h-5 text-[#7248B9]',
     iconWrapClass: 'border-purple-100 bg-purple-50',

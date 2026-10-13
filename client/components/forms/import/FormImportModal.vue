@@ -15,10 +15,10 @@
           </span>
           <div class="min-w-0">
             <h3 class="text-base font-semibold leading-6 text-neutral-950 dark:text-white">
-              Import form
+              Importar formulário
             </h3>
             <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-              Paste a supported form URL and OpnForm will detect the provider.
+              Cole a URL de um formulário compatível e o OpnForm vai detectar o provedor.
             </p>
           </div>
         </div>
@@ -52,7 +52,7 @@
                 inputmode="url"
                 name="url"
                 autocomplete="url"
-                aria-label="Form URL"
+                aria-label="URL do formulário"
                 :placeholder="activePlaceholder"
                 :disabled="loading"
                 class="w-full border-0 bg-transparent px-0 py-2 text-base font-medium text-neutral-950 placeholder:text-neutral-400 focus:outline-none focus:ring-0 disabled:cursor-not-allowed disabled:opacity-70"
@@ -66,7 +66,7 @@
               :disabled="!canSubmit"
               :color="canSubmit ? 'primary' : 'neutral'"
               :variant="canSubmit ? 'solid' : 'soft'"
-              label="Import"
+              label="Importar"
               class="shrink-0"
             />
           </div>
@@ -88,7 +88,7 @@
               class="w-fit text-xs font-medium text-neutral-400 transition hover:text-neutral-700"
               @click="clearUrl"
             >
-              Clear
+              Limpar
             </button>
           </div>
         </div>
@@ -97,14 +97,14 @@
       <div class="mt-4">
         <div class="mb-2 flex items-center justify-between gap-3">
           <p class="text-xs font-medium uppercase text-neutral-400">
-            Supported imports
+            Importações compatíveis
           </p>
           <UBadge
             v-if="detectedSourceConfig && !sourceIssue"
             color="primary"
             variant="soft"
             size="sm"
-            :label="detectedSourceConfig.label + ' detected'"
+            :label="detectedSourceConfig.label + ' detectado'"
           />
         </div>
 
@@ -160,13 +160,13 @@
             class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
           >
             <div class="min-w-0">
-              <p class="text-sm font-semibold text-neutral-950">Google Forms needs an account</p>
+              <p class="text-sm font-semibold text-neutral-950">O Google Forms precisa de uma conta</p>
               <p class="mt-1 text-sm text-neutral-500">
-                We need read-only access to your Google Forms to import this URL.
+                Precisamos de acesso somente leitura ao seu Google Forms para importar esta URL.
               </p>
             </div>
             <UButton
-              label="Log in to import"
+              label="Entrar para importar"
               icon="i-heroicons-user-circle"
               class="justify-center"
               @click="appStore.quickRegisterModal = true"
@@ -178,7 +178,7 @@
             class="py-4 text-center"
           >
             <Loader class="mx-auto mb-3 h-6 w-6" />
-            <p class="text-sm text-neutral-500">Checking Google connection...</p>
+            <p class="text-sm text-neutral-500">Verificando a conexão com o Google...</p>
           </div>
 
           <div v-else-if="filteredProviders.length">
@@ -193,7 +193,7 @@
               option-key="id"
               emit-key="id"
               :required="true"
-              label="Google account"
+              label="Conta Google"
             >
               <template #help>
                 <InputHelp>
@@ -202,7 +202,7 @@
                       class="cursor-pointer text-blue-500"
                       @click="connectProvider"
                     >
-                      Connect another account
+                      Conectar outra conta
                     </a>
                   </span>
                 </InputHelp>
@@ -222,12 +222,12 @@
             </div>
             <UButton
               :loading="connecting"
-              label="Connect Google"
+              label="Conectar Google"
               icon="i-simple-icons-google"
               @click="connectProvider"
             />
             <p class="mx-auto mt-3 max-w-sm text-sm leading-6 text-neutral-500">
-              We need read-only access to import your Google Forms.
+              Precisamos de acesso somente leitura para importar seu Google Forms.
             </p>
           </div>
         </div>
@@ -326,7 +326,7 @@ const isGoogleSource = computed(() => detectedSource.value === 'google_forms')
 const detectedSourceConfig = computed(() => supportedSourceConfigs.value[detectedSource.value] ?? null)
 const activeSourceConfig = computed(() => detectedSourceConfig.value ?? supportedSourceConfigs.value[suggestedSource.value] ?? null)
 const supportedSourcesLabel = computed(() => formatSourceList(supportedSources.value.map(source => source.label)))
-const activePlaceholder = computed(() => activeSourceConfig.value?.placeholder ?? `Paste a ${supportedSourcesLabel.value} URL`)
+const activePlaceholder = computed(() => activeSourceConfig.value?.placeholder ?? `Cole uma URL do ${supportedSourcesLabel.value}`)
 const sourceIssue = computed(() => {
   if (isGoogleSource.value && !isGoogleImportConfigured.value) {
     return 'google_unavailable'
@@ -397,7 +397,7 @@ const statusMessage = computed(() => {
   }
 
   if (!importForm.url) {
-    return 'Paste a URL and we will detect the import source automatically.'
+    return 'Cole uma URL e vamos detectar a origem automaticamente.'
   }
 
   if (sourceIssue.value) {
@@ -405,15 +405,15 @@ const statusMessage = computed(() => {
   }
 
   if (!detectedSource.value) {
-    return 'This URL is not from a supported import source.'
+    return 'Esta URL não é de uma origem compatível.'
   }
 
   if (isGoogleSource.value && !authenticated.value) {
-    return 'Google Forms detected. Log in to connect Google and import this form.'
+    return 'Google Forms detectado. Entre para conectar o Google e importar este formulário.'
   }
 
   if (isGoogleSource.value && authenticated.value && !selectedProviderId.value) {
-    return 'Google Forms detected. Select a Google account before importing.'
+    return 'Google Forms detectado. Selecione uma conta Google antes de importar.'
   }
 
   return `${detectedSourceConfig.value.label} detected. Ready to import.`
@@ -486,7 +486,7 @@ const submitImport = () => {
   if (loading.value) return
 
   if (!detectedSource.value) {
-    importError.value = importForm.url ? 'This URL is not from a supported import source.' : 'A form URL is required.'
+    importError.value = importForm.url ? 'Esta URL não é de uma origem compatível.' : 'A URL do formulário é obrigatória.'
     return
   }
 
@@ -501,7 +501,7 @@ const submitImport = () => {
   }
 
   if (isGoogleSource.value && !selectedProviderId.value) {
-    importError.value = 'Select a Google account to import this form.'
+    importError.value = 'Selecione uma conta Google para importar este formulário.'
     return
   }
 
@@ -521,12 +521,12 @@ const submitImport = () => {
     import_data: importData,
   })
     .then((response) => {
-      useAlert().success(response.message || 'Form imported successfully!')
+      useAlert().success(response.message || 'Formulário importado!')
       emit('imported', response.form)
       emit('close')
     })
     .catch((error) => {
-      const message = error?.data?.message || error?.message || 'Failed to import form. Please check the URL and try again.'
+      const message = error?.data?.message || error?.message || 'Não foi possível importar o formulário. Confira a URL e tente novamente.'
       importError.value = message
       useAlert().error(message)
     })
@@ -545,27 +545,27 @@ const connectProvider = () => {
 
 function issueMessage(reason) {
   if (reason === 'invalid_url') {
-    return 'Enter a valid URL, for example https://tally.so/r/mBGjOq.'
+    return 'Digite uma URL válida, por exemplo https://tally.so/r/mBGjOq.'
   }
 
   if (reason === 'google_published_url' || reason === 'google_edit_url') {
-    return 'Use the Google Forms edit URL: https://docs.google.com/forms/d/FORM_ID/edit.'
+    return 'Use a URL de edição do Google Forms: https://docs.google.com/forms/d/FORM_ID/edit.'
   }
 
   if (reason === 'google_unavailable') {
-    return 'Google Forms import is not available in this environment.'
+    return 'A importação do Google Forms não está disponível neste ambiente.'
   }
 
   if (reason === 'typeform_form_id') {
-    return 'Use a Typeform public URL like https://yourname.typeform.com/to/FORM_ID.'
+    return 'Use uma URL pública do Typeform, como https://seunome.typeform.com/to/FORM_ID.'
   }
 
-  return `This URL is not from ${supportedSourcesLabel.value}.`
+  return `Esta URL não é do ${supportedSourcesLabel.value}.`
 }
 
 function formatSourceList(sources) {
   if (sources.length <= 1) {
-    return sources[0] || 'a supported source'
+    return sources[0] || 'uma origem compatível'
   }
 
   if (sources.length === 2) {

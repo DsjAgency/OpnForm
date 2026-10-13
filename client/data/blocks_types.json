@@ -1,9 +1,9 @@
 {
   "text": {
     "name": "text",
-    "title": "Text",
+    "title": "Texto",
     "icon": "i-heroicons-bars-3-bottom-left",
-    "default_block_name": "Your name",
+    "default_block_name": "Seu nome",
     "bg_class": "bg-blue-100",
     "text_class": "text-blue-900",
     "available_in": ["classic", "focused"],
@@ -12,14 +12,14 @@
     "default_values": {
       "multi_lines": false,
       "max_char_limit": 2000,
-      "placeholder": "Type your answer"
+      "placeholder": "Digite sua resposta"
     }
   },
   "rich_text": {
     "name": "rich_text",
-    "title": "Rich Text",
+    "title": "Texto formatado",
     "icon": "i-heroicons-bars-3-20-solid",
-    "default_block_name": "Description",
+    "default_block_name": "Descrição",
     "bg_class": "bg-blue-100",
     "text_class": "text-blue-900",
     "available_in": ["classic", "focused"],
@@ -27,14 +27,14 @@
     "summary_type": "text_list",
     "default_values": {
       "max_char_limit": 2000,
-      "placeholder": "Write your answer"
+      "placeholder": "Escreva sua resposta"
     }
   },
   "date": {
     "name": "date",
-    "title": "Date",
+    "title": "Data",
     "icon": "i-heroicons-calendar-20-solid",
-    "default_block_name": "Date",
+    "default_block_name": "Data",
     "bg_class": "bg-green-100",
     "text_class": "text-green-900",
     "available_in": ["classic", "focused"],
@@ -54,14 +54,14 @@
     "summary_type": "text_list",
     "default_values": {
       "max_char_limit": 2000,
-      "placeholder": "https://example.com"
+      "placeholder": "https://exemplo.com.br"
     }
   },
   "phone_number": {
     "name": "phone_number",
-    "title": "Phone",
+    "title": "Telefone",
     "icon": "i-heroicons-phone-20-solid",
-    "default_block_name": "Phone Number",
+    "default_block_name": "Telefone",
     "bg_class": "bg-blue-100",
     "text_class": "text-blue-900",
     "available_in": ["classic", "focused"],
@@ -73,9 +73,9 @@
   },
   "email": {
     "name": "email",
-    "title": "Email",
+    "title": "E-mail",
     "icon": "i-heroicons-at-symbol-20-solid",
-    "default_block_name": "Email",
+    "default_block_name": "E-mail",
     "bg_class": "bg-blue-100",
     "text_class": "text-blue-900",
     "available_in": ["classic", "focused"],
@@ -83,14 +83,14 @@
     "summary_type": "text_list",
     "default_values": {
       "max_char_limit": 2000,
-      "placeholder": "name@example.com"
+      "placeholder": "nome@exemplo.com.br"
     }
   },
   "checkbox": {
     "name": "checkbox",
-    "title": "Checkbox",
+    "title": "Caixa de seleção",
     "icon": "i-heroicons-check-circle",
-    "default_block_name": "Checkbox",
+    "default_block_name": "Caixa de seleção",
     "bg_class": "bg-red-100",
     "text_class": "text-red-900",
     "available_in": ["classic", "focused"],
@@ -100,29 +100,29 @@
   },
   "select": {
     "name": "select",
-    "title": "Select",
+    "title": "Seleção",
     "icon": "i-heroicons-chevron-up-down-20-solid",
-    "default_block_name": "Select",
+    "default_block_name": "Seleção",
     "bg_class": "bg-red-100",
     "text_class": "text-red-900",
     "available_in": ["classic", "focused"],
     "is_input": true,
     "summary_type": "distribution",
     "default_values": {
-      "placeholder": "Select an option",
+      "placeholder": "Selecione uma opção",
       "select": {
         "options": [
-          { "name": "Option 1", "id": "Option 1" },
-          { "name": "Option 2", "id": "Option 2" }
+          { "name": "Opção 1", "id": "Opção 1" },
+          { "name": "Opção 2", "id": "Opção 2" }
         ]
       }
     }
   },
   "radio": {
     "name": "radio",
-    "title": "Radio Button",
+    "title": "Botão de opção",
     "icon": "i-material-symbols-radio-button-checked-outline",
-    "default_block_name": "Radio",
+    "default_block_name": "Opção única",
     "bg_class": "bg-red-100",
     "text_class": "text-red-900",
     "available_in": ["classic", "focused"],
@@ -131,8 +131,8 @@
     "default_values": {
       "select": {
         "options": [
-          { "name": "Option 1", "id": "Option 1" },
-          { "name": "Option 2", "id": "Option 2" }
+          { "name": "Opção 1", "id": "Opção 1" },
+          { "name": "Opção 2", "id": "Opção 2" }
         ]
       },
       "without_dropdown": true
@@ -141,61 +141,61 @@
   },
   "multi_select": {
     "name": "multi_select",
-    "title": "Multi-select",
+    "title": "Seleção múltipla",
     "icon": "i-heroicons-chevron-up-down-20-solid",
-    "default_block_name": "Multi Select",
+    "default_block_name": "Seleção múltipla",
     "bg_class": "bg-red-100",
     "text_class": "text-red-900",
     "available_in": ["classic", "focused"],
     "is_input": true,
     "summary_type": "distribution",
     "default_values": {
-      "placeholder": "Select options",
+      "placeholder": "Selecione as opções",
       "multi_select": {
         "options": [
-          { "name": "Option 1", "id": "Option 1" },
-          { "name": "Option 2", "id": "Option 2" }
+          { "name": "Opção 1", "id": "Opção 1" },
+          { "name": "Opção 2", "id": "Opção 2" }
         ]
       }
     }
   },
   "matrix": {
     "name": "matrix",
-    "title": "Matrix",
+    "title": "Matriz",
     "icon": "i-heroicons-table-cells-20-solid",
-    "default_block_name": "Matrix",
+    "default_block_name": "Matriz",
     "bg_class": "bg-red-100",
     "text_class": "text-red-900",
     "available_in": ["classic", "focused"],
     "is_input": true,
     "summary_type": "matrix",
     "default_values": {
-      "rows": ["Row 1"],
+      "rows": ["Linha 1"],
       "columns": [1, 2, 3],
       "selection_data": {
-        "Row 1": null
+        "Linha 1": null
       }
     }
   },
   "number": {
     "name": "number",
-    "title": "Number",
+    "title": "Número",
     "icon": "i-heroicons-hashtag-20-solid",
-    "default_block_name": "Number",
+    "default_block_name": "Número",
     "bg_class": "bg-purple-100",
     "text_class": "text-purple-900",
     "available_in": ["classic", "focused"],
     "is_input": true,
     "summary_type": "numeric_stats",
     "default_values": {
-      "placeholder": "Type a number"
+      "placeholder": "Digite um número"
     }
   },
   "rating": {
     "name": "rating",
-    "title": "Rating",
+    "title": "Avaliação",
     "icon": "i-heroicons-star",
-    "default_block_name": "Rating",
+    "default_block_name": "Avaliação",
     "bg_class": "bg-purple-100",
     "text_class": "text-purple-900",
     "available_in": ["classic", "focused"],
@@ -207,9 +207,9 @@
   },
   "scale": {
     "name": "scale",
-    "title": "Scale",
+    "title": "Escala",
     "icon": "i-heroicons-scale-20-solid",
-    "default_block_name": "Scale",
+    "default_block_name": "Escala",
     "bg_class": "bg-purple-100",
     "text_class": "text-purple-900",
     "available_in": ["classic", "focused"],
@@ -223,9 +223,9 @@
   },
   "slider": {
     "name": "slider",
-    "title": "Slider",
+    "title": "Controle deslizante",
     "icon": "i-heroicons-adjustments-horizontal",
-    "default_block_name": "Slider",
+    "default_block_name": "Controle deslizante",
     "bg_class": "bg-purple-100",
     "text_class": "text-purple-900",
     "available_in": ["classic", "focused"],
@@ -239,9 +239,9 @@
   },
   "files": {
     "name": "files",
-    "title": "File",
+    "title": "Arquivo",
     "icon": "i-heroicons-paper-clip",
-    "default_block_name": "Files",
+    "default_block_name": "Arquivos",
     "bg_class": "bg-pink-100",
     "text_class": "text-pink-900",
     "available_in": ["classic", "focused"],
@@ -251,9 +251,9 @@
   },
   "signature": {
     "name": "signature",
-    "title": "Signature",
+    "title": "Assinatura",
     "icon": "i-heroicons-pencil-square-20-solid",
-    "default_block_name": "Signature",
+    "default_block_name": "Assinatura",
     "bg_class": "bg-pink-100",
     "text_class": "text-pink-900",
     "available_in": ["classic", "focused"],
@@ -263,9 +263,9 @@
   },
   "barcode": {
     "name": "barcode",
-    "title": "Barcode Reader",
+    "title": "Leitor de código de barras",
     "icon": "i-material-symbols-barcode-scanner-rounded",
-    "default_block_name": "Scan Barcode",
+    "default_block_name": "Ler código de barras",
     "bg_class": "bg-pink-100",
     "text_class": "text-pink-900",
     "available_in": ["classic", "focused"],
@@ -277,9 +277,9 @@
   },
   "qrcode": {
     "name": "qrcode",
-    "title": "QR Code Reader",
+    "title": "Leitor de QR Code",
     "icon": "i-material-symbols-qr-code-scanner-rounded",
-    "default_block_name": "Scan QR Code",
+    "default_block_name": "Ler QR Code",
     "bg_class": "bg-pink-100",
     "text_class": "text-pink-900",
     "available_in": ["classic", "focused"],
@@ -292,9 +292,9 @@
   },
   "password": {
     "name": "password",
-    "title": "Password",
+    "title": "Senha",
     "icon": "i-heroicons-key",
-    "default_block_name": "Password",
+    "default_block_name": "Senha",
     "bg_class": "bg-blue-100",
     "text_class": "text-blue-900",
     "available_in": ["classic", "focused"],
@@ -304,15 +304,15 @@
       "secret_input": true,
       "multi_lines": false,
       "max_char_limit": 2000,
-      "placeholder": "Enter your password"
+      "placeholder": "Digite sua senha"
     },
     "actual_input": "text"
   },
   "toggle_switch": {
     "name": "toggle_switch",
-    "title": "Toggle Switch",
+    "title": "Botão de alternância",
     "icon": "i-heroicons-adjustments-horizontal",
-    "default_block_name": "Toggle",
+    "default_block_name": "Alternância",
     "bg_class": "bg-red-100",
     "text_class": "text-red-900",
     "available_in": ["classic", "focused"],
@@ -325,9 +325,9 @@
   },
   "payment": {
     "name": "payment",
-    "title": "Payment",
+    "title": "Pagamento",
     "icon": "i-heroicons-credit-card",
-    "default_block_name": "Payment",
+    "default_block_name": "Pagamento",
     "bg_class": "bg-green-100",
     "text_class": "text-green-900",
     "available_in": ["classic", "focused"],
@@ -339,9 +339,9 @@
   },
   "nf-text": {
     "name": "nf-text",
-    "title": "Text",
+    "title": "Texto",
     "icon": "i-heroicons-bars-3",
-    "default_block_name": "Text",
+    "default_block_name": "Texto",
     "bg_class": "bg-yellow-100",
     "text_class": "text-yellow-900",
     "available_in": ["classic", "focused"],
@@ -350,9 +350,9 @@
   },
   "nf-page-break": {
     "name": "nf-page-break",
-    "title": "Page-break",
+    "title": "Quebra de página",
     "icon": "i-heroicons-document-plus",
-    "default_block_name": "Page Break",
+    "default_block_name": "Quebra de página",
     "bg_class": "bg-gray-100",
     "text_class": "text-gray-900",
     "available_in": ["classic"],
@@ -361,9 +361,9 @@
   },
   "nf-divider": {
     "name": "nf-divider",
-    "title": "Divider",
+    "title": "Divisor",
     "icon": "i-heroicons-minus",
-    "default_block_name": "Divider",
+    "default_block_name": "Divisor",
     "bg_class": "bg-gray-100",
     "text_class": "text-gray-900",
     "available_in": ["classic"],
@@ -372,9 +372,9 @@
   },
   "nf-image": {
     "name": "nf-image",
-    "title": "Image",
+    "title": "Imagem",
     "icon": "i-heroicons-photo",
-    "default_block_name": "Image",
+    "default_block_name": "Imagem",
     "bg_class": "bg-yellow-100",
     "text_class": "text-yellow-900",
     "available_in": ["classic"],
@@ -383,9 +383,9 @@
   },
   "nf-video": {
     "name": "nf-video",
-    "title": "Video",
+    "title": "Vídeo",
     "icon": "i-heroicons-video-camera",
-    "default_block_name": "Video Block",
+    "default_block_name": "Bloco de vídeo",
     "bg_class": "bg-yellow-100",
     "text_class": "text-yellow-900",
     "is_input": false,
@@ -393,9 +393,9 @@
   },
   "nf-audio": {
     "name": "nf-audio",
-    "title": "Audio",
+    "title": "Áudio",
     "icon": "i-heroicons-speaker-wave",
-    "default_block_name": "Audio Block",
+    "default_block_name": "Bloco de áudio",
     "bg_class": "bg-yellow-100",
     "text_class": "text-yellow-900",
     "is_input": false,
@@ -403,9 +403,9 @@
   },
   "nf-code": {
     "name": "nf-code",
-    "title": "Code",
+    "title": "Código",
     "icon": "i-heroicons-code-bracket",
-    "default_block_name": "Code Block",
+    "default_block_name": "Bloco de código",
     "bg_class": "bg-yellow-100",
     "text_class": "text-yellow-900",
     "available_in": ["classic", "focused"],

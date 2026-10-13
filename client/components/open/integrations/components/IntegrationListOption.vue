@@ -65,9 +65,9 @@ const unavailable = computed(() => {
 })
 
 const tooltipText = computed(() => {
-  if (props.integration.coming_soon) return "This integration is coming soon"
+  if (props.integration.coming_soon) return "Esta integração estará disponível em breve"
   if (props.integration.requires_upgrade)
-    return "You need to upgrade your plan to use this integration."
+    return "Você precisa fazer upgrade do plano para usar esta integração."
   return null
 })
 
@@ -76,8 +76,8 @@ const onClick = () => {
   if (props.integration.requires_upgrade) {
     openSubscriptionModal({
       plan: props.integration.required_tier || 'pro',
-      modal_title: 'Upgrade to use this integration',
-      modal_description: `Upgrade your account to use our ${props.integration.name} and unlock more features.`
+      modal_title: 'Faça upgrade para usar esta integração',
+      modal_description: `Faça upgrade da sua conta para usar a integração ${props.integration.name} e liberar mais recursos.`
     })
     return
   }

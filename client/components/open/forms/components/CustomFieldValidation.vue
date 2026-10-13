@@ -9,7 +9,7 @@
         class="text-neutral-500"
         @click="showCopyFormModal = true"
       >
-        Copy from
+        Copiar de
       </UButton>
       <UButton
         color="neutral"
@@ -19,7 +19,7 @@
         class="text-neutral-500"
         @click="showCopyToModal = true"
       >
-        Copy to
+        Copiar para
       </UButton>
       <UButton
         color="neutral"
@@ -29,7 +29,7 @@
         class="text-neutral-500"
         @click="clearAll"
       >
-        Clear
+        Limpar
       </UButton>
       <UButton
         color="neutral"
@@ -43,9 +43,9 @@
 
     <!-- Validation Rules Card -->
     <div class="mt-4">
-      <p class="text-xs font-medium text-gray-600 mb-2">When should this field be valid?</p>
+      <p class="text-xs font-medium text-gray-600 mb-2">Quando este campo deve ser válido?</p>
       <p class="text-neutral-500 text-xs mb-3">
-        Set <span class="font-semibold">rules that make this field valid</span>. If rules aren't met, the field shows an error.
+        Defina <span class="font-semibold">regras que tornam este campo válido</span>. Se as regras não forem atendidas, o campo mostra um erro.
       </p>
       <div class="p-3 border border-gray-200 rounded-lg bg-gray-50/50 hover:bg-gray-50 transition-colors">
         <UPopover
@@ -66,7 +66,7 @@
             size="sm"
             class="w-full justify-start font-medium hover:bg-white transition-colors"
           >
-          {{ hasConditions ? `${conditionsCount} rule${conditionsCount > 1 ? 's' : ''}` : 'Add rule' }}
+          {{ hasConditions ? `${conditionsCount} regra${conditionsCount > 1 ? 's' : ''}` : 'Adicionar regra' }}
           </UButton>
 
           <template #content>
@@ -102,15 +102,15 @@
 
     <!-- Error Message Card -->
     <div>
-      <p class="text-xs font-medium text-gray-600 mb-2">What message to show if validation fails?</p>
+      <p class="text-xs font-medium text-gray-600 mb-2">Que mensagem mostrar se a validação falhar?</p>
       <p class="text-neutral-500 text-xs mb-3">
-        This message appears when <span class="font-semibold">validation rules aren't met</span>.
+        Esta mensagem aparece quando <span class="font-semibold">as regras de validação não são atendidas</span>.
       </p>
       <div class="p-3 border border-gray-200 rounded-lg bg-gray-50/50 hover:bg-gray-50 transition-colors">
         <text-input
           name="error_message"
           :form="field.validation"
-          label="Error message"
+          label="Mensagem de erro"
         />
       </div>
     </div>
@@ -121,20 +121,20 @@
       variant="subtle"
       size="sm"
       class="mt-4"
-      description="Save your form to apply changes."
+      description="Salve o formulário para aplicar as alterações."
     />
 
     <UModal
       v-model:open="showCopyFormModal"
-      title="Copy validation from another field"
-      :description="`Select another field to copy its validation rules and apply them to '${field.name}'.`"
+      title="Copiar validação de outro campo"
+      :description="`Selecione outro campo para copiar as regras de validação dele e aplicá-las a '${field.name}'.`"
     >
       <template #body>
         <USelectMenu
           v-model="copyFrom"
           :items="copyFromOptions"
           value-key="value"
-          placeholder="Choose a field..."
+          placeholder="Escolha um campo..."
           searchable
         />
       </template>
@@ -143,28 +143,28 @@
         <UButton
           color="neutral"
           variant="outline"
-          label="Close"
+          label="Fechar"
           @click="showCopyFormModal = false"
         />
         <UButton
           color="primary"
           @click="copyValidation"
-          label="Confirm & Copy"
+          label="Confirmar e copiar"
         />
       </template>
     </UModal>
 
     <UModal
       v-model:open="showCopyToModal"
-      title="Copy validation to other fields"
-      :description="`Select other fields to copy the validation rules from '${field.name}' to.`"
+      title="Copiar validação para outros campos"
+      :description="`Selecione os campos que vão receber as regras de validação de '${field.name}'.`"
     >
       <template #body>
         <USelectMenu
           v-model="copyTo"
           :items="copyToOptions"
           value-key="value"
-          placeholder="Choose fields..."
+          placeholder="Escolha os campos..."
           :multiple="true"
           searchable
         />
@@ -174,13 +174,13 @@
         <UButton
           color="neutral"
           variant="outline"
-          label="Close"
+          label="Fechar"
           @click="showCopyToModal = false"
         />
         <UButton
           color="primary"
           @click="copyValidationToFields"
-          label="Confirm & Copy"
+          label="Confirmar e copiar"
         />
       </template>
     </UModal>

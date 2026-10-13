@@ -3,13 +3,13 @@
     <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div>
         <div class="flex items-center gap-2">
-          <h3 class="text-lg font-medium text-neutral-900">SAML Settings</h3>
+          <h3 class="text-lg font-medium text-neutral-900">Configurações de SAML</h3>
           <UBadge color="neutral" variant="subtle">
-            Not available yet
+            Ainda não disponível
           </UBadge>
         </div>
         <p class="mt-1 text-sm text-neutral-500">
-          SAML single sign-on is not available yet. Use OIDC for workspace SSO.
+          O login único via SAML ainda não está disponível. Use OIDC para o SSO do espaço de trabalho.
         </p>
       </div>
     </div>
@@ -21,10 +21,10 @@
         class="w-12 h-12 text-neutral-400 mx-auto mb-4" 
       />
       <h4 class="text-lg font-medium text-neutral-900 mb-2">
-        No SAML connections yet
+        Nenhuma conexão SAML ainda
       </h4>
       <p class="text-neutral-500 mb-6 max-w-md mx-auto">
-        SAML setup is not implemented in this version of OpnForm.
+        A configuração de SAML não existe nesta versão do OpnForm.
       </p>
     </div>
   </div>

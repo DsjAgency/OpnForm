@@ -4,7 +4,7 @@
       name="social_share_button_click"
       :properties="{form_id: form.id, form_slug: form.slug}"
     >
-      <UTooltip text="Share">
+      <UTooltip text="Compartilhar">
         <UButton
           variant="outline"
           color="neutral"
@@ -36,15 +36,15 @@ export default {
     shareItems() {
       return [
         [{
-          label: 'Share via Email',
+          label: 'Compartilhar por e-mail',
           icon: 'i-heroicons-envelope',
           onSelect: () => this.shareViaEmail()
         }, {
-          label: 'Share on Twitter',
+          label: 'Compartilhar no Twitter',
           icon: 'i-simple-icons-twitter',
           onSelect: () => this.shareOnTwitter()
         }, {
-          label: 'Share on LinkedIn',
+          label: 'Compartilhar no LinkedIn',
           icon: 'i-simple-icons-linkedin',
           onSelect: () => this.shareOnLinkedIn()
         }]
@@ -61,8 +61,8 @@ export default {
         method: 'email'
       })
       
-      const subject = encodeURIComponent(`Check out this form: ${this.form.title}`)
-      const body = encodeURIComponent(`I'd like to share this form with you: ${this.shareUrl}`)
+      const subject = encodeURIComponent(`Confira este formulário: ${this.form.title}`)
+      const body = encodeURIComponent(`Quero compartilhar este formulário com você: ${this.shareUrl}`)
       window.open(`mailto:?subject=${subject}&body=${body}`)
     },
 
@@ -74,7 +74,7 @@ export default {
         method: 'twitter'
       })
       
-      const text = encodeURIComponent(`Check out this form: ${this.form.title}`)
+      const text = encodeURIComponent(`Confira este formulário: ${this.form.title}`)
       const url = encodeURIComponent(this.shareUrl)
       window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank')
     },

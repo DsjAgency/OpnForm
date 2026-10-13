@@ -16,7 +16,7 @@
       variant="subtle"
       size="md"
       icon="i-heroicons-cog-6-tooth"
-      label="Settings"
+      label="Configurações"
       @click="settingsModal = true"
     />
 
@@ -38,7 +38,7 @@
       
       <TrackClick name="pdf_editor_help_button_clicked">
         <UTooltip
-          text="Help"
+          text="Ajuda"
           class="items-center relative"
           :content="{ side: 'bottom' }"
           arrow
@@ -53,7 +53,7 @@
       </TrackClick>
 
       <div class="flex items-center gap-1">
-        <UTooltip text="Zoom out" :content="{ side: 'bottom' }" arrow>
+        <UTooltip text="Diminuir zoom" :content="{ side: 'bottom' }" arrow>
           <UButton
             color="neutral"
             variant="ghost"
@@ -61,7 +61,7 @@
             @click="pdfStore.zoomOut()"
           />
         </UTooltip>
-        <UTooltip text="Zoom in" :content="{ side: 'bottom' }" arrow>
+        <UTooltip text="Aumentar zoom" :content="{ side: 'bottom' }" arrow>
           <UButton
             color="neutral"
             variant="ghost"
@@ -78,7 +78,7 @@
         size="md"
         @click="previewPdf"
       >
-        Preview
+        Pré-visualizar
       </UButton>
 
       <UTooltip arrow :content="{side: 'bottom'}">
@@ -101,7 +101,7 @@
             :loading="saving"
             icon="i-ic-outline-save"
             @click="emit('save-pdf-template')"
-            label="Save Changes"
+            label="Salvar alterações"
           />
         </TrackClick>
       </UTooltip>
@@ -116,10 +116,10 @@
       <div class="flex items-center justify-between w-full">
         <div class="grow w-full">
           <h3 class="text-base font-semibold leading-6 text-neutral-900 dark:text-white">
-            Settings
+            Configurações
           </h3>
           <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-            Settings for this PDF template
+            Configurações deste modelo de PDF
           </p>
         </div>
       </div>
@@ -134,14 +134,14 @@
               class="flex-1"
               :mentions="filenameVariables"
               name="filename_pattern"
-              label="Filename"
+              label="Nome do arquivo"
               size="sm"
-              placeholder="e.g. Form Name - Submission ID"
+              placeholder="ex.: Nome do formulário - ID da resposta"
             />
             <span class="pb-2 text-sm font-mono text-neutral-400 dark:text-neutral-500 select-none">.pdf</span>
           </div>
           <p class="mt-1 text-xs text-neutral-400 dark:text-neutral-500">
-            Use <span class="font-mono">@</span> to insert variables
+            Use <span class="font-mono">@</span> para inserir variáveis
           </p>
         </div>
 
@@ -149,11 +149,11 @@
         <ToggleSwitchInput
           v-model="pdfTemplate.remove_branding"
           name="remove_branding"
-          help="Hide 'PDF generated with OpnForm' footer"
+          help="Oculta o rodapé 'PDF gerado com OpnForm'"
         >
           <template #label>
             <span class="text-sm">
-              Remove Branding
+              Remover marca
             </span>
             <PlanTag
               upgrade-modal-title="Upgrade to remove PDF branding"
@@ -189,15 +189,15 @@ const crisp = useCrisp()
 const settingsModal = ref(false)
 
 const filenameVariables = [
-  { id: 'form_name', name: 'Form Name', type: 'text' },
-  { id: 'submission_id', name: 'Submission ID', type: 'text' },
-  { id: 'date', name: 'Date', type: 'text' },
+  { id: 'form_name', name: 'Nome do formulário', type: 'text' },
+  { id: 'submission_id', name: 'ID da resposta', type: 'text' },
+  { id: 'date', name: 'Data', type: 'text' },
 ]
 
 // Preview PDF
 const previewPdf = async () => {
   if (pdfStore.hasUnsavedChanges) {
-    alert.warning('You have unsaved changes. Please save changes before previewing.')
+    alert.warning('Há alterações não salvas. Salve antes de pré-visualizar.')
     return
   }
 
@@ -205,7 +205,7 @@ const previewPdf = async () => {
     const response = await formsApi.pdfTemplates.getPreviewSignedUrl(form.value.id, pdfTemplate.value.id)
     window.open(response.url, '_blank')
   } catch (error) {
-    alert.error(error?.data?.message || error?.message || 'Failed to open PDF preview.')
+    alert.error(error?.data?.message || error?.message || 'Não foi possível abrir a pré-visualização do PDF.')
   }
 }
 </script>

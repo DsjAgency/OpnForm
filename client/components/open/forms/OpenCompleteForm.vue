@@ -33,7 +33,7 @@
           <div class="w-full">
             <div class="form-group flex flex-wrap w-full max-w-sm mx-auto">
               <div class="relative w-full px-2">
-                <text-input :form="passwordForm" name="password" native-type="password" label="Password" :help="t('forms.password_protected')" @keydown.enter.prevent="passwordEntered" />
+                <text-input :form="passwordForm" name="password" native-type="password" label="Senha" :help="t('forms.password_protected')" @keydown.enter.prevent="passwordEntered" />
               </div>
             </div>
             <div class="flex flex-wrap justify-center w-full text-center">
@@ -103,7 +103,7 @@
                 :loading="pdfDownloading"
                 @click="downloadPdf"
               >
-                {{ form.pdf_download_button_text || t('forms.buttons.download_pdf', 'Download PDF') }}
+                {{ form.pdf_download_button_text || t('forms.buttons.download_pdf', 'Baixar PDF') }}
               </open-form-button>
               <open-form-button
                 v-if="form.re_fillable"
@@ -174,7 +174,7 @@ const props = defineProps({
 
 const emit = defineEmits(['submitted', 'password-entered', 'restarted'])
 
-const { t, setLocale } = useI18n()
+const { t, setLocale, defaultLocale } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const nuxtApp = useNuxtApp()
@@ -390,12 +390,12 @@ watch(() => props.form?.language, (newLanguage) => {
   if (newLanguage && typeof newLanguage === 'string') {
     setLocale(newLanguage)
   } else {
-    setLocale('en')
+    setLocale(defaultLocale)
   }
 }, { immediate: true })
 
 onBeforeUnmount(() => {
-  setLocale('en')
+  setLocale(defaultLocale)
   // Clear caches for this form to prevent memory leaks
   clearFormatterCache(props.form?.slug)
   clearLoadedMentionCache()
@@ -535,7 +535,7 @@ const downloadPdf = async () => {
     window.open(response.url, '_blank')
   } catch (error) {
     console.error('PDF download failed:', error)
-    alert.error('Failed to download PDF. Please try again.')
+    alert.error('Não foi possível baixar o PDF. Tente novamente.')
   } finally {
     pdfDownloading.value = false
   }

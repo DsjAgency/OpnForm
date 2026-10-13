@@ -5,12 +5,12 @@
     icon="i-heroicons-sparkles-solid"
     color="primary"
     variant="subtle"
-    title="Discover our Pro plan"
-    description="Remove OpnForm branding, customize forms further, use your custom domain, integrate with your favorite tools, invite users, and more!"
+    title="Conheça o plano Pro"
+    description="Remova a marca OpnForm, personalize mais os formulários, use seu domínio, integre com suas ferramentas favoritas, convide usuários e muito mais!"
     :actions="[
       {
-        label: 'Upgrade now',
-        onClick: () => openSubscriptionModal({ plan: 'pro', modal_title: 'Upgrade to Pro plan' })
+        label: 'Fazer upgrade agora',
+        onClick: () => openSubscriptionModal({ plan: 'pro', modal_title: 'Upgrade para o plano Pro' })
       },
       {
         label: 'Close',

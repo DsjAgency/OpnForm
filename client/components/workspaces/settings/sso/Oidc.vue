@@ -12,21 +12,21 @@
 
     <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div>
-        <h3 class="text-lg font-medium text-neutral-900">OIDC Settings</h3>
+        <h3 class="text-lg font-medium text-neutral-900">Configurações de OIDC</h3>
         <p class="mt-1 text-sm text-neutral-500">
-          Configure OpenID Connect (OIDC) single sign-on for your workspace.
+          Configure o login único (SSO) via OpenID Connect (OIDC) para o seu espaço de trabalho.
         </p>
       </div>
 
       <UButton
         v-if="canManageConnections && canAccessFeature"
-        label="Add Connection"
+        label="Adicionar conexão"
         icon="i-heroicons-plus"
         @click="openCreateModal"
       />
       <UButton
         v-else-if="canManageConnections && !canAccessFeature"
-        label="Add Connection"
+        label="Adicionar conexão"
         icon="i-heroicons-plus"
         @click="openUpgradeModal"
       />
@@ -35,9 +35,9 @@
     <!-- Connections List -->
     <div v-if="connectionsData && connectionsData.length > 0" class="space-y-3">
       <p class="text-sm text-neutral-500 max-w-xl">
-        Each connection can be tied to one verified email domain, which we use to route incoming users to the
-        correct workspace when they start login. Manage multiple clients from here and toggle them on or off without
-        losing their configuration details.
+        Cada conexão pode ser ligada a um domínio de e-mail verificado, usado para direcionar os usuários ao
+        espaço de trabalho certo quando fazem login. Gerencie vários clientes por aqui e ative ou desative cada um sem
+        perder as configurações.
       </p>
       <div class="grid gap-3 sm:grid-cols-2">
         <OidcConnectionCard
@@ -58,20 +58,20 @@
         class="w-12 h-12 text-neutral-400 mx-auto mb-4" 
       />
       <h4 class="text-lg font-medium text-neutral-900 mb-2">
-        No OIDC connections yet
+        Nenhuma conexão OIDC ainda
       </h4>
       <p class="text-neutral-500 mb-4">
-        Configure your first OIDC connection to enable single sign-on for your workspace.
+        Configure sua primeira conexão OIDC para ativar o login único no espaço de trabalho.
       </p>
       <UButton
         v-if="canManageConnections && canAccessFeature"
-        label="Add Your First Connection"
+        label="Adicionar primeira conexão"
         icon="i-heroicons-plus"
         @click="openCreateModal"
       />
       <UButton
         v-else-if="canManageConnections && !canAccessFeature"
-        label="Add Your First Connection"
+        label="Adicionar primeira conexão"
         icon="i-heroicons-plus"
         @click="openUpgradeModal"
       />
@@ -123,11 +123,11 @@ const alertConfig = computed(() => {
     return {
       icon: 'i-heroicons-information-circle',
       color: 'info',
-      title: 'Enterprise Plan Required',
-      description: 'OIDC SSO requires an Enterprise plan. Upgrade your plan to configure single sign-on for your workspace.',
+      title: 'Plano Enterprise necessário',
+      description: 'O SSO via OIDC exige o plano Enterprise. Faça upgrade para configurar o login único no espaço de trabalho.',
       actions: [
         {
-          label: 'Upgrade to Enterprise',
+          label: 'Upgrade para Enterprise',
           onClick: openUpgradeModal
         }
       ]
@@ -138,8 +138,8 @@ const alertConfig = computed(() => {
     return {
       icon: 'i-heroicons-check-circle',
       color: 'success',
-      title: 'OIDC SSO Enabled',
-      description: 'Configure OpenID Connect single sign-on connections for your workspace.',
+      title: 'SSO via OIDC ativado',
+      description: 'Configure as conexões de login único via OpenID Connect do espaço de trabalho.',
       actions: []
     }
   }
@@ -147,8 +147,8 @@ const alertConfig = computed(() => {
   return {
     icon: 'i-heroicons-information-circle',
     color: 'info',
-    title: 'OIDC SSO',
-    description: 'OIDC is available on self-hosted instances. Free self-hosted instances are limited to 2 users total; activate an Enterprise license to add more users.',
+    title: 'SSO via OIDC',
+    description: 'O OIDC está disponível em instâncias auto-hospedadas. Instâncias gratuitas ficam limitadas a 2 usuários; ative uma licença Enterprise para adicionar mais.',
     actions: []
   }
 })
@@ -156,16 +156,16 @@ const alertConfig = computed(() => {
 const openUpgradeModal = () => {
   openSubscriptionModal({
     plan: 'enterprise',
-    modal_title: 'Upgrade to Enterprise to use OIDC SSO',
-    modal_description: 'OIDC SSO is an Enterprise feature. Upgrade your plan to configure single sign-on for your workspace.'
+    modal_title: 'Faça upgrade para o Enterprise e use SSO via OIDC',
+    modal_description: 'O SSO via OIDC é um recurso Enterprise. Faça upgrade para configurar o login único no espaço de trabalho.'
   })
 }
 
 const openSsoLicenseModal = (error) => {
   return handleLicenseError(error, {
     includeUnauthorized: true,
-    title: 'Enterprise license required',
-    description: 'Activate an Enterprise self-hosted license to add more than 2 users or use advanced Enterprise features.'
+    title: 'Licença Enterprise necessária',
+    description: 'Ative uma licença Enterprise auto-hospedada para ter mais de 2 usuários ou usar recursos avançados.'
   })
 }
 
@@ -217,14 +217,14 @@ const saveConnection = () => {
 
     connectionForm.mutate(updateMutation)
       .then(() => {
-        alert.success('OIDC connection updated successfully')
+        alert.success('Conexão OIDC atualizada')
         cancelEdit()
       })
       .catch((error) => {
         // Form handles validation errors automatically
         if (openSsoLicenseModal(error)) return
         if (error.response?.status !== 422) {
-          alert.error(error.response?._data?.message ?? 'Failed to update connection')
+          alert.error(error.response?._data?.message ?? 'Não foi possível atualizar a conexão')
         }
       })
       .finally(() => {
@@ -236,14 +236,14 @@ const saveConnection = () => {
     // Create new connection
     connectionForm.mutate(createMutation)
       .then(() => {
-        alert.success('OIDC connection created successfully')
+        alert.success('Conexão OIDC criada')
         cancelEdit()
       })
       .catch((error) => {
         // Form handles validation errors automatically
         if (openSsoLicenseModal(error)) return
         if (error.response?.status !== 422) {
-          alert.error(error.response?._data?.message ?? 'Failed to create connection')
+          alert.error(error.response?._data?.message ?? 'Não foi possível criar a conexão')
         }
       })
   }
@@ -274,15 +274,15 @@ const editConnection = (connection) => {
 
 const deleteConnection = (connection) => {
   alert.confirm(
-    `Are you sure you want to delete "${connection.name}"?`,
+    `Tem certeza de que quer excluir "${connection.name}"?`,
     () => {
       deleteMutation.mutateAsync(connection.id)
         .then(() => {
-          alert.success('OIDC connection deleted successfully')
+          alert.success('Conexão OIDC excluída')
         })
         .catch((error) => {
           if (openSsoLicenseModal(error)) return
-          alert.error(error.response?._data?.message ?? 'Failed to delete connection')
+          alert.error(error.response?._data?.message ?? 'Não foi possível excluir a conexão')
         })
     }
   )

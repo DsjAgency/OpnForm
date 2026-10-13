@@ -7,10 +7,10 @@ export function isStale(event, now = Date.now()) {
 }
 
 export function eventLabel(event) {
-  if (event.status === "Error") return "Action needed"
-  if (event.legacy_email && event.status === "Success") return "Completed · delivery untracked"
-  if (isStale(event)) return "Outcome unknown"
-  return ({ Accepted: "Accepted · delivery unconfirmed", Delivered: "Delivered to mail server", Unknown: "Outcome unknown", Error: "Action needed" })[event.status] || event.status
+  if (event.status === "Error") return "Ação necessária"
+  if (event.legacy_email && event.status === "Success") return "Concluído · entrega não rastreada"
+  if (isStale(event)) return "Resultado desconhecido"
+  return ({ Accepted: "Aceito · entrega não confirmada", Delivered: "Entregue ao servidor de e-mail", Unknown: "Resultado desconhecido", Error: "Ação necessária", Success: "Sucesso", Processing: "Processando" })[event.status] || event.status
 }
 
 export function eventColor(event) {
@@ -21,5 +21,5 @@ export function eventColor(event) {
 }
 
 export function recipientLabel(status) {
-  return ({ pending: "Not yet attempted", sending: "Sending · outcome unconfirmed", accepted: "Accepted by transport · delivery unconfirmed", delivered: "Delivered to mail server", invalid: "Invalid address · not sent", blocked: "Cancelled by application · not sent", not_sent: "Non-delivering transport", unknown: "Outcome unknown", rejected: "Rejected by email provider", bounced: "Bounced", complained: "Spam complaint" })[status] || status
+  return ({ pending: "Ainda não tentado", sending: "Enviando · resultado não confirmado", accepted: "Aceito pelo transporte · entrega não confirmada", delivered: "Entregue ao servidor de e-mail", invalid: "Endereço inválido · não enviado", blocked: "Cancelado pela aplicação · não enviado", not_sent: "Transporte sem entrega", unknown: "Resultado desconhecido", rejected: "Rejeitado pelo provedor de e-mail", bounced: "Devolvido", complained: "Marcado como spam" })[status] || status
 }

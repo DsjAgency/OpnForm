@@ -127,7 +127,7 @@ export class Lexer {
     }
 
     if (this.isAtEnd()) {
-      throw new FormulaError(`Unterminated string starting at position ${start}`, start)
+      throw new FormulaError(`Texto sem aspas de fechamento, começando na posição ${start}`, start)
     }
 
     this.advance() // consume closing quote
@@ -171,7 +171,7 @@ export class Lexer {
     }
 
     if (this.isAtEnd()) {
-      throw new FormulaError(`Unterminated field reference starting at position ${start}`, start)
+      throw new FormulaError(`Referência de campo sem fechamento, começando na posição ${start}`, start)
     }
 
     this.advance() // consume '}'
@@ -265,7 +265,7 @@ export class Lexer {
           this.advance()
           break
         default:
-          throw new FormulaError(`Unexpected character '${char}' at position ${start}`, start)
+          throw new FormulaError(`Caractere inesperado '${char}' na posição ${start}`, start)
       }
     }
 

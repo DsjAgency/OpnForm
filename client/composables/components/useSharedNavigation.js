@@ -73,11 +73,11 @@ export const useSharedNavigation = () => {
   const sharedNavigationSections = computed(() => [
     // Product section
     {
-      name: 'Product',
+      name: 'Produto',
       items: [
         // What's new - only show if feature base enabled
         ...(appStore.featureBaseEnabled ? [createNavItem({
-          label: "What's new",
+          label: "Novidades",
           icon: 'i-heroicons-megaphone',
           color: hasNewChanges.value ? 'primary' : 'neutral',
           trailingIcon: hasNewChanges.value ? 'i-heroicons-sparkles-solid' : undefined,
@@ -93,7 +93,7 @@ export const useSharedNavigation = () => {
           target: '_blank'
         }),
         (featurebaseLoaded.value ? createNavItem({
-          label: 'Feature Requests',
+          label: 'Sugestões de recursos',
           icon: 'i-heroicons-light-bulb', 
           onClick: () => {
             window.postMessage({
@@ -105,7 +105,7 @@ export const useSharedNavigation = () => {
             })
           }
         }):  createNavItem({
-          label: 'Feature Requests',
+          label: 'Sugestões de recursos',
           icon: 'i-heroicons-light-bulb', 
           to: opnformConfig.links.feature_requests,
           target: '_blank'
@@ -114,22 +114,22 @@ export const useSharedNavigation = () => {
     },
     // Help section
     {
-      name: 'Help',
+      name: 'Ajuda',
       items: [
         createNavItem({
-          label: 'Help Center',
+          label: 'Central de ajuda',
           icon: 'i-heroicons-question-mark-circle',
           to: opnformConfig.links.help_url,
           target: '_blank'
         }),
         createNavItem({
-          label: 'API Docs',
+          label: 'Documentação da API',
           icon: 'i-heroicons-code-bracket',
           to: opnformConfig.links.api_docs,
           target: '_blank'
         }),
         ...(isSelfHosted.value || !crisp ? [] : [createNavItem({
-          label: 'Contact Support',
+          label: 'Falar com o suporte',
           icon: 'i-heroicons-chat-bubble-left-right',
           onClick: () => crisp.openChat()
         })])

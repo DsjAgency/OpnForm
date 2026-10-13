@@ -30,7 +30,7 @@
               color="neutral"
               variant="outline"
               @click="openSettings"
-              label="Settings"
+              label="Configurações"
             />
             <UButton
               v-if="workspace.is_admin"
@@ -39,7 +39,7 @@
               color="neutral"
               variant="outline"
               @click="openInviteUserModal"
-              label="Invite Members"
+              label="Convidar membros"
             />
           </div>
         </div>
@@ -75,7 +75,7 @@
             color="neutral"
             variant="ghost"
             @click="createNewWorkspace"
-            label="Create Workspace"
+            label="Criar espaço de trabalho"
             size="sm"
           />
         </div>
@@ -143,9 +143,9 @@ const workspacePlanText = computed(() => {
 
 // Computed text for member count
 const memberCountText = computed(() => {
-  if (!workspace.value || !workspace.value.users_count) return '1 member'
+  if (!workspace.value || !workspace.value.users_count) return '1 membro'
   const count = workspace.value.users_count
-  return count === 1 ? '1 member' : `${count} members`
+  return count === 1 ? '1 membro' : `${count} membros`
 })
 
 const switchWorkspace = (workspaceToSwitch) => {
@@ -162,7 +162,7 @@ const switchWorkspace = (workspaceToSwitch) => {
 
 const createNewWorkspace = () => {
   if (!userCanAccessTier('pro') && workspaces.value.length >= 1) {
-    openSubscriptionModal({ modal_title: 'Upgrade to create additional workspaces', modal_description: 'Try our Pro plan for free today, and unlock all of our features such as collaboration, multiple workspaces, custom domains, forms analytics, integrations, and more!' })
+    openSubscriptionModal({ modal_title: 'Faça upgrade para criar mais espaços de trabalho', modal_description: 'Experimente o plano Pro de graça e libere recursos como colaboração, vários espaços de trabalho, domínios personalizados, análises de formulários, integrações e muito mais!' })
     return
   }
   showCreateModal.value = true
@@ -185,7 +185,7 @@ const openInviteUserModal = () => {
   isDropdownOpen.value = false
 
   if (workspace.value && !workspace.value?.features?.includes('workspaces.multiple')) {
-    openSubscriptionModal({ modal_title: 'Upgrade to invite users to your workspace' })
+    openSubscriptionModal({ modal_title: 'Faça upgrade para convidar usuários ao seu espaço de trabalho' })
     return
   }
   

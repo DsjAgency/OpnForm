@@ -46,7 +46,7 @@ export function useOAuth() {
   // Enhanced error handling for OAuth operations
   const handleOAuthError = (error) => {
     const message = error.response?.data?.message || error.data?.message
-    alert.error(message ?? "An error occurred while connecting an account")
+    alert.error(message ?? "Ocorreu um erro ao conectar a conta")
   }
 
   // Popup utilities
@@ -56,10 +56,10 @@ export function useOAuth() {
     if (!shouldOpenInNewTab) return null
     const popupWindow = window.open('', 'oauth_popup_' + service, popupFeatures)
     if (!popupWindow) {
-      alert.error('Popup was blocked. Please allow popups and try again.')
+      alert.error('O pop-up foi bloqueado. Permita pop-ups e tente novamente.')
       return null
     }
-    try { popupWindow.document.title = 'Connecting…' } catch { /* ignore */ }
+    try { popupWindow.document.title = 'Conectando…' } catch { /* ignore */ }
     return popupWindow
   }
 
@@ -70,7 +70,7 @@ export function useOAuth() {
     }
     const fallbackPopup = window.open(targetUrl, 'oauth_popup_' + service, popupFeatures)
     if (!fallbackPopup) {
-      alert.error('Popup was blocked. Please allow popups and try again.')
+      alert.error('O pop-up foi bloqueado. Permita pop-ups e tente novamente.')
       return false
     }
     return true

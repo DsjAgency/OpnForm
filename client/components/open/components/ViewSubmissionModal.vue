@@ -6,7 +6,7 @@
     <template #header>
       <div class="flex flex-col gap-3 w-full min-w-0 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
         <h2 class="font-semibold shrink-0">
-          View Submission
+          Ver resposta
         </h2>
 
         <div class="flex flex-wrap items-center gap-2 justify-between sm:justify-end min-w-0">
@@ -20,10 +20,10 @@
                 variant="outline"
                 size="sm"
                 icon="heroicons:pencil-square"
-                aria-label="Edit"
+                aria-label="Editar"
                 @click="showEditSubmissionModal = true"
               >
-                <span class="hidden sm:inline">Edit</span>
+                <span class="hidden sm:inline">Editar</span>
               </UButton>
             </TrackClick>
             <UButton
@@ -32,10 +32,10 @@
               variant="outline"
               size="sm"
               icon="i-heroicons-arrow-down-tray-20-solid"
-              aria-label="Download PDF"
+              aria-label="Baixar PDF"
               @click="downloadPdf"
             >
-              <span class="hidden sm:inline">Download PDF</span>
+              <span class="hidden sm:inline">Baixar PDF</span>
             </UButton>
             <UDropdownMenu
               :items="getMenuItems"
@@ -47,7 +47,7 @@
                 variant="outline"
                 icon="i-heroicons-ellipsis-horizontal"
                 size="sm"
-                aria-label="More actions"
+                aria-label="Mais ações"
               />
             </UDropdownMenu>
           </div>
@@ -87,7 +87,7 @@
             color="neutral"
             variant="outline"
             @click.prevent="isModalOpen = false"
-            label="Close"
+            label="Fechar"
           />
         </template>
       </OpenForm>
@@ -160,12 +160,12 @@ const getMenuItems = computed(() => {
   return [
     [
       {
-        label: 'Copy link',
+        label: 'Copiar link',
         icon: 'i-heroicons-clipboard-document-check-20-solid',
         onClick: copyLink
       },
       {
-        label: 'Submission History',
+        label: 'Histórico da resposta',
         icon: 'i-heroicons-clock',
         onClick: () => {
           showSubmissionHistoryModal.value = true
@@ -174,7 +174,7 @@ const getMenuItems = computed(() => {
     ],
     [
       {
-        label: 'Delete submission',
+        label: 'Excluir resposta',
         icon: 'i-heroicons-trash',
         onClick: () => onDeleteClick(),
         class: 'text-red-800 hover:bg-red-50 hover:text-red-600 group',
@@ -287,25 +287,25 @@ const onSubmissionRestored = (restoredData) => {
 
 const copyLink = () => {
   copy(window.location.href)
-  alert.success("Copied!")
+  alert.success("Copiado!")
 }
 
 const downloadPdf = () => {
   if (downloadPdfRef.value) {
     downloadPdfRef.value.handleDownload()
   } else {
-    alert.error("Something went wrong!")
+    alert.error("Algo deu errado!")
   }
 }
 
 const onDeleteClick = () => {
-  alert.confirm("Do you really want to delete this submission?", deleteRecord)
+  alert.confirm("Quer mesmo excluir esta resposta?", deleteRecord)
 }
 
 const deleteRecord = () => {
   const currentSubmissionId = submission.value?.id
   if (!currentSubmissionId) {
-    alert.error("Something went wrong!")
+    alert.error("Algo deu errado!")
     return
   }
 
@@ -317,10 +317,10 @@ const deleteRecord = () => {
       alert.success(data.message)
       isModalOpen.value = false
     } else {
-      alert.error("Something went wrong!")
+      alert.error("Algo deu errado!")
     }
   }).catch((error) => {
-    alert.error(error.data?.message || "Something went wrong!")
+    alert.error(error.data?.message || "Algo deu errado!")
   })
 }
 

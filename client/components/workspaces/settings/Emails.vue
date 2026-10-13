@@ -2,9 +2,9 @@
   <div class="space-y-4">
     <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div>
-        <h3 class="text-lg font-medium text-neutral-900">Email Settings</h3>
+        <h3 class="text-lg font-medium text-neutral-900">Configurações de e-mail</h3>
         <p class="mt-1 text-sm text-neutral-500">
-          Configure a custom SMTP sender for this workspace.
+          Configure um remetente SMTP personalizado para este espaço de trabalho.
         </p>
         <PlanTag
           :required-tier="isSelfHosted ? 'self_hosted' : 'pro'"
@@ -12,7 +12,7 @@
       </div>
 
       <UButton
-        label="Help"
+        label="Ajuda"
         icon="i-heroicons-question-mark-circle"
         variant="outline"
         color="neutral"
@@ -25,10 +25,10 @@
       icon="i-heroicons-information-circle"
       color="info"
       variant="subtle"
-      title="Instance-wide email sending is configured separately"
-      description="Use MAIL_* environment variables to configure the default sender for your whole self-hosted instance. These workspace settings override that sender for this workspace and require a self-hosted Enterprise license."
+      title="O envio de e-mails da instância inteira é configurado separadamente"
+      description="Use as variáveis de ambiente MAIL_* para configurar o remetente padrão de toda a instância auto-hospedada. Estas configurações substituem esse remetente neste espaço de trabalho e exigem uma licença Enterprise auto-hospedada."
       :actions="[{
-        label: 'Email setup docs',
+        label: 'Documentação de e-mail',
         icon: 'i-heroicons-arrow-top-right-on-square',
         color: 'info',
         variant: 'solid',
@@ -43,10 +43,10 @@
       class="mb-4"
       color="warning"
       variant="subtle"
-      title="Pro plan required"
-      description="Please upgrade your account to setup an email settings."
+      title="Plano Pro necessário"
+      description="Faça upgrade da sua conta para configurar o e-mail."
       :actions="[{
-        label: 'Try Pro plan',
+        label: 'Experimentar o plano Pro',
         color: 'warning',
         variant: 'solid',
         onClick: () => openUpgradeModal()
@@ -63,7 +63,7 @@
             name="host"
             :required="true"
             :disabled="!canAccessSmtp"
-            label="Host/Server"
+            label="Host/Servidor"
             class="mt-2"
             placeholder="smtp.example.com"
           />
@@ -72,14 +72,14 @@
             name="port"
             :required="true"
             :disabled="!canAccessSmtp"
-            label="Port"
+            label="Porta"
             placeholder="587"
           />
           <OptionSelectorInput
             :form="emailSettingsForm"
             name="encryption"
             :disabled="!canAccessSmtp"
-            label="Encryption"
+            label="Criptografia"
             :options="encryptionOptions"
             :columns="3"
             seamless
@@ -89,8 +89,8 @@
             name="username"
             :required="true"
             :disabled="!canAccessSmtp"
-            label="Username"
-            placeholder="Username"
+            label="Usuário"
+            placeholder="Usuário"
           />
           <TextInput
             :form="emailSettingsForm"
@@ -98,14 +98,14 @@
             native-type="password"
             :required="true"
             :disabled="!canAccessSmtp"
-            label="Password"
-            placeholder="Password"
+            label="Senha"
+            placeholder="Senha"
           />
           <TextInput
             :form="emailSettingsForm"
             name="sender_address"
             :disabled="!canAccessSmtp"
-            label="Sender address"
+            label="Endereço do remetente"
             placeholder="sender@example.com"
           />
         </div>
@@ -125,7 +125,7 @@
             :disabled="!canAccessSmtp"
             @click="clearEmailSettings"
           >
-            Clear settings
+            Limpar configurações
           </UButton>
         </div>
       </form>
@@ -149,14 +149,14 @@ const isSelfHosted = computed(() => useFeatureFlag('self_hosted'))
 const openUpgradeModal = () => {
   openSubscriptionModal({
     plan: isSelfHosted.value ? 'self_hosted' : 'pro',
-    modal_title: 'Upgrade to send emails using your own domain'
+    modal_title: 'Faça upgrade para enviar e-mails com seu próprio domínio'
   })
 }
 
 const encryptionOptions = [
   { name: 'tls', label: 'TLS' },
   { name: 'ssl', label: 'SSL' },
-  { name: 'none', label: 'None' }
+  { name: 'none', label: 'Nenhuma' }
 ]
 
 const emailSettingsForm = useForm({
@@ -206,10 +206,10 @@ const saveChanges = () => {
     })
     .then((_data) => {
       // Cache is updated automatically by TanStack Query mutations
-      alert.success("Email settings saved.")
+      alert.success("Configurações de e-mail salvas.")
     })
     .catch((error) => {
-      alert.error("Failed to update email settings: " + error.response.data.message)
+      alert.error("Não foi possível atualizar as configurações de e-mail: " + error.response.data.message)
     })
 }
 

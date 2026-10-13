@@ -32,7 +32,7 @@
           >
             <UTooltip
               arrow
-              text="Add new field"
+              text="Adicionar novo campo"
               :content="{ side: 'left' }"
               :ui="{ container: 'z-50' }"
             >
@@ -49,7 +49,7 @@
           >
             <UTooltip
               arrow
-              text="Edit field settings"
+              text="Editar configurações do campo"
               :content="{ side: 'left' }"
               :ui="{ container: 'z-50' }"
             >
@@ -66,7 +66,7 @@
           >
             <UTooltip
               arrow
-              text="Delete field"
+              text="Excluir campo"
               :content="{ side: 'left' }"
               :ui="{ container: 'z-50' }"
             >

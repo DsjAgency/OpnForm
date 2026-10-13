@@ -6,7 +6,7 @@
     <template #header>
       <div class="flex items-center justify-between w-full">
         <h2 class="font-semibold">
-          Edit Submission
+          Editar resposta
         </h2>
         <div class="flex items-center gap-2">
           <UButton
@@ -17,7 +17,7 @@
             :icon="copySuccess ? 'i-heroicons-check' : 'i-heroicons-clipboard-document'"
             @click.prevent="copyToClipboard"
           >
-            <span class="hidden md:inline">{{ copySuccess ? 'Copied!' : 'Copy Public Link' }}</span>
+            <span class="hidden md:inline">{{ copySuccess ? 'Copiado!' : 'Copiar link público' }}</span>
           </UButton>
         </div>
       </div>
@@ -33,7 +33,7 @@
             class="mt-2"
             :loading="updateSubmissionMutation.isPending.value || isProcessing"
             @click.prevent="updateForm"
-            label="Update Submission"
+            label="Atualizar resposta"
           />
         </template>
       </OpenForm>

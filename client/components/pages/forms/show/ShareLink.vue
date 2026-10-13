@@ -1,11 +1,11 @@
 <template>
   <div>
     <h3 class="font-semibold text-xl">
-      Share Link
+      Link de compartilhamento
     </h3>
     <p>
-      Share your form with anyone by copying this link. You can use it on social media,
-      in messages, or send it via email to reach your audience.
+      Compartilhe o formulário com qualquer pessoa copiando este link. Use em redes sociais,
+      mensagens ou e-mail para alcançar seu público.
     </p>
     <copy-content
       :content="share_url"
@@ -29,7 +29,7 @@
           />
         </svg>
       </template>
-      Copy Link
+      Copiar link
     </copy-content>
   </div>
 </template>

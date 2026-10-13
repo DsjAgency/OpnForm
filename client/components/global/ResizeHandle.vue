@@ -4,7 +4,7 @@
     :delayDuration="400"
     :open="open"
     :reference="reference"
-    text="Drag to resize"
+    text="Arraste para redimensionar"
     :content="{ side: tooltipSide, sideOffset: 8, updatePositionStrategy: 'always' }"
     arrow
   >

@@ -30,7 +30,7 @@
       v-model="selectedField"
       :items="availableFields"
       value-key="value"
-      placeholder="Select field..."
+      placeholder="Selecione o campo..."
       class="min-w-[140px] max-w-[200px]"
       size="sm"
       :ui="{
@@ -83,7 +83,7 @@ const props = defineProps({
   },
   whereText: {
     type: String,
-    default: 'Where'
+    default: 'Onde'
   }
 })
 
@@ -151,6 +151,6 @@ const currentOperator = computed({
 
 const operatorDisplayName = computed(() => {
   const operator = props.operatorOptions.find(op => op.value === props.selectedOperator)
-  return operator?.label || 'And'
+  return operator?.label || 'E'
 })
 </script>

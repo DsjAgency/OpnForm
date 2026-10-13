@@ -4,7 +4,7 @@
       <UButton
         size="sm"
         variant="ghost"
-        label="Columns"
+        label="Colunas"
         color="neutral"
         trailing-icon="i-lucide-chevron-down"
         class="ml-auto"
@@ -16,7 +16,7 @@
             <UInput
               v-model="searchQuery"
               variant="outline"
-              placeholder="Search columns..."
+              placeholder="Buscar colunas..."
               icon="i-heroicons-magnifying-glass"
               size="sm"
             />
@@ -24,7 +24,7 @@
               size="sm"
               variant="ghost"
               color="neutral"
-              label="Reset"
+              label="Redefinir"
               @click="tableState.resetPreferences()"
             />
           </div>
@@ -81,17 +81,17 @@
                 <UIcon name="i-lucide-chart-no-axes-combined" class="size-4 mt-0.5 text-neutral-500 shrink-0" />
                 <span class="flex-1 min-w-0">
                   <span class="flex items-center gap-2">
-                    <span class="text-sm font-medium">Attribution &amp; tracking</span>
+                    <span class="text-sm font-medium">Atribuição e rastreamento</span>
                     <UBadge
                       v-if="detectedAttributionCount > 0"
                       size="xs"
                       variant="soft"
                       color="neutral"
-                      :label="`${detectedAttributionCount} on this page`"
+                      :label="`${detectedAttributionCount} nesta página`"
                     />
                   </span>
                   <span class="block mt-0.5 text-xs text-neutral-500 leading-4">
-                    Campaign parameters captured from form URLs
+                    Parâmetros de campanha capturados das URLs do formulário
                   </span>
                 </span>
                 <UIcon
@@ -113,18 +113,18 @@
                     size="xs"
                     variant="link"
                     color="neutral"
-                    label="Hide URL parameters"
+                    label="Ocultar parâmetros de URL"
                     @click="setColumnsVisibility(visibleAttributionColumns, false)"
                   />
                 </div>
 
                 <div v-if="hiddenDetectedAttributionColumns.length > 0">
                   <div class="flex items-center justify-between px-2">
-                    <h5 class="text-xs text-neutral-500">Detected on this page</h5>
+                    <h5 class="text-xs text-neutral-500">Detectados nesta página</h5>
                     <UButton
                       size="xs"
                       variant="link"
-                      label="Show detected"
+                      label="Mostrar detectados"
                       @click="setColumnsVisibility(hiddenDetectedAttributionColumns, true)"
                     />
                   </div>
@@ -157,7 +157,7 @@
                   v-else-if="detectedAttributionCount > 0 && !normalizedSearchQuery"
                   class="px-2 py-1 text-xs text-neutral-500"
                 >
-                  All detected parameters are shown in the table.
+                  Todos os parâmetros detectados aparecem na tabela.
                 </p>
 
                 <div v-if="hiddenOtherAttributionColumns.length > 0" class="mt-1">
@@ -174,7 +174,7 @@
                       :class="{ 'rotate-90': otherAttributionExpanded }"
                     />
                     <span class="flex-1 text-xs font-medium text-neutral-600 dark:text-neutral-300">
-                      Other supported parameters
+                      Outros parâmetros aceitos
                     </span>
                     <span class="text-xs text-neutral-500">{{ hiddenOtherAttributionColumns.length }}</span>
                   </button>
@@ -184,7 +184,7 @@
                       <UButton
                         size="xs"
                         variant="link"
-                        label="Show all"
+                        label="Mostrar todos"
                         @click="setColumnsVisibility(hiddenOtherAttributionColumns, true)"
                       />
                     </div>
@@ -220,7 +220,7 @@
               v-if="filteredColumns.length === 0 && !showAttributionGroup"
               class="px-2 py-4 text-center text-sm text-neutral-500"
             >
-              No columns found.
+              Nenhuma coluna encontrada.
             </p>
           </ScrollableContainer>
           <div class="w-full h-1" />
@@ -353,15 +353,15 @@ const otherAttributionExpanded = computed(() => isOtherAttributionExpanded.value
 const columnSections = computed(() => [
   {
     type: 'visible',
-    title: 'Shown in table',
-    actionLabel: 'Hide All',
+    title: 'Visíveis na tabela',
+    actionLabel: 'Ocultar todas',
     targetVisibility: false,
     columns: visibleColumns.value,
   },
   {
     type: 'hidden',
-    title: 'Hidden in table',
-    actionLabel: 'Show All',
+    title: 'Ocultas na tabela',
+    actionLabel: 'Mostrar todas',
     targetVisibility: true,
     columns: hiddenColumns.value,
   },

@@ -7,31 +7,31 @@ export function useTokens() {
   // Abilities configuration (moved from store)
   const abilities = [
     {
-      title: 'Manage integrations',
+      title: 'Gerenciar integrações',
       name: 'manage-integrations',
     },
     {
-      title: 'Forms – Read',
+      title: 'Formulários – Leitura',
       name: 'forms-read',
     },
     {
-      title: 'Forms – Write',
+      title: 'Formulários – Escrita',
       name: 'forms-write',
     },
     {
-      title: 'Workspaces – Read',
+      title: 'Espaços de trabalho – Leitura',
       name: 'workspaces-read',
     },
     {
-      title: 'Workspaces – Write',
+      title: 'Espaços de trabalho – Escrita',
       name: 'workspaces-write',
     },
     {
-      title: 'Workspace Users – Read',
+      title: 'Usuários do espaço – Leitura',
       name: 'workspace-users-read',
     },
     {
-      title: 'Workspace Users – Write',
+      title: 'Usuários do espaço – Escrita',
       name: 'workspace-users-write',
     },
   ]
@@ -76,7 +76,7 @@ export function useTokens() {
       mutationFn: (data) => tokensApi.create(data),
       // Creation returns a one-time secret, not a token metadata resource.
       onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tokens', 'list'] }).then(() => {
-        useAlert().success('Token created successfully')
+        useAlert().success('Token criado')
       }),
       ...options
     })
@@ -97,7 +97,7 @@ export function useTokens() {
           currentList.filter(token => token.id != deletedTokenId) // Use != for loose equality
         )
       }
-      useAlert().success('Token deleted successfully')
+      useAlert().success('Token excluído')
       },
       ...options
     })

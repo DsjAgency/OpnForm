@@ -3,9 +3,9 @@
     <div class="space-y-4">
       <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <h3 class="text-lg font-medium text-neutral-900">General</h3>
+          <h3 class="text-lg font-medium text-neutral-900">Geral</h3>
           <p class="mt-1 text-sm text-neutral-500">
-            Basic information about your form.
+            Informações básicas do formulário.
           </p>
         </div>
       </div>
@@ -14,18 +14,18 @@
         :form="form"
         name="title"
         class="mt-4 max-w-xs"
-        label="Form Name"
-        placeholder="My form"
+        label="Nome do formulário"
+        placeholder="Meu formulário"
         :max-char-limit="255"
         :show-char-limit="true"
       />
       <select-input
         name="tags"
-        label="Tags"
+        label="Etiquetas"
         clearable
         :form="form"
-        help="To organize your forms"
-        placeholder="Select Tag(s)"
+        help="Para organizar seus formulários"
+        placeholder="Selecione etiquetas"
         class="max-w-xs"
         :multiple="true"
         :allow-creation="true"
@@ -33,10 +33,10 @@
       />
       <flat-select-input
         name="visibility"
-        label="Form Visibility"
+        label="Visibilidade do formulário"
         class="max-w-xs"
         :form="form"
-        placeholder="Select Visibility"
+        placeholder="Selecione a visibilidade"
         :options="visibilityOptions"
       />
       <div
@@ -47,8 +47,8 @@
           name="closed_text"
           :allow-fullscreen="true"
           :form="form"
-          label="Closed form text"
-          help="This message will be shown when the form will be closed"
+          label="Texto de formulário encerrado"
+          help="Esta mensagem aparece quando o formulário estiver encerrado"
           :required="false"
           wrapper-class="mb-0"
         />
@@ -62,7 +62,7 @@
         icon="i-heroicons-document-duplicate"
         @click.prevent="showCopyFormSettingsModal = true"
       >
-        Copy another form's settings
+        Copiar configurações de outro formulário
       </UButton>
     </div>
   </VForm>
@@ -74,7 +74,7 @@
     <template #header>
       <div class="flex items-center w-full gap-4 px-2">
         <h2 class="text-lg font-semibold">
-          Import Settings from another form
+          Importar configurações de outro formulário
         </h2>
       </div>
     </template>
@@ -83,8 +83,8 @@
         <select-input
           v-model="copyFormId"
           name="copy_form_id"
-          label="Copy Settings From"
-          placeholder="Choose a form"
+          label="Copiar configurações de"
+          placeholder="Escolha um formulário"
           :searchable="copyFormOptions.length > 5"
           :options="copyFormOptions"
         />
@@ -92,14 +92,14 @@
           <UButton
             @click="copySettings"
           >
-            Confirm & Copy
+            Confirmar e copiar
           </UButton>
           <UButton
             color="neutral"
             variant="outline"
             @click="showCopyFormSettingsModal = false"
           >
-            Cancel
+            Cancelar
           </UButton>
         </div>
       </VForm>
@@ -128,15 +128,15 @@ const copyFormId = ref(null)
 // Computed properties
 const visibilityOptions = [
   {
-    name: 'Published',
+    name: 'Publicado',
     value: 'public',
   },
   {
-    name: 'Draft - not publicly accessible',
+    name: 'Rascunho - não acessível publicamente',
     value: 'draft',
   },
   {
-    name: 'Closed - won\'t accept new submissions',
+    name: 'Encerrado - não aceita novas respostas',
     value: 'closed',
   },
 ]
@@ -186,7 +186,7 @@ const isFormClosingOrClosed = computed(() => {
 // Methods
 const copySettings = () => {
   if (copyFormId.value == null) {
-    alert.error('Please select a form to copy settings from')
+    alert.error('Selecione um formulário para copiar as configurações')
     return
   }
 
@@ -226,6 +226,6 @@ const copySettings = () => {
     form.value[property] = copyForm[property]
   })
   showCopyFormSettingsModal.value = false
-  alert.success('Form settings copied.')
+  alert.success('Configurações do formulário copiadas.')
 }
 </script>

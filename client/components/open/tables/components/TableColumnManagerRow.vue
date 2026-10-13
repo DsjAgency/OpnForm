@@ -24,7 +24,7 @@
         </div>
       </UTooltip>
 
-      <UTooltip v-if="column.isRemoved" text="Column was removed from form" :content="{ align: 'end' }">
+      <UTooltip v-if="column.isRemoved" text="A coluna foi removida do formulário" :content="{ align: 'end' }">
         <UIcon name="i-heroicons-trash" class="w-3 h-3 text-neutral-400" />
       </UTooltip>
 
@@ -96,9 +96,9 @@ const props = defineProps({
   },
 })
 
-const pinLabel = computed(() => props.preference?.pinned === 'left' ? 'Unpin column' : 'Pin column to left')
-const wrapLabel = computed(() => props.preference?.wrapped ? 'Disable text wrapping' : 'Enable text wrapping')
-const visibilityLabel = computed(() => props.visible ? 'Hide column' : 'Show column')
+const pinLabel = computed(() => props.preference?.pinned === 'left' ? 'Desafixar coluna' : 'Fixar coluna à esquerda')
+const wrapLabel = computed(() => props.preference?.wrapped ? 'Desativar quebra de texto' : 'Ativar quebra de texto')
+const visibilityLabel = computed(() => props.visible ? 'Ocultar coluna' : 'Mostrar coluna')
 </script>
 
 <style scoped>

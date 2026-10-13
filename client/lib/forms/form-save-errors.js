@@ -4,8 +4,8 @@ const AGGREGATE_MESSAGES = new Set([
 ])
 
 const GENERAL_ERROR_LABELS = {
-  properties: 'Form fields',
-  computed_variables: 'Computed variables',
+  properties: 'Campos do formulário',
+  computed_variables: 'Variáveis calculadas',
 }
 
 function normalizeMessages(messages) {
@@ -72,7 +72,7 @@ export function normalizeFormSaveErrors(validationResponse, properties = [], com
             key: `property:${fieldIndex}`,
             fieldIndex,
             fieldId: field?.id ?? null,
-            fieldName: field?.name || `Field ${fieldIndex + 1}`,
+            fieldName: field?.name || `Campo ${fieldIndex + 1}`,
             fieldType: field?.type ?? null,
             messages: [],
             targetTab: fieldTargetTab(errorPath),
@@ -96,7 +96,7 @@ export function normalizeFormSaveErrors(validationResponse, properties = [], com
             key: `computed-variable:${variableIndex}`,
             variableIndex,
             variableId: variable?.id ?? null,
-            variableName: variable?.name || `Computed variable ${variableIndex + 1}`,
+            variableName: variable?.name || `Variável calculada ${variableIndex + 1}`,
             messages: [],
             canNavigate: isEditableItem(variable),
           })
@@ -131,7 +131,7 @@ export function normalizeFormSaveErrors(validationResponse, properties = [], com
     fieldCount: fieldGroups.length,
     computedVariableCount: computedVariableGroups.length,
     fallbackMessage: issueCount === 0
-      ? validationResponse?.message || 'An unknown validation error occurred.'
+      ? validationResponse?.message || 'Ocorreu um erro de validação desconhecido.'
       : null,
   }
 }

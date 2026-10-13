@@ -11,17 +11,17 @@
       >
         <div class="max-w-md text-center">
           <h1 class="text-2xl font-semibold text-neutral-900">
-            This form is temporarily unavailable
+            Este formulário está temporariamente indisponível
           </h1>
           <p class="mt-3 text-neutral-500">
-            We couldn't load the form right now. Please check your connection and try again.
+            Não foi possível carregar o formulário agora. Confira sua conexão e tente novamente.
           </p>
           <button
             type="button"
             class="mt-6 rounded-lg bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600"
             @click="retryForm"
           >
-            Try again
+            Tentar novamente
           </button>
         </div>
       </div>
@@ -168,7 +168,7 @@ if (import.meta.server && formError.value) {
   setResponseStatus(
     event,
     responseStatus,
-    responseStatus === 404 ? 'Page Not Found' : 'Service Unavailable',
+    responseStatus === 404 ? 'Página não encontrada' : 'Serviço indisponível',
   )
 }
 
@@ -302,7 +302,7 @@ useOpnSeoMeta({
     if (pageMeta.value.page_title) {
       return pageMeta.value.page_title
     }
-    return form.value ? form.value.title : 'Create beautiful forms'
+    return form.value ? form.value.title : 'Formulários'
   },
   description: () => {
     if (pageMeta.value.page_description) {
@@ -357,7 +357,7 @@ useHead({
   htmlAttrs: {
     dir: () => form.value?.layout_rtl ? 'rtl' : 'ltr',
     class: getHtmlClass.value,
-    lang: () => form.value?.language || 'en'
+    lang: () => form.value?.language || 'pt'
   },
   titleTemplate: (titleChunk) => {
     if (pageMeta.value.page_title) {

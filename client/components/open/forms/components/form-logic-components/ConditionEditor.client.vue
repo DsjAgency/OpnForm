@@ -149,11 +149,11 @@ export default {
       return {
         operators: [
           {
-            name: "And",
+            name: "E",
             identifier: "and",
           },
           {
-            name: "Or",
+            name: "Ou",
             identifier: "or",
           },
         ],

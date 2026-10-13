@@ -11,7 +11,7 @@
         <!-- Header -->
         <div class="flex items-center justify-between p-4 border-b flex-shrink-0">
           <h3 class="text-lg font-semibold">
-            {{ isEditing ? 'Edit Variable' : 'Create Variable' }}
+            {{ isEditing ? 'Editar variável' : 'Criar variável' }}
           </h3>
           <UButton
             icon="i-heroicons-x-mark"
@@ -62,14 +62,14 @@
             variant="outline"
             @click="close"
           >
-            Cancel
+            Cancelar
           </UButton>
           <UButton
             color="primary"
             :disabled="!canSave"
             @click="save"
           >
-            {{ isEditing ? 'Save Changes' : 'Create Variable' }}
+            {{ isEditing ? 'Salvar alterações' : 'Criar variável' }}
           </UButton>
         </div>
       </div>
@@ -192,7 +192,7 @@ const computedResult = computed(() => {
     const result = evaluateFormula(localVariable.value.formula, context)
     return formatResult(result)
   } catch {
-    return 'Error'
+    return 'Erro'
   }
 })
 
@@ -252,13 +252,13 @@ function validate() {
   errors.value = {}
   
   if (!localVariable.value.name?.trim()) {
-    errors.value.name = 'Name is required'
+    errors.value.name = 'O nome é obrigatório'
   }
   
   if (!localVariable.value.formula?.trim()) {
-    errors.value.formula = 'Formula is required'
+    errors.value.formula = 'A fórmula é obrigatória'
   } else if (!validationResult.value.valid) {
-    errors.value.formula = validationResult.value.errors[0]?.message || 'Invalid formula'
+    errors.value.formula = validationResult.value.errors[0]?.message || 'Fórmula inválida'
   }
   
   return Object.keys(errors.value).length === 0

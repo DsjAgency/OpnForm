@@ -6,21 +6,21 @@
       <div class="absolute inset-0 z-10">
         <div class="p-5 max-w-md mx-auto flex flex-col items-center justify-center h-full">
           <p class="text-center">
-            You need a <PlanTag
+            Você precisa de uma assinatura <PlanTag
               upgrade-modal-title="Upgrade today to access form summaries"
               class="mx-1"
-            /> subscription to access form summaries. 
+            /> para acessar os resumos de formulários. 
           </p>
           <UButton
             class="mt-5 flex justify-center"
             @click.prevent="openUpgradeModal()"
-            label="Subscribe"
+            label="Assinar"
           />
         </div>
       </div>
       <img
         src="/img/pages/forms/blurred_summary.png"
-        alt="Sample Graph"
+        alt="Gráfico de exemplo"
         class="mx-auto w-full filter blur-md z-0 pointer-events-none"
       >
     </div>
@@ -40,7 +40,7 @@ definePageMeta({
 })
 
 useOpnSeoMeta({
-  title: props.form ? "Form Summary - " + props.form.title : "Form Summary",
+  title: props.form ? "Resumo - " + props.form.title : "Resumo",
 })
 
 const { openSubscriptionModal } = useAppModals()
@@ -50,8 +50,8 @@ const canAccessSummary = computed(() => hasFeature('form_summary'))
 const openUpgradeModal = () => {
   openSubscriptionModal({
     plan: 'pro',
-    modal_title: 'Upgrade to Pro for Form Summaries',
-    modal_description: 'Get visual breakdowns, statistics, and insights for all your form submissions with the Pro plan.',
+    modal_title: 'Faça upgrade para o Pro e tenha resumos dos formulários',
+    modal_description: 'Tenha gráficos, estatísticas e insights de todas as respostas dos seus formulários com o plano Pro.',
   })
 }
 </script>

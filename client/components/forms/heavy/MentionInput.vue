@@ -132,7 +132,7 @@ const insertMention = (mention) => {
 
 const openMentionDropdown = () => {
   if (props.disableMention || props.disabled) {
-    openSubscriptionModal({ modal_title: 'Upgrade to Pro', modal_description: 'Upgrade to Pro to use mentions' })
+    openSubscriptionModal({ modal_title: 'Upgrade para Pro', modal_description: 'Faça upgrade para o Pro para usar menções' })
     return
   }
 

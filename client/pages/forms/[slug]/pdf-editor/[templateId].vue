@@ -17,7 +17,7 @@
         icon="i-heroicons-exclamation-triangle"
         color="error"
         variant="soft"
-        title="Error loading template"
+        title="Erro ao carregar o modelo"
         :description="error.message"
       />
     </div>
@@ -138,7 +138,7 @@ const saveTemplate = async () => {
     alert.success(response.message)
     goBack()
   } catch (err) {
-    const message = err?.data?.message || err?.message || 'Failed to save template.'
+    const message = err?.data?.message || err?.message || 'Não foi possível salvar o modelo.'
     alert.error(message)
   } finally {
     pdfStore.setSaving(false)
@@ -156,14 +156,14 @@ const goBack = () => {
 // SEO
 useOpnSeoMeta({
   title: computed(() => pdfTemplate.value?.name 
-    ? `Edit PDF Template - ${pdfTemplate.value.name}`
-    : 'Edit PDF Template'
+    ? `Editar modelo de PDF - ${pdfTemplate.value.name}`
+    : 'Editar modelo de PDF'
   ),
 })
 
 onBeforeRouteLeave((to, from, next) => {
   if (pdfStore.hasUnsavedChanges) {
-    if (window.confirm('Changes you made may not be saved. Are you sure want to leave?')) {
+    if (window.confirm('As alterações feitas podem não ser salvas. Tem certeza de que quer sair?')) {
       window.onbeforeunload = null
       return next()
     }

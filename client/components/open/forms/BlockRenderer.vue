@@ -41,7 +41,7 @@
         v-if="disableCustomCodeExecution"
         class="rounded-lg border border-dashed bg-neutral-50 p-4 text-sm text-neutral-500"
       >
-        Custom code is preserved but does not execute in an agent draft preview.
+        O código personalizado é mantido, mas não roda na pré-visualização de rascunho do agente.
       </div>
       <div v-else v-html="block.content" />
     </div>
@@ -67,7 +67,7 @@
           href="#"
           class="text-blue-800 dark:text-blue-200"
           @click.prevent="editFieldOptions"
-        >Open block settings to upload image.</a>
+        >Abra as configurações do bloco para enviar uma imagem.</a>
       </div>
       <img
         v-else
@@ -93,7 +93,7 @@
           href="#"
           class="text-blue-800 dark:text-blue-200"
           @click.prevent="editFieldOptions"
-        >Open block settings to add video URL.</a>
+        >Abra as configurações do bloco para adicionar a URL do vídeo.</a>
       </div>
       <LazyEmbedMedia
         v-else
@@ -117,7 +117,7 @@
           href="#"
           class="text-blue-800 dark:text-blue-200"
           @click.prevent="editFieldOptions"
-        >Open block settings to add audio.</a>
+        >Abra as configurações do bloco para adicionar um áudio.</a>
       </div>
       <LazyEmbedMedia
         v-else
@@ -313,7 +313,7 @@ const boundProps = computed(() => {
     key: field.id,
     name: field.id,
     form: dataForm.value,
-    label: (field.hide_field_name) ? null : field.name + (unified.hiddenIndicator ? ' (Hidden Field)' : ''),
+    label: (field.hide_field_name) ? null : field.name + (unified.hiddenIndicator ? ' (campo oculto)' : ''),
     color: form.value.color,
     placeholder: processedPlaceholder.value,
     help: processedHelp.value,

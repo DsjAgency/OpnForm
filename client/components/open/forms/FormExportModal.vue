@@ -1,12 +1,12 @@
 <template>
   <div>
     <!-- Export Button -->
-    <UTooltip :text="`Uploaded-file links in this export remain available for ${fileLinkExpirationLabel}.`">
+    <UTooltip :text="`Os links de arquivos nesta exportação ficam disponíveis por ${fileLinkExpirationLabel}.`">
       <UButton
         size="sm"
         color="neutral"
         variant="ghost"
-        label="Export"
+        label="Exportar"
         :loading="isExporting"
         @click="startExport"
       />
@@ -27,8 +27,8 @@
                 </div>
               </div>
               <div class="space-y-2">
-                <p class="text-neutral-700 font-medium">Export queued</p>
-                <p class="text-sm text-neutral-500">Waiting for processing to begin...</p>
+                <p class="text-neutral-700 font-medium">Exportação na fila</p>
+                <p class="text-sm text-neutral-500">Aguardando o início do processamento...</p>
               </div>
             </div>
 
@@ -51,8 +51,8 @@
                 </div>
               </div>
               <div class="space-y-2">
-                <p class="text-neutral-700 font-semibold">Processing submissions</p>
-                <p class="text-sm text-neutral-500">This may take a few moments...</p>
+                <p class="text-neutral-700 font-semibold">Processando respostas</p>
+                <p class="text-sm text-neutral-500">Isso pode levar alguns instantes...</p>
               </div>
             </div>
 
@@ -62,8 +62,8 @@
                 <UIcon name="i-heroicons-check" class="w-8 h-8 text-green-600" />
               </div>
               <div class="space-y-2">
-                <p class="text-green-600 font-semibold text-lg">Export completed!</p>
-                <p class="text-sm text-neutral-600">Your download should start automatically</p>
+                <p class="text-green-600 font-semibold text-lg">Exportação concluída!</p>
+                <p class="text-sm text-neutral-600">O download deve começar automaticamente</p>
               </div>
             </div>
 
@@ -73,9 +73,9 @@
                 <UIcon name="i-heroicons-exclamation-triangle" class="w-8 h-8 text-red-600" />
               </div>
               <div class="space-y-3">
-                <p class="text-red-600 font-semibold text-lg">Export failed</p>
+                <p class="text-red-600 font-semibold text-lg">Falha na exportação</p>
                 <p class="text-sm text-neutral-600">{{ exportError }}</p>
-                <UButton color="neutral" @click="closeModal" label="Close" />
+                <UButton color="neutral" @click="closeModal" label="Fechar" />
               </div>
             </div>
 
@@ -88,8 +88,8 @@
                 </div>
               </div>
               <div class="space-y-2">
-                <p class="text-neutral-700 font-medium">Starting export</p>
-                <p class="text-sm text-neutral-500">Please wait...</p>
+                <p class="text-neutral-700 font-medium">Iniciando exportação</p>
+                <p class="text-sm text-neutral-500">Aguarde...</p>
               </div>
             </div>
           </VTransition>
@@ -196,7 +196,7 @@ const startExport = () => {
     }
   }).catch((error) => {
     console.error(error)
-    exportError.value = error.response?.data?.message || 'Export failed'
+    exportError.value = error.response?.data?.message || 'Falha na exportação'
     exportStatus.value = 'failed'
     showModal.value = true
     isExporting.value = false
@@ -289,7 +289,7 @@ const checkExportStatus = () => {
         stopPolling()
         stopProgressAnimation()
         isExporting.value = false
-        exportError.value = response.error_message || 'Export failed'
+        exportError.value = response.error_message || 'Falha na exportação'
       }
     })
     .catch(error => {
@@ -297,7 +297,7 @@ const checkExportStatus = () => {
       stopPolling()
       stopProgressAnimation()
       isExporting.value = false
-      exportError.value = 'Failed to check export status'
+      exportError.value = 'Não foi possível verificar o status da exportação'
     })
 }
 

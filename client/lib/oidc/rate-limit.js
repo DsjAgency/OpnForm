@@ -13,5 +13,5 @@ export const getOidcRetryAfterSeconds = (error) => {
 }
 
 export const oidcRateLimitMessage = (seconds) => {
-  return `Too many sign-in requests. Please try again in ${seconds} second${seconds === 1 ? '' : 's'}.`
+  return `Muitas tentativas de login. Tente novamente em ${seconds} segundo${seconds === 1 ? '' : 's'}.`
 }

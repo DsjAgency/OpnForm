@@ -85,7 +85,7 @@ describe('Dependency Graph', () => {
       graph.addVariable({ id: 'cv_a', name: 'A', formula: '{cv_b}' })
       graph.addVariable({ id: 'cv_b', name: 'B', formula: '{cv_a}' })
       
-      expect(() => graph.getEvaluationOrder()).toThrow('Circular dependency')
+      expect(() => graph.getEvaluationOrder()).toThrow('Dependência circular')
     })
   })
 

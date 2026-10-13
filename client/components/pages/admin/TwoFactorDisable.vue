@@ -1,7 +1,7 @@
 <template>
   <AdminCard
     v-if="props.user.two_factor_enabled"
-    title="Disable Two-Factor Authentication"
+    title="Desativar autenticação em duas etapas"
     icon="i-heroicons-shield-exclamation-20-solid"
   >
     <div class="space-y-6 flex flex-col justify-between">
@@ -12,20 +12,20 @@
       >
         <template #description>
           <div>
-            Disabling two-factor authentication is a critical security action. 
-            Make sure you have a solid reason and strong proof of account ownership (such as verified identity or written consent) before proceeding. 
-            The user will be required to re-enable 2FA on their next login.
+            Desativar a autenticação em duas etapas é uma ação crítica de segurança. 
+            Antes de continuar, tenha um bom motivo e uma prova sólida de que a conta pertence à pessoa (como identidade verificada ou consentimento por escrito). 
+            O usuário terá que reativar o 2FA no próximo login.
           </div>
         </template>
       </UAlert>
 
       <VForm @submit.prevent="submit">
         <TextAreaInput
-          label="Reason"
+          label="Motivo"
           name="reason"
           :form="form"
           :required="true"
-          help="Reason will be sent to slack for internal use only."
+          help="O motivo será enviado ao Slack, apenas para uso interno."
         />
         <div class="flex space-x-2 mt-4">
           <UButton
@@ -33,7 +33,7 @@
             :loading="form.busy"
             type="submit"
             class="grow"
-            :label="'Disable Two-Factor Authentication'"
+            :label="'Desativar autenticação em duas etapas'"
           />
         </div>
       </VForm>
@@ -62,7 +62,7 @@ async function submit() {
     emit('user-updated', response.user)
     form.reset()
   } catch (error) {
-    alert.error(error.data?.message || 'An error occurred.')
+    alert.error(error.data?.message || 'Ocorreu um erro.')
   }
 }
 </script> 

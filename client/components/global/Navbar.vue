@@ -37,7 +37,7 @@
             :class="navLinkClasses"
             class="hidden lg:block"
           >
-            My Forms
+            Meus formulários
           </NuxtLink>
           <NuxtLink
             v-if="$route.name !== 'enterprise'"
@@ -53,7 +53,7 @@
             :class="navLinkClasses"
             class="hidden md:block"
           >
-            Integrations
+            Integrações
           </NuxtLink>
           <NuxtLink
             v-if="
@@ -66,7 +66,7 @@
             :class="navLinkClasses"
             class="hidden lg:inline"
           >
-            AI Form Builder
+            Criador de formulários com IA
           </NuxtLink>
           <NuxtLink
             v-if="
@@ -80,9 +80,9 @@
             <span
               v-if="user && workspace && !workspaceIsPaid"
               class="text-primary"
-              >Upgrade</span
+              >Fazer upgrade</span
             >
-            <span v-else>Pricing</span>
+            <span v-else>Preços</span>
           </NuxtLink>
 
           <NuxtLink
@@ -91,7 +91,7 @@
             target="_blank"
             class="hidden 2xl:block"
           >
-            Documentation
+            Documentação
           </NuxtLink>
 
           <!-- <template v-if="appStore.featureBaseEnabled">
@@ -101,7 +101,7 @@
               class="hidden xl:block"
               @click.prevent="openChangelog"
             >
-              What's new?
+              Novidades
               <span
                 v-if="hasNewChanges"
                 id="fb-update-badge"
@@ -115,7 +115,7 @@
               :class="navLinkClasses"
               class="hidden xl:block"
             >
-              What's new?
+              Novidades
             </a>
           </template> -->
         </div>
@@ -145,7 +145,7 @@
                     v-if="$route.name !== 'login'"
                     :to="{ name: 'login' }"
                     class="bg-gray-100! text-gray-950! text-sm leading-5 tracking-[-0.6%] font-medium"
-                    label="Login"
+                    label="Entrar"
                   />
 
                   <TrackClick
@@ -157,7 +157,7 @@
                       :to="{ name: 'forms-create-guest' }"
                       color="primary"
                       trailing-icon="i-heroicons-arrow-up-right-20-solid"
-                      label="Create a form"
+                      label="Criar formulário"
                     />
                   </TrackClick>
                 </div>

@@ -16,16 +16,16 @@
 
             <div class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700">
               <UIcon name="i-heroicons-user-plus" class="h-4 w-4" />
-              New account
+              Nova conta
             </div>
             <h2
               data-testid="register-page"
               class="mt-4 text-3xl font-semibold tracking-[-1%] text-neutral-950"
             >
-              Create your account
+              Crie sua conta
             </h2>
             <p class="mt-3 text-base font-normal leading-7 tracking-[-1.1%] text-neutral-600">
-              Start in a few minutes and begin building forms right away.
+              Em poucos minutos você já começa a criar formulários.
             </p>
 
             <div v-if="isInvited" class="mt-6 rounded-3xl border border-emerald-200 bg-emerald-50 p-4">
@@ -35,10 +35,10 @@
                 </div>
                 <div>
                   <p class="text-sm font-semibold text-neutral-950">
-                    Workspace invitation detected
+                    Convite para espaço de trabalho detectado
                   </p>
                   <p class="mt-1 text-sm leading-6 text-neutral-600">
-                    Finish registration to accept your invite and join the shared workspace.
+                    Conclua o cadastro para aceitar o convite e entrar no espaço de trabalho compartilhado.
                   </p>
                 </div>
               </div>
@@ -53,7 +53,7 @@
               v-else
               class="mt-6 rounded-3xl border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-700"
             >
-              Registration is not allowed in self host mode.
+              O cadastro não é permitido no modo auto-hospedado.
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ defineRouteRules({
 })
 
 useOpnSeoMeta({
-  title: "Register",
+  title: "Cadastro",
 })
 
 const route = useRoute()

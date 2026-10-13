@@ -8,7 +8,7 @@
           </div>
           <div>
             <h3 class="text-lg font-semibold text-neutral-900">
-              MCP & AI agents
+              MCP e agentes de IA
             </h3>
             <p class="text-sm text-neutral-500">
               {{ pageDescription }}
@@ -20,7 +20,7 @@
       <UButton
         to="https://docs.opnform.com/integrations/mcp"
         target="_blank"
-        label="Setup guide"
+        label="Guia de configuração"
         icon="i-heroicons-arrow-up-right"
         variant="outline"
         color="neutral"
@@ -40,9 +40,9 @@
       <div class="flex items-start gap-3">
         <Icon name="i-heroicons-exclamation-circle" class="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
         <div>
-          <h4 class="font-semibold text-red-900">MCP settings could not be loaded</h4>
-          <p class="mt-1 text-sm text-red-800">Check the API connection and try again.</p>
-          <UButton class="mt-3" label="Retry" color="error" variant="soft" @click="loadSettings" />
+          <h4 class="font-semibold text-red-900">Não foi possível carregar as configurações de MCP</h4>
+          <p class="mt-1 text-sm text-red-800">Confira a conexão com a API e tente novamente.</p>
+          <UButton class="mt-3" label="Tentar novamente" color="error" variant="soft" @click="loadSettings" />
         </div>
       </div>
     </section>
@@ -76,11 +76,11 @@
             v-if="isSelfHosted"
             class="flex shrink-0 items-center gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2"
           >
-            <span class="text-sm font-medium text-neutral-700">Enable MCP</span>
+            <span class="text-sm font-medium text-neutral-700">Ativar MCP</span>
             <USwitch
               :model-value="settings.enabled"
               :disabled="isSaving || (!settings.ready && !settings.enabled)"
-              aria-label="Enable MCP"
+              aria-label="Ativar MCP"
               data-testid="mcp-enabled-switch"
               @update:model-value="updateEnabled"
             />
@@ -98,10 +98,10 @@
           <Icon name="i-heroicons-exclamation-triangle" class="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
           <div>
             <h4 class="font-semibold text-red-900">
-              Complete the server setup first
+              Conclua primeiro a configuração do servidor
             </h4>
             <p class="mt-1 text-sm leading-6 text-red-800">
-              MCP cannot be enabled until OAuth is ready on this instance.
+              O MCP só pode ser ativado quando o OAuth estiver pronto nesta instância.
             </p>
             <ul class="mt-3 space-y-2 text-sm text-red-800">
               <li v-for="blocker in settings.blockers" :key="blocker.code" class="flex gap-2">
@@ -121,17 +121,17 @@
         <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p class="text-xs font-semibold uppercase tracking-wider text-blue-600">
-              Connection endpoint
+              Endpoint de conexão
             </p>
             <h4 class="mt-1 font-semibold text-neutral-900">
-              Connect your AI assistant
+              Conecte seu assistente de IA
             </h4>
             <p class="mt-1 text-sm leading-6 text-neutral-600">
-              Use the server URL directly in ChatGPT, or copy the configuration for your agent client.
+              Use a URL do servidor direto no ChatGPT ou copie a configuração para o seu cliente de agente.
             </p>
           </div>
           <UButton
-            label="Copy settings link"
+            label="Copiar link das configurações"
             icon="i-heroicons-link"
             variant="soft"
             color="neutral"
@@ -140,8 +140,8 @@
         </div>
 
         <div>
-          <p class="mb-2 text-sm font-medium text-neutral-700">MCP server URL</p>
-          <CopyContent :content="settings.server_url" label="Copy URL" />
+          <p class="mb-2 text-sm font-medium text-neutral-700">URL do servidor MCP</p>
+          <CopyContent :content="settings.server_url" label="Copiar URL" />
         </div>
 
       </section>
@@ -153,7 +153,7 @@
           @copy="copyValue(activeSnippet.content, `${activeSnippet.label} configuration copied`)"
         >
           <template #selector>
-            <div class="flex min-w-0 items-center gap-1 overflow-x-auto" role="group" aria-label="MCP client configuration">
+            <div class="flex min-w-0 items-center gap-1 overflow-x-auto" role="group" aria-label="Configuração do cliente MCP">
               <button
                 v-for="snippet in snippetOptions"
                 :key="snippet.key"
@@ -191,12 +191,12 @@
 
         <details class="mt-3 overflow-hidden rounded-xl border border-neutral-200 bg-white" data-testid="mcp-portable-config">
           <summary class="cursor-pointer px-4 py-3 text-sm font-medium text-neutral-700">
-            Portable Agent Plugin configuration
+            Configuração portátil do Agent Plugin
           </summary>
           <div class="border-t border-neutral-200 bg-neutral-950">
             <div class="flex justify-end border-b border-white/10 p-2">
               <UButton
-                label="Copy"
+                label="Copiar"
                 icon="i-heroicons-clipboard-document"
                 color="neutral"
                 variant="solid"
@@ -231,32 +231,32 @@ const snippetOptions = [
     key: 'cursor',
     label: 'Cursor',
     icon: 'i-heroicons-cursor-arrow-rays',
-    description: 'Install OpnForm directly in Cursor, or copy the JSON configuration below.',
-    installLabel: 'Install in Cursor',
+    description: 'Instale o OpnForm direto no Cursor ou copie a configuração JSON abaixo.',
+    installLabel: 'Instalar no Cursor',
   },
   {
     key: 'claude_code',
     label: 'Claude Code',
     icon: 'i-heroicons-chat-bubble-left-right',
-    description: 'Run this command, then use /mcp in Claude Code to authenticate with OpnForm.',
+    description: 'Rode este comando e depois use /mcp no Claude Code para autenticar no OpnForm.',
   },
   {
     key: 'chatgpt',
     label: 'ChatGPT',
     icon: 'i-heroicons-sparkles',
-    description: 'On a plan that supports custom MCP apps, create an app in ChatGPT developer mode with this server URL and OAuth.',
+    description: 'Num plano que aceite apps MCP personalizados, crie um app no modo desenvolvedor do ChatGPT com esta URL de servidor e OAuth.',
   },
   {
     key: 'codex',
     label: 'Codex',
     icon: 'i-heroicons-command-line',
-    description: 'Add this MCP server to Codex. OAuth starts when you use an account-scoped tool.',
+    description: 'Adicione este servidor MCP ao Codex. O OAuth começa quando você usa uma ferramenta ligada à conta.',
   },
   {
     key: 'other',
-    label: 'Other',
+    label: 'Outro',
     icon: 'i-heroicons-ellipsis-horizontal',
-    description: 'Use this streamable HTTP configuration in another OAuth-capable MCP client.',
+    description: 'Use esta configuração HTTP (streamable) em outro cliente MCP compatível com OAuth.',
   },
 ]
 
@@ -286,21 +286,21 @@ const isSelfHosted = computed(() => settings.value?.self_hosted !== false)
 
 const pageDescription = computed(() => {
   return isSelfHosted.value
-    ? 'Connect AI assistants directly to this OpnForm instance.'
-    : 'Connect AI assistants to OpnForm Cloud.'
+    ? 'Conecte assistentes de IA diretamente a esta instância do OpnForm.'
+    : 'Conecte assistentes de IA ao OpnForm Cloud.'
 })
 
 const statusTitle = computed(() => {
-  if (!isSelfHosted.value) return 'OpnForm MCP is ready'
-  if (!settings.value?.ready) return 'Server setup required'
-  return isMcpAvailable.value ? 'MCP is available' : 'Ready to connect'
+  if (!isSelfHosted.value) return 'O MCP do OpnForm está pronto'
+  if (!settings.value?.ready) return 'Configuração do servidor necessária'
+  return isMcpAvailable.value ? 'MCP disponível' : 'Pronto para conectar'
 })
 
 const statusDescription = computed(() => {
-  if (!isSelfHosted.value) return 'Create private drafts without signing in, or connect your account to manage forms and read submissions.'
-  if (!settings.value?.ready) return 'Resolve the prerequisites below before exposing the MCP endpoint.'
-  if (isMcpAvailable.value) return 'Connected AI assistants can create and manage forms and read submissions using your OpnForm account.'
-  return 'OAuth is ready. Enable MCP when you want this instance to accept agent connections.'
+  if (!isSelfHosted.value) return 'Crie rascunhos privados sem login ou conecte sua conta para gerenciar formulários e ler respostas.'
+  if (!settings.value?.ready) return 'Resolva os pré-requisitos abaixo antes de expor o endpoint MCP.'
+  if (isMcpAvailable.value) return 'Assistentes de IA conectados podem criar e gerenciar formulários e ler respostas usando sua conta do OpnForm.'
+  return 'O OAuth está pronto. Ative o MCP quando quiser que esta instância aceite conexões de agentes.'
 })
 
 const statusIcon = computed(() => {
@@ -317,8 +317,8 @@ const statusIconClasses = computed(() => {
 
 const statusBadgeLabel = computed(() => {
   if (!isSelfHosted.value) return 'Cloud'
-  if (!settings.value?.ready && settings.value?.enabled) return 'Unavailable'
-  return settings.value?.enabled ? 'Enabled' : 'Disabled'
+  if (!settings.value?.ready && settings.value?.enabled) return 'Indisponível'
+  return settings.value?.enabled ? 'Ativado' : 'Desativado'
 })
 
 const statusBadgeColor = computed(() => {
@@ -350,7 +350,7 @@ function loadSettings() {
     })
     .catch((error) => {
       loadError.value = true
-      alert.error(error?.data?.message || 'Failed to load MCP settings.')
+      alert.error(error?.data?.message || 'Não foi possível carregar as configurações de MCP.')
     })
     .finally(() => {
       isLoading.value = false
@@ -362,7 +362,7 @@ function updateEnabled(enabled) {
   mcpApi.update(enabled)
     .then((response) => {
       settings.value = response
-      alert.success(enabled ? 'MCP enabled for this instance.' : 'MCP disabled for this instance.')
+      alert.success(enabled ? 'MCP ativado nesta instância.' : 'MCP desativado nesta instância.')
     })
     .catch((error) => {
       if (error?.data?.blockers) {
@@ -373,7 +373,7 @@ function updateEnabled(enabled) {
           blockers: error.data.blockers,
         }
       }
-      alert.error(error?.data?.message || 'Failed to update MCP settings.')
+      alert.error(error?.data?.message || 'Não foi possível atualizar as configurações de MCP.')
     })
     .finally(() => {
       isSaving.value = false

@@ -3,7 +3,7 @@
     id="form-field-settings"
     data-testid="form-field-settings"
     tabindex="-1"
-    aria-label="Field settings"
+    aria-label="Configurações do campo"
     :class="{ 'sidebar-bounce': sidebarBounce }"
     class="sidebar-container"
   >
@@ -95,7 +95,7 @@
       v-else
       class="text-center p-10 text-sm text-neutral-500"
     >
-      Click on field to edit it.
+      Clique em um campo para editá-lo.
     </div>
   </div>
 </template>
@@ -216,15 +216,15 @@ function closeSidebar() {
 const dropdownItems = computed(() => {
   const baseItems = [
     [{
-      label: 'Copy field ID',
+      label: 'Copiar ID do campo',
       icon: 'i-heroicons-clipboard-20-solid',
       onClick: () => {
         navigator.clipboard.writeText(field.value.id)
-        useAlert().success('Field ID copied to clipboard')
+        useAlert().success('ID do campo copiado')
       }
     }],
     [{
-      label: 'Duplicate',
+      label: 'Duplicar',
       icon: 'i-heroicons-document-duplicate-20-solid',
       kbds: ['meta', 'd'],
       onClick: () => workingFormStore.duplicateField(field.value)
@@ -236,7 +236,7 @@ const dropdownItems = computed(() => {
     const changeTypeOptions = getChangeTypeOptions(field.value.type)
     if (changeTypeOptions.length > 0) {
       baseItems.push([{
-        label: 'Change type',
+        label: 'Mudar tipo',
         icon: 'i-heroicons-arrows-right-left-20-solid',
         children: [changeTypeOptions]
       }])
@@ -245,7 +245,7 @@ const dropdownItems = computed(() => {
 
   // Add remove option
   baseItems.push([{
-    label: 'Remove',
+    label: 'Remover',
     icon: 'i-heroicons-trash-20-solid',
     color: 'error',
     kbds: ['meta', 'backspace'],
@@ -263,8 +263,8 @@ const activeTab = computed({
 
 const tabItems = computed(() => {
   const commonTabs = [
-    { label: 'Options', value: 'options' },
-    { label: 'Logic', value: 'logic' },
+    { label: 'Opções', value: 'options' },
+    { label: 'Lógica', value: 'logic' },
   ]
 
   if (isBlockField.value) {
@@ -272,7 +272,7 @@ const tabItems = computed(() => {
   } else {
     return [
       ...commonTabs,
-      { label: 'Validation', value: 'validation' },
+      { label: 'Validação', value: 'validation' },
     ]
   }
 })

@@ -14,7 +14,7 @@
         class="m-10"
       >
         <h3 class="my-6 text-center">
-          {{ showTwoFactorModal ? 'Verifying your code...' : isRetrying ? 'Reconnecting securely...' : 'Completing sign in...' }}
+          {{ showTwoFactorModal ? 'Verificando seu código...' : isRetrying ? 'Reconectando com segurança...' : 'Concluindo o login...' }}
         </h3>
         <Loader class="h-6 w-6 mx-auto m-10" />
       </div>
@@ -27,18 +27,18 @@
           color="error"
           variant="subtle"
           class="w-full"
-          title="Sign-in could not be completed"
+          title="Não foi possível concluir o login"
           :description="error"
         />
         <UButton
           v-if="linkToken"
           color="primary"
-          label="Link existing account"
+          label="Vincular conta existente"
           @click="goToLinkLogin"
         />
         <UButton
           :to="{ name: 'login' }"
-          label="Back to sign in"
+          label="Voltar para o login"
         />
       </div>
     </div>
@@ -144,25 +144,25 @@ const handleCallback = async () => {
     // Redirect based on user status (aligned with OAuth callback pattern)
     if (response.new_user) {
       router.push({ name: "forms-create" })
-      useAlert().success("Success! You're now registered with OIDC. Welcome to OpnForm.")
+      useAlert().success("Pronto! Você foi cadastrado via OIDC. Bem-vindo ao OpnForm.")
     } else {
       // For existing users, redirect to intended URL or home (aligned with OAuth)
       router.push({ name: "home" })
-      useAlert().success("Successfully signed in!")
+      useAlert().success("Login realizado com sucesso!")
     }
   } catch (err) {
     console.error("[OIDC Callback] Authentication error:", err)
     
     const errorResponse = err.response?._data || {}
-    const errorMessage = errorResponse.message || err.message || "Authentication failed"
+    const errorMessage = errorResponse.message || err.message || "Falha na autenticação"
     const providerError = [errorResponse.message, errorResponse.error_description, err.message]
       .filter(Boolean)
       .join(' ')
-    error.value = 'We could not complete this sign-in. Return to sign in, or contact your administrator if the problem continues.'
+    error.value = 'Não foi possível concluir este login. Volte para a tela de login ou fale com o administrador se o problema continuar.'
     
     // Handle specific error cases
     if (errorResponse.error === 'oidc_account_link_required' && errorResponse.link_token) {
-      error.value = 'An account with this email already exists. Please link your existing account to continue.'
+      error.value = 'Já existe uma conta com este e-mail. Vincule sua conta existente para continuar.'
       linkToken.value = errorResponse.link_token
     } else if (isOidcRateLimitedError(err)) {
       error.value = oidcRateLimitMessage(getOidcRetryAfterSeconds(err))
@@ -175,18 +175,18 @@ const handleCallback = async () => {
             isRetrying.value = false
             error.value = isOidcRateLimitedError(retryError)
               ? oidcRateLimitMessage(getOidcRetryAfterSeconds(retryError))
-              : 'We could not reconnect automatically. Return to sign in to try again, or contact your administrator if the problem continues.'
+              : 'Não foi possível reconectar automaticamente. Volte para a tela de login e tente de novo, ou fale com o administrador se o problema continuar.'
             loading.value = false
           })
       }
 
-      error.value = 'We could not reconnect automatically. Return to sign in to try again, or contact your administrator if the problem continues.'
+      error.value = 'Não foi possível reconectar automaticamente. Volte para a tela de login e tente de novo, ou fale com o administrador se o problema continuar.'
     } else if (errorMessage.includes('more than 2 users')) {
-      error.value = 'This self-hosted instance is limited to 2 users without an Enterprise license. Ask the instance admin to activate a license or remove another user.'
+      error.value = 'Esta instância auto-hospedada está limitada a 2 usuários sem licença Enterprise. Peça ao administrador para ativar uma licença ou remover outro usuário.'
     } else if (errorMessage.includes('account with this email already exists')) {
-      error.value = 'An account with this email already exists. Please contact your administrator to link your accounts.'
+      error.value = 'Já existe uma conta com este e-mail. Fale com o administrador para vincular suas contas.'
     } else if (errorMessage.includes('blocked')) {
-      error.value = 'Your account has been blocked. Please contact support.'
+      error.value = 'Sua conta foi bloqueada. Fale com o suporte.'
     }
     
     loading.value = false
@@ -208,10 +208,10 @@ const handleTwoFactorVerifiedAndRedirect = async (tokenData) => {
   // Redirect based on user status
   if (tokenData.new_user) {
     router.push({ name: "forms-create" })
-    useAlert().success("Success! You're now registered with OIDC. Welcome to OpnForm.")
+    useAlert().success("Pronto! Você foi cadastrado via OIDC. Bem-vindo ao OpnForm.")
   } else {
     router.push({ name: "home" })
-    useAlert().success("Successfully signed in!")
+    useAlert().success("Login realizado com sucesso!")
   }
 }
 
@@ -220,7 +220,7 @@ onMounted(() => {
   const timeoutId = setTimeout(() => {
     if (loading.value) {
       loading.value = false
-      error.value = 'Authentication timed out. Please try again.'
+      error.value = 'A autenticação expirou. Tente novamente.'
     }
   }, 10000) // 10 second timeout
   

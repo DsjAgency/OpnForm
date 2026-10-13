@@ -14,7 +14,7 @@
       color="error"
       variant="soft"
       class="max-w-xl mx-auto mt-4"
-      title="Error"
+      title="Erro"
       :description="errorMessage"
     >
       <template #actions>
@@ -24,7 +24,7 @@
           :to="{ name: 'home' }"
           icon="i-heroicons-arrow-left"
         >
-          Back to dashboard
+          Voltar ao painel
         </UButton>
       </template>
     </UAlert>
@@ -53,14 +53,14 @@ const { data: form, isLoading: formsLoading, error } = formDetail(slug, {
 
 const errorMessage = computed(() => {
   if (error.value?.response?.status === 401) {
-    return "You are not authorized to access this form."
+    return "Você não tem permissão para acessar este formulário."
   } else if (error.value?.response?.status === 404) {
-    return "Form not found."
+    return "Formulário não encontrado."
   }
   if (error.value?.response?.data?.message) {
     return error.value.response.data.message
   }
-  return "Error loading form"
+  return "Erro ao carregar o formulário"
 })
 
 const updatedForm = storeToRefs(workingFormStore).content
@@ -109,7 +109,7 @@ watch(
 
 onBeforeRouteLeave((to, from, next) => {
   if (isDirty()) {
-    if (window.confirm('Changes you made may not be saved. Are you sure want to leave?')) {
+    if (window.confirm('As alterações feitas podem não ser salvas. Tem certeza de que quer sair?')) {
       window.onbeforeunload = null
       next()
     } else {
@@ -130,7 +130,7 @@ onBeforeMount(() => {
 })
 
 useOpnSeoMeta({
-  title: "Edit " + (form.value ? form.value.title : "Your Form"),
+  title: "Editar " + (form.value ? form.value.title : "seu formulário"),
 })
 definePageMeta({
   middleware: ["auth", "readonly-block"],

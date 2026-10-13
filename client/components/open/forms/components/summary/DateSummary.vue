@@ -6,7 +6,7 @@
       class="flex flex-col items-center justify-center py-8 text-neutral-400"
     >
       <UIcon name="i-heroicons-calendar" class="w-8 h-8 mb-2 opacity-50" />
-      <span class="text-sm">No dates collected yet</span>
+      <span class="text-sm">Nenhuma data coletada ainda</span>
     </div>
 
     <!-- Date Stats -->
@@ -17,7 +17,7 @@
         </div>
         
         <div class="z-10">
-          <div class="text-xs font-medium text-neutral-500 uppercase tracking-wider mb-1">Earliest Response</div>
+          <div class="text-xs font-medium text-neutral-500 uppercase tracking-wider mb-1">Resposta mais antiga</div>
           <div class="text-lg font-bold text-neutral-900">
             {{ formatDate(data.earliest) }}
           </div>
@@ -33,7 +33,7 @@
         </div>
         
         <div class="z-10">
-          <div class="text-xs font-medium text-neutral-500 uppercase tracking-wider mb-1">Latest Response</div>
+          <div class="text-xs font-medium text-neutral-500 uppercase tracking-wider mb-1">Resposta mais recente</div>
           <div class="text-lg font-bold text-neutral-900">
             {{ formatDate(data.latest) }}
           </div>

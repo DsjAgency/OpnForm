@@ -1,8 +1,8 @@
 <template>
   <PageContainer spacing="lg">
     <PageSection
-      title="Integrations"
-      description="Connect your form to third-party apps and services."
+      title="Integrações"
+      description="Conecte seu formulário a aplicativos e serviços externos."
     >
       <DashboardLoadingBlock :loading="isIntegrationsLoading || !isSuccess">
         <template #skeleton>
@@ -27,15 +27,15 @@
         <DashboardEmptyState
           v-else
           icon="i-heroicons-puzzle-piece-20-solid"
-          title="No integrations yet"
-          description="Get started by connecting your form to a third-party app below."
+          title="Nenhuma integração ainda"
+          description="Comece conectando seu formulário a um dos aplicativos abaixo."
         />
       </DashboardLoadingBlock>
     </PageSection>
 
     <PageSection
-      title="Add a new integration"
-      description="Choose from the available integrations below to connect your form."
+      title="Adicionar integração"
+      description="Escolha uma das integrações disponíveis abaixo para conectar seu formulário."
     >
       <div
         v-for="(section, sectionName) in sectionsList"
@@ -88,8 +88,8 @@ definePageMeta({
 
 useOpnSeoMeta({
   title: computed(() => props.form 
-    ? `Form Integrations - ${props.form.title}`
-    : "Form Integrations"
+    ? `Integrações - ${props.form.title}`
+    : "Integrações"
   ),
 })
 
@@ -124,13 +124,13 @@ const selectedIntegration = ref(null)
 // Define openIntegration first (before the watch that uses it)
 const openIntegration = (itemKey) => {
   if (!itemKey || !integrations.value.has(itemKey)) {
-    return alert.error("Integration not found")
+    return alert.error("Integração não encontrada")
   }
 
   const integration = integrations.value.get(itemKey)
 
   if (integration.coming_soon) {
-    return alert.warning("This integration is not available yet")
+    return alert.warning("Esta integração ainda não está disponível")
   }
 
   if (integration.is_external && integration.url) {

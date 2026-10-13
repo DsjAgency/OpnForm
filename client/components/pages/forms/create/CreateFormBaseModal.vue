@@ -30,9 +30,9 @@
                     class="h-4 w-4"
                   />
                 </div>
-                <h2 class="text-xl font-semibold text-neutral-950">Choose a form style</h2>
+                <h2 class="text-xl font-semibold text-neutral-950">Escolha o estilo do formulário</h2>
                 <p class="mt-1 text-sm text-neutral-500">
-                  Pick the respondent experience first. You can still change it later.
+                  Escolha primeiro a experiência de quem vai responder. Dá para mudar depois.
                 </p>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -51,9 +51,9 @@
                   </div>
                   <div class="mt-4 flex items-start justify-between gap-3">
                     <div>
-                      <p class="font-semibold text-neutral-950">Classic</p>
+                      <p class="font-semibold text-neutral-950">Clássico</p>
                       <p class="mt-1 text-xs leading-5 text-neutral-500">
-                        Multi-page forms with layout blocks.
+                        Formulários com várias páginas e blocos de layout.
                       </p>
                     </div>
                     <Icon
@@ -77,9 +77,9 @@
                   </div>
                   <div class="mt-4 flex items-start justify-between gap-3">
                     <div>
-                      <p class="font-semibold text-neutral-950">Focused</p>
+                      <p class="font-semibold text-neutral-950">Focado</p>
                       <p class="mt-1 text-xs leading-5 text-neutral-500">
-                        One question at a time.
+                        Uma pergunta por vez.
                       </p>
                     </div>
                     <Icon
@@ -104,7 +104,7 @@
                   color="neutral"
                   icon="i-heroicons-arrow-left"
                   @click="goBackToStep1"
-                  label="Back to styles"
+                  label="Voltar aos estilos"
                   class="-ml-2"
                 />
                 <span class="rounded-md border border-neutral-200 bg-neutral-50 px-2 py-1 text-xs font-medium text-neutral-500">
@@ -114,9 +114,9 @@
 
               <div class="p-4 sm:p-5">
                 <div class="mb-4">
-                  <h2 class="text-xl font-semibold text-neutral-950">How do you want to start?</h2>
+                  <h2 class="text-xl font-semibold text-neutral-950">Como você quer começar?</h2>
                   <p class="mt-1 text-sm text-neutral-500">
-                    {{ useFeatureFlag('ai_features') ? 'Start from a prompt, a template, an import, or a clean contact form.' : 'Start from a template, an import, or a clean contact form.' }}
+                    {{ useFeatureFlag('ai_features') ? 'Comece a partir de uma descrição, um modelo, uma importação ou um formulário de contato simples.' : 'Comece a partir de um modelo, uma importação ou um formulário de contato simples.' }}
                   </p>
                 </div>
 
@@ -133,8 +133,8 @@
                         />
                       </span>
                       <div>
-                        <p class="text-sm font-semibold text-neutral-950">AI form generator</p>
-                        <p class="text-xs text-neutral-500">Describe the result you want.</p>
+                        <p class="text-sm font-semibold text-neutral-950">Gerador de formulários com IA</p>
+                        <p class="text-xs text-neutral-500">Descreva o resultado que você quer.</p>
                       </div>
                     </div>
                   </div>
@@ -143,7 +143,7 @@
                     :disabled="loading ? true : null"
                     :form="aiForm"
                     name="form_prompt"
-                    placeholder="A lead qualification form for a B2B SaaS demo, with budget, team size, timeline, and a short project brief."
+                    placeholder="Um formulário de inscrição para um evento, com nome, e-mail, telefone, cidade e uma breve apresentação."
                     :has-validation="false"
                     :ui="{
                       slots: {
@@ -159,7 +159,7 @@
                       class="mb-3"
                     >
                       <div class="mb-2 flex items-center justify-between gap-3">
-                        <span class="text-xs font-medium text-neutral-600">Generating your form</span>
+                        <span class="text-xs font-medium text-neutral-600">Gerando seu formulário</span>
                         <span class="text-xs tabular-nums text-neutral-500">{{ Math.round(generationProgress) }}%</span>
                       </div>
                       <div class="h-1.5 overflow-hidden rounded-md bg-neutral-100">
@@ -183,7 +183,7 @@
                           name="i-heroicons-adjustments-horizontal"
                           class="h-4 w-4 text-neutral-400"
                         />
-                        <span class="truncate">We will use the {{ selectedStyleLabel.toLowerCase() }} style.</span>
+                        <span class="truncate">Vamos usar o estilo {{ selectedStyleLabel.toLowerCase() }}.</span>
                       </div>
 
                       <UButton
@@ -194,7 +194,7 @@
                         :variant="hasPrompt || loading ? 'solid' : 'soft'"
                         icon="i-heroicons-sparkles"
                         trailing-icon="i-heroicons-arrow-right"
-                        label="Generate"
+                        label="Gerar"
                         class="justify-center"
                         @click="generateForm"
                       />
@@ -223,8 +223,8 @@
                         />
                       </div>
                       <div class="mt-4">
-                        <p class="font-semibold text-neutral-950">Contact form</p>
-                        <p class="mt-1 text-xs leading-5 text-neutral-500">Name, email, and message.</p>
+                        <p class="font-semibold text-neutral-950">Formulário de contato</p>
+                        <p class="mt-1 text-xs leading-5 text-neutral-500">Nome, e-mail e mensagem.</p>
                       </div>
                     </button>
                   </TrackClick>
@@ -244,13 +244,13 @@
                       />
                     </div>
                     <div class="mt-4">
-                      <p class="font-semibold text-neutral-950">Templates</p>
-                      <p class="mt-1 text-xs leading-5 text-neutral-500">Browse proven starting points.</p>
+                      <p class="font-semibold text-neutral-950">Modelos</p>
+                      <p class="mt-1 text-xs leading-5 text-neutral-500">Veja pontos de partida prontos.</p>
                     </div>
                     <TrackClick name="select_form_base" :properties="{ base: 'template' }">
                       <NuxtLink
                         :to="{ name: 'templates' }"
-                        aria-label="Browse templates"
+                        aria-label="Ver modelos"
                         class="absolute inset-0"
                       />
                     </TrackClick>
@@ -274,7 +274,7 @@
                         />
                       </div>
                       <div class="mt-4">
-                        <p class="font-semibold text-neutral-950">Import</p>
+                        <p class="font-semibold text-neutral-950">Importar</p>
                         <p class="mt-1 text-xs leading-5 text-neutral-500">{{ importSourcesLabel }}.</p>
                       </div>
                     </button>
@@ -392,12 +392,12 @@ const googleImportAvailable = computed(() => {
 })
 const importSourcesLabel = computed(() => {
   return googleImportAvailable.value
-    ? 'Typeform, Tally, Fillout, or Google Forms'
-    : 'Typeform, Tally, or Fillout'
+    ? 'Typeform, Tally, Fillout ou Google Forms'
+    : 'Typeform, Tally ou Fillout'
 })
 
 const selectedStyleLabel = computed(() => {
-  return selectedStyle.value === 'focused' ? 'Focused' : 'Classic'
+  return selectedStyle.value === 'focused' ? 'Focado' : 'Clássico'
 })
 
 function selectStyle(style) {
@@ -498,7 +498,7 @@ const fetchGeneratedForm = (generationId) => {
           emit("form-generated", generated)
           emit("close")
         } else if (data.ai_form_completion.status === "failed") {
-          useAlert().error("Something went wrong, please try again.")
+          useAlert().error("Algo deu errado. Tente novamente.")
           currentStep.value = 2
           loading.value = false
           resetGenerationProgress()

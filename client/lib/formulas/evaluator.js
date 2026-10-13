@@ -59,7 +59,7 @@ export class Evaluator {
         return this.evaluateFunction(node)
 
       default:
-        throw new FormulaError(`Unknown node type: ${node.type}`)
+        throw new FormulaError(`Tipo de nó desconhecido: ${node.type}`)
     }
   }
 
@@ -126,7 +126,7 @@ export class Evaluator {
         }
         return leftNum / rightNum
       default:
-        throw new FormulaError(`Unknown operator: ${node.operator}`)
+        throw new FormulaError(`Operador desconhecido: ${node.operator}`)
     }
   }
 
@@ -144,7 +144,7 @@ export class Evaluator {
       case 'NOT':
         return !this.toBoolean(operand)
       default:
-        throw new FormulaError(`Unknown unary operator: ${node.operator}`)
+        throw new FormulaError(`Operador unário desconhecido: ${node.operator}`)
     }
   }
 
@@ -156,7 +156,7 @@ export class Evaluator {
 
     if (this.depth > MAX_DEPTH) {
       this.depth--
-      throw new FormulaError('Maximum formula nesting depth exceeded')
+      throw new FormulaError('Limite de aninhamento da fórmula excedido')
     }
 
     try {
@@ -164,7 +164,7 @@ export class Evaluator {
       const func = functions[funcName]
 
       if (!func) {
-        throw new FormulaError(`Unknown function: ${funcName}`)
+        throw new FormulaError(`Função desconhecida: ${funcName}`)
       }
 
       // Evaluate all arguments

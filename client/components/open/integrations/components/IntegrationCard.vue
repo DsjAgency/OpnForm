@@ -137,7 +137,7 @@ const dropdownItems = computed(() => {
   // Edit option for non-external integrations or editable external ones
   if (!isExternal && isEditable) {
     items.push({
-      label: 'Edit',
+      label: 'Editar',
       icon: 'i-heroicons-pencil',
       onClick: () => {
         showIntegrationModal.value = true
@@ -145,7 +145,7 @@ const dropdownItems = computed(() => {
     })
   } else if (integrationTypeInfo.value?.url && isExternal) {
     items.push({
-      label: `Edit on ${integrationTypeInfo.value.name}`,
+      label: `Editar no ${integrationTypeInfo.value.name}`,
       icon: 'i-heroicons-pencil',
       to: integrationTypeInfo.value.url
     })
@@ -153,7 +153,7 @@ const dropdownItems = computed(() => {
 
   // Past Events option
   items.push({
-    label: 'Past Events',
+    label: 'Eventos anteriores',
     icon: 'i-heroicons-clock',
     onClick: () => {
       showIntegrationEventsModal.value = true
@@ -162,7 +162,7 @@ const dropdownItems = computed(() => {
 
   // Delete option
   items.push({
-    label: 'Delete Integration',
+    label: 'Excluir integração',
     icon: 'i-heroicons-trash',
     onClick: () => {
       deleteFormIntegration(props.integration.id)
@@ -177,9 +177,9 @@ const deleteIntegrationMutation = deleteIntegration()
 
 const deleteFormIntegration = (integrationid) => {
   const isExternal = integrationTypeInfo.value?.is_external === true
-  let msg = 'Do you really want to delete this form integration?'
+  let msg = 'Quer mesmo excluir esta integração do formulário?'
   if (isExternal) {
-    msg += ' This might be affect on your '+ integrationTypeInfo.value.name +' workflow.'
+    msg += ' Isso pode afetar seu fluxo no '+ integrationTypeInfo.value.name +'.'
   }
 
   alert.confirm(msg, () => {
@@ -188,10 +188,10 @@ const deleteFormIntegration = (integrationid) => {
       formId: props.form.id,
       integrationId: integrationid
     }).then(() => {
-      alert.success("Integration deleted successfully!")
+      alert.success("Integração excluída!")
       loadingDelete.value = false
     }).catch((error) => {
-      alert.error(error.data?.message || "Something went wrong!")
+      alert.error(error.data?.message || "Algo deu errado!")
       loadingDelete.value = false
     })
   })

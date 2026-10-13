@@ -187,11 +187,11 @@ function buildFallbackSteps (integration) {
 function buildFallbackDescription (integration) {
   if (!integration) return ''
 
-  if (integration.section_name === 'Notifications') {
+  if (integration.section_name === 'Notificações') {
     return 'Send submission alerts to your team in real time.'
   }
 
-  if (integration.section_name === 'Databases') {
+  if (integration.section_name === 'Planilhas') {
     return 'Sync form submissions with your spreadsheet or database tools.'
   }
 

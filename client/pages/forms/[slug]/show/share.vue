@@ -1,8 +1,8 @@
 <template>
   <PageContainer spacing="sm">
     <PageSection
-      title="Share"
-      description="Share your form and embed it on your website."
+      title="Compartilhar"
+      description="Compartilhe seu formulário e incorpore-o no seu site."
     >
       <!-- Status Warning Alert -->
       <UAlert
@@ -10,8 +10,8 @@
         icon="i-heroicons-information-circle"
         color="warning"
         variant="subtle"
-        title="Draft Form"
-        description="Only you can visit the form link while logged in. Visitors won't be able to access this form."
+        title="Formulário em rascunho"
+        description="Só você consegue abrir o link enquanto estiver logado. Visitantes não terão acesso a este formulário."
       />
 
       <UAlert
@@ -19,8 +19,8 @@
         icon="i-heroicons-lock-closed"
         color="warning"
         variant="subtle"
-        title="Closed Form"
-        description="People can access the form but it won't accept new submissions."
+        title="Formulário encerrado"
+        description="As pessoas conseguem abrir o formulário, mas ele não aceita novas respostas."
       />
 
       <!-- Primary Section: Share Link -->
@@ -28,7 +28,7 @@
         <div class="space-y-4">
           <div class="flex flex-wrap items-center gap-2">
             <h2 class="text-xl grow font-semibold">
-              Share Your Form
+              Compartilhe seu formulário
             </h2>
             <div class="flex gap-2">
               <AdvancedFormUrlSettingsPopover
@@ -38,8 +38,8 @@
             </div>
           </div>
           <p class="text-neutral-600 text-sm">
-            Share your form with anyone by copying this link. You can use it on social media,
-            in messages, or send it via email to reach your audience.
+            Compartilhe o formulário com qualquer pessoa copiando este link. Use em redes sociais,
+            mensagens ou e-mail para alcançar seu público.
           </p>
 
           <CopyContent
@@ -77,11 +77,11 @@
         <div class="space-y-4">
           <div class="flex flex-wrap items-center gap-2">
             <h2 class="text-xl grow font-semibold">
-              Embed Form
+              Incorporar formulário
             </h2>
             <div class="flex gap-2">
               <UButton
-                label="SDK Docs"
+                label="Documentação do SDK"
                 icon="i-heroicons-code-bracket"
                 variant="outline"
                 color="neutral"
@@ -91,7 +91,7 @@
             </div>
           </div>
           <p class="text-neutral-600 text-sm">
-            Embed your form on your website by copying the HTML code below.
+            Incorpore o formulário no seu site copiando o código HTML abaixo.
           </p>
 
           <EmbedCode
@@ -130,7 +130,7 @@ definePageMeta({
 })
 
 useOpnSeoMeta({
-  title: props.form ? "Share Form - " + props.form.title : "Share Form",
+  title: props.form ? "Compartilhar - " + props.form.title : "Compartilhar",
 })
 
 const shareFormConfig = ref({

@@ -26,7 +26,7 @@
         size="sm"
         @click="openHelp"
       >
-        Help
+        Ajuda
       </UButton>
     </template>
 
@@ -58,7 +58,7 @@
           :loading="loading"
           @click.prevent="save"
         >
-          Save
+          Salvar
         </UButton>
         <UButton
           color="neutral"
@@ -66,7 +66,7 @@
           class="px-8"
           @click.prevent="isOpen = false"
         >
-          Close
+          Fechar
         </UButton>
       </div>
     </template>
@@ -193,7 +193,7 @@ const save = () => {
         alert.error(error.data.message)
       }
       catch {
-        alert.error('An error occurred while saving the integration')
+        alert.error('Ocorreu um erro ao salvar a integração')
       }
     })
 }

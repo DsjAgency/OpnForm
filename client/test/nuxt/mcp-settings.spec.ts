@@ -102,7 +102,7 @@ describe('MCP self-hosted settings', () => {
     const wrapper = mountSettings()
     await flushPromises()
 
-    expect(wrapper.text()).toContain('Ready to connect')
+    expect(wrapper.text()).toContain('Pronto para conectar')
     expect(wrapper.find('[data-testid="mcp-connection-settings"]').exists()).toBe(false)
     expect(wrapper.find('[data-testid="mcp-snippet-settings"]').exists()).toBe(false)
 
@@ -110,22 +110,22 @@ describe('MCP self-hosted settings', () => {
     await flushPromises()
 
     expect(mocks.update).toHaveBeenCalledWith(true)
-    expect(wrapper.text()).toContain('MCP is available')
-    expect(wrapper.text()).toContain('Connected AI assistants can create and manage forms')
+    expect(wrapper.text()).toContain('MCP disponível')
+    expect(wrapper.text()).toContain('Assistentes de IA conectados podem criar e gerenciar formulários')
     expect(wrapper.text()).not.toContain('Guest draft creation')
     expect(wrapper.get('[data-testid="server-url"]').text()).toBe('https://forms.example.com/mcp')
     expect(wrapper.get('[data-testid="mcp-snippet-settings"]').text()).toContain(readySettings.snippets.codex)
-    expect(mocks.success).toHaveBeenCalledWith('MCP enabled for this instance.')
+    expect(mocks.success).toHaveBeenCalledWith('MCP ativado nesta instância.')
 
     await wrapper.get('[data-testid="mcp-snippet-cursor"]').trigger('click')
     expect(wrapper.get('[data-testid="mcp-snippet-settings"]').text()).toContain(readySettings.snippets.cursor)
     expect(wrapper.get('[data-testid="mcp-snippet-settings"]').text()).not.toContain(readySettings.snippets.codex)
-    expect(wrapper.text()).toContain('Install in Cursor')
+    expect(wrapper.text()).toContain('Instalar no Cursor')
 
-    const copySettingsLink = wrapper.findAll('button').find(button => button.text().includes('Copy settings link'))
+    const copySettingsLink = wrapper.findAll('button').find(button => button.text().includes('Copiar link das configurações'))
     await copySettingsLink!.trigger('click')
     expect(mocks.copy).toHaveBeenCalledWith('https://forms.example.com/?user-settings=mcp&agent=cursor')
-    expect(wrapper.get('[data-testid="mcp-portable-config"]').text()).toContain('Portable Agent Plugin configuration')
+    expect(wrapper.get('[data-testid="mcp-portable-config"]').text()).toContain('Configuração portátil do Agent Plugin')
   })
 
   it('blocks activation and explains every missing prerequisite', async () => {
@@ -161,8 +161,8 @@ describe('MCP self-hosted settings', () => {
     const wrapper = mountSettings()
     await flushPromises()
 
-    expect(wrapper.text()).toContain('Server setup required')
-    expect(wrapper.text()).toContain('Unavailable')
+    expect(wrapper.text()).toContain('Configuração do servidor necessária')
+    expect(wrapper.text()).toContain('Indisponível')
     expect(wrapper.find('[data-testid="mcp-connection-settings"]').exists()).toBe(false)
     expect(wrapper.find('[data-testid="mcp-snippet-settings"]').exists()).toBe(false)
     expect(wrapper.get('[data-testid="mcp-enabled-switch"]').attributes('disabled')).toBeUndefined()
@@ -176,15 +176,15 @@ describe('MCP self-hosted settings', () => {
     const wrapper = mountSettings()
     await flushPromises()
 
-    expect(wrapper.get('[data-testid="mcp-load-error"]').text()).toContain('MCP settings could not be loaded')
+    expect(wrapper.get('[data-testid="mcp-load-error"]').text()).toContain('Não foi possível carregar as configurações de MCP')
     expect(mocks.error).toHaveBeenCalledWith('API unavailable')
 
-    const retry = wrapper.findAll('button').find(button => button.text().includes('Retry'))
+    const retry = wrapper.findAll('button').find(button => button.text().includes('Tentar novamente'))
     await retry!.trigger('click')
     await flushPromises()
 
     expect(mocks.status).toHaveBeenCalledTimes(2)
-    expect(wrapper.text()).toContain('Ready to connect')
+    expect(wrapper.text()).toContain('Pronto para conectar')
   })
 
   it('shows cloud connection instructions without an availability switch', async () => {
@@ -200,8 +200,8 @@ describe('MCP self-hosted settings', () => {
     const wrapper = mountSettings()
     await flushPromises()
 
-    expect(wrapper.text()).toContain('OpnForm MCP is ready')
-    expect(wrapper.text()).toContain('Create private drafts without signing in')
+    expect(wrapper.text()).toContain('O MCP do OpnForm está pronto')
+    expect(wrapper.text()).toContain('Crie rascunhos privados sem login')
     expect(wrapper.text()).toContain('Cloud')
     expect(wrapper.find('[data-testid="mcp-enabled-switch"]').exists()).toBe(false)
     expect(wrapper.get('[data-testid="server-url"]').text()).toBe('https://api.opnform.com/mcp')

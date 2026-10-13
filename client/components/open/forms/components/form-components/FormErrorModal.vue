@@ -15,7 +15,7 @@
           v-if="hasStructuredErrors"
           class="text-sm text-neutral-600"
         >
-          Review the items below, then try saving your form again.
+          Revise os itens abaixo e tente salvar o formulário novamente.
         </p>
 
         <div
@@ -52,11 +52,11 @@
                   variant="soft"
                   size="sm"
                   icon="i-heroicons-pencil-square"
-                  :aria-label="`Edit ${group.fieldName}`"
+                  :aria-label="`Editar ${group.fieldName}`"
                   :data-testid="`edit-form-field-${group.fieldId || group.fieldIndex}`"
                   @click="editField(group)"
                 >
-                  Edit field
+                  Editar campo
                 </UButton>
               </div>
 
@@ -95,7 +95,7 @@
                     {{ group.variableName }}
                   </p>
                   <p class="mt-0.5 text-xs text-neutral-500">
-                    Computed variable
+                    Variável calculada
                   </p>
                 </div>
 
@@ -105,11 +105,11 @@
                   variant="soft"
                   size="sm"
                   icon="i-heroicons-pencil-square"
-                  :aria-label="`Edit ${group.variableName}`"
+                  :aria-label="`Editar ${group.variableName}`"
                   :data-testid="`edit-computed-variable-${group.variableId || group.variableIndex}`"
                   @click="editComputedVariable(group)"
                 >
-                  Edit variable
+                  Editar variável
                 </UButton>
               </div>
 
@@ -169,7 +169,7 @@
           variant="outline"
           @click="closeModal"
         >
-          Close
+          Fechar
         </UButton>
       </div>
     </template>
@@ -213,18 +213,18 @@ const modalTitle = computed(() => {
   const issueCount = fieldCount + variableCount + generalErrors.value.length
 
   if (issueCount === 0) {
-    return "We couldn't save your form"
+    return "Não foi possível salvar o formulário"
   }
 
   if (variableCount === 0 && generalErrors.value.length === 0) {
-    return `Fix ${fieldCount} ${fieldCount === 1 ? 'field' : 'fields'} before saving`
+    return `Corrija ${fieldCount} ${fieldCount === 1 ? 'campo' : 'campos'} antes de salvar`
   }
 
   if (fieldCount === 0 && generalErrors.value.length === 0) {
-    return `Fix ${variableCount} ${variableCount === 1 ? 'variable' : 'variables'} before saving`
+    return `Corrija ${variableCount} ${variableCount === 1 ? 'variável' : 'variáveis'} antes de salvar`
   }
 
-  return `Fix ${issueCount} ${issueCount === 1 ? 'issue' : 'issues'} before saving`
+  return `Corrija ${issueCount} ${issueCount === 1 ? 'problema' : 'problemas'} antes de salvar`
 })
 
 const isOpen = computed({

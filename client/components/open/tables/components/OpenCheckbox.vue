@@ -6,7 +6,7 @@
     class="mx-auto"
     size="sm"
   >
-    Yes
+    Sim
   </UBadge>
   <UBadge
     v-else-if="value === false"
@@ -15,7 +15,7 @@
     class="mx-auto"
     size="sm"
   >
-    No
+    Não
   </UBadge>
 </template>
 

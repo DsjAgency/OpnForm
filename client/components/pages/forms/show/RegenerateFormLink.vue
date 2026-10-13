@@ -9,7 +9,7 @@
         color="neutral"
         icon="i-heroicons-arrow-path"
         @click="showGenerateFormLinkModal = true"
-        label="Regenerate link"
+        label="Gerar novo link"
       />
     </TrackClick>
 
@@ -21,7 +21,7 @@
       <template #header>
         <div class="flex items-center w-full gap-4 px-2">
           <h2 class="font-semibold">
-            Generate new form link
+            Gerar novo link do formulário
           </h2>
         </div>
         <UButton
@@ -31,25 +31,25 @@
           size="sm"
           @click="crisp.openHelpdeskArticle('how-to-change-my-form-url-171rjw7')"
         >
-          Help
+          Ajuda
         </UButton>
     </template>
 
       <template #body>
         <p>
-          You can choose between different URL formats for your form.
-          <span class="font-semibold">Be careful, changing your form URL is not a reversible
-            operation</span>. Make sure to update your form URL everywhere where it's used.
+          Você pode escolher entre diferentes formatos de URL para o formulário.
+          <span class="font-semibold">Cuidado: mudar a URL do formulário não pode ser
+            desfeito</span>. Atualize a URL em todos os lugares onde ela é usada.
         </p>
         <div
           v-if="isSelfHosted"
           class="border-t py-4 mt-4"
         >
           <h3 class="text-xl text-neutral-700 font-semibold">
-            Custom URL
+            URL personalizada
           </h3>
           <p>
-            Choose your own URL. Use lowercase letters, numbers and hyphens (up to 100 characters).
+            Escolha sua própria URL. Use letras minúsculas, números e hífens (até 100 caracteres).
           </p>
           <form
             class="flex items-start gap-2 mt-4"
@@ -80,18 +80,18 @@
                 variant="outline"
                 color="primary"
               >
-                Set custom URL
+                Definir URL personalizada
               </UButton>
             </TrackClick>
           </form>
         </div>
         <div class="border-t py-4 mt-4">
           <h3 class="text-xl text-neutral-700 font-semibold">
-            Human Readable URL
+            URL legível
           </h3>
           <p>
-            If your users are going to see this url, you might want to make nice
-            and readable. Example:
+            Se as pessoas vão ver esta URL, talvez seja melhor deixá-la
+            bonita e legível. Exemplo:
           </p>
           <p class="text-neutral-600 border p-4 bg-neutral-50 rounded-md mt-4">
             https://opnform.com/forms/contact-form-e68des
@@ -107,18 +107,18 @@
                 color="primary"
                 @click="regenerateLink('slug')"
               >
-                Generate a Human Readable URL
+                Gerar URL legível
               </UButton>
             </TrackClick>
           </div>
         </div>
         <div class="border-t pt-4 mt-4">
           <h3 class="text-xl text-neutral-700 font-semibold">
-            Random ID URL
+            URL com ID aleatório
           </h3>
           <p>
-            If your user are not going to see your form url (if it's embedded),
-            and if you prefer to have a random non-guessable URL. Example:
+            Se as pessoas não vão ver a URL do formulário (por exemplo, se ele estiver incorporado)
+            e você prefere uma URL aleatória e difícil de adivinhar. Exemplo:
           </p>
           <p class="text-neutral-600 p-4 border bg-neutral-50 rounded-md mt-4">
             https://opnform.com/forms/b4417f9c-34ae-4421-8006-832ee47786e7
@@ -134,7 +134,7 @@
                 color="primary"
                 @click="regenerateLink('uuid')"
               >
-                Generate a Random ID URL
+                Gerar URL com ID aleatório
               </UButton>
             </TrackClick>
           </div>
@@ -195,7 +195,7 @@ const regenerateLink = (option, data = null) => {
       customSlugError.value = slugError
       return
     }
-    useAlert().error(error?.data?.message || "Something went wrong")
+    useAlert().error(error?.data?.message || "Algo deu errado")
   })
 }
 </script>

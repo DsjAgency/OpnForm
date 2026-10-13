@@ -4,7 +4,7 @@
       <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h3 class="text-lg font-medium text-neutral-900">
-            Custom Code <PlanTag
+            Código personalizado <PlanTag
               class="mb-2 block"
               upgrade-modal-title="Upgrade to Unlock Custom Code Capabilities"
               upgrade-modal-description="On the Free plan, you can explore custom code features within the form editor. Upgrade your plan to implement custom scripts, styles, and advanced tracking in live forms. Elevate your form's functionality and design with unlimited customization options."
@@ -17,12 +17,12 @@
             />
           </h3>
           <p class="mt-1 text-sm text-neutral-500">
-            The code will be injected in the <b>head</b> section of your form page.
+            O código será inserido na seção <b>head</b> da página do formulário.
           </p>
         </div>
         <div class="flex gap-2">
           <UButton
-            label="SDK Docs"
+            label="Documentação do SDK"
             icon="i-heroicons-code-bracket"
             variant="outline"
             color="neutral"
@@ -30,7 +30,7 @@
             target="_blank"
           />
           <UButton
-            label="Help"
+            label="Ajuda"
             icon="i-heroicons-question-mark-circle"
             variant="outline"
             color="neutral"
@@ -46,7 +46,7 @@
         :form="form"
         :disabled="!canUseCustomCode"
         :help="customCodeHelp"
-        label="Custom Code"
+        label="Código personalizado"
         placeholder="<script>console.log('Hello World!')</script>"
       />
 
@@ -54,7 +54,7 @@
         <div class="flex flex-col flex-wrap items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
             <h3 class="text-lg font-medium text-neutral-900">
-              Custom CSS <PlanTag
+              CSS personalizado <PlanTag
                 class="mb-2 block"
                 upgrade-modal-title="Upgrade to Unlock Custom CSS"
                 upgrade-modal-description="On the Free plan, you can explore custom CSS within the editor. Upgrade to apply custom styles to your live forms."
@@ -67,11 +67,11 @@
               />
             </h3>
             <p class="mt-1 text-sm text-neutral-500">
-              The CSS will be injected in the <b>head</b> of your form page.
+              O CSS será inserido no <b>head</b> da página do formulário.
             </p>
           </div>
           <UButton
-            label="Help"
+            label="Ajuda"
             icon="i-heroicons-question-mark-circle"
             variant="outline"
             color="neutral"
@@ -84,8 +84,8 @@
           name="custom_css"
           class="mt-4"
           :form="form"
-          help="CSS only. Example: body { background: #f8fafc }"
-          label="Custom CSS"
+          help="Somente CSS. Exemplo: body { background: #f8fafc }"
+          label="CSS personalizado"
           placeholder="body { background: #f8fafc }"
         />
       </div>
@@ -107,13 +107,13 @@ const customCodeHelp = computed(() => {
   const hasCustomDomain = !!form.value?.custom_domain
   const allowSelfHosted = !!useFeatureFlag('custom_code.enable_self_hosted', false)
   if (canUseCustomCode.value) {
-    return 'Saves changes and visit the actual form page to test.'
+    return 'Salve as alterações e abra a página do formulário para testar.'
   }
   // In self-hosted mode with flag disabled (and no custom domain), show safety notice with docs link
   if (isSelfHosted.value && !allowSelfHosted && !hasCustomDomain) {
-    return 'Custom code is disabled for safety on self-hosted. Enable via CUSTOM_CODE_ENABLE_SELF_HOSTED=true. See technical docs: https://docs.opnform.com/deployment/enterprise-features/custom-code'
+    return 'Por segurança, o código personalizado vem desativado na versão auto-hospedada. Ative com CUSTOM_CODE_ENABLE_SELF_HOSTED=true. Veja a documentação técnica: https://docs.opnform.com/deployment/enterprise-features/custom-code'
   }
-  return 'Custom code requires to be using a custom domain.'
+  return 'O código personalizado exige o uso de um domínio personalizado.'
 })
 
 </script>

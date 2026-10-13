@@ -112,7 +112,7 @@ describe('normalizeFormSaveErrors', () => {
     expect(summary.fieldGroups[0]).toMatchObject({
       fieldIndex: 9,
       fieldId: null,
-      fieldName: 'Field 10',
+      fieldName: 'Campo 10',
       fieldType: null,
       canNavigate: false,
     })
@@ -130,7 +130,7 @@ describe('normalizeFormSaveErrors', () => {
 
     expect(summary.generalErrors).toEqual([{
       key: 'computed_variables',
-      label: 'Computed variables',
+      label: 'Variáveis calculadas',
       messages: ['Circular dependency detected between Total and Tax.'],
     }])
   })
@@ -177,6 +177,6 @@ describe('normalizeFormSaveErrors', () => {
 
   it('provides a safe fallback for a malformed response', () => {
     expect(normalizeFormSaveErrors(null, properties).fallbackMessage)
-      .toBe('An unknown validation error occurred.')
+      .toBe('Ocorreu um erro de validação desconhecido.')
   })
 })

@@ -45,7 +45,7 @@
       :class="ui.container({ class: props.ui?.slots?.container })"
       tabindex="0"
       role="button"
-      aria-label="Click to open a camera"
+      aria-label="Clique para abrir a câmera"
       @click="startScanning"
       @keydown.enter="handleEnterPress"
     >

@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between gap-3 border-b border-white/10 p-2 pl-2.5">
       <slot name="selector" />
       <UButton
-        label="Copy"
+        label="Copiar"
         icon="i-heroicons-clipboard-document"
         size="xs"
         color="neutral"
@@ -17,7 +17,7 @@
     <pre
       id="mcp-client-config-panel"
       role="region"
-      :aria-label="`${label} configuration`"
+      :aria-label="`Configuração de ${label}`"
       class="max-h-72 overflow-auto p-4 text-xs leading-6 text-blue-100"
     ><code>{{ content }}</code></pre>
   </div>

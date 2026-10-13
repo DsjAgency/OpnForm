@@ -6,51 +6,51 @@
       :computed-variables="form.computed_variables"
       name="message"
       class="mt-4"
-      label="Notification Message"
-      help="Customize the text of the notification message. Click @ to include form field values."
+      label="Mensagem da notificação"
+      help="Personalize o texto da notificação. Clique em @ para incluir valores dos campos do formulário."
     />
     <toggle-switch-input
       v-model="compVal.include_submission_data"
       name="include_submission_data"
       class="mt-4"
-      label="Include submission data"
-      help="With form submission answers"
+      label="Incluir dados da resposta"
+      help="Com as respostas enviadas no formulário"
     />
     <toggle-switch-input
       v-if="compVal.include_submission_data"
       v-model="compVal.include_hidden_fields_submission_data"
       name="include_hidden_fields_submission_data"
       class="mt-4"
-      label="Include hidden fields"
-      help="If enabled then hidden fields will be included in the notification message"
+      label="Incluir campos ocultos"
+      help="Se ativado, os campos ocultos serão incluídos na notificação"
     />
     <toggle-switch-input
       v-model="compVal.link_open_form"
       name="link_open_form"
       class="mt-4"
-      label="'Open Form' Link"
-      help="Link to the form public page"
+      label="Link 'Abrir formulário'"
+      help="Link para a página pública do formulário"
     />
     <toggle-switch-input
       v-model="compVal.link_edit_form"
       name="link_edit_form"
       class="mt-4"
-      label="'Edit Form' Link"
-      help="Link to the form admin page"
+      label="Link 'Editar formulário'"
+      help="Link para a página de administração do formulário"
     />
     <toggle-switch-input
       v-model="compVal.views_submissions_count"
       name="views_submissions_count"
       class="mt-4"
-      label="Form Analytics"
-      help="Form views and submissions count"
+      label="Análises do formulário"
+      help="Número de visualizações e respostas do formulário"
     />
     <toggle-switch-input
       v-if="form.editable_submissions"
       v-model="compVal.link_edit_submission"
       name="link_edit_submission"
       class="mt-4"
-      label="Edit Submission Link"
+      label="Link para editar a resposta"
     />
   </div>
 </template>
@@ -103,7 +103,7 @@ export default {
     ].forEach((keyname) => {
       if (this.compVal[keyname] === undefined) {
         if (keyname === 'message') {
-          this.compVal[keyname] = 'New form submission'
+          this.compVal[keyname] = 'Nova resposta no formulário'
         } else if (['include_hidden_fields_submission_data'].includes(keyname)) {
           this.compVal[keyname] = false
         } else {

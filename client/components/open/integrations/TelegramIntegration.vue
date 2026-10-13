@@ -6,7 +6,7 @@
   >
     <div class="mb-4">
       <p class="text-neutral-500 mb-4">
-        Receive Telegram messages on each form submission.
+        Receba mensagens no Telegram a cada nova resposta.
       </p>
       <template v-if="providers.length">
         <FlatSelectInput
@@ -17,7 +17,7 @@
           option-key="id"
           emit-key="id"
           :required="true"
-          label="Select Telegram Account"
+          label="Selecione a conta do Telegram"
         >
           <template #help>
             <InputHelp>
@@ -26,16 +26,16 @@
                 class="text-blue-500 cursor-pointer"
                 @click="openConnectionsModal"
               >
-                Click here
+                Clique aqui
               </a>
-                to connect another account.
+                para conectar outra conta.
               </span>
             </InputHelp>
           </template>
         </FlatSelectInput>
 
         <h4 class="font-bold mt-4">
-          Telegram message actions
+          Ações da mensagem do Telegram
         </h4>
         <notifications-message-actions
           v-model="integrationData.data"
@@ -49,7 +49,7 @@
         variant="outline"
         :loading="isLoading"
         @click.prevent="openConnectionsModal"
-        label="Connect Telegram account"
+        label="Conectar conta do Telegram"
       />
     </div>
   </IntegrationWrapper>

@@ -10,14 +10,14 @@
       color="neutral"
       variant="outline"
       :trailing-icon="field.input_mask ? 'i-heroicons-check-circle' : ''"
-      label="Input Mask Pattern"
+      label="Máscara de entrada"
     />
     <template #content>
       <div class="p-4 w-72">
         <!-- Header with help icon -->
         <div class="flex items-center justify-between mb-3">
           <h4 class="font-medium text-sm">
-            Input Mask Settings
+            Configurações da máscara
           </h4>
           <UButton
             icon="i-heroicons-question-mark-circle"
@@ -31,17 +31,17 @@
         <TextInput
           name="input_mask"
           :form="field"
-          label="Pattern"
+          label="Padrão"
           placeholder="(999) 999-9999"
           @update:model-value="onInputMaskChange"
         >
           <template #help>
             <InputHelp>
               <div class="space-y-1">
-                <div><code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">9</code> = digit (0-9)</div>
-                <div><code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">a</code> = letter (a-z)</div>
-                <div><code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">*</code> = letter or digit</div>
-                <div><code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">?</code> = makes previous optional</div>
+                <div><code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">9</code> = dígito (0-9)</div>
+                <div><code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">a</code> = letra (a-z)</div>
+                <div><code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">*</code> = letra ou dígito</div>
+                <div><code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">?</code> = torna o anterior opcional</div>
               </div>
             </InputHelp>
           </template>
@@ -54,7 +54,7 @@
           name="slot_char"
           class="mt-3"
           label="Placeholder"
-          help="Shows in empty positions"
+          help="Aparece nas posições vazias"
           :options="placeholderOptions"
           :columns="5"
           seamless
@@ -63,7 +63,7 @@
         <!-- Common patterns -->
         <div class="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
           <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">
-            Quick templates:
+            Modelos rápidos:
           </div>
           <div class="flex flex-wrap gap-1">
             <UButton
@@ -87,7 +87,7 @@
           color="neutral"
           variant="ghost"
           icon="i-heroicons-x-mark"
-          label="Remove mask"
+          label="Remover máscara"
           @click="clearMask"
         />
       </div>
@@ -117,10 +117,10 @@ const placeholderOptions = [
 ]
 
 const commonPatterns = [
-  { label: 'Phone', pattern: '(999) 999-9999' },
-  { label: 'Date', pattern: '99-99-9999' },
-  { label: 'ZIP+4', pattern: '99999-9999' },
-  { label: 'Credit Card', pattern: '9999 9999 9999 9999' },
+  { label: 'Telefone', pattern: '(99) 99999-9999' },
+  { label: 'Data', pattern: '99/99/9999' },
+  { label: 'CEP', pattern: '99999-999' },
+  { label: 'CPF', pattern: '999.999.999-99' },
 ]
 
 const onInputMaskChange = (val) => {

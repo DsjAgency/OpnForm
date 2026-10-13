@@ -6,10 +6,10 @@
       <div class="flex items-center justify-between w-full">
         <div class="grow w-full">
           <h3 class="text-base font-semibold leading-6 text-neutral-900 dark:text-white">
-            Download PDF
+            Baixar PDF
           </h3>
           <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-            Download the PDF version of this submission
+            Baixe a versão em PDF desta resposta
           </p>
         </div>
         <UButton color="neutral" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="isDownloadPDFModalOpen = false" />
@@ -20,9 +20,9 @@
       <div class="flow-root">
         <select-input
           v-model="pdfTemplateId"
-          label="PDF template"
+          label="Modelo de PDF"
           :options="pdfTemplateOptions"
-          help="Select the PDF template to download"
+          help="Selecione o modelo de PDF para baixar"
         />
         <UButton 
           color="primary" 
@@ -33,7 +33,7 @@
           :loading="pdfDownloading"
           @click="downloadPdf(pdfTemplateId)"
         >
-          Download PDF
+          Baixar PDF
         </UButton>
       </div>
     </template>
@@ -87,7 +87,7 @@ const downloadPdf = async (templateId = null) => {
     isDownloadPDFModalOpen.value = false
   } catch (error) {
     console.error('PDF download failed:', error)
-    alert.error('Failed to download PDF. Please try again.')
+    alert.error('Não foi possível baixar o PDF. Tente novamente.')
   } finally {
     pdfDownloading.value = false
   }
@@ -116,7 +116,7 @@ const handleDownload = async () => {
 
   // No templates - show message
   if (pdfTemplates.value.length === 0) {
-    alert.warning('Please create a PDF template first.')
+    alert.warning('Crie um modelo de PDF primeiro.')
     return
   }
 

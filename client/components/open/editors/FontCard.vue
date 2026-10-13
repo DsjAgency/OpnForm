@@ -13,7 +13,7 @@
         class="text-lg mb-3 font-normal"
         :style="{ 'font-family': `${fontName} !important` }"
       >
-        The quick brown fox jumped over the lazy dog
+        Um pequeno jabuti xereta viu dez cegonhas felizes
       </div>
     </template>
     <div

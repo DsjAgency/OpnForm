@@ -26,7 +26,7 @@
             icon="i-heroicons-at-symbol"
             @mousedown="saveSelection"
           >
-            Field
+            Campo
           </UButton>
           <template #content>
             <FormulaFieldPicker

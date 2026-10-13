@@ -17,7 +17,7 @@
           >
             <UInput
               v-model="search"
-              placeholder="Search forms..."
+              placeholder="Buscar formulários..."
               icon="i-heroicons-magnifying-glass-solid"
             />
 
@@ -33,7 +33,7 @@
 
             <UButton
               v-if="isFilteringForms"
-              label="Clear"
+              label="Limpar"
               variant="ghost"
               color="neutral"
               @click="clearFilters"
@@ -46,7 +46,7 @@
           <UButton
             v-if="!workspace?.is_readonly"
             icon="i-heroicons-plus"
-            label="Create Form"
+            label="Criar formulário"
             :to="{ name: 'forms-create' }"
           />
         </TrackClick>
@@ -66,16 +66,16 @@
                 class="h-12 w-12 text-neutral-400 mx-auto"
               />
               <h3 class="mt-4 text-lg font-semibold text-neutral-900">
-                Create your first form
+                Crie seu primeiro formulário
               </h3>
               <p class="mt-1 text-sm text-neutral-500">
-                Get started by creating a new form to collect responses.
+                Comece criando um novo formulário para coletar respostas.
               </p>
               <UButton
                 v-if="!workspace?.is_readonly"
                 class="mt-6"
                 icon="i-heroicons-plus"
-                label="Create Form"
+                label="Criar formulário"
                 :to="{ name: 'forms-create' }"
               />
             </div>
@@ -94,15 +94,15 @@
                 class="h-12 w-12 text-neutral-400 mx-auto"
               />
               <h3 class="mt-4 text-lg font-semibold text-neutral-900">
-                No forms found
+                Nenhum formulário encontrado
               </h3>
               <p class="mt-1 text-sm text-neutral-500">
-                Your search and filter criteria did not match any forms.
+                Nenhum formulário corresponde à sua busca e aos filtros.
               </p>
               <UButton
                 v-if="isFilteringForms"
                 class="mt-6"
-                label="Clear Filters"
+                label="Limpar filtros"
                 variant="soft"
                 @click="clearFilters"
               />
@@ -128,7 +128,7 @@
                 class="flex justify-center items-center py-4"
               >
                 <div class="text-sm text-neutral-500">
-                  Loaded {{ currentPage }} of {{ totalPages }} pages
+                  {{ currentPage }} de {{ totalPages }} páginas carregadas
                 </div>
               </div>
 
@@ -169,9 +169,9 @@ definePageMeta({
 })
 
 useOpnSeoMeta({
-  title: "Your Forms",
+  title: "Seus formulários",
   description:
-    "All of your OpnForm are here. Create new forms, or update your existing forms.",
+    "Todos os seus formulários estão aqui. Crie novos formulários ou atualize os existentes.",
 })
 
 // Composables

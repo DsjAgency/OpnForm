@@ -3,7 +3,7 @@
     <!--  Login modal  -->
     <UModal
       v-model:open="isLoginModalOpen"
-      title="Login to OpnForm"
+      title="Entrar no OpnForm"
       :dismissible="!appStore.isUnauthorizedError"
       @pointer-down-outside="handlePointerDownOutside"
     >
@@ -11,7 +11,7 @@
         <template v-if="appStore.isUnauthorizedError">
           <div class="mb-4 p-3 bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-md">
             <p class="text-amber-800 dark:text-amber-200 text-sm font-medium">
-              Your session has expired. Please log in again to continue.
+              Sua sessão expirou. Entre novamente para continuar.
             </p>
           </div>
         </template>
@@ -34,13 +34,13 @@
             type="button"
             color="neutral"
             variant="outline"
-            label="Logout"
+            label="Sair"
             :block="true"
             size="lg"
             @click="logout"
           />
           <p class="text-neutral-500 text-sm text-center mt-2">
-            Progress will be lost.
+            O progresso será perdido.
           </p>
         </template>
       </template>
@@ -50,7 +50,7 @@
     <UModal
       v-model:open="isRegisterModalOpen"
       :ui="{ content: 'sm:max-w-lg' }"
-      title="Create an account"
+      title="Criar uma conta"
       :dismissible="!appStore.isUnauthorizedError"
       @pointer-down-outside="handlePointerDownOutside"
     >
@@ -148,7 +148,7 @@ const afterQuickLogin = () => {
   appStore.quickRegisterModal = false
   
   // Show success alert
-  useAlert().success("Successfully logged in!")
+  useAlert().success("Login realizado com sucesso!")
   
   // Use the window message for after-login instead of emitting the event
   afterLoginMessage.send(window, { useMessageChannel: false })

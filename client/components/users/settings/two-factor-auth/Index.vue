@@ -1,9 +1,9 @@
 <template>
   <div class="space-y-4">
     <div>
-      <h3 class="text-lg font-medium text-neutral-900">Two-Factor Authentication</h3>
+      <h3 class="text-lg font-medium text-neutral-900">Autenticação em duas etapas</h3>
       <p class="text-sm text-neutral-500 mt-1">
-        Add an extra layer of security to your account using an authenticator app.
+        Adicione uma camada extra de segurança à sua conta usando um app autenticador.
       </p>
     </div>
 
@@ -13,7 +13,7 @@
         color="success"
         variant="subtle"
         icon="i-heroicons-check-circle"
-        description="Two-factor authentication is enabled on your account."
+        description="A autenticação em duas etapas está ativada na sua conta."
       />
 
       <div class="flex gap-2">
@@ -22,14 +22,14 @@
           variant="outline"
           @click="showRegenerateModal = true"
         >
-          Regenerate Recovery Codes
+          Gerar novos códigos de recuperação
         </UButton>
         <UButton
           color="neutral"
           variant="outline"
           @click="showDisableModal = true"
         >
-          Disable 2FA
+          Desativar 2FA
         </UButton>
       </div>
     </div>
@@ -105,7 +105,7 @@ const enableTwoFactor = async () => {
     twoFactorSecret.value = response.secret
     twoFactorQrCode.value = response.qr_code
   } catch (error) {
-    alert.error(error.response?._data?.message || 'Failed to enable two-factor authentication')
+    alert.error(error.response?._data?.message || 'Não foi possível ativar a autenticação em duas etapas')
   } finally {
     enabling2FA.value = false
   }
@@ -127,9 +127,9 @@ const confirmTwoFactor = async (code) => {
     justRegenerated.value = false
     showRecoveryCodesModal.value = true
     
-    alert.success('Two-factor authentication has been enabled successfully.')
+    alert.success('Autenticação em duas etapas ativada.')
   } catch (error) {
-    alert.error(error.response?._data?.message || error.response?._data?.errors?.code?.[0] || 'Invalid code. Please try again.')
+    alert.error(error.response?._data?.message || error.response?._data?.errors?.code?.[0] || 'Código inválido. Tente novamente.')
   } finally {
     confirming2FA.value = false
   }
@@ -145,9 +145,9 @@ const disableTwoFactor = async (code) => {
     // Refresh user data
     await auth.invalidateUser()
     
-    alert.success('Two-factor authentication has been disabled.')
+    alert.success('Autenticação em duas etapas desativada.')
   } catch (error) {
-    alert.error(error.response?._data?.message || error.response?._data?.errors?.code?.[0] || 'Invalid code. Please try again.')
+    alert.error(error.response?._data?.message || error.response?._data?.errors?.code?.[0] || 'Código inválido. Tente novamente.')
   } finally {
     disabling2FA.value = false
   }
@@ -175,9 +175,9 @@ const handleRegenerateRecoveryCodes = async (data) => {
     justRegenerated.value = true
     showRegenerateModal.value = false
     showRecoveryCodesModal.value = true
-    alert.success('Recovery codes have been regenerated. Please save them in a safe place.')
+    alert.success('Novos códigos de recuperação gerados. Guarde-os em um lugar seguro.')
   } catch (error) {
-    alert.error(error.response?._data?.message || error.response?._data?.errors?.code?.[0] || 'Failed to regenerate recovery codes')
+    alert.error(error.response?._data?.message || error.response?._data?.errors?.code?.[0] || 'Não foi possível gerar novos códigos de recuperação')
   } finally {
     regeneratingCodes.value = false
   }
@@ -192,7 +192,7 @@ const copyRecoveryCodes = () => {
   )
   const codesText = codes.join('\n')
   copyToClipboard(codesText)
-  alert.success('Recovery codes copied to clipboard')
+  alert.success('Códigos de recuperação copiados')
 }
 </script>
 

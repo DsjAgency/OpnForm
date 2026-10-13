@@ -5,7 +5,7 @@
     <template #header>
       <div class="flex items-center w-full gap-4 px-2">
         <h2 class="font-semibold">
-          Create an access token
+          Criar token de acesso
         </h2>
       </div>
       <UButton
@@ -15,7 +15,7 @@
         size="sm"
         @click="crisp.openHelpdesk()"
       >
-        Help
+        Ajuda
       </UButton>
     </template>
  
@@ -25,13 +25,13 @@
           icon="i-heroicons-key-20-solid"
           color="success"
           variant="subtle"
-          title="Copy your access token"
-          description="Your token will only be shown once. Make sure to save it safely."
+          title="Copie seu token de acesso"
+          description="O token só será exibido uma vez. Guarde-o em um lugar seguro."
         />
         <CopyContent
           class="mt-4"
           :content="token"
-          label="Copy Token"
+          label="Copiar token"
         />
       </template>
 
@@ -44,16 +44,16 @@
               :form="tokenForm"
               name="name"
               :required="true"
-              label="Name"
+              label="Nome"
             />
 
-            <UFormField v-if="hasAdminAbilities" label="Expires in days" :error="tokenForm.errors.get('expires_at')">
+            <UFormField v-if="hasAdminAbilities" label="Expira em (dias)" :error="tokenForm.errors.get('expires_at')">
               <UInput v-model="expiryDays" type="number" min="1" max="90" />
             </UFormField>
             <FlatSelectInput
               :form="tokenForm"
               name="abilities"
-              label="Abilities"
+              label="Permissões"
               :options="abilitiesOptions"
               multiple
             />
@@ -68,7 +68,7 @@
         variant="outline"
         @click="closeModal"
       >
-        Close
+        Fechar
       </UButton>
       <UButton
         v-if="!token"
@@ -78,7 +78,7 @@
         :loading="tokenForm.busy"
         @click="createToken"
       >
-        Create Token
+        Criar token
       </UButton>
     </template>
   </UModal>
@@ -148,7 +148,7 @@ const closeModal = () => {
 function createToken() {
   const days = Number(expiryDays.value)
   if (hasAdminAbilities.value && (!Number.isInteger(days) || days < 1 || days > 90)) {
-    tokenForm.errors.set('expires_at', 'Choose an expiration between 1 and 90 days.')
+    tokenForm.errors.set('expires_at', 'Escolha uma validade entre 1 e 90 dias.')
     return
   }
   tokenForm.expires_at = hasAdminAbilities.value ? new Date(Date.now() + days * 86400000).toISOString() : null
@@ -158,7 +158,7 @@ function createToken() {
       token.value = response.token || response.data?.token || response
     }
   }).catch(() => {
-    alert.error("An error occurred while creating the token")
+    alert.error("Ocorreu um erro ao criar o token")
   })
 }
 </script>

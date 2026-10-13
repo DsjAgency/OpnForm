@@ -8,7 +8,7 @@
     <!-- Settings Pages - Auto-register themselves -->
     <SettingsModalPage
       id="information"
-      label="Information"
+      label="Informações"
       icon="i-heroicons-information-circle"
     >
       <LazyWorkspacesSettingsInformation />
@@ -16,7 +16,7 @@
 
     <SettingsModalPage
       id="members"
-      label="Members"
+      label="Membros"
       icon="i-heroicons-user-group"
     >
       <LazyWorkspacesSettingsMembers />
@@ -25,7 +25,7 @@
     <SettingsModalPage
       v-if="showDomainsSettings"
       id="domains"
-      label="Domains"
+      label="Domínios"
       icon="i-heroicons-globe-alt"
     >
       <LazyWorkspacesSettingsDomains />
@@ -34,7 +34,7 @@
     <SettingsModalPage
       v-if="workspace && workspace.is_admin"
       id="emails"
-      label="Emails"
+      label="E-mails"
       icon="i-heroicons-envelope"
     >
       <LazyWorkspacesSettingsEmails />
@@ -43,7 +43,7 @@
     <SettingsModalPage
       v-if="workspace && workspace.is_admin"
       id="external-file-links"
-      label="Security & data"
+      label="Segurança e dados"
       icon="i-heroicons-shield-check"
     >
       <LazyWorkspacesSettingsExternalFileLinks />
@@ -61,7 +61,7 @@
     <SettingsModalPage
       v-if="workspace && workspace.is_admin"
       id="custom-code"
-      label="Custom Code"
+      label="Código personalizado"
       icon="i-heroicons-code-bracket"
     >
       <LazyWorkspacesSettingsCustomCode />

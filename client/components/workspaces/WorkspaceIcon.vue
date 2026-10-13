@@ -6,7 +6,7 @@
   <img
     v-if="isUrl(workspace.icon)"
     :src="workspace.icon"
-    :alt="`${workspace.name} icon`"
+    :alt="`Ícone de ${workspace.name}`"
           class="flex-shrink-0 rounded-sm"
     :class="size"
   >

@@ -23,7 +23,7 @@
       :class="ui.container({ class: props.ui?.slots?.container })"
       tabindex="0"
       role="button"
-      :aria-label="multiple ? 'Choose files or drag here' : 'Choose a file or drag here'"
+      :aria-label="multiple ? 'Escolha arquivos ou arraste aqui' : 'Escolha um arquivo ou arraste aqui'"
       @dragover.prevent="uploadDragoverEvent=true"
       @dragleave.prevent="uploadDragoverEvent=false"
       @drop.prevent="onUploadDropEvent"

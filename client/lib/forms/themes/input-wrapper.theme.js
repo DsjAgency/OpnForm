@@ -35,10 +35,10 @@ export const inputWrapperTheme = {
         wrapper: 'my-1',
       },
       md: {
-        wrapper: 'my-1.5',
+        wrapper: 'my-2.5',
       },
       lg: {
-        wrapper: 'my-1.5',
+        wrapper: 'my-3.5',
       }
     },
     mediaStyle: {

@@ -7,8 +7,8 @@
             :to="{ name: user ? 'home' : 'index' }"
             class="shrink-0 font-semibold hover:no-underline flex items-center"
           >
-            <img src="/img/cidadania4u-icon.png" alt="Cidadania4U" class="w-7 h-7 sm:hidden" />
-            <img src="/img/cidadania4u-logo.png" alt="Cidadania4U" class="hidden sm:block h-8 w-auto" />
+            <img src="/img/forms4u-icon.png" alt="Forms4U" class="w-7 h-7 sm:hidden" />
+            <img src="/img/forms4u-logo.png" alt="Forms4U" class="hidden sm:block h-8 w-auto" />
           </NuxtLink>
           <WorkspaceDropdown class="ml-6">
             <template #default="{ workspace }">

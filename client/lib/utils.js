@@ -176,3 +176,30 @@ export const shuffleArray = (array) => {
   }
   return shuffled
 }
+
+const relativeTimeUnits = [
+  ["year", 60 * 60 * 24 * 365],
+  ["month", 60 * 60 * 24 * 30],
+  ["week", 60 * 60 * 24 * 7],
+  ["day", 60 * 60 * 24],
+  ["hour", 60 * 60],
+  ["minute", 60],
+]
+
+/**
+ * Relative time in pt-BR ("há 6 horas", "ontem"), computed in the browser so it
+ * does not depend on the API locale.
+ */
+export function timeAgo(date, now = new Date()) {
+  if (!date) return ""
+  const time = new Date(date).getTime()
+  if (Number.isNaN(time)) return ""
+  const seconds = Math.round((time - now.getTime()) / 1000)
+  const formatter = new Intl.RelativeTimeFormat("pt-BR", { numeric: "auto" })
+  for (const [unit, unitSeconds] of relativeTimeUnits) {
+    if (Math.abs(seconds) >= unitSeconds) {
+      return formatter.format(Math.round(seconds / unitSeconds), unit)
+    }
+  }
+  return "agora mesmo"
+}

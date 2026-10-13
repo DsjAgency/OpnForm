@@ -61,7 +61,15 @@ Contexto para o Claude Code neste repositório. Leia também o `AGENTS.md` (conv
 
 ## Marca e itens removidos do OpnForm
 
-- Logo: `client/public/img/cidadania4u-logo.png` (horizontal) e `cidadania4u-icon.png` (só o passaporte). `logo.svg`/`logo.png` também contêm o ícone novo. Favicon em `client/public/favicon.ico`.
+- Logo do Forms4U: `client/public/img/forms4u-logo.png` (horizontal, prancheta + "forms 4U") e `forms4u-icon.png` (só a prancheta, 512px). `logo.svg`/`logo.png` também contêm o ícone novo. Favicon em `client/public/favicon.ico`.
+- Visual do painel (reformulação Forms4U):
+  - Início (`client/pages/home.vue`): saudação, cartões de resumo (`components/pages/home/HomeStatCard.vue`, com contagem animada) e formulários em grade ou lista (`FormCard.vue`, escolha salva no navegador).
+  - Login em duas colunas (`client/pages/login.vue`, layout `empty`).
+  - Menu lateral com item ativo em tom vinho e o botão "Criar formulário" sólido.
+  - Avatar de usuário sempre via `UserAvatar` (`components/global/UserAvatar.vue`).
+  - Animações globais no `app.css`: `f4u-fade-up` e `f4u-float` (respeitam "reduzir movimento").
+  - Tempo relativo em pt-BR no navegador com `timeAgo()` (`client/lib/utils.js`), porque o `last_edited_human` da API segue o idioma do navegador.
+- Formulário público: formulários clássicos com largura "centralizada" aparecem como cartão sobre fundo suave tingido pela cor do formulário (`useCardLayout` em `components/open/forms/OpenForm.vue`; classes `f4u-form-backdrop` / `f4u-form-card` no `app.css`). Vale na página pública e na pré-visualização do editor, nunca em iframes/embeds. O selo "Feito com Forms4U" é `components/pages/forms/show/PoweredBy.vue`.
 - Cor primária: vinho `#640e2c` (paleta `cidadania` 50–950 em `@theme static` no `client/css/app.css`); `--ui-primary` usa o tom 800 no claro e 400 no escuro.
 - Menu lateral sem as seções "Produto" e "Ajuda" (`useSharedNavigation` retorna lista vazia).
 - Sem banners/modais de upgrade: `openSubscriptionModal` (em `useAppModals`) só mostra um aviso neutro; `PlanTag` nunca aparece; `UpgradeBanner` e `GitHubStar` foram removidos.

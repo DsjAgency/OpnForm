@@ -225,7 +225,12 @@
     }
 
     a {
-        @apply text-blue-500;
+        color: var(--ui-primary);
+    }
+
+    ::selection {
+        background-color: var(--color-cidadania-100);
+        color: var(--color-cidadania-900);
     }
 
     /* Field help styles */
@@ -376,6 +381,125 @@
 /* Actual CSS */
 body.dark * {
     @apply border-neutral-600;
+}
+
+/* Forms4U motion: entrance and idle animations (disabled for reduced motion) */
+@keyframes f4u-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes f4u-float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(2deg);
+    }
+}
+
+.f4u-fade-up {
+    animation: f4u-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.f4u-float {
+    animation: f4u-float 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .f4u-fade-up,
+    .f4u-float {
+        animation: none;
+    }
+}
+
+/* Public form (classic + centered): soft backdrop tinted with the form color,
+   form content inside a floating card. */
+.f4u-form-backdrop {
+    background-color: #f6f4f5;
+    background-image:
+        radial-gradient(ellipse 70% 45% at 50% -5%, color-mix(in srgb, var(--form-color, #640e2c) 16%, transparent), transparent 70%),
+        radial-gradient(ellipse 40% 30% at 100% 100%, color-mix(in srgb, var(--form-color, #640e2c) 7%, transparent), transparent 70%);
+}
+
+.dark .f4u-form-backdrop {
+    background-color: var(--color-notion-dark);
+    background-image: radial-gradient(ellipse 70% 45% at 50% -5%, color-mix(in srgb, var(--form-color, #640e2c) 22%, transparent), transparent 70%);
+}
+
+.f4u-form-card {
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 1.5rem;
+    box-shadow:
+        0 1px 2px rgb(15 23 42 / 0.04),
+        0 12px 40px -12px rgb(15 23 42 / 0.14);
+    outline: 1px solid rgb(15 23 42 / 0.05);
+    padding: 2rem 1.25rem 2rem;
+    animation: f4u-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (max-width: 639px) {
+    .f4u-form-card {
+        width: calc(100% - 1.5rem);
+        border-radius: 1.25rem;
+    }
+}
+
+@media (min-width: 640px) {
+    .f4u-form-card {
+        padding: 2.75rem 2.75rem 2.25rem;
+    }
+}
+
+.dark .f4u-form-card {
+    background-color: var(--color-notion-dark-light);
+    outline-color: rgb(255 255 255 / 0.06);
+}
+
+/* Submit / next buttons: wider, with a subtle lift on hover */
+.f4u-form-card .btn {
+    min-width: 10rem;
+    justify-content: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+@media (max-width: 639px) {
+    .f4u-form-card .btn {
+        flex: 1 1 auto;
+    }
+}
+
+.f4u-form-card .btn:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--form-color, #640e2c) 60%, transparent);
+}
+
+.f4u-form-card .btn:not(:disabled):active {
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .f4u-form-card {
+        animation: none;
+    }
+    .f4u-form-card .btn:not(:disabled):hover {
+        transform: none;
+    }
+}
+
+/* Thin, discreet scrollbars in the app shell */
+.dashboard-layout * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-neutral-300) transparent;
 }
 
 /* Brand color is the 800 shade; Nuxt UI defaults to 500 (too light here).

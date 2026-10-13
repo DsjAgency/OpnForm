@@ -2,6 +2,7 @@
   <form
     v-if="form"
     class="@container pb-20"
+    :class="{ 'f4u-form-backdrop min-h-full': useCardLayout }"
     @submit.prevent=""
   >
     <!-- Classic cover/logo rendering -->
@@ -33,11 +34,18 @@
     <div
       class="w-full mx-auto px-4"
       :class="[
-        (!isIframe && !showBrandingMedia) ? 'mt-6' : '',
+        useCardLayout ? 'f4u-form-card' : '',
+        (!isIframe && !showBrandingMedia) ? (useCardLayout ? 'mt-6 sm:mt-14' : 'mt-6') : '',
         form && form.width === 'centered' ? (isPreviewMode ? 'max-w-lg' : '@3xl:w-3/5 @5xl:w-1/2 @3xl:max-w-2xl') : '',
         (form && form.width === 'full' && !isIframe) ? 'max-w-7xl' : ''
       ]"
     >
+      <div
+        v-if="useCardLayout"
+        aria-hidden="true"
+        class="absolute inset-x-0 top-0 h-1.5"
+        :style="{ background: `linear-gradient(90deg, ${form.color || '#640e2c'}, color-mix(in srgb, ${form.color || '#640e2c'} 55%, white))` }"
+      />
       <FormProgressbar :form-manager="formManager" />
       <transition
         name="fade"
@@ -244,6 +252,15 @@ const getFieldWidthClasses = (width) => {
   }
   return 'col-span-full'
 }
+
+// Forms4U look: centered classic forms render as a card over a soft backdrop
+// (live page and editor preview; never inside iframes/embeds)
+const useCardLayout = computed(() => {
+  const mode = props.formManager?.mode?.value
+  return !isIframe
+    && form.value?.width === 'centered'
+    && [FormMode.LIVE, FormMode.PREVIEW].includes(mode)
+})
 
 // Branding display control comes from strategy; default to true
 const showBranding = computed(() => props.formManager?.strategy?.value?.display?.showBranding ?? true)

@@ -59,8 +59,14 @@
             <div class="max-w-4xl mx-auto">
               <!-- Form Title and Actions -->
               <div class="flex flex-wrap items-start justify-between gap-4">
-                <div class="flex-1 min-w-0 hidden sm:block">
-                  <h1 class="text-xl font-semibold text-neutral-900 truncate ">
+                <div class="flex-1 min-w-0 hidden sm:flex items-center gap-3">
+                  <span
+                    class="flex size-10 shrink-0 items-center justify-center rounded-xl text-white shadow-sm"
+                    :style="{ background: `linear-gradient(135deg, color-mix(in srgb, ${form.color || '#640e2c'} 75%, white), ${form.color || '#640e2c'})` }"
+                  >
+                    <UIcon name="i-heroicons-clipboard-document-list" class="size-5" />
+                  </span>
+                  <h1 class="!text-xl !font-semibold text-neutral-900 truncate tracking-tight">
                     {{ form.title }}
                   </h1>
                 </div>
@@ -115,7 +121,7 @@
                 </div>
               </div>
 
-              <div class="flex flex-wrap items-center gap-2 text-neutral-500 text-xs mt-2 sm:mt-0">
+              <div class="flex flex-wrap items-center gap-2 text-neutral-500 text-xs mt-2 sm:mt-1 sm:pl-[52px]">
                 <UTooltip :text="`${formatNumberWithCommas(form.views_count)} visualizações`">
                   <div class="flex items-center gap-1">
                     <UIcon name="i-heroicons-eye" />
@@ -130,7 +136,7 @@
                   </div>
                 </UTooltip>
 
-                <span class="whitespace-nowrap">Editado {{ form.last_edited_human }}</span>
+                <span class="whitespace-nowrap">Editado {{ timeAgo(form.updated_at) || form.last_edited_human }}</span>
               </div>
               
               <!-- Status Badges and Form Cleanings -->
@@ -181,7 +187,7 @@
 </template>
 
 <script setup>
-import { formatNumber, formatNumberWithCommas } from "~/lib/utils.js"
+import { formatNumber, formatNumberWithCommas, timeAgo } from "~/lib/utils.js"
 import DashboardEmptyState from "~/components/dashboard/states/DashboardEmptyState.vue"
 import FormSidebar from "../../../components/layouts/FormSidebar.vue"
 import ExtraMenu from "../../../components/pages/forms/show/ExtraMenu.vue"

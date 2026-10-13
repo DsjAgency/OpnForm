@@ -30,7 +30,7 @@
 <body>
 <main class="card">
     <div class="brand" aria-label="Forms4U">
-        <img class="brand-logo" src="{{ front_url('/img/cidadania4u-icon.png') }}" alt="" aria-hidden="true">
+        <img class="brand-logo" src="{{ front_url('/img/forms4u-icon.png') }}" alt="" aria-hidden="true">
         <span class="brand-name">Forms4U</span>
     </div>
     <h1>Connect {{ $client->name }}</h1>

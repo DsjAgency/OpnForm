@@ -11,7 +11,7 @@ $logoUrl = $appearance['logoUrl'] ?? null;
         </x-mail::header>
         @elseif (!(isset($noBranding) && $noBranding))
         <x-mail::header :url="front_url()">
-            <img src="{{ front_url('/img/cidadania4u-logo.png') }}" class="logo" alt="Cidadania4U" style="max-height: 48px; height: 48px; width: auto;">
+            <img src="{{ front_url('/img/forms4u-logo.png') }}" class="logo" alt="Forms4U" style="max-height: 48px; height: 48px; width: auto;">
         </x-mail::header>
         @else
         <div style="margin-top:25px;" />

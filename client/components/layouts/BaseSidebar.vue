@@ -1,7 +1,7 @@
 <template>
   <aside
     :class="[
-      'bg-neutral-100 border-neutral-200 flex flex-col transition-all duration-300 ease-in-out z-[60]',
+      'bg-[#faf9f9] border-neutral-200/80 flex flex-col transition-all duration-300 ease-in-out z-[60]',
       isMobileMenuOpen
         ? 'fixed inset-0'
         : 'sticky top-0 w-full h-[49px] overflow-hidden sm:flex sm:fixed sm:h-full sm:w-58 sm:border-r',
@@ -25,7 +25,7 @@
           <UButton
             square
             size="xl"
-            class="hover:bg-neutral-200/80"
+            class="hover:bg-neutral-200/60"
             :icon="isMobileMenuOpen ? 'i-heroicons-x-mark' : 'i-heroicons-bars-3'"
             variant="ghost"
             color="neutral"
@@ -46,7 +46,7 @@
       <UButton
         square
         size="xl"
-        class="hover:bg-neutral-200/80"
+        class="hover:bg-neutral-200/60"
         icon="i-heroicons-bars-3"
         variant="ghost"
         color="neutral"
@@ -68,12 +68,12 @@
       :class="{ 'hidden': !isMobileMenuOpen, 'sm:block': true }"
     >
       <slot name="footer" :isMobileMenuOpen="isMobileMenuOpen">
-        <p class="text-xs text-neutral-400 flex items-center justify-center gap-1.5">
-          <NuxtLink :to="{ name: 'home' }">
-            <img src="/img/cidadania4u-logo.png" alt="Cidadania4U" class="h-5 w-auto">
+        <div class="flex items-center justify-between gap-2 px-2 py-1">
+          <NuxtLink :to="{ name: 'home' }" class="opacity-90 hover:opacity-100 transition-opacity">
+            <img src="/img/forms4u-logo.png" alt="Forms4U" class="h-7 w-auto">
           </NuxtLink>
-          <span class="text-neutral-500" v-if="version"> v{{ version }}</span>
-        </p>
+          <span v-if="version" class="text-[10px] font-medium text-neutral-400 rounded-full bg-neutral-100 px-1.5 py-0.5">v{{ version }}</span>
+        </div>
       </slot>
     </div>
   </aside>

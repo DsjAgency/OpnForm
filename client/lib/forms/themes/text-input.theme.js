@@ -22,7 +22,8 @@ export const textInputTheme = {
         input: [
           'border-neutral-300 dark:border-neutral-600',
           'shadow-xs',
-          'focus:ring-2 focus:ring-form/100 focus:border-transparent'
+          'transition-[border-color,box-shadow] duration-150 hover:border-neutral-400 dark:hover:border-neutral-500',
+          'focus:ring-4 focus:ring-form/15 focus:border-form dark:focus:border-form'
         ]
       },
       simple: {

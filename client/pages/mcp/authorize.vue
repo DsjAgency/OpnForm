@@ -2,7 +2,7 @@
   <div class="flex min-h-screen items-center justify-center bg-neutral-50 px-6">
     <div class="w-full max-w-md rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-sm">
       <div class="mx-auto flex w-fit items-center">
-        <img src="/img/cidadania4u-logo.png" alt="Cidadania4U" class="h-10 w-auto">
+        <img src="/img/forms4u-logo.png" alt="Forms4U" class="h-10 w-auto">
       </div>
       <h1 class="mt-4 text-xl font-semibold text-neutral-950">Conectando sua conta do Forms4U</h1>
       <p class="mt-2 text-sm text-neutral-600">

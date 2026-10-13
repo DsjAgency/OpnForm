@@ -3,8 +3,8 @@
     <section class="flex flex-col mb-4 w-full max-w-[1080px] max-md:mt-10 max-md:max-w-full">
       <div class="text-center mx-auto py-16">
         <img
-          src="/img/cidadania4u-logo.png"
-          alt="Cidadania4U"
+          src="/img/forms4u-logo.png"
+          alt="Forms4U"
           class="h-12 w-auto mx-auto mb-10"
         >
         <img

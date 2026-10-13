@@ -9,7 +9,7 @@
             <button
               v-if="workspace"
               aria-label="Menu do espaço de trabalho"
-              class="flex items-center gap-2 p-2 rounded-md hover:bg-neutral-200 transition-colors min-w-32 text-left"
+              class="flex items-center gap-2 p-2 rounded-lg hover:bg-neutral-200/60 transition-colors min-w-32 text-left"
             >
               <WorkspaceIcon :workspace="workspace" />
               <div class="flex-1 min-w-0">
@@ -28,7 +28,7 @@
           <template #default="{ user }">
             <button
               aria-label="Menu do usuário"
-              class="flex items-center gap-2 p-2 rounded-md hover:bg-neutral-200 transition-colors"
+              class="flex items-center gap-2 p-1.5 rounded-full hover:bg-neutral-200/60 transition-colors"
             >
               <UserAvatar
                 :src="user?.photo_url"
@@ -104,7 +104,8 @@ const navigationSections = computed(() => [
         to: { name: 'forms-create' },
         active: isActiveRoute('forms-create'),
         color: 'primary',
-        variant: 'ghost',
+        variant: 'solid',
+        class: 'shadow-sm shadow-primary-900/20 mb-3 hover:shadow-md transition-shadow',
         kbd: ['N'],
       }),
       createNavItem({

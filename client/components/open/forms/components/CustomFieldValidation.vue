@@ -31,14 +31,6 @@
       >
         Limpar
       </UButton>
-      <UButton
-        color="neutral"
-        variant="ghost"
-        class="text-neutral-500"
-        size="xs"
-        icon="i-heroicons-question-mark-circle"
-        @click="openHelpArticle"
-      />
     </div>
 
     <!-- Validation Rules Card -->
@@ -207,13 +199,6 @@ export default {
         }
     },
 
-    setup() {
-        const crisp = useCrisp()
-        return {
-            crisp
-        }
-    },
-
     data() {
         return {
             show: false,
@@ -313,9 +298,6 @@ export default {
             }
             
             return 0
-        },
-        openHelpArticle() {
-            this.crisp.openHelpdeskArticle('how-to-add-custom-validation-to-a-field-elzuxy')
         },
         clearAll() {
             this.validation.conditions = null

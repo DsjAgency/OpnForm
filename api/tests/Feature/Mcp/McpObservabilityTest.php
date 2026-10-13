@@ -56,7 +56,7 @@ it('does not fail MCP requests when observability dispatch fails', function () {
         ],
     ], [
         'Accept' => 'application/json, text/event-stream',
-    ])->assertOk()->assertJsonPath('result.serverInfo.name', 'OpnForm');
+    ])->assertOk()->assertJsonPath('result.serverInfo.name', 'Forms4U');
 });
 
 it('can disable MCP observability entirely', function () {

@@ -9,7 +9,7 @@
         class="w-10 h-10 text-blue-800"
       />
       <div class="p-5 text-blue-800 text-center">
-        O OpnForm não é otimizado para celulares. Abra esta página em um dispositivo com tela maior.
+        O Forms4U não é otimizado para celulares. Abra esta página em um dispositivo com tela maior.
       </div>
       <div>
         <UButton

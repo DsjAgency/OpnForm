@@ -5,7 +5,6 @@ import { createSharedComposable } from '@vueuse/core'
 
 const UsersSettingsModal = defineAsyncComponent(() => import('~/components/users/settings/Modal.vue'))
 const WorkspacesSettingsModal = defineAsyncComponent(() => import('~/components/workspaces/settings/Modal.vue'))
-const SubscriptionModal = defineAsyncComponent(() => import('~/components/pages/pricing/SubscriptionModal.vue'))
 
 /**
  * Factory for creating URL-synced modals.
@@ -118,45 +117,6 @@ const createUrlSyncedModal = ({ component, queryParam, defaultTab }) => {
   }
 }
 
-/**
- * Factory for creating simple, non-URL-synced modals.
- * @param {object} config - Configuration object.
- * @param {object} config.component - The Vue component for the modal.
- * @returns {object} - Reactive state and methods to control the modal.
- */
-const createSimpleModal = ({ component }) => {
-  const overlay = useOverlay()
-  const isOpen = ref(false)
-  const modal = overlay.create(component, {
-    destroyOnClose: false
-  })
-
-  const open = (props = {}) => {
-    isOpen.value = true
-    return modal.open({
-      ...props,
-      onClose: () => {
-        isOpen.value = false
-        // Allow consumer to hook into onClose
-        if (props.onClose) {
-          props.onClose()
-        }
-      }
-    })
-  }
-
-  const close = () => {
-    isOpen.value = false
-    modal.close()
-  }
-
-  return {
-    isOpen: readonly(isOpen),
-    open,
-    close
-  }
-}
-
 export const useAppModals = createSharedComposable(() => {
   const userSettings = createUrlSyncedModal({
     component: UsersSettingsModal,
@@ -170,9 +130,17 @@ export const useAppModals = createSharedComposable(() => {
     defaultTab: 'general'
   })
 
-  const subscription = createSimpleModal({
-    component: SubscriptionModal
-  })
+  // Paid plans/upgrade modal disabled in the internal Cidadania4U build:
+  // features locked by plan or license just show a neutral notice.
+  const subscription = {
+    isOpen: readonly(ref(false)),
+    open: (options = {}) => useAlert().warning(
+      options.plan === 'self_hosted'
+        ? 'Este recurso exige uma licença Enterprise, que não está ativa nesta instalação.'
+        : 'Este recurso não está disponível nesta instalação.'
+    ),
+    close: () => {}
+  }
 
   return {
     // State (read-only)

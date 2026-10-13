@@ -10,14 +10,6 @@
       </div>
 
       <div class="flex shrink-0 items-center gap-2">
-        <UButton
-          label="Documentação da API"
-          icon="i-heroicons-book-open"
-          variant="outline"
-          color="primary"
-          :to="opnformConfig.links.api_docs"
-          target="_blank"
-        />
 
         <UButton
           label="Criar novo token"
@@ -116,7 +108,7 @@
             <div>
               <h4 class="text-sm font-medium text-neutral-900">Limites de uso</h4>
               <p class="text-sm text-neutral-600 mt-1">
-                As requisições à API têm limite de taxa. <a href="https://docs.opnform.com/api-reference/introduction#rate-limits" target="_blank" class="text-blue-500 hover:underline">Veja a documentação</a> para conhecer os limites atuais e boas práticas.
+                As requisições à API têm limite de taxa. Evite muitas chamadas em sequência.
               </p>
             </div>
           </div>
@@ -133,7 +125,6 @@
 </template>
 
 <script setup>
-import opnformConfig from '~/opnform.config.js'
 import AbilitiesBadges from '~/components/users/settings/access-tokens/AbilitiesBadges.vue'
 
 const accessTokenModal = ref(false)

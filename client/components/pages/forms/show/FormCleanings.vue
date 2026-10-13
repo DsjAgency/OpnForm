@@ -2,22 +2,22 @@
   <VTransition>
     <section
       v-if="shouldShowWarning"
-      class="flex gap-3 p-4 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-300 border-solid max-md:flex-wrap mb-2"
+      class="flex gap-3 p-4 bg-amber-50 dark:bg-amber-950 rounded-lg border border-amber-300 border-solid max-md:flex-wrap mb-2"
       aria-labelledby="notification-title"
     >
       <div class="flex justify-center items-center self-start py-px">
         <Icon
-          name="i-heroicons-sparkles-16-solid"
-          class="w-6 h-6 text-blue-500"
+          name="i-heroicons-exclamation-triangle-16-solid"
+          class="w-6 h-6 text-amber-500"
         />
       </div>
       <div class="flex flex-col flex-1 max-md:max-w-full">
         <div class="flex flex-col text-sm leading-5 text-slate-900 max-md:max-w-full">
           <h5
             id="notification-title"
-            class="font-medium max-md:max-w-full text-blue-500"
+            class="font-medium max-md:max-w-full text-amber-700"
           >
-            Faça upgrade para liberar todos os recursos
+            Alguns recursos estão desativados neste formulário
           </h5>
           <p class="mt-2 max-md:max-w-full text-slate-500">
             <span v-if="specifyFormOwner">Só você está vendo este aviso, como dono do formulário.</span> Os
@@ -29,17 +29,6 @@
           />
         </div>
         <div class="flex gap-0 self-start mt-2 text-xs font-medium leading-3 text-center">
-          <TrackClick
-            name="form_cleanings_unlock_all_features"
-            :properties="{}"
-          >
-            <UButton
-              icon="i-heroicons-check-badge-16-solid"
-              @click.prevent="onUpgradeClick"
-            >
-              Liberar todos os recursos
-            </UButton>
-          </TrackClick>
           <UButton
             v-if="specifyFormOwner"
             variant="link"
@@ -55,7 +44,6 @@
 
 <script setup>
 import VTransition from '~/components/global/transitions/VTransition.vue'
-import TrackClick from '~/components/global/TrackClick.vue'
 import { escapeHtml } from '~/lib/utils'
 
 const props = defineProps({
@@ -65,7 +53,6 @@ const props = defineProps({
   useCookieDismissal: { type: Boolean, default: false }
 })
 
-const { openSubscriptionModal } = useAppModals()
 
 // Create a cookie to store dismissal state for each form
 const cookieName = `form_cleanings_dismissed_${props.form.id}`
@@ -122,15 +109,6 @@ const cleaningContent = computed(() => {
 })
 
 // Methods
-const onUpgradeClick = () => {
-  openSubscriptionModal({
-    plan: 'business',
-    modal_title: 'Faça upgrade para liberar todos os recursos do formulário',
-    modal_description: 'Alguns recursos estão desativados no formulário publicado. Faça upgrade do plano para liberar esses e outros recursos avançados.',
-    show_requirement_hints: false,
-  })
-}
-
 const dismissWarning = () => {
   // Set the cookie with current timestamp (only if cookie dismissal is enabled)
   if (props.useCookieDismissal) {

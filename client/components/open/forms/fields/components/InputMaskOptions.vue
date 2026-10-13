@@ -19,13 +19,6 @@
           <h4 class="font-medium text-sm">
             Configurações da máscara
           </h4>
-          <UButton
-            icon="i-heroicons-question-mark-circle"
-            size="xs"
-            color="neutral"
-            variant="ghost"
-            @click="crisp.openHelpdeskArticle('how-to-set-mask-pattern-197qqps')"
-          />
         </div>
 
         <TextInput
@@ -103,7 +96,6 @@ const props = defineProps({
   }
 })
 
-const crisp = useCrisp()
 
 // Allowed characters regex (matching backend validation)
 const ALLOWED_MASK_CHARS = /^[9a*().\s\-?]*$/

@@ -36,10 +36,10 @@ const isPublicFormPage = computed(() => route.name === 'forms-slug')
 
 // SEO and head configuration
 useOpnSeoMeta({
-  title: "Free Form Builder with Unlimited Submissions",
+  title: "Formulários",
   description:
-    "Build beautiful, powerful forms for free with OpnForm. Unlimited submissions, rich features, and seamless integrations — fully open-source and easy to use.",
-  ogImage: "/img/social-preview.jpg",
+    "Forms4U — formulários da Cidadania4U.",
+  ogImage: "/img/social-preview.png",
   robots: () => {
     return config.public.env === "production" ? null : "noindex, nofollow"
   },
@@ -47,7 +47,7 @@ useOpnSeoMeta({
 
 useHead({
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} - OpnForm` : "OpnForm"
+    return titleChunk ? `${titleChunk} - Forms4U` : "Forms4U"
   },
   meta: [
     {
@@ -61,9 +61,14 @@ useHead({
   ],
   link: [
     {
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/favicon.ico'
+    },
+    {
       rel: 'apple-touch-icon',
       type: 'image/png',
-      href: '/favicon.ico'
+      href: '/apple-touch-icon.png'
     }
   ],
   htmlAttrs: () => ({

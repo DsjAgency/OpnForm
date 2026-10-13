@@ -18,13 +18,6 @@
           >
             Voltar um passo
           </UButton>
-          <UButton
-            variant="outline"
-            icon="i-heroicons-chat-bubble-left-right-16-solid"
-            @click="onErrorContact(error)"
-          >
-            Relatar este erro
-          </UButton>
         </div>
       </div>
     </template>
@@ -38,7 +31,6 @@ import ErrorBoundary from '~/components/app/ErrorBoundary.vue'
 
 const crisp = useCrisp()
 const workingFormStore = useWorkingFormStore()
-const form = storeToRefs(workingFormStore).content
 
 // Clear error and go back 1 step in history
 const clearEditorError = (error, clearError) => {
@@ -58,21 +50,6 @@ const onFormEditorError = (error) => {
     crisp.pushEvent('form-editor-error', eventData)
   } catch (e) {
     console.error('Failed to send event to crisp', e, eventData)
-  }
-}
-const onErrorContact = (error) => {
-  crisp.pauseChatBot()
-  let errorReport = 'Hi there, I have a technical issue with the form editor.'
-  if (form.value.slug) {
-    errorReport += ` The form I am editing is: \`${form.value.slug}\`.`
-  }
-  errorReport += ` And here are technical details about the error: \`\`\`${error.stack}\`\`\``
-  try {
-    crisp.openAndShowChat(errorReport)
-    crisp.showMessage(`Hi there, we're very sorry to hear you experienced an issue with OpnForm.
-        We'll be in touch about it very soon! In the meantime, I recommend that you try going back one step, and save your changes.`, 2000)
-  } catch (e) {
-    console.error('Crisp error', e)
   }
 }
 </script>

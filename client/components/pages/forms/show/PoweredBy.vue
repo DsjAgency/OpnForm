@@ -1,13 +1,11 @@
 <template>
   <UButton
-    :to="targetLink"
     color="form"
     :label="props.label"
-    trailing-icon="i-heroicons-arrow-up-right-20-solid"
-    class="hover:no-underline hover:shadow-lg hover:scale-105 transition-all powered-by-button"
+    class="pointer-events-none powered-by-button"
     :class="textColorClass"
     size="sm"
-    target="_blank"
+    tabindex="-1"
   />
 </template>
 
@@ -19,20 +17,12 @@ const props = defineProps({
   },
   label: {
     type: String,
-    default: "Feito com OpnForm",
+    default: "Feito com Forms4U",
   },
   color: {
     type: String,
     default: "#3B82F6", // Default blue
   },
-})
-
-const targetLink = computed(() => {
-  return (
-    "https://opnform.com?utm_source=" +
-    props.source +
-    "&utm_content=powered_by_btn"
-  )
 })
 
 function getLuminanceFromHex(hex) {

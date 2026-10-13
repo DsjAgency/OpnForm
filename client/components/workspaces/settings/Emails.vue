@@ -11,13 +11,6 @@
         />
       </div>
 
-      <UButton
-        label="Ajuda"
-        icon="i-heroicons-question-mark-circle"
-        variant="outline"
-        color="neutral"
-        @click="crisp.openHelpdeskArticle('how-to-send-emails-using-your-own-domain-name-and-email-address-13kkcif')"
-      />
     </div>
 
     <UAlert
@@ -27,14 +20,6 @@
       variant="subtle"
       title="O envio de e-mails da instância inteira é configurado separadamente"
       description="Use as variáveis de ambiente MAIL_* para configurar o remetente padrão de toda a instância auto-hospedada. Estas configurações substituem esse remetente neste espaço de trabalho e exigem uma licença Enterprise auto-hospedada."
-      :actions="[{
-        label: 'Documentação de e-mail',
-        icon: 'i-heroicons-arrow-top-right-on-square',
-        color: 'info',
-        variant: 'solid',
-        to: 'https://docs.opnform.com/configuration/email-setup',
-        target: '_blank'
-      }]"
     />
 
     <UAlert
@@ -141,7 +126,6 @@ const alert = useAlert()
 const { current: workspace } = useCurrentWorkspace()
 
 const { openSubscriptionModal } = useAppModals()
-const crisp = useCrisp()
 const { hasFeature } = usePlanFeatures()
 const canAccessSmtp = computed(() => hasFeature('custom_smtp'))
 const isSelfHosted = computed(() => useFeatureFlag('self_hosted'))

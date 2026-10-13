@@ -60,7 +60,6 @@
       </div>
     </section>
 
-    <OpenFormFooter :show-cta="false" />
   </div>
 </template>
 

@@ -9,15 +9,6 @@
           Mudar o espaço de trabalho do formulário
         </h2>
       </div>
-      <UButton
-        color="neutral"
-        variant="outline"
-        icon="i-heroicons-question-mark-circle"
-        size="sm"
-        @click="crisp.openHelpdeskArticle('how-to-move-a-form-to-another-workspace-1twq0kg')"
-      >
-        Ajuda
-      </UButton>
     </template>
 
     <template #body>
@@ -70,7 +61,6 @@ import WorkspaceIcon from "~/components/workspaces/WorkspaceIcon.vue"
 
 const emit = defineEmits(["close"])
 const { switchTo } = useCurrentWorkspace()
-const crisp = useCrisp()
 
 const selectedWorkspace = ref(null)
 const props = defineProps({

@@ -51,7 +51,6 @@
 
 <script setup>
 import { computed } from "vue"
-import OpenFormFooter from "../../../components/pages/OpenFormFooter.vue"
 import Breadcrumb from "~/components/app/Breadcrumb.vue"
 import { useTemplateMeta } from "~/composables/data/useTemplateMeta"
 
@@ -105,13 +104,13 @@ useHead({
     if (
       type.value &&
       type.value.meta_title.length < 60 &&
-      !type.value.meta_title.toLowerCase().includes("opnform")
+      !type.value.meta_title.toLowerCase().includes("forms4u")
     ) {
       return titleChunk
-        ? `${titleChunk} - OpnForm`
-        : "Form Templates - OpnForm"
+        ? `${titleChunk} - Forms4U`
+        : "Form Templates - Forms4U"
     }
-    return titleChunk ? titleChunk : "Form Templates - OpnForm"
+    return titleChunk ? titleChunk : "Form Templates - Forms4U"
   },
 })
 </script>

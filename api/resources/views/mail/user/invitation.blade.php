@@ -1,20 +1,18 @@
 @component('mail::message')
 
-# Invitation to Join {{ $workspaceName }} on OpnForm
+# Convite para {{ $workspaceName }} no Forms4U
 
-Hello,
+Olá,
 
-You have been invited to join the workspace "{{ $workspaceName }}" on OpnForm, a platform that simplifies form creation and data collection. With OpnForm, you can easily create, distribute, and manage forms for any purpose.
+Você foi convidado para participar do espaço de trabalho "{{ $workspaceName }}" no Forms4U, a plataforma de formulários da Cidadania4U. Com o Forms4U, você cria, compartilha e gerencia formulários com facilidade.
 
-To join us, please click the button below.
+Para participar, clique no botão abaixo.
 
 @component('mail::button', ['url' => $inviteLink])
-Accept Invitation
+Aceitar convite
 @endcomponent
 
-Looking forward to having you on board.
-
-Best Regards,
-The OpnForm Team
+Até logo,<br>
+Equipe Forms4U
 
 @endcomponent

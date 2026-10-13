@@ -46,10 +46,8 @@ const props = defineProps({
 })
 
 const { openSubscriptionModal } = useAppModals()
-const { data: user } = useAuth().user()
-const { current: workspace } = useCurrentWorkspace()
-const { getRequiredTier, hasFeature } = usePlanFeatures()
-const { currentWorkspaceTier, getTierDisplayName, tierMeetsRequirement } = useBillingUpsell()
+const { getRequiredTier } = usePlanFeatures()
+const { getTierDisplayName } = useBillingUpsell()
 
 // Determine the display tier (either explicit or from feature)
 const displayTier = computed(() => {
@@ -59,17 +57,8 @@ const displayTier = computed(() => {
 })
 
 // Check if we should display the tag
-const shouldDisplayTag = computed(() => {
-  const isSelfHostedRequired = displayTier.value === 'self_hosted'
-  if (!isSelfHostedRequired && useFeatureFlag('self_hosted')) return false
-  if (!isSelfHostedRequired && !useFeatureFlag('billing.enabled')) return false
-  if (!displayTier.value) return false
-  if (props.feature && hasFeature(props.feature)) return false
-  if (!user.value || !workspace.value) return true
-
-  // Show tag if current tier doesn't meet requirement
-  return !tierMeetsRequirement(currentWorkspaceTier.value, displayTier.value)
-})
+// Plan/license upsell tags are hidden in the internal Cidadania4U build
+const shouldDisplayTag = computed(() => false)
 
 // Tag label based on tier
 const tagLabel = computed(() => {

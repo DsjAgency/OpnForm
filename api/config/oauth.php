@@ -20,6 +20,6 @@ return [
     'refresh_token_ttl_days' => (int) env('OAUTH_REFRESH_TOKEN_TTL_DAYS', 30),
 
     'scopes' => [
-        'mcp:use' => 'Use OpnForm MCP features to access the forms and submissions you explicitly ask the assistant to manage.',
+        'mcp:use' => 'Use Forms4U MCP features to access the forms and submissions you explicitly ask the assistant to manage.',
     ],
 ];

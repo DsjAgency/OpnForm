@@ -121,7 +121,7 @@ const handleCallback = async () => {
       } else {
         // Handle new user registration
         router.push({ name: "forms-create" })
-        useAlert().success("Pronto! Você se cadastrou com sua conta Google. Bem-vindo ao OpnForm.")
+        useAlert().success("Pronto! Você se cadastrou com sua conta Google. Bem-vindo ao Forms4U.")
       }
     } else if (response.provider) {
       // Integration flow - user was already logged in, provider was connected
@@ -175,7 +175,7 @@ const handleTwoFactorVerifiedAndRedirect = async (tokenData) => {
   // Handle redirect based on user status
   if (tokenData.new_user) {
     router.push({ name: "forms-create" })
-    useAlert().success("Pronto! Você se cadastrou com sua conta Google. Bem-vindo ao OpnForm.")
+    useAlert().success("Pronto! Você se cadastrou com sua conta Google. Bem-vindo ao Forms4U.")
   } else {
     if (window.opener) {
       try {

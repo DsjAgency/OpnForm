@@ -59,27 +59,27 @@ const previewImage = computed(() => {
   if (props.form?.cover_picture) {
     return props.form.cover_picture
   }
-  return '/img/social-preview.jpg'
+  return '/img/social-preview.png'
 })
 
 const previewTitle = computed(() => {
   if (props.form.seo_meta?.page_title) {
     return props.form.seo_meta.page_title
   }
-  return props.form?.title ? `${props.form.title} - OpnForm` : 'OpnForm'
+  return props.form?.title || 'Cidadania4U'
 })
 
 const previewDescription = computed(() => {
   if (props.form.seo_meta?.page_description) {
     return props.form.seo_meta.page_description
   }
-  return 'Formulários bonitos e completos, criados com o OpnForm.'
+  return 'Formulário Cidadania4U.'
 })
 
 const previewDomain = computed(() => {
   if (props.form?.custom_domain) {
     return props.form.custom_domain.toUpperCase()
   }
-  return 'OPNFORM.COM'
+  return useRequestURL().host.toUpperCase()
 })
 </script>

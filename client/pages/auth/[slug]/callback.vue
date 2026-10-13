@@ -144,7 +144,7 @@ const handleCallback = async () => {
     // Redirect based on user status (aligned with OAuth callback pattern)
     if (response.new_user) {
       router.push({ name: "forms-create" })
-      useAlert().success("Pronto! Você foi cadastrado via OIDC. Bem-vindo ao OpnForm.")
+      useAlert().success("Pronto! Você foi cadastrado via OIDC. Bem-vindo ao Forms4U.")
     } else {
       // For existing users, redirect to intended URL or home (aligned with OAuth)
       router.push({ name: "home" })
@@ -208,7 +208,7 @@ const handleTwoFactorVerifiedAndRedirect = async (tokenData) => {
   // Redirect based on user status
   if (tokenData.new_user) {
     router.push({ name: "forms-create" })
-    useAlert().success("Pronto! Você foi cadastrado via OIDC. Bem-vindo ao OpnForm.")
+    useAlert().success("Pronto! Você foi cadastrado via OIDC. Bem-vindo ao Forms4U.")
   } else {
     router.push({ name: "home" })
     useAlert().success("Login realizado com sucesso!")

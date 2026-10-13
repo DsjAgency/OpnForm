@@ -59,21 +59,11 @@ export const useWorkingFormStore = defineStore("working_form", {
       const actions = []
       let message = ''
       if (selfHosted) {
-        // Self-hosted: safety notice + docs
-        message = 'Por segurança, o código personalizado vem desativado na versão auto-hospedada. Veja a documentação técnica para saber mais.'
-        actions.push({
-          label: 'Ver documentação',
-          icon: 'i-heroicons-book-open',
-          onclick: () => { if (import.meta.client) window.open('https://docs.opnform.com/deployment/enterprise-features/custom-code', '_blank') }
-        })
+        // Self-hosted: safety notice
+        message = 'Por segurança, o código personalizado vem desativado na versão auto-hospedada. Ative com a variável CUSTOM_CODE_ENABLE_SELF_HOSTED=true.'
       } else {
-        // Cloud: require custom domain + Crisp help
+        // Cloud: require custom domain
         message = 'O formulário precisa usar um domínio personalizado para ter um bloco de código.'
-        actions.push({
-          label: 'Ajuda',
-          icon: 'i-heroicons-question-mark-circle',
-          onclick: () => { try { useCrisp().openHelpdeskArticle('how-do-i-add-custom-code-to-my-form-1amadj3') } catch { /* noop */ } }
-        })
       }
       useAlert().error(message, 10000, { title: 'Código personalizado desativado', actions })
     },

@@ -34,14 +34,6 @@
       >
         Limpar
       </UButton>
-      <UButton
-        color="neutral"
-        variant="ghost"
-        class="text-neutral-500"
-        size="xs"
-        icon="i-heroicons-question-mark-circle"
-        @click="openHelpArticle"
-      />
     </div>
 
     <!-- Conditions Card -->
@@ -202,13 +194,6 @@ export default {
       type: Object,
       required: false,
     },
-  },
-
-  setup() {
-    const crisp = useCrisp()
-    return {
-      crisp
-    }
   },
 
   data() {
@@ -391,9 +376,6 @@ export default {
     },
     refreshActions() {
       this.resetKey++
-    },
-    openHelpArticle() {
-      this.crisp.openHelpdeskArticle('how-do-i-add-logic-to-my-form-1lmguq5')
     },
     copyLogic() {
       if (this.copyFrom) {

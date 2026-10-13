@@ -139,7 +139,7 @@ class PdfGeneratorService
     }
 
     /**
-     * Add OpnForm branding footer: "PDF generated with [LOGO] OpnForm".
+     * Add branding footer: "PDF gerado com [LOGO] Forms4U".
      */
     private function addBrandingFooter(Fpdi $pdf, array $pageSize): void
     {
@@ -152,8 +152,8 @@ class PdfGeneratorService
         $pdf->SetFont('Helvetica', '', 12);
         $pdf->SetTextColor(128, 128, 128);
 
-        $textBefore = 'PDF generated with ';
-        $textAfter = ' OpnForm';
+        $textBefore = 'PDF gerado com ';
+        $textAfter = ' Forms4U';
         $wBefore = $pdf->GetStringWidth($textBefore);
         $wAfter = $pdf->GetStringWidth($textAfter);
 

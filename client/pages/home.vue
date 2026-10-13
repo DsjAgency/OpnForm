@@ -132,7 +132,6 @@
                 </div>
               </div>
 
-              <UpgradeBanner v-if="enrichedForms.length >= 2" class="mt-2" />
             </div>
 
             <div v-if="isFormsLoading" class="flex flex-col gap-2">
@@ -161,7 +160,6 @@ import { useFuse } from "@vueuse/integrations/useFuse"
 import FormCard from "~/components/pages/home/FormCard.vue"
 import FormCardSkeleton from "~/components/pages/home/FormCardSkeleton.vue"
 import TrackClick from "~/components/global/TrackClick.vue"
-import UpgradeBanner from "~/components/dashboard/UpgradeBanner.vue"
 
 definePageMeta({
   middleware: ["auth"],

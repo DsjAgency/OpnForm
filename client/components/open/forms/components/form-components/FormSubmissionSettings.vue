@@ -62,13 +62,6 @@
         >
           <p class="mb-2 mt-2 text-neutral-500 text-sm">
             Quando valores iguais forem encontrados nas colunas selecionadas, o (primeiro) registro existente é atualizado em vez de criar um novo. Se não houver correspondência, um novo registro é criado.
-            <a
-              href="#"
-              class="text-blue-500 hover:underline"
-              @click.prevent="crisp.openHelpdeskArticle('how-to-update-a-record-on-form-submission-1t1jwmn')"
-            >
-              Saiba mais.
-            </a>
           </p>
           <select-input
             v-if="filterableFields.length"
@@ -359,7 +352,6 @@ import {
 
 const workingFormStore = useWorkingFormStore()
 const { content: form } = storeToRefs(workingFormStore)
-const crisp = useCrisp()
 
 // PDF Templates for success page download
 const { list } = usePdfTemplates()

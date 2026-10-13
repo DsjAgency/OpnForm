@@ -18,7 +18,7 @@
               Importar formulário
             </h3>
             <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-              Cole a URL de um formulário compatível e o OpnForm vai detectar o provedor.
+              Cole a URL de um formulário compatível e o Forms4U vai detectar o provedor.
             </p>
           </div>
         </div>

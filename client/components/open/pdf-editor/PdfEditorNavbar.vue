@@ -36,21 +36,6 @@
 
       <slot name="before-save" />
       
-      <TrackClick name="pdf_editor_help_button_clicked">
-        <UTooltip
-          text="Ajuda"
-          class="items-center relative"
-          :content="{ side: 'bottom' }"
-          arrow
-        >
-          <UButton
-            variant="ghost"
-            color="neutral"
-            icon="i-heroicons-question-mark-circle"
-            @click.prevent="crisp.openHelpdesk()"
-          />
-        </UTooltip>
-      </TrackClick>
 
       <div class="flex items-center gap-1">
         <UTooltip text="Diminuir zoom" :content="{ side: 'bottom' }" arrow>
@@ -149,7 +134,7 @@
         <ToggleSwitchInput
           v-model="pdfTemplate.remove_branding"
           name="remove_branding"
-          help="Oculta o rodapé 'PDF gerado com OpnForm'"
+          help="Oculta o rodapé 'PDF gerado com Forms4U'"
         >
           <template #label>
             <span class="text-sm">
@@ -184,7 +169,6 @@ defineShortcuts({
   }
 })
 
-const crisp = useCrisp()
 
 const settingsModal = ref(false)
 

@@ -358,7 +358,7 @@ describe('FormCleaner tier-based cleaning', function () {
 
         $cleanings = $cleaner->getPerformedCleanings();
         expect($cleanings)->toHaveKey('form');
-        expect($cleanings['form']->toArray())->toContain('OpnForm branding is not hidden.');
+        expect($cleanings['form']->toArray())->toContain('A marca Forms4U não está oculta.');
         expect($cleanings['form']->toArray())->toContain('Redirect Url was disabled');
         expect($cleanings['form']->toArray())->toContain('Partial submissions were disabled');
         expect($cleanings['form']->toArray())->toContain('IP tracking was disabled');

@@ -21,21 +21,6 @@
           </p>
         </div>
         <div class="flex gap-2">
-          <UButton
-            label="Documentação do SDK"
-            icon="i-heroicons-code-bracket"
-            variant="outline"
-            color="neutral"
-            to="https://docs.opnform.com/embedding/javascript-sdk#custom-code-integration"
-            target="_blank"
-          />
-          <UButton
-            label="Ajuda"
-            icon="i-heroicons-question-mark-circle"
-            variant="outline"
-            color="neutral"
-            @click="crisp.openHelpdeskArticle('how-do-i-add-custom-code-to-my-form-1amadj3')"
-          />
         </div>
       </div>
       
@@ -70,13 +55,6 @@
               O CSS será inserido no <b>head</b> da página do formulário.
             </p>
           </div>
-          <UButton
-            label="Ajuda"
-            icon="i-heroicons-question-mark-circle"
-            variant="outline"
-            color="neutral"
-            @click="crisp.openHelpdeskArticle('can-i-style-my-form-with-some-custom-css-code-1v3dlr9')"
-          />
         </div>
         <CodeInput
           :allow-fullscreen="true"
@@ -98,7 +76,6 @@ import PlanTag from "~/components/app/PlanTag.vue"
 
 const workingFormStore = useWorkingFormStore()
 const { content: form } = storeToRefs(workingFormStore)
-const crisp = useCrisp()
 
 const canUseCustomCode = computed(() => workingFormStore.isCustomCodeAllowed)
 const isSelfHosted = computed(() => useFeatureFlag('self_hosted'))
@@ -111,7 +88,7 @@ const customCodeHelp = computed(() => {
   }
   // In self-hosted mode with flag disabled (and no custom domain), show safety notice with docs link
   if (isSelfHosted.value && !allowSelfHosted && !hasCustomDomain) {
-    return 'Por segurança, o código personalizado vem desativado na versão auto-hospedada. Ative com CUSTOM_CODE_ENABLE_SELF_HOSTED=true. Veja a documentação técnica: https://docs.opnform.com/deployment/enterprise-features/custom-code'
+    return 'Por segurança, o código personalizado vem desativado na versão auto-hospedada. Ative com CUSTOM_CODE_ENABLE_SELF_HOSTED=true.'
   }
   return 'O código personalizado exige o uso de um domínio personalizado.'
 })

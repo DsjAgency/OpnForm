@@ -24,7 +24,7 @@
         Nenhuma conexão SAML ainda
       </h4>
       <p class="text-neutral-500 mb-6 max-w-md mx-auto">
-        A configuração de SAML não existe nesta versão do OpnForm.
+        A configuração de SAML não existe nesta versão do Forms4U.
       </p>
     </div>
   </div>

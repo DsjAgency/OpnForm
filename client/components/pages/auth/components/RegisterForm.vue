@@ -272,7 +272,7 @@ const register = () => {
       emit('registered')
     } else {
     useAlert().success({
-      title: "Bem-vindo ao OpnForm 👋",
+      title: "Bem-vindo ao Forms4U 👋",
       ...!props.isQuick ? {description: "Hora de criar seu primeiro formulário!"} : {}
     })
     redirect()

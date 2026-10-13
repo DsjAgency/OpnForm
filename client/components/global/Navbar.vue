@@ -7,11 +7,8 @@
             :to="{ name: user ? 'home' : 'index' }"
             class="shrink-0 font-semibold hover:no-underline flex items-center"
           >
-            <img src="/img/logo.svg" alt="notion tools logo" class="w-6 h-6" />
-            <span
-              class="ml-2 text-md hidden sm:inline text-gray-950 dark:text-white"
-              >OpnForm</span
-            >
+            <img src="/img/cidadania4u-icon.png" alt="Cidadania4U" class="w-7 h-7 sm:hidden" />
+            <img src="/img/cidadania4u-logo.png" alt="Cidadania4U" class="hidden sm:block h-8 w-auto" />
           </NuxtLink>
           <WorkspaceDropdown class="ml-6">
             <template #default="{ workspace }">
@@ -39,85 +36,6 @@
           >
             Meus formulários
           </NuxtLink>
-          <NuxtLink
-            v-if="$route.name !== 'enterprise'"
-            :to="{ name: 'enterprise' }"
-            :class="navLinkClasses"
-            class="hidden lg:block"
-          >
-            Enterprise
-          </NuxtLink>
-          <NuxtLink
-            v-if="$route.name !== 'integrations'"
-            :to="{ name: 'integrations' }"
-            :class="navLinkClasses"
-            class="hidden md:block"
-          >
-            Integrações
-          </NuxtLink>
-          <NuxtLink
-            v-if="
-              $route.name !== 'ai-form-builder' &&
-              user === null &&
-              !useFeatureFlag('self_hosted') &&
-              useFeatureFlag('ai_features')
-            "
-            :to="{ name: 'ai-form-builder' }"
-            :class="navLinkClasses"
-            class="hidden lg:inline"
-          >
-            Criador de formulários com IA
-          </NuxtLink>
-          <NuxtLink
-            v-if="
-              useFeatureFlag('billing.enabled') &&
-              $route.name !== 'pricing' &&
-              !isSelfHosted
-            "
-            :to="{ name: 'pricing' }"
-            :class="navLinkClasses"
-          >
-            <span
-              v-if="user && workspace && !workspaceIsPaid"
-              class="text-primary"
-              >Fazer upgrade</span
-            >
-            <span v-else>Preços</span>
-          </NuxtLink>
-
-          <NuxtLink
-            :href="opnformConfig.links.tech_docs"
-            :class="navLinkClasses"
-            target="_blank"
-            class="hidden 2xl:block"
-          >
-            Documentação
-          </NuxtLink>
-
-          <!-- <template v-if="appStore.featureBaseEnabled">
-            <button
-              v-if="user"
-              :class="navLinkClasses"
-              class="hidden xl:block"
-              @click.prevent="openChangelog"
-            >
-              Novidades
-              <span
-                v-if="hasNewChanges"
-                id="fb-update-badge"
-                class="bg-blue-500 rounded-full px-2 ml-1 text-white"
-              />
-            </button>
-            <a
-              v-else
-              :href="opnformConfig.links.changelog_url"
-              target="_blank"
-              :class="navLinkClasses"
-              class="hidden xl:block"
-            >
-              Novidades
-            </a>
-          </template> -->
         </div>
 
         <div class="block">
@@ -178,17 +96,13 @@ import WorkspaceDropdown from "../dashboard/WorkspaceDropdown.vue"
 import WorkspaceIcon from "~/components/workspaces/WorkspaceIcon.vue"
 import UserDropdown from "../dashboard/UserDropdown.vue"
 
-import opnformConfig from "~/opnform.config.js"
 import { useFeatureFlag } from "~/composables/useFeatureFlag"
 import TrackClick from "~/components/global/TrackClick.vue"
 
 // Stores & composables
-const { current: workspace } = useCurrentWorkspace()
-
 const { data: user } = useAuth().user()
 const isIframe = useIsIframe()
 const isSelfHosted = computed(() => useFeatureFlag("self_hosted"))
-const { workspaceIsPaid } = useBillingUpsell()
 const route = useRoute()
 
 // Get current form for forms-slug routes

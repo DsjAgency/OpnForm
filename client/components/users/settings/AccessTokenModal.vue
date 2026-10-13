@@ -8,15 +8,6 @@
           Criar token de acesso
         </h2>
       </div>
-      <UButton
-        color="neutral"
-        variant="outline"
-        icon="i-heroicons-question-mark-circle"
-        size="sm"
-        @click="crisp.openHelpdesk()"
-      >
-        Ajuda
-      </UButton>
     </template>
  
     <template #body>
@@ -100,7 +91,6 @@ const emit = defineEmits(['close'])
 
 const { abilities, create } = useTokens()
 const alert = useAlert()
-const crisp = useCrisp()
 
 const { data: adminAbilities } = useQuery({ queryKey: ['tokens', 'abilities'], queryFn: tokensApi.abilities })
 const abilitiesOptions = computed(() => [...abilities, ...(adminAbilities.value ?? []).map(name => ({ name, title: name.replace('admin:', 'Admin – ').replaceAll(':', ' – ').replaceAll('-', ' ') }))].map(ability => ({

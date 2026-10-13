@@ -200,7 +200,7 @@ describe('MCP self-hosted settings', () => {
     const wrapper = mountSettings()
     await flushPromises()
 
-    expect(wrapper.text()).toContain('O MCP do OpnForm está pronto')
+    expect(wrapper.text()).toContain('O MCP do Forms4U está pronto')
     expect(wrapper.text()).toContain('Crie rascunhos privados sem login')
     expect(wrapper.text()).toContain('Cloud')
     expect(wrapper.find('[data-testid="mcp-enabled-switch"]').exists()).toBe(false)

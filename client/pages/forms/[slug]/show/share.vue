@@ -80,14 +80,6 @@
               Incorporar formulário
             </h2>
             <div class="flex gap-2">
-              <UButton
-                label="Documentação do SDK"
-                icon="i-heroicons-code-bracket"
-                variant="outline"
-                color="neutral"
-                to="https://docs.opnform.com/embedding/javascript-sdk"
-                target="_blank"
-              />
             </div>
           </div>
           <p class="text-neutral-600 text-sm">

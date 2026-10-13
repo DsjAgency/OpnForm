@@ -17,14 +17,6 @@
         </div>
       </div>
 
-      <UButton
-        to="https://docs.opnform.com/integrations/mcp"
-        target="_blank"
-        label="Guia de configuração"
-        icon="i-heroicons-arrow-up-right"
-        variant="outline"
-        color="neutral"
-      />
     </div>
 
     <div v-if="isLoading" class="space-y-3">
@@ -231,14 +223,14 @@ const snippetOptions = [
     key: 'cursor',
     label: 'Cursor',
     icon: 'i-heroicons-cursor-arrow-rays',
-    description: 'Instale o OpnForm direto no Cursor ou copie a configuração JSON abaixo.',
+    description: 'Instale o Forms4U direto no Cursor ou copie a configuração JSON abaixo.',
     installLabel: 'Instalar no Cursor',
   },
   {
     key: 'claude_code',
     label: 'Claude Code',
     icon: 'i-heroicons-chat-bubble-left-right',
-    description: 'Rode este comando e depois use /mcp no Claude Code para autenticar no OpnForm.',
+    description: 'Rode este comando e depois use /mcp no Claude Code para autenticar no Forms4U.',
   },
   {
     key: 'chatgpt',
@@ -286,12 +278,12 @@ const isSelfHosted = computed(() => settings.value?.self_hosted !== false)
 
 const pageDescription = computed(() => {
   return isSelfHosted.value
-    ? 'Conecte assistentes de IA diretamente a esta instância do OpnForm.'
-    : 'Conecte assistentes de IA ao OpnForm Cloud.'
+    ? 'Conecte assistentes de IA diretamente a esta instância do Forms4U.'
+    : 'Conecte assistentes de IA ao Forms4U Cloud.'
 })
 
 const statusTitle = computed(() => {
-  if (!isSelfHosted.value) return 'O MCP do OpnForm está pronto'
+  if (!isSelfHosted.value) return 'O MCP do Forms4U está pronto'
   if (!settings.value?.ready) return 'Configuração do servidor necessária'
   return isMcpAvailable.value ? 'MCP disponível' : 'Pronto para conectar'
 })
@@ -299,7 +291,7 @@ const statusTitle = computed(() => {
 const statusDescription = computed(() => {
   if (!isSelfHosted.value) return 'Crie rascunhos privados sem login ou conecte sua conta para gerenciar formulários e ler respostas.'
   if (!settings.value?.ready) return 'Resolva os pré-requisitos abaixo antes de expor o endpoint MCP.'
-  if (isMcpAvailable.value) return 'Assistentes de IA conectados podem criar e gerenciar formulários e ler respostas usando sua conta do OpnForm.'
+  if (isMcpAvailable.value) return 'Assistentes de IA conectados podem criar e gerenciar formulários e ler respostas usando sua conta do Forms4U.'
   return 'O OAuth está pronto. Ative o MCP quando quiser que esta instância aceite conexões de agentes.'
 })
 

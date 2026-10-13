@@ -24,15 +24,6 @@
             Gerar novo link do formulário
           </h2>
         </div>
-        <UButton
-          color="neutral"
-          variant="outline"
-          icon="i-heroicons-question-mark-circle"
-          size="sm"
-          @click="crisp.openHelpdeskArticle('how-to-change-my-form-url-171rjw7')"
-        >
-          Ajuda
-        </UButton>
     </template>
 
       <template #body>
@@ -94,7 +85,7 @@
             bonita e legível. Exemplo:
           </p>
           <p class="text-neutral-600 border p-4 bg-neutral-50 rounded-md mt-4">
-            https://opnform.com/forms/contact-form-e68des
+            {{ exampleOrigin }}/forms/formulario-de-contato-e68des
           </p>
           <div class="text-center mt-4">
             <TrackClick
@@ -121,7 +112,7 @@
             e você prefere uma URL aleatória e difícil de adivinhar. Exemplo:
           </p>
           <p class="text-neutral-600 p-4 border bg-neutral-50 rounded-md mt-4">
-            https://opnform.com/forms/b4417f9c-34ae-4421-8006-832ee47786e7
+            {{ exampleOrigin }}/forms/b4417f9c-34ae-4421-8006-832ee47786e7
           </p>
           <div class="text-center mt-4">
             <TrackClick
@@ -147,11 +138,12 @@
 <script setup>
 import TrackClick from "~/components/global/TrackClick.vue"
 
+const exampleOrigin = useRequestURL().origin
+
 const props = defineProps({
   form: { type: Object, required: true },
 })
 
-const crisp = useCrisp()
 const router = useRouter()
 const showGenerateFormLinkModal = ref(false)
 

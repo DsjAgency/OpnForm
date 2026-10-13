@@ -26,7 +26,7 @@ it('exposes the OpnForm MCP endpoint and initializes the protocol', function () 
     ]);
 
     $response->assertOk()
-        ->assertJsonPath('result.serverInfo.name', 'OpnForm')
+        ->assertJsonPath('result.serverInfo.name', 'Forms4U')
         ->assertJsonPath('result.serverInfo.version', '1.0.0')
         ->assertJsonPath('result.protocolVersion', '2025-06-18')
         ->assertJsonPath('result.instructions', function (string $instructions): bool {

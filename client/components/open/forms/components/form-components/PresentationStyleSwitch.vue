@@ -12,14 +12,6 @@
       <template #label>
         <div class="flex items-center gap-0.5">
           <span class="text-neutral-700 font-semibold text-xs">Estilo do formulário</span>
-          <UButton
-            color="neutral"
-            variant="ghost"
-            size="xs"
-            icon="i-heroicons-question-mark-circle"
-            class="text-neutral-500"
-            @click="openHelpArticle"
-          />
         </div>
       </template>
     </OptionSelectorInput>
@@ -65,7 +57,6 @@ import { ensureSettingsObject } from '@/composables/forms/initForm'
 
 const workingFormStore = useWorkingFormStore()
 const formRef = storeToRefs(workingFormStore).content
-const crisp = useCrisp()
 
 const form = computed(() => formRef.value || {})
 const currentStyle = computed(() => form.value.presentation_style || 'classic')
@@ -263,10 +254,6 @@ function disableFocusedComponents(formValue) {
       delete field.focused_checkbox_style
     }
   })
-}
-
-function openHelpArticle() {
-  crisp.openHelpdeskArticle('how-to-create-a-typeformstyle-onequestionatatime-form-focused-mode-1d5r5x')
 }
 </script>
 

@@ -1,26 +1,4 @@
-import opnformConfig from "~/opnform.config.js"
-
 export const useSharedNavigation = () => {
-  const appStore = useAppStore()
-  const crisp = useCrisp()
-  
-  const isSelfHosted = computed(() => useFeatureFlag('self_hosted'))
-  const featurebaseLoaded = computed(() => {
-    return import.meta.client && window.Featurebase
-  })
-
-  // Check for new changes in changelog
-  const hasNewChanges = computed(() => {
-    if (import.meta.server || !window.Featurebase || !appStore.featureBaseEnabled) return false
-    return window.Featurebase("unviewed_changelog_count") > 0
-  })
-
-  // Open changelog modal
-  function openChangelog() {
-    if (import.meta.server || !window.Featurebase) return
-    window.Featurebase("manually_open_changelog_popup")
-  }
-
   // Default button configuration
   const defaultButtonProps = {
     variant: 'ghost',
@@ -69,73 +47,8 @@ export const useSharedNavigation = () => {
     }
   }
 
-  // Shared navigation sections (Product and Help)
-  const sharedNavigationSections = computed(() => [
-    // Product section
-    {
-      name: 'Produto',
-      items: [
-        // What's new - only show if feature base enabled
-        ...(appStore.featureBaseEnabled ? [createNavItem({
-          label: "Novidades",
-          icon: 'i-heroicons-megaphone',
-          color: hasNewChanges.value ? 'primary' : 'neutral',
-          trailingIcon: hasNewChanges.value ? 'i-heroicons-sparkles-solid' : undefined,
-          ui: {
-            trailingIcon: 'text-blue-500'
-          },
-          onClick: openChangelog
-        })] : []),
-        createNavItem({
-          label: 'Roadmap',
-          icon: 'i-heroicons-map',
-          to: opnformConfig.links.roadmap,
-          target: '_blank'
-        }),
-        (featurebaseLoaded.value ? createNavItem({
-          label: 'Sugestões de recursos',
-          icon: 'i-heroicons-light-bulb', 
-          onClick: () => {
-            window.postMessage({
-                target: 'FeaturebaseWidget',
-                data: { 
-                  action: 'openFeedbackWidget',
-                  setBoard: 'feature-requests', // optional - preselect a board
-                }
-            })
-          }
-        }):  createNavItem({
-          label: 'Sugestões de recursos',
-          icon: 'i-heroicons-light-bulb', 
-          to: opnformConfig.links.feature_requests,
-          target: '_blank'
-        }))
-      ]
-    },
-    // Help section
-    {
-      name: 'Ajuda',
-      items: [
-        createNavItem({
-          label: 'Central de ajuda',
-          icon: 'i-heroicons-question-mark-circle',
-          to: opnformConfig.links.help_url,
-          target: '_blank'
-        }),
-        createNavItem({
-          label: 'Documentação da API',
-          icon: 'i-heroicons-code-bracket',
-          to: opnformConfig.links.api_docs,
-          target: '_blank'
-        }),
-        ...(isSelfHosted.value || !crisp ? [] : [createNavItem({
-          label: 'Falar com o suporte',
-          icon: 'i-heroicons-chat-bubble-left-right',
-          onClick: () => crisp.openChat()
-        })])
-      ]
-    }
-  ])
+  // Product and Help sections removed for the internal Cidadania4U build
+  const sharedNavigationSections = computed(() => [])
 
   return {
     sharedNavigationSections,

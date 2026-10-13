@@ -1,4 +1,4 @@
-<x-mcp::app title="OpnForm draft preview">
+<x-mcp::app title="Forms4U draft preview">
     <x-slot:head>
         <style>
             :root { color-scheme: light dark; }
@@ -220,7 +220,7 @@
 
                         await app.openLink({ url: editorUrl });
                     } catch (error) {
-                        actionStatus.textContent = 'Could not open the OpnForm editor. Please try again.';
+                        actionStatus.textContent = 'Could not open the Forms4U editor. Please try again.';
                         actionStatus.hidden = false;
                     } finally {
                         openButton.textContent = initialOpenButtonText;
@@ -249,7 +249,7 @@
                         <button id="zoom-reset" class="zoom-value" type="button" title="Reset zoom">85%</button>
                         <button id="zoom-in" class="zoom-button" type="button" title="Zoom in" aria-label="Zoom in">+</button>
                     </div>
-                    <button id="open-editor" class="open-button" type="button" aria-label="Continue editing this draft in OpnForm" disabled>Edit in OpnForm</button>
+                    <button id="open-editor" class="open-button" type="button" aria-label="Continue editing this draft in Forms4U" disabled>Edit in Forms4U</button>
                 </div>
             </header>
             <p id="action-status" class="action-status" role="status" aria-live="polite" hidden></p>
@@ -257,7 +257,7 @@
                 <div id="preview-canvas" class="preview-canvas">
                     <iframe
                         id="preview"
-                        title="OpnForm draft preview"
+                        title="Forms4U draft preview"
                         sandbox="allow-forms allow-modals allow-popups allow-scripts allow-same-origin"
                         referrerpolicy="no-referrer"
                         hidden

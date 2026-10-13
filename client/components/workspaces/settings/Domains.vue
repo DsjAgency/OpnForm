@@ -9,13 +9,6 @@
       </div>
 
       <div class="flex shrink-0 items-center gap-2">
-        <UButton
-          label="Ajuda"
-          icon="i-heroicons-question-mark-circle"
-          variant="outline"
-          color="neutral"
-          @click="crisp.openHelpdeskArticle('how-to-use-my-own-domain-9m77g7')"
-        />
       </div>
     </div>
 
@@ -96,7 +89,6 @@
 <script setup>
 const { updateCustomDomains } = useWorkspaces()
 const alert = useAlert()
-const crisp = useCrisp()
 const { current: workspace } = useCurrentWorkspace()
 
 const { openSubscriptionModal } = useAppModals()

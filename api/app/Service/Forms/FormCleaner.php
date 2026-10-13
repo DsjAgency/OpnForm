@@ -29,7 +29,7 @@ class FormCleaner
 
     private array $cleaningMessages = [
         // For form
-        'no_branding' => 'OpnForm branding is not hidden.',
+        'no_branding' => 'A marca Forms4U não está oculta.',
         'database_fields_update' => 'Form submission will only create new records (no updates).',
         'editable_submissions' => 'Users will not be able to edit their submissions.',
         'custom_code' => 'Custom code was disabled',

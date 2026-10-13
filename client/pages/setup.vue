@@ -2,18 +2,17 @@
   <div class="min-h-screen bg-neutral-50 flex flex-col justify-center sm:px-6 lg:px-8 py-10">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <div class="flex justify-center items-center mb-6">
-        <img
-          src="/img/logo.svg"
-          alt="OpnForm logo"
-          class="w-8 h-8"
-        >
-        <h1 class="ml-2 text-xl font-semibold text-black">
-          OpnForm
+        <h1>
+          <img
+            src="/img/cidadania4u-logo.png"
+            alt="Cidadania4U"
+            class="h-16 w-auto"
+          >
         </h1>
       </div>
       
       <p class="mt-2 text-center text-sm text-neutral-600">
-        Bem-vindo ao OpnForm! Vamos configurar tudo. Crie sua conta de administrador para começar a criar formulários.
+        Bem-vindo ao Forms4U! Vamos configurar tudo. Crie sua conta de administrador para começar a criar formulários.
       </p>
     </div>
 
@@ -47,7 +46,7 @@ if (!setupRequired || !selfHosted) {
 // SEO
 useOpnSeoMeta({
   title: "Configuração inicial",
-  description: "Configure sua instância do OpnForm",
+  description: "Configure sua instância do Forms4U",
   robots: "noindex, nofollow"
 })
 
@@ -63,7 +62,7 @@ const handleSetupComplete = async () => {
   // Show success message
   useAlert().success({
     title: "Configuração concluída! 🎉",
-    description: "Sua instância do OpnForm está pronta. Hora de criar seu primeiro formulário!"
+    description: "Sua instância do Forms4U está pronta. Hora de criar seu primeiro formulário!"
   })
   
   // Redirect to dashboard

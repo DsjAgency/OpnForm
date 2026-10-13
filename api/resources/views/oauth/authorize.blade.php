@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
-    <title>Authorize {{ $client->name }} - OpnForm</title>
+    <title>Authorize {{ $client->name }} - Forms4U</title>
     <style>
         * { box-sizing: border-box; }
         body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #f8fafc; color: #0f172a; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
@@ -29,18 +29,12 @@
 </head>
 <body>
 <main class="card">
-    <div class="brand" aria-label="OpnForm">
-        <svg class="brand-logo" aria-hidden="true" fill="none" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <linearGradient id="opnform-gradient" gradientUnits="userSpaceOnUse" x1="60" x2="60" y1="2" y2="118.352">
-                <stop offset="0" stop-color="#2563eb"/>
-                <stop offset="1" stop-color="#60a5fa"/>
-            </linearGradient>
-            <path clip-rule="evenodd" d="m80.6502 118.352c22.9638-8.418 39.3498-30.4712 39.3498-56.352 0-33.1371-26.8629-60-60-60s-60 26.8629-60 60c0 25.8808 16.3862 47.934 39.3498 56.352l16.631-38.9411c-7.4746-1.9924-12.9808-8.8086-12.9808-16.9109 0-9.665 7.835-17.5 17.5-17.5s17.5 7.835 17.5 17.5c0 8.4269-5.9563 15.4627-13.8885 17.1269z" fill="url(#opnform-gradient)" fill-rule="evenodd"/>
-        </svg>
-        <span class="brand-name">OpnForm</span>
+    <div class="brand" aria-label="Forms4U">
+        <img class="brand-logo" src="{{ front_url('/img/cidadania4u-icon.png') }}" alt="" aria-hidden="true">
+        <span class="brand-name">Forms4U</span>
     </div>
     <h1>Connect {{ $client->name }}</h1>
-    <p class="intro">Review the access requested for your OpnForm account.</p>
+    <p class="intro">Review the access requested for your Forms4U account.</p>
 
     <section class="account">
         <p class="label">Signed in as</p>

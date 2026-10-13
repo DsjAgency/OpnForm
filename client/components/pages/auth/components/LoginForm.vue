@@ -34,7 +34,7 @@
         color="primary"
         variant="subtle"
         title="Vincule sua conta existente"
-        description="Entre uma vez com sua senha atual do OpnForm para vinculá-la à sua conta SSO."
+        description="Entre uma vez com sua senha atual do Forms4U para vinculá-la à sua conta SSO."
       />
 
       <UAlert

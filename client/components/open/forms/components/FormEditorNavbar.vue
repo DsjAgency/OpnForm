@@ -38,10 +38,6 @@
       @close="settingsModal = false"
     />
 
-    <GitHubStar
-      v-if="isSelfHosted"
-      class="ml-2"
-    />
 
     <div class="flex-grow min-w-0 flex justify-center items-center gap-2">
       <EditableTag
@@ -74,21 +70,6 @@
     <div
       class="flex items-center gap-x-2"
     >
-      <TrackClick name="form_editor_help_button_clicked">
-        <UTooltip
-          text="Ajuda"
-          class="items-center relative"
-          :content="{ side: 'bottom' }"
-          arrow
-        >
-          <UButton
-            variant="ghost"
-            color="neutral"
-            icon="i-heroicons-question-mark-circle"
-            @click.prevent="crisp.openHelpdesk()"
-          />
-        </UTooltip>
-      </TrackClick>
       <slot name="before-save" />
       <UTooltip arrow :content="{side: 'bottom'}">
         <template #content>
@@ -126,7 +107,6 @@ import FormHistory from '~/components/open/editors/FormHistory.vue'
 import UndoRedo from '~/components/open/editors/UndoRedo.vue'
 import EditableTag from '~/components/app/EditableTag.vue'
 import TrackClick from '~/components/global/TrackClick.vue'
-import { useFeatureFlag } from '~/composables/useFeatureFlag'
 
 const FormSettingsModal = defineAsyncComponent(() => import('~/components/open/forms/components/form-components/FormSettingsModal.vue'))
 
@@ -154,7 +134,6 @@ defineShortcuts({
 })
 
 const workingFormStore = useWorkingFormStore()
-const crisp = useCrisp()
 
 const form = computed(() => workingFormStore.content)
 const { activeTab } = storeToRefs(workingFormStore)
@@ -187,5 +166,4 @@ function openComputedVariableCreator() {
 
 defineExpose({ openComputedVariable, openComputedVariableCreator })
 
-const isSelfHosted = computed(() => useFeatureFlag('self_hosted'))
 </script>

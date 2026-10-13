@@ -15,13 +15,6 @@
             Adicione seu código de rastreamento para medir o desempenho do formulário.
           </p>
         </div>
-        <UButton
-          label="Ajuda"
-          icon="i-heroicons-question-mark-circle"
-          variant="outline"
-          color="neutral"
-          @click="crisp.openHelpdeskArticle('how-to-add-analytics-in-my-form-151nkc9')"
-        />
       </div>
 
       <div class="flex flex-col lg:flex-row gap-8 mt-4 lg:items-start">
@@ -52,7 +45,6 @@
 <script setup>
 import PlanTag from "~/components/app/PlanTag.vue"
 
-const crisp = useCrisp()
 const workingFormStore = useWorkingFormStore()
 const { content: form } = storeToRefs(workingFormStore)
 

@@ -11,15 +11,6 @@
           Criar espaço de trabalho
         </h2>
       </div>
-      <UButton
-        color="neutral"
-        variant="outline"
-        icon="i-heroicons-question-mark-circle"
-        size="sm"
-        @click="crisp.openHelpdeskArticle('how-many-workspaces-can-i-create-r4dvt6')"
-      >
-        Ajuda
-      </UButton>
     </template>
     
     <template #body>
@@ -69,7 +60,6 @@ const props = defineProps({
 
 const { create } = useWorkspaces()
 const appStore = useAppStore()
-const crisp = useCrisp()
 const alert = useAlert()
 
 // Modal state

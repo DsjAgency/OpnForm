@@ -29,11 +29,7 @@
           Adicione um e-mail por linha
         </span>
         <span v-else>
-          Você só pode enviar notificações para o seu próprio e-mail. 
-          <a
-            class="underline cursor-pointer"
-            @click="openSubscriptionModal"
-          >Faça upgrade para o plano Pro</a> para enviar a outros endereços.
+          Nesta instalação, você só pode enviar notificações para o seu próprio e-mail.
         </span>
         </InputHelp>
       </template>
@@ -109,16 +105,9 @@
       <div class="border-t dark:border-neutral-700 p-4 space-y-4">
         <div
           v-if="!canUseAdvancedBranding"
-          class="rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-100"
+          class="rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
         >
-          A personalização da aparência do e-mail faz parte do plano Business.
-          <a
-            class="underline cursor-pointer"
-            @click="openSubscriptionModal"
-          >
-            Faça upgrade para o Business
-          </a>
-          para adicionar seu logo, fontes e cores.
+          A personalização da aparência do e-mail (logo, fontes e cores) não está disponível nesta instalação.
         </div>
         <image-input
           :form="integrationData"
@@ -291,22 +280,10 @@ function openEmailsModal () {
   openWorkspaceSettings('emails')
 }
 
-function openSubscriptionModal () {
-  useAppModals().openSubscriptionModal({
-    plan: canUseAdvancedEmail.value ? 'business' : 'pro',
-    modal_title: canUseAdvancedEmail.value
-      ? 'Faça upgrade para personalizar a aparência do e-mail'
-      : 'Faça upgrade para liberar a integração de e-mail completa',
-    modal_description: canUseAdvancedEmail.value
-      ? 'Faça upgrade para o Business e adicione seu logo, fontes e cores às notificações por e-mail.'
-      : 'Faça upgrade para o Pro e personalize os destinatários das notificações, envie e-mail de confirmação para quem respondeu e muito mais: personalização de formulários, domínio próprio, colaboração etc.'
-  })
-}
-
 onBeforeMount(() => {
   for (const [keyname, defaultValue] of Object.entries({
     send_to: user.value.email || '',
-    sender_name: "OpnForm",
+    sender_name: "Cidadania4U",
     subject: "Recebemos suas respostas",
     email_content: "Olá 👋 <br>Confirmamos que suas respostas foram registradas com sucesso.",
     include_submission_data: true,

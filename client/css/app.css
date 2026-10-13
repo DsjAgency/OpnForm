@@ -16,6 +16,22 @@
 @source inline("dark:hover:bg-notion-dark-light");
 @source inline("grid-cols-{1,2,3,4,5,6}");
 
+/* Cidadania4U brand palette (vinho #640e2c from the logo = 800).
+   `static` keeps the variables even when no utility uses them (Nuxt UI reads them). */
+@theme static {
+    --color-cidadania-50: #fdf2f4;
+    --color-cidadania-100: #f9e4e7;
+    --color-cidadania-200: #f3ced4;
+    --color-cidadania-300: #e8aeb9;
+    --color-cidadania-400: #d78697;
+    --color-cidadania-500: #c4637a;
+    --color-cidadania-600: #ab4660;
+    --color-cidadania-700: #8c2c48;
+    --color-cidadania-800: #640e2c;
+    --color-cidadania-900: #4a031d;
+    --color-cidadania-950: #2d000e;
+}
+
 @theme {
     --color-notion-dark: #191919;
     --color-notion-dark-light: #2e2e2e;
@@ -30,8 +46,8 @@
     --color-light-gray: #f8fafc;
 
     /* Form color variable */
-    --bg-form-color: var(--color-blue-500);
-    --form-color: var(--color-blue-500);
+    --bg-form-color: var(--color-cidadania-800);
+    --form-color: var(--color-cidadania-800);
 
     /* Create color utility for form color (enables ring-form, bg-form, etc.) */
     --color-form: var(--form-color, --bg-form-color);
@@ -360,6 +376,16 @@
 /* Actual CSS */
 body.dark * {
     @apply border-neutral-600;
+}
+
+/* Brand color is the 800 shade; Nuxt UI defaults to 500 (too light here).
+   Higher specificity than Nuxt UI's injected ":root, .light" / ".dark" rules. */
+html:root {
+    --ui-primary: var(--ui-color-primary-800);
+}
+
+html.dark {
+    --ui-primary: var(--ui-color-primary-400);
 }
 
 :root {

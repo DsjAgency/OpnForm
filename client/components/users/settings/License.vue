@@ -8,23 +8,6 @@
           Gerencie sua licença Enterprise auto-hospedada.
         </p>
       </div>
-
-      <div class="flex shrink-0 items-center gap-2">
-        <UButton
-          label="Ajuda"
-          icon="i-heroicons-question-mark-circle"
-          variant="outline"
-          color="primary"
-          @click="crisp.openHelpdeskArticle('self-hosted-license-3ihg7e')"
-        />
-
-        <UButton
-          v-if="!canAccessEnterprise || isGracePeriod"
-          :label="(isExpired || isGracePeriod) ? 'Renovar licença' : 'Comprar licença'"
-          icon="i-heroicons-shopping-cart"
-          @click="openPurchase"
-        />
-      </div>
     </div>
 
     <div v-if="canAccessEnterprise" class="space-y-4">
@@ -45,23 +28,12 @@
                 {{ isGracePeriod ? 'Licença em período de carência' : 'Licença ativada' }}
               </p>
               <p class="mt-1 text-sm text-neutral-600">
-                {{ isGracePeriod ? 'Renove agora para não perder os recursos Enterprise.' : 'Sua licença Enterprise está ativa e todos os recursos licenciados estão liberados.' }}
+                {{ isGracePeriod ? 'Ative uma chave válida para não perder os recursos Enterprise.' : 'Sua licença Enterprise está ativa e todos os recursos licenciados estão liberados.' }}
               </p>
             </div>
           </div>
         </div>
-      </div>
-      <div class="flex flex-wrap gap-3">
-        <UButton
-          icon="i-heroicons-credit-card"
-          :loading="managingSubscription"
-          :disabled="managingSubscription"
-          @click="openPortal"
-        >
-          Gerenciar assinatura
-        </UButton>
-      </div>
-    </div>
+      </div>    </div>
 
     <div v-else class="space-y-4">
       <div class="rounded-lg border p-4 sm:p-5 space-y-4" :class="inactiveCardClasses">
@@ -110,11 +82,9 @@
 import { licenseApi } from '~/api'
 import { useInstanceLicense } from '~/composables/useInstanceLicense'
 
-const crisp = useCrisp()
 const alert = useAlert()
 const { invalidateFlags } = useFeatureFlags()
 const { invalidateUser } = useAuth()
-const { openSubscriptionModal } = useAppModals()
 
 const {
   hasLicense,
@@ -125,14 +95,9 @@ const {
 } = useInstanceLicense()
 
 const activating = ref(false)
-const managingSubscription = ref(false)
 const licenseKeyForm = useForm({
   license_key: '',
 })
-
-const openPurchase = () => {
-  openSubscriptionModal({ plan: 'self_hosted' })
-}
 
 const inactiveCardClasses = computed(() => {
   return hasLicense.value ? 'border-red-200 bg-red-50/40' : 'border-neutral-200 bg-white'
@@ -165,17 +130,6 @@ const inactiveDescription = computed(() => {
   }
   return 'Digite sua chave de licença abaixo para liberar os recursos Enterprise nesta instância auto-hospedada.'
 })
-
-const openPortal = () => {
-  managingSubscription.value = true
-  licenseApi.portal().then((response) => {
-    window.open(response.portalUrl, '_blank')
-  }).catch((error) => {
-    alert.error(error?.data?.message || 'Não foi possível abrir o portal de cobrança.')
-  }).finally(() => {
-    managingSubscription.value = false
-  })
-}
 
 const activateLicense = () => {
   activating.value = true

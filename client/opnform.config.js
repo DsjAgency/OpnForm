@@ -1,5 +1,5 @@
 export default {
-  app_ame: "OpnForm",
+  app_ame: "Forms4U",
   locale: "en",
   locales: { en: "EN" },
   githubAuth: null,

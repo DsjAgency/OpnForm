@@ -67,19 +67,6 @@
     >
       Conectar conta Stripe
     </UButton>
-    <p class="text-sm text-neutral-500 mt-3">
-      <a
-        target="#"
-        class="text-neutral-500 cursor-pointer text-sm"
-        @click.prevent="crisp.openHelpdeskArticle('how-to-collect-payment-svig30')"
-      >
-        <Icon
-          name="heroicons:information-circle-16-solid"
-          class="h-3 w-3 mt-1"
-        />
-        Saiba como receber pagamentos
-      </a>
-    </p>
   </div>
 </template>
 
@@ -99,7 +86,6 @@ const props = defineProps({
   }
 })
 
-const crisp = useCrisp()
 const oAuth = useOAuth()
 const { data: providersData, refetch} = oAuth.providers()
 const stripeLoading = ref(false)

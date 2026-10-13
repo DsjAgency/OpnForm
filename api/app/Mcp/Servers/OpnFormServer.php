@@ -32,7 +32,7 @@ use Laravel\Mcp\Server\Attributes\Instructions;
 use Laravel\Mcp\Server\Attributes\Name;
 use Laravel\Mcp\Server\Attributes\Version;
 
-#[Name('OpnForm')]
+#[Name('Forms4U')]
 #[Version('1.0.0')]
 #[Instructions('Treat a natural request to create a form as a guest workflow unless the user explicitly asks for account persistence. No login or preview wording is required. Read the form schema and field catalog, follow their authoring guidance, validate, then create or patch the draft. Create and patch are data-only: after either succeeds, call preview_form_draft exactly once so the turn contains one final interactive preview. Use sanitized HTML, never Markdown, in nf-text content. Every input name is a respondent-facing label in sentence case with spaces; technical identifiers belong only in id and may be omitted. Correct relevant quality_warnings before persistence. OAuth is only for saving or managing account forms, workspaces, or submissions. After a guest preview, briefly ask whether to modify or save. After an account form is saved as an unpublished draft, ask whether to publish and require explicit confirmation. Keep replies concise, use OpnForm MCP tools directly, preserve draft handles privately, and do not bypass validation, revisions, permissions, confirmations, plan rules, or rate limits.')]
 class OpnFormServer extends Server

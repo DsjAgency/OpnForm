@@ -19,15 +19,6 @@
           />
         </h2>
       </div>
-      <UButton
-        color="neutral"
-        variant="outline"
-        icon="i-heroicons-question-mark-circle"
-        size="sm"
-        @click="openHelp"
-      >
-        Ajuda
-      </UButton>
     </template>
 
     <template #body>
@@ -118,15 +109,6 @@ const isOpen = computed({
 const modalUi = computed(() => {
   return { content: 'sm:max-w-2xl' }
 })
-
-const crisp = useCrisp()
-const openHelp = () => {
-  if (props.integration && props.integration?.crisp_help_page_slug) {
-    crisp.openHelpdeskArticle(props.integration?.crisp_help_page_slug)
-    return
-  }
-  crisp.openHelpdesk()
-}
 
 // Use query composables to get form integrations
 const { list } = useFormIntegrations()

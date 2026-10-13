@@ -26,15 +26,6 @@
             Pré-preenchimento por URL
           </h2>
         </div>
-        <UButton
-          color="neutral"
-          variant="outline"
-          icon="i-heroicons-question-mark-circle"
-          size="sm"
-          @click="crisp.openHelpdeskArticle('how-to-use-url-form-pre-fill-1juyi21')"
-        >
-          Ajuda
-        </UButton>
       </template>
 
       <template #body>
@@ -98,7 +89,6 @@ const props = defineProps({
   extraQueryParam: { type: String, default: "" },
 })
 
-const crisp = useCrisp()
 
 // State variables
 const prefillFormData = ref(null)

@@ -47,7 +47,7 @@
       (s.style.backgroundColor = `${o}`),
       (s.innerHTML = `<span class='nf-emoji-icon'>${t}</span><span class='nf-emoji-icon-close'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-8 h-8'>\n  <path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' />\n</svg>\n</span>`),
       (s.onclick = () => {
-        c || ((l = document.createElement("iframe")), (l.src = e), (l.title = "OpnForm"), (l.style.maxWidth = `${a}px`), d.appendChild(l), (c = !0)), p.classList.toggle("open")
+        c || ((l = document.createElement("iframe")), (l.src = e), (l.title = "Forms4U"), (l.style.maxWidth = `${a}px`), d.appendChild(l), (c = !0)), p.classList.toggle("open")
       }),
       p.appendChild(s),
       document.body.appendChild(p)

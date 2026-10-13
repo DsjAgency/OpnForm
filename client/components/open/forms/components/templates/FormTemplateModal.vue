@@ -9,15 +9,6 @@
           {{ template ? 'Editar modelo' : 'Criar modelo' }}
         </h2>
       </div>
-      <UButton
-        color="neutral"
-        variant="outline"
-        icon="i-heroicons-question-mark-circle"
-        size="sm"
-        @click="crisp.openHelpdeskArticle('how-to-create-an-opnform-template-1fn84i4')"
-      >
-        Ajuda
-      </UButton>
     </template>
 
     <template #body>
@@ -146,7 +137,6 @@ const props = defineProps({
   template: { type: Object, required: false, default: () => {} },
 })
 
-const crisp = useCrisp()
 const router = useRouter()
 const { data: user } = useAuth().user()
 

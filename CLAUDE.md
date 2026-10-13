@@ -4,7 +4,10 @@ Contexto para o Claude Code neste repositório. Leia também o `AGENTS.md` (conv
 
 ## Contexto
 
-- Este é o **OpnForm** (construtor de formulários open-source), sendo customizado para uso **interno da Cidadania4U**, em substituição ao Zoho Forms.
+- **O nome oficial do sistema é Forms4U.** Em todo texto visível ao usuário (títulos, abas do navegador, menus, mensagens, modais, rodapé, formulários públicos, e-mails, PDFs) use "Forms4U", nunca "OpnForm".
+  - Não renomeie código interno: variáveis, classes (ex.: `OpnFormServer`), pastas, pacotes, cookies, ícones `opnform:*`, a API do SDK (`window.opnform`), nem os arquivos `LICENSE` e avisos de licença.
+  - Exceção: o e-mail de chave de licença (`LicenseKeyNotification`) fala do produto OpnForm Enterprise e mantém esse nome.
+- O código-base é o **OpnForm** (construtor de formulários open-source), sendo customizado para uso **interno da Cidadania4U**, em substituição ao Zoho Forms.
 - Ambiente de desenvolvimento: `docker-compose.dev.yml`. Frontend em http://127.0.0.1:3000, API via Nginx em http://localhost.
 - **Responda sempre em português.**
 
@@ -55,6 +58,16 @@ Contexto para o Claude Code neste repositório. Leia também o `AGENTS.md` (conv
 - Não traduza strings comparadas com mensagens/valores vindos da API (ex.: `errorMessage.includes(...)`, valores `'Yes'`/`'No'` vindos do backend, `AGGREGATE_MESSAGES`).
 - Ficaram em inglês, de propósito, as páginas de marketing do OpnForm (landing, preços, comparativos, catálogo de integrações, MCP), cobrança/assinaturas e AppSumo.
 - Testes Vitest e Playwright esperam os textos em português; ao mudar um texto, atualize os testes em `client/test/` e `client/tests/`.
+
+## Marca e itens removidos do OpnForm
+
+- Logo: `client/public/img/cidadania4u-logo.png` (horizontal) e `cidadania4u-icon.png` (só o passaporte). `logo.svg`/`logo.png` também contêm o ícone novo. Favicon em `client/public/favicon.ico`.
+- Cor primária: vinho `#640e2c` (paleta `cidadania` 50–950 em `@theme static` no `client/css/app.css`); `--ui-primary` usa o tom 800 no claro e 400 no escuro.
+- Menu lateral sem as seções "Produto" e "Ajuda" (`useSharedNavigation` retorna lista vazia).
+- Sem banners/modais de upgrade: `openSubscriptionModal` (em `useAppModals`) só mostra um aviso neutro; `PlanTag` nunca aparece; `UpgradeBanner` e `GitHubStar` foram removidos.
+- Recursos bloqueados por plano/licença Enterprise continuam bloqueados (não contornar a licença); apenas não há propaganda.
+- Sem links para Discord/GitHub/site/docs/central de ajuda do OpnForm.
+- Páginas de marketing redirecionam para `/home` (logado) ou `/login`: `client/middleware/marketing-redirect.global.js`. A galeria `/templates` continua ativa (usada pela tela "Modelos").
 
 ## Validação
 

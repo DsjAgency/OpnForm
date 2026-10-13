@@ -15,13 +15,6 @@
             Personalize a imagem e o texto que aparecem quando o formulário é compartilhado em outros sites (Open Graph).
           </p>
         </div>
-      <UButton
-        label="Ajuda"
-        icon="i-heroicons-question-mark-circle"
-        variant="outline"
-        color="neutral"
-        @click="crisp.openHelpdeskArticle('how-do-i-add-custom-seo-settings-to-my-forms-url-preview-1v9y9a')"
-      />
       </div>
 
       <template v-if="form.seo_meta">
@@ -103,7 +96,6 @@
 </template>
 
 <script setup>
-const crisp = useCrisp()
 import PlanTag from "~/components/app/PlanTag.vue"
 import SeoPreview from "~/components/open/forms/components/SeoPreview.vue"
 

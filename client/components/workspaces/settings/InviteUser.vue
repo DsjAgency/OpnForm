@@ -11,15 +11,6 @@
           Convidar novo usuário
         </h2>
       </div>
-      <UButton
-        color="neutral"
-        variant="outline"
-        icon="i-heroicons-question-mark-circle"
-        size="sm"
-        @click="crisp.openHelpdeskArticle('how-to-invite-users-team-members-to-my-workspace-qyw16g')"
-      >
-        Ajuda
-      </UButton>
     </template>
 
     <template #body>
@@ -94,7 +85,6 @@ const { addUser: addUserMutation } = useWorkspaceUsers()
 const hasActiveLicense = computed(() => {
   return user.value !== null && user.value !== undefined && user.value.active_license !== null
 })
-const crisp = useCrisp()
 const { openSubscriptionModal } = useAppModals()
 const { handleLicenseError } = useLicenseUpgradeModal()
 const { currentId: workspaceId } = useCurrentWorkspace()

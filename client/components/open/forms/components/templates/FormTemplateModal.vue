@@ -252,7 +252,7 @@ const deleteFormTemplate = () => {
   if (!props.template) return
   deleteMutation.mutateAsync(props.template.id).then(() => {
     useAlert().success("Modelo excluído")
-    router.push({ name: "templates" })
+    router.push({ name: "templates-my-templates" })
     emit("close")
   }).catch((error) => {
     useAlert().error(error.message)

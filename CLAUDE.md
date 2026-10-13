@@ -67,7 +67,8 @@ Contexto para o Claude Code neste repositório. Leia também o `AGENTS.md` (conv
 - Sem banners/modais de upgrade: `openSubscriptionModal` (em `useAppModals`) só mostra um aviso neutro; `PlanTag` nunca aparece; `UpgradeBanner` e `GitHubStar` foram removidos.
 - Recursos bloqueados por plano/licença Enterprise continuam bloqueados (não contornar a licença); apenas não há propaganda.
 - Sem links para Discord/GitHub/site/docs/central de ajuda do OpnForm.
-- Páginas de marketing redirecionam para `/home` (logado) ou `/login`: `client/middleware/marketing-redirect.global.js`. A galeria `/templates` continua ativa (usada pela tela "Modelos").
+- Páginas de marketing redirecionam para `/home` (logado) ou `/login`: `client/middleware/marketing-redirect.global.js`. Não use `defineRouteRules({ swr })` nessas páginas: o cache do servidor ignoraria o login e serviria o mesmo redirecionamento para todos.
+- Modelos: só os criados pela equipe (banco local). Os modelos oficiais do opnform.com ficam desligados (`SHOW_OFFICIAL_TEMPLATES=false`, padrão em `api/config/opnform.php`). A tela "Modelos" é `/templates/my-templates`; a galeria `/templates` e as páginas por tipo/setor redirecionam para ela.
 
 ## Validação
 

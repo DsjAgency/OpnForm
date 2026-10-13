@@ -26,10 +26,6 @@
 </template>
 
 <script setup>
-defineRouteRules({
-  swr: 3600,
-})
-
 useOpnSeoMeta({
   title: "Form Templates",
   description:

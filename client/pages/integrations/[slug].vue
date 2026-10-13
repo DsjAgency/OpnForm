@@ -214,9 +214,6 @@ const mapPageUrl = (pageId) => {
   return useRouter().resolve({ name: 'integrations-slug', params: { slug } }).href
 }
 
-defineRouteRules({
-  swr: 3600
-})
 definePageMeta({
   stickyNavbar: true,
   middleware: ['root-redirect','self-hosted']

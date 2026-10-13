@@ -22,10 +22,6 @@ definePageMeta({
 useOpnSeoMeta({
   title: "Privacy Policy",
 })
-defineRouteRules({
-  swr: 3600
-})
-
 const pageId = '9c97349ceda7455aab9b341d1ff70f79'
 const notionCmsStore = useNotionCmsStore()
 const loading = computed(() => notionCmsStore.loading)

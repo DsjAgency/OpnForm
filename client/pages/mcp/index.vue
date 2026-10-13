@@ -477,10 +477,6 @@ useOpnSeoMeta({
     "Create, preview, and refine forms with your AI assistant using OpnForm MCP. Start without an account, then save and manage forms when ready.",
 })
 
-defineRouteRules({
-  swr: 3600,
-})
-
 const { isAuthenticated: authenticated } = useIsAuthenticated()
 const isHydrated = ref(false)
 const heroPrompt =

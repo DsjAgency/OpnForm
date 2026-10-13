@@ -797,7 +797,7 @@ test("SDK parent attribution is captured before an embedded auto-submit", async 
   const token = await apiLogin(request)
   const iframeUrl = `/forms/${form.slug}?auto_submit=true&sdk_auto_name=Auto%20SDK`
 
-  await page.goto("/templates?utm_source=sdk-parent&utm_campaign=auto-submit")
+  await page.goto("/pagina-mae-e2e?utm_source=sdk-parent&utm_campaign=auto-submit")
   await page.setContent(`
     <!doctype html>
     <html>
@@ -835,7 +835,7 @@ test("popup embed falls back to valid parent attribution when its form URL value
   const formUrl = `/forms/${form.slug}?utm_source=`
   const widgetData = JSON.stringify({ formurl: formUrl }).replaceAll('"', '&quot;')
 
-  await page.goto("/templates?utm_source=popup-parent&utm_campaign=popup-test")
+  await page.goto("/pagina-mae-e2e?utm_source=popup-parent&utm_campaign=popup-test")
   await page.setContent(`
     <!doctype html>
     <html>

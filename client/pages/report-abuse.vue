@@ -21,10 +21,6 @@ useOpnSeoMeta({
 definePageMeta({
   middleware: ["self-hosted"]
 })
-defineRouteRules({
-  swr: 3600,
-})
-
 useHead({
   script: [
     {

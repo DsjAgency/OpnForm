@@ -13,7 +13,7 @@
             color="neutral"
             size="sm"
             @click.prevent="showFormTemplateModal = true"
-            label="Edit Template"
+            label="Editar modelo"
           />
           <form-template-modal
             v-if="form"
@@ -34,7 +34,7 @@
             size="sm"
             variant="outline"
             @click.prevent="copyTemplateUrl"
-            label="Copy Template URL"
+            label="Copiar link do modelo"
           />
         </TrackClick>
         <TrackClick
@@ -44,7 +44,7 @@
           <UButton
             size="sm"
             :to="createFormWithTemplateUrl"
-            label="Use this template"
+            label="Usar este modelo"
           />
         </TrackClick>
       </template>
@@ -54,7 +54,7 @@
       v-if="template === null || !template"
       class="text-center my-4"
     >
-      We could not find this template.
+      Não encontramos este modelo.
     </p>
     <template v-else>
       <section class="pt-12 bg-neutral-50 sm:pt-16 border-b pb-[250px] relative">
@@ -68,7 +68,7 @@
               <img
                 class="object-cover w-full h-full transition-all duration-200 group-hover:scale-110 absolute inset-0"
                 :src="template.image_url"
-                alt="Template cover image"
+                alt="Imagem de capa do modelo"
               >
             </div>
 
@@ -96,7 +96,7 @@
           class="p-4 mx-auto bg-white shadow-lg sm:p-6 lg:p-8 rounded-xl ring ring-inset ring-neutral-200 isolate"
         >
           <p class="text-sm font-medium text-center text-neutral-500 -mt-2 mb-2">
-            Template Preview
+            Pré-visualização do modelo
           </p>
           <div class="mb-4">
             <div
@@ -133,16 +133,9 @@
                 <UButton
                   block
                   :to="createFormWithTemplateUrl"
-                  label="Use this template"
+                  label="Usar este modelo"
                 />
               </TrackClick>
-            </div>
-            <div class="flex items-center justify-center">
-              <div class="text-left mx-auto text-neutral-500 text-xs mt-4">
-                ✓ Core features 100% free<br>
-                ✓ No credit card required<br>
-                ✓ No submissions limit on Free plan
-              </div>
             </div>
           </div>
         </div>
@@ -165,10 +158,10 @@
                   <h3
                     class="text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl"
                   >
-                    Frequently asked questions
+                    Perguntas frequentes
                   </h3>
                   <p class="mt-2 text-base font-normal text-neutral-600">
-                    Everything you need to know about this template.
+                    Tudo o que você precisa saber sobre este modelo.
                   </p>
                 </div>
                 <dl class="mt-12 space-y-10">
@@ -201,14 +194,14 @@
             <h4
               class="text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl"
             >
-              Related templates
+              Modelos relacionados
             </h4>
             <UButton
-              :to="{ name: 'templates' }"
+              :to="{ name: 'templates-my-templates' }"
               color="white"
               size="sm"
               trailing-icon="i-heroicons-arrow-right-20-solid"
-              label="View All"
+              label="Ver todos"
             />
           </div>
 
@@ -230,7 +223,7 @@
             <h4
               class="text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl"
             >
-              How Forms4U works
+              Como usar este modelo
             </h4>
           </div>
 
@@ -245,14 +238,14 @@
               </div>
               <div>
                 <h5 class="text-base font-bold leading-tight text-neutral-900">
-                  Copy the template and change it the way you like
+                  Copie o modelo e ajuste como quiser
                 </h5>
                 <p class="mt-2 text-sm font-normal text-neutral-600">
                   <NuxtLink :to="createFormWithTemplateUrl">
-                    Click here to copy this template
+                    Clique aqui para copiar este modelo
                   </NuxtLink>
-                  and start customizing it. Change the questions, add new ones,
-                  choose colors and more.
+                  e comece a personalizar. Mude as perguntas, adicione novas,
+                  escolha as cores e muito mais.
                 </p>
               </div>
             </div>
@@ -267,11 +260,11 @@
               </div>
               <div>
                 <h5 class="text-base font-bold leading-tight text-neutral-900">
-                  Embed the form or share it via a link
+                  Incorpore o formulário ou compartilhe por link
                 </h5>
                 <p class="mt-2 text-sm font-normal text-neutral-600">
-                  You can directly share your form link, or embed the form on
-                  your website. It's magic! 🪄
+                  Compartilhe o link do formulário ou incorpore-o
+                  no seu site.
                 </p>
               </div>
             </div>
@@ -366,7 +359,7 @@ const breadcrumbs = computed(() => {
     return []
   }
   return [
-    { name: "Templates", to: { name: "templates" } },
+    { name: "Modelos", to: { name: "templates-my-templates" } },
     {
       name: template.value.name,
       to: { name: "templates-slug", params: { slug: template.value.slug } },
@@ -376,7 +369,7 @@ const breadcrumbs = computed(() => {
 
 const copyTemplateUrl = () => {
   navigator.clipboard.writeText(window.location.href)
-  useAlert().success("URL copied to clipboard!")
+  useAlert().success("Link copiado!")
 }
 
 useOpnSeoMeta(

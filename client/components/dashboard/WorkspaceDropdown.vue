@@ -9,7 +9,7 @@
     <slot :workspace="workspace" />
     
     <template #content>
-      <div class="w-60 flex flex-col">
+      <div class="w-72 flex flex-col">
         <!-- Workspace Info Header -->
         <div v-if="workspace" class="p-3 border-b border-neutral-200">
           <div class="flex items-center gap-3">
@@ -29,6 +29,7 @@
               size="xs"
               color="neutral"
               variant="outline"
+              class="flex-1 justify-center"
               @click="openSettings"
               label="Configurações"
             />
@@ -38,6 +39,7 @@
               size="xs"
               color="neutral"
               variant="outline"
+              class="flex-1 justify-center"
               @click="openInviteUserModal"
               label="Convidar membros"
             />
@@ -138,7 +140,7 @@ const isDropdownOpen = ref(false)
 // Computed text for workspace plan
 const workspacePlanText = computed(() => {
   if (!workspace.value) return ''
-  return `${getTierDisplayName(workspace.value.plan_tier)} Plan`
+  return `Plano ${getTierDisplayName(workspace.value.plan_tier)}`
 })
 
 // Computed text for member count

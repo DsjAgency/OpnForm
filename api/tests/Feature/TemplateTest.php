@@ -372,3 +372,15 @@ it('stores empty arrays instead of null for template list fields on update', fun
         ->and($template->related_templates)->toBe(['other-template'])
         ->and($template->questions)->toBe([['question' => 'Q1', 'answer' => 'A1']]);
 });
+
+it('does not fetch official templates from opnform.com by default', function () {
+    \Cache::forget('prod_templates');
+    config(['app.self_hosted' => true]);
+    \Illuminate\Support\Facades\Http::fake();
+
+    $response = $this->getJson(route('templates.index'));
+
+    $response->assertSuccessful();
+    expect($response->json())->toBe([]);
+    \Illuminate\Support\Facades\Http::assertNothingSent();
+});

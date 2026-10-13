@@ -170,9 +170,6 @@ useOpnSeoMeta({
   description:
     'Create beautiful forms for free. Unlimited fields, unlimited submissions.'
 })
-defineRouteRules({
-  swr: 3600
-})
 definePageMeta({
   stickyNavbar: true,
   middleware: ['root-redirect','self-hosted']

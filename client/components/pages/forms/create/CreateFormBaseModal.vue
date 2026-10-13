@@ -249,7 +249,7 @@
                     </div>
                     <TrackClick name="select_form_base" :properties="{ base: 'template' }">
                       <NuxtLink
-                        :to="{ name: 'templates' }"
+                        :to="{ name: 'templates-my-templates' }"
                         aria-label="Ver modelos"
                         class="absolute inset-0"
                       />

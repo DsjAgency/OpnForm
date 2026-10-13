@@ -30,7 +30,7 @@
               v-model="search"
               autocomplete="off"
               name="search"
-              placeholder="Search..."
+              placeholder="Buscar..."
             />
           </div>
         </VForm>
@@ -76,7 +76,7 @@
           v-else-if="enrichedTemplates.length === 0"
           class="text-center mt-4"
         >
-          No templates found.
+          Nenhum modelo encontrado.
         </p>
         <div
           v-else
@@ -106,15 +106,15 @@
           <h4
             class="text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl"
           >
-            All Types
+            Todos os tipos
           </h4>
           <UButton
             v-if="$route.name !== 'templates'"
-            :to="{ name: 'templates' }"
+            :to="{ name: 'templates-my-templates' }"
             color="neutral"
             size="sm"
             trailing-icon="i-heroicons-arrow-right"
-            label="View All Templates"
+            label="Ver todos os modelos"
           />
         </div>
 
@@ -143,15 +143,15 @@
           <h4
             class="text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl"
           >
-            All Industries
+            Todos os setores
           </h4>
           <UButton
             v-if="$route.name !== 'templates'"
-            :to="{ name: 'templates' }"
+            :to="{ name: 'templates-my-templates' }"
             color="neutral"
             size="sm"
             trailing-icon="i-heroicons-arrow-right"
-            label="View All Templates"
+            label="Ver todos os modelos"
           />
         </div>
 
@@ -226,7 +226,7 @@ const selectedType = ref("all")
 const selectedIndustry = ref("all")
 
 const industriesOptions = computed(() => {
-  return [{ name: "All Industries", value: "all" }].concat(
+  return [{ name: "Todos os setores", value: "all" }].concat(
     industries.value.map((industry) => ({
       name: industry.name,
       value: industry.slug,
@@ -235,7 +235,7 @@ const industriesOptions = computed(() => {
 })
 
 const typesOptions = computed(() => {
-  return [{ name: "All Types", value: "all" }].concat(
+  return [{ name: "Todos os tipos", value: "all" }].concat(
     types.value.map((type) => ({
       name: type.name,
       value: type.slug,

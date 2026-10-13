@@ -54,10 +54,6 @@ import { computed } from "vue"
 import Breadcrumb from "~/components/app/Breadcrumb.vue"
 import { useTemplateMeta } from "~/composables/data/useTemplateMeta"
 
-defineRouteRules({
-  swr: 3600,
-})
-
 const route = useRoute()
 const { list } = useTemplates()
 const { industries: industriesMap } = useTemplateMeta()

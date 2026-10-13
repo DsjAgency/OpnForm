@@ -22,10 +22,6 @@ definePageMeta({
 useOpnSeoMeta({
   title: "Terms & Conditions",
 })
-defineRouteRules({
-  swr: 3600
-})
-
 const pageId = '246420da2834480ca04047b0c5a00929'
 const notionCmsStore = useNotionCmsStore()
 const loading = computed(() => notionCmsStore.loading)

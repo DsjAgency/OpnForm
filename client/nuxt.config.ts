@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import runtimeConfig from "./runtimeConfig"
 import sitemap from "./sitemap"
+import loadingTemplate from "./lib/dev/loading-template.js"
 
 const isUnitTestMode = !!process.env.VITEST
 const isE2EMode = process.env.E2E === '1'
@@ -189,6 +190,8 @@ export default defineNuxtConfig({
   devServer: {
     host: process.env.NUXT_HOST || 'localhost',
     port: Number(process.env.NUXT_PORT) || 3000,
+    // Forms4U splash instead of the Nuxt logo while the dev server compiles
+    loadingTemplate,
   },
 
   sitemap,

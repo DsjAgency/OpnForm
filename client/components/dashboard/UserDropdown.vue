@@ -3,27 +3,32 @@
     v-if="user"
     :items="dropdownItems"
     :ui="{
-      content: 'w-56'
+      content: 'w-64 overflow-x-hidden',
+      viewport: 'overflow-x-hidden',
+      label: 'w-full min-w-0 p-3',
+      item: 'rounded-md'
     }"
     arrow
   >
     <slot :user="user" />
     
     <template #user-info>
-        <div class="flex items-center gap-3">
-          <UserAvatar
-            :src="user.photo_url"
-            :name="user.name"
-            size="size-8"
-          />
-          <div class="flex-1 min-w-0">
-            <p class="text-sm font-medium text-neutral-800 truncate">
-              {{ user.name }}
-            </p>
-            <p class="text-xs text-neutral-500 truncate">
-              {{ user.email }}
-            </p>
-          </div>
+      <div class="flex w-full min-w-0 items-center gap-3">
+        <UserAvatar
+          :src="user.photo_url"
+          :name="user.name"
+          size="size-10"
+          text-size="text-sm"
+          class="ring-2 ring-white shadow-sm"
+        />
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-semibold text-neutral-900 truncate">
+            {{ user.name }}
+          </p>
+          <p class="text-xs font-normal text-neutral-500 truncate" :title="user.email">
+            {{ user.email }}
+          </p>
+        </div>
       </div>
     </template>
   </UDropdownMenu>
@@ -88,6 +93,7 @@ const dropdownItems = computed(() => {
     {
       label: 'Sair',
       icon: 'i-heroicons-arrow-right-start-on-rectangle',
+      color: 'error',
       onSelect: logout
     }
   ])

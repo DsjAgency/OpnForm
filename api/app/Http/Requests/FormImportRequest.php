@@ -14,7 +14,7 @@ class FormImportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'source' => 'required|string|in:typeform,tally,fillout,google_forms',
+            'source' => 'required|string|in:typeform,tally,fillout,google_forms,zoho_forms',
             'import_data' => 'required|array',
             'import_data.url' => 'required|url',
             'import_data.oauth_provider_id' => 'nullable|integer|exists:oauth_providers,id|required_if:source,google_forms',

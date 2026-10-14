@@ -57,5 +57,15 @@ export function detectFormImportSource(url) {
     return { source: 'typeform', normalizedUrl, reason: null }
   }
 
+  // Zoho Forms permalinks: forms.zohopublic.*, forms.zoho.* or a custom domain
+  // configured in Zoho (e.g. forms.cidadania4u.com.br), always …/form/Name/formperma/Key
+  if (/^\/[^/]+\/form\/[^/]+\/formperma\/[A-Za-z0-9_-]+/.test(path)) {
+    return { source: 'zoho_forms', normalizedUrl, reason: null }
+  }
+
+  if (host.includes('zohopublic.') || /^forms\.zoho(cloud)?\./.test(host)) {
+    return { source: 'zoho_forms', normalizedUrl, reason: 'zoho_permalink' }
+  }
+
   return { source: null, normalizedUrl, reason: 'unsupported_provider' }
 }

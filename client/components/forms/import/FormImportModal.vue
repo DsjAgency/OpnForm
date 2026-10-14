@@ -302,6 +302,15 @@ const sourceConfigs = {
     iconClass: 'h-4 w-4 text-[#FFC738]',
     iconWrapClass: 'border-amber-100 bg-amber-50 text-amber-600',
   },
+  zoho_forms: {
+    id: 'zoho_forms',
+    label: 'Zoho Forms',
+    domain: '…/form/Nome/formperma/…',
+    placeholder: 'https://forms.cidadania4u.com.br/cidadania4u/form/.../formperma/...',
+    icon: 'i-simple-icons-zoho',
+    iconClass: 'h-4 w-4 text-[#E42527]',
+    iconWrapClass: 'border-red-100 bg-red-50 text-red-600',
+  },
   google_forms: {
     id: 'google_forms',
     label: 'Google Forms',
@@ -416,7 +425,7 @@ const statusMessage = computed(() => {
     return 'Google Forms detectado. Selecione uma conta Google antes de importar.'
   }
 
-  return `${detectedSourceConfig.value.label} detected. Ready to import.`
+  return `${detectedSourceConfig.value.label} detectado. Pronto para importar.`
 })
 
 watch(() => props.show, (open) => {
@@ -556,6 +565,10 @@ function issueMessage(reason) {
     return 'A importação do Google Forms não está disponível neste ambiente.'
   }
 
+  if (reason === 'zoho_permalink') {
+    return 'Use o link público do formulário Zoho (…/form/NomeDoFormulario/formperma/…).'
+  }
+
   if (reason === 'typeform_form_id') {
     return 'Use uma URL pública do Typeform, como https://seunome.typeform.com/to/FORM_ID.'
   }
@@ -569,10 +582,10 @@ function formatSourceList(sources) {
   }
 
   if (sources.length === 2) {
-    return `${sources[0]} or ${sources[1]}`
+    return `${sources[0]} ou ${sources[1]}`
   }
 
-  return `${sources.slice(0, -1).join(', ')}, or ${sources.at(-1)}`
+  return `${sources.slice(0, -1).join(', ')} ou ${sources.at(-1)}`
 }
 
 const windowMessage = useWindowMessage(WindowMessageTypes.OAUTH_PROVIDER_CONNECTED)

@@ -76,4 +76,20 @@ describe('detectFormImportSource', () => {
       reason: 'unsupported_provider',
     })
   })
+
+  it('detects Zoho Forms permalinks on Zoho and custom domains', () => {
+    expect(detectFormImportSource('https://forms.zohopublic.com/acme/form/Contato/formperma/abc_123').source).toBe('zoho_forms')
+    expect(detectFormImportSource('https://forms.cidadania4u.com.br/cidadania4u/form/Cadastro/formperma/Xy-9')).toEqual({
+      source: 'zoho_forms',
+      normalizedUrl: 'https://forms.cidadania4u.com.br/cidadania4u/form/Cadastro/formperma/Xy-9',
+      reason: null,
+    })
+  })
+
+  it('flags Zoho URLs that are not public permalinks', () => {
+    expect(detectFormImportSource('https://forms.zoho.com/acme/form/Contato')).toMatchObject({
+      source: 'zoho_forms',
+      reason: 'zoho_permalink',
+    })
+  })
 })

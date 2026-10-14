@@ -6,6 +6,12 @@ return [
     'template_editor_emails' => explode(',', env('TEMPLATE_EDITOR_EMAILS') ?? ''),
     'extra_pro_users_emails' => explode(',', env('EXTRA_PRO_USERS_EMAILS') ?? ''),
     'show_official_templates' => env('SHOW_OFFICIAL_TEMPLATES', false),
+    'zoho_import' => [
+        // Fixed copies created for each Zoho subform (repeatable group)
+        'subform_copies' => (int) env('ZOHO_IMPORT_SUBFORM_COPIES', 3),
+        // Custom domains configured in Zoho Forms, comma separated (e.g. forms.cidadania4u.com.br)
+        'custom_domains' => env('ZOHO_FORMS_CUSTOM_DOMAINS', ''),
+    ],
     'condition_mapping' => json_decode(file_get_contents(resource_path('data/open_filters.json')), true),
     'custom_code' => [
         'enable_self_hosted' => env('CUSTOM_CODE_ENABLE_SELF_HOSTED', false),

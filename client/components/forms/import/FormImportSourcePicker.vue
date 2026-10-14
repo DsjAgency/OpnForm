@@ -64,6 +64,14 @@ const allSources = [
     iconWrapClass: 'border-amber-100 bg-amber-50',
   },
   {
+    id: 'zoho_forms',
+    label: 'Zoho Forms',
+    description: 'Importe pelo link público, com campos, páginas e regras condicionais.',
+    icon: 'i-simple-icons-zoho',
+    iconClass: 'w-5 h-5 text-[#E42527]',
+    iconWrapClass: 'border-red-100 bg-red-50',
+  },
+  {
     id: 'google_forms',
     label: 'Google Forms',
     description: 'Conecte o Google e importe pela URL de edição.',

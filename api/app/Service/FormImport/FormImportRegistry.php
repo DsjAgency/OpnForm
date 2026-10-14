@@ -11,6 +11,7 @@ class FormImportRegistry
         'tally' => ['class' => Importers\TallyImporter::class, 'label' => 'Tally'],
         'fillout' => ['class' => Importers\FilloutImporter::class, 'label' => 'Fillout'],
         'google_forms' => ['class' => Importers\GoogleFormsImporter::class, 'label' => 'Google Forms'],
+        'zoho_forms' => ['class' => Importers\ZohoFormsImporter::class, 'label' => 'Zoho Forms'],
     ];
 
     public function resolve(string $source): FormImporterInterface

@@ -1,5 +1,5 @@
 // Global installation configuration: never forward cookies, tokens or custom domains.
-export default defineCachedEventHandler(() => {
+const getFeatureFlags = defineCachedFunction(() => {
   const config = useRuntimeConfig()
 
   return $fetch('/content/feature-flags', {
@@ -20,5 +20,10 @@ export default defineCachedEventHandler(() => {
   name: 'feature-flags',
   // Arbitrary public query parameters must not create a new upstream fetch.
   getKey: () => 'global',
-  swr: true
+  swr: true,
+  // Do not cache while setup is pending: once the first admin account is created,
+  // the next request must see setup_required=false instead of a stale redirect to /setup.
+  validate: (entry) => entry.value !== undefined && entry.value.setup_required !== true
 })
+
+export default defineEventHandler(() => getFeatureFlags())

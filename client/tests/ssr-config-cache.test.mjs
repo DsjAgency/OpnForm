@@ -157,6 +157,19 @@ test('SSR configuration uses the real Nitro cache across requests', { timeout: 6
         assert.equal(calls.length, 3)
       })
     }
+
+    await t.test('feature-flags: pending setup is never cached, so creating the first account takes effect at once', async () => {
+      const pending = { ...endpoints[0].data, setup_required: true }
+      upstream.set('/content/feature-flags', { status: 200, data: pending })
+      assert.deepEqual(await read('feature-flags'), pending)
+      assert.deepEqual(await read('feature-flags'), pending)
+      assert.equal(calls.length, 2)
+      const done = { ...endpoints[0].data, setup_required: false }
+      upstream.set('/content/feature-flags', { status: 200, data: done })
+      assert.deepEqual(await read('feature-flags'), done)
+      assert.deepEqual(await read('feature-flags'), done)
+      assert.equal(calls.length, 3)
+    })
   } finally {
     Date.now = originalNow
     for (const key of globalKeys) {

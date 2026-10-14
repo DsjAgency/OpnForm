@@ -34,7 +34,7 @@
       </div>
 
       <div v-else>
-        <a :href="src" target="_blank" rel="noopener" class="text-blue-600 underline">{{ src }}</a>
+        <a :href="src" target="_blank" rel="noopener" class="text-primary-800 underline">{{ src }}</a>
       </div>
     </div>
 

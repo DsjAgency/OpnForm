@@ -1,5 +1,5 @@
 <template>
-  <form ref="formElement" v-if="form" @submit.prevent="" class="@container w-full relative overflow-hidden flex flex-col min-h-full" :style="focusedFormStyle">
+  <form ref="formElement" v-if="form" @submit.prevent="" class="@container w-full relative overflow-hidden flex flex-col min-h-full" :class="{ 'f4u-form-backdrop f4u-focused': useBrandBackdrop }" :style="focusedFormStyle">
     <!-- Fixed fullscreen background from form cover -->
     <div v-if="form.cover_picture" class="absolute inset-0 pointer-events-none">
       <BlockMediaLayout :image="coverMedia" alt="Imagem de capa do formulário" />
@@ -86,8 +86,8 @@
       <!-- Focused nav arrows with fade transition -->
       <Transition name="fade" mode="out-in">
         <div v-if="shouldShowArrows && showArrowsOnCurrentPage" class="flex gap-2">
-          <UButton color="form" square variant="solid" icon="i-heroicons-chevron-up-20-solid" :disabled="!canGoPrev" @click="goPrev" />
-          <UButton color="form" square variant="solid" icon="i-heroicons-chevron-down-20-solid" :disabled="isLast" @click="goNext" />
+          <UButton color="form" square variant="solid" :class="['rounded-full shadow-sm', arrowTextClass]" icon="i-heroicons-chevron-up-20-solid" aria-label="Pergunta anterior" :disabled="!canGoPrev" @click="goPrev" />
+          <UButton color="form" square variant="solid" :class="['rounded-full shadow-sm', arrowTextClass]" icon="i-heroicons-chevron-down-20-solid" aria-label="Próxima pergunta" :disabled="isLast" @click="goNext" />
         </div>
       </Transition>
       <!-- Branding button -->
@@ -108,6 +108,7 @@ import SlidingTransition from '../../global/transitions/SlidingTransition.vue'
 import { FormMode } from '~/lib/forms/FormModeStrategy.js'
 import { useFormImagePreloader } from '~/composables/forms/useFormImagePreloader.js'
 import PoweredBy from '~/components/pages/forms/show/PoweredBy.vue'
+import { useIsIframe } from '~/composables/useIsIframe'
 
 const props = defineProps({
   formManager: { type: Object, required: true }
@@ -272,6 +273,26 @@ onMounted(() => {
 const slots = useSlots()
 
 // Branding gating from strategy; defaults to true when not present
+// Forms4U look: soft backdrop tinted by the form color (only without a cover
+// image, on the live page/editor preview, never inside iframes/embeds)
+const isIframe = useIsIframe()
+const useBrandBackdrop = computed(() => {
+  const mode = props.formManager?.mode?.value
+  return !form.value?.cover_picture
+    && !isIframe
+    && [FormMode.LIVE, FormMode.PREVIEW].includes(mode)
+})
+
+// Arrow icon color with enough contrast against the form color (Nuxt UI would
+// use a dark icon in dark mode, invisible on dark form colors)
+const arrowTextClass = computed(() => {
+  const hex = (form.value?.color || '#640e2c').replace('#', '').slice(0, 6)
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.substring(i, i + 2), 16) / 255)
+  const lin = (c) => (c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4))
+  const luminance = 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
+  return luminance > 0.45 ? '!text-neutral-900' : '!text-white'
+})
+
 const showBranding = computed(() => props.formManager?.strategy?.value?.display?.showBranding ?? true)
 
 // Focused arrows logic and gating

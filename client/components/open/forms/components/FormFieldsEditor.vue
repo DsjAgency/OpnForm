@@ -1,16 +1,16 @@
 <template>
   <div class="relative min-h-0">
-    <div class="flex gap-2 sticky top-0 bg-white border-b z-10 p-4">
+    <div class="flex gap-2 sticky top-0 bg-white/90 backdrop-blur border-b border-neutral-200/80 z-10 p-4">
       <UTooltip
         text="Atalho"
         :kbds="['meta', 'B']"
         arrow
       >
         <UButton
-          color="neutral"
-          variant="subtle"
+          color="primary"
+          variant="soft"
           icon="i-heroicons-plus"
-          class="flex-grow justify-center"
+          class="flex-grow justify-center rounded-xl border border-dashed border-primary-300 py-2 hover:border-primary-500 transition-colors"
           @click.prevent="openAddFieldSidebar"
         >
           Adicionar bloco
@@ -23,8 +23,8 @@
         :model-value="form.properties"
         group="form-elements"
         item-key="id"
-        class="mx-auto w-full overflow-hidden rounded-md border border-neutral-300 bg-white transition-colors dark:bg-notion-dark-light"
-        ghost-class="bg-blue-100"
+        class="mx-auto w-full flex flex-col gap-1.5"
+        ghost-class="bg-primary-100"
         :animation="200"
         @add="handleDragAdd"
         @update="handleDragUpdate"
@@ -33,23 +33,27 @@
           <div
             v-for="(element, index) in form.properties"
             :key="element.id || index"
-            class="mx-auto w-full border-neutral-300 transition-colors cursor-grab"
+            class="mx-auto w-full rounded-xl border transition-all duration-150 cursor-grab active:cursor-grabbing hover:shadow-sm"
             :class="{
-              'bg-neutral-100 ': element.hidden && !isBeingEdited(index),
-              'bg-white ': !element.hidden && !isBeingEdited(index),
-              'border-b': index !== form.properties.length - 1,
-              ' !border-blue-400 border-b-2': element.type === 'nf-page-break',
-              'bg-blue-50 dark:bg-neutral-700': isBeingEdited(index),
+              'bg-neutral-50 border-dashed border-neutral-300 opacity-70 dark:bg-neutral-800': element.hidden && !isBeingEdited(index),
+              'bg-white border-neutral-200 hover:border-primary-200 dark:bg-notion-dark-light dark:border-neutral-700': !element.hidden && !isBeingEdited(index),
+              '!border-primary-300 border-b-[3px] !rounded-b-md': element.type === 'nf-page-break',
+              'bg-primary-50 border-primary-300 ring-2 ring-primary-200/60 dark:bg-neutral-700': isBeingEdited(index),
             }"
           >
             <div
               v-if="element"
               class="group flex items-center gap-x-0.5 py-1.5 pr-1"
             >
+              <Icon
+                name="heroicons:ellipsis-vertical"
+                class="h-4 w-3 -mr-1.5 ml-0.5 shrink-0 text-neutral-300 opacity-0 transition-opacity group-hover:opacity-100"
+                aria-hidden="true"
+              />
               <BlockTypeIcon
                 v-if="element.type && typeof element.type === 'string'"
                 :type="element.type"
-                class="ml-2"
+                class="ml-1"
               />
               <!-- Field name and type -->
               <div class="flex grow flex-col truncate">
@@ -66,9 +70,9 @@
 
               <UTooltip arrow :text="element.hidden ? 'Mostrar bloco' : 'Ocultar bloco'">
                 <button
-                  class="hidden !cursor-pointer rounded-sm p-1 transition-colors hover:bg-blue-100 items-center justify-center"
+                  class="hidden !cursor-pointer rounded-sm p-1 transition-colors hover:bg-primary-100 items-center justify-center"
                   :class="{
-                    'text-neutral-300 hover:text-blue-500 md:group-hover:flex': !element.hidden,
+                    'text-neutral-300 hover:text-primary-700 md:group-hover:flex': !element.hidden,
                     'text-neutral-300 hover:text-neutral-500 md:flex': element.hidden,
                   }"
                   @click="toggleHidden(element)"
@@ -93,7 +97,7 @@
                 arrow
               >
                 <button
-                  class="hidden cursor-pointer rounded-sm p-0.5 transition-colors hover:bg-blue-100 items-center px-1 justify-center"
+                  class="hidden cursor-pointer rounded-sm p-0.5 transition-colors hover:bg-primary-100 items-center px-1 justify-center"
                   :class="{
                     'md:group-hover:flex text-neutral-300 hover:text-red-500': !element.required,
                     'md:flex text-red-500': element.required,
@@ -109,7 +113,7 @@
               </UTooltip>
               <UTooltip arrow text="Abrir configurações">
                 <button
-                  class="cursor-pointer rounded-sm p-1 transition-colors hover:bg-blue-100 text-neutral-300 hover:text-blue-500 flex items-center justify-center field-settings-button"
+                  class="cursor-pointer rounded-sm p-1 transition-colors hover:bg-primary-100 text-neutral-300 hover:text-primary-700 flex items-center justify-center field-settings-button"
                   @click="editOptions(index)"
                 >
                   <Icon

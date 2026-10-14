@@ -65,7 +65,7 @@
       >
         <a
           href="#"
-          class="text-blue-800 dark:text-blue-200"
+          class="text-primary-900 dark:text-primary-200"
           @click.prevent="editFieldOptions"
         >Abra as configurações do bloco para enviar uma imagem.</a>
       </div>
@@ -91,7 +91,7 @@
       >
         <a
           href="#"
-          class="text-blue-800 dark:text-blue-200"
+          class="text-primary-900 dark:text-primary-200"
           @click.prevent="editFieldOptions"
         >Abra as configurações do bloco para adicionar a URL do vídeo.</a>
       </div>
@@ -115,7 +115,7 @@
       >
         <a
           href="#"
-          class="text-blue-800 dark:text-blue-200"
+          class="text-primary-900 dark:text-primary-200"
           @click.prevent="editFieldOptions"
         >Abra as configurações do bloco para adicionar um áudio.</a>
       </div>

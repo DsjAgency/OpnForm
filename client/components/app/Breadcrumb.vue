@@ -41,7 +41,7 @@
           </NuxtLink>
           <div
             v-else
-            class="flex items-center text-sm font-semibold sm:w-full w-36 text-blue-500 truncate"
+            class="flex items-center text-sm font-semibold sm:w-full w-36 text-primary-700 truncate"
           >
             {{ item.name }}
           </div>

@@ -79,7 +79,7 @@
           <div
             class="transition-colors"
             :class="{
-              'text-blue-600': showEmailAppearance,
+              'text-primary-800': showEmailAppearance,
               'text-gray-300 dark:text-neutral-500': !showEmailAppearance,
             }"
           >

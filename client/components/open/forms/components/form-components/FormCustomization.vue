@@ -30,7 +30,7 @@
     >
       <template #label>
         <InputLabel label="">Cor de destaque - <a
-          href="#" class="text-blue-500"
+          href="#" class="text-primary-700"
           @click.prevent="form.color = DEFAULT_COLOR"
         >Redefinir</a></InputLabel>
       </template>

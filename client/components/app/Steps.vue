@@ -20,7 +20,7 @@
       <div class="flex items-center md:w-64">
         <div class="w-full bg-neutral-100 dark:bg-neutral-700 rounded-full mr-2">
           <div
-            class="rounded-full bg-blue-500 text-xs leading-none h-2 text-center text-white transition-all"
+            class="rounded-full bg-primary-700 text-xs leading-none h-2 text-center text-white transition-all"
             :style="{
               width: parseInt((current / steps.length) * 100) + '%',
               'min-width': '8px',

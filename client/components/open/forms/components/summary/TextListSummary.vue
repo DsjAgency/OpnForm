@@ -49,7 +49,7 @@
             :href="item.value"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-sm text-blue-600 hover:text-blue-800 hover:underline truncate block"
+            class="text-sm text-primary-800 hover:text-primary-900 hover:underline truncate block"
           >
             {{ item.value }}
           </a>

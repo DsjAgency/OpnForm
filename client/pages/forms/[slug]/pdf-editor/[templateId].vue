@@ -5,7 +5,7 @@
       v-if="isLoading"
       class="flex-1 flex items-center justify-center"
     >
-      <Loader class="h-8 w-8 text-blue-600" />
+      <Loader class="h-8 w-8 text-primary-800" />
     </div>
 
     <!-- Error State -->

@@ -24,7 +24,7 @@
             <div
               class="transition-colors"
               :class="{
-                'text-blue-600': showAdvanced,
+                'text-primary-800': showAdvanced,
                 'text-neutral-300': !showAdvanced,
               }"
             >

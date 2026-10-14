@@ -84,7 +84,7 @@
       <div class="bg-neutral-50 border border-neutral-200 rounded-lg p-4">
         <div class="space-y-3">
           <div class="flex items-start gap-3">
-            <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+            <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-primary-700 mt-0.5 flex-shrink-0" />
             <div>
               <h4 class="text-sm font-medium text-neutral-900">Primeiros passos</h4>
               <p class="text-sm text-neutral-600 mt-1">

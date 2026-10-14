@@ -11,16 +11,16 @@
         v-if="form.busy || loading"
         class="absolute inset-0 bg-white bg-opacity-70 z-50 flex items-center justify-center"
       >
-        <loader class="h-6 w-6 text-blue-500" />
+        <loader class="h-6 w-6 text-primary-700" />
       </div>
       <div
         class="border-b bg-white md:hidden fixed inset-0 w-full z-50 flex flex-col items-center justify-center"
       >
         <Icon
           name="heroicons:exclamation-circle"
-          class="w-10 h-10 text-blue-800"
+          class="w-10 h-10 text-primary-900"
         />
-        <div class="p-5 text-blue-800 text-center">
+        <div class="p-5 text-primary-900 text-center">
           O Forms4U não é otimizado para celulares. Abra esta página em um dispositivo com tela maior.
         </div>
         <div>

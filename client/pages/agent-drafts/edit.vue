@@ -2,7 +2,7 @@
   <div class="flex min-h-screen flex-col bg-white">
     <div v-if="loading" class="flex grow items-center justify-center">
       <div class="text-center">
-        <Loader class="mx-auto h-7 w-7 text-blue-500" />
+        <Loader class="mx-auto h-7 w-7 text-primary-700" />
         <p class="mt-3 text-sm text-neutral-500">Opening your private draft…</p>
       </div>
     </div>

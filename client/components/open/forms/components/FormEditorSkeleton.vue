@@ -6,9 +6,9 @@
     >
       <Icon
         name="heroicons:exclamation-circle"
-        class="w-10 h-10 text-blue-800"
+        class="w-10 h-10 text-primary-900"
       />
-      <div class="p-5 text-blue-800 text-center">
+      <div class="p-5 text-primary-900 text-center">
         O Forms4U não é otimizado para celulares. Abra esta página em um dispositivo com tela maior.
       </div>
       <div>
@@ -31,7 +31,7 @@
         <a
           v-if="backButton"
           href="#"
-          class="ml-2 flex text-blue font-semibold text-sm -m-1 hover:bg-blue-500/10 rounded-md p-1 group"
+          class="ml-2 flex text-blue font-semibold text-sm -m-1 hover:bg-primary-700/10 rounded-md p-1 group"
           @click.prevent="$emit('go-back')"
         >
           <Icon

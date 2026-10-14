@@ -178,7 +178,7 @@
             </div>
             <UTooltip arrow text="Abrir configurações">
               <button
-                class="shrink-0 cursor-pointer rounded-sm p-1 transition-colors hover:bg-blue-100 text-neutral-300 hover:text-blue-500 flex items-center justify-center field-settings-button"
+                class="shrink-0 cursor-pointer rounded-sm p-1 transition-colors hover:bg-primary-100 text-neutral-300 hover:text-primary-700 flex items-center justify-center field-settings-button"
                 @click.stop="pdfStore.setSelectedZone(zone.id)"
               >
                 <Icon

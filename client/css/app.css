@@ -466,6 +466,15 @@ body.dark * {
 }
 
 /* Submit / next buttons: wider, with a subtle lift on hover */
+.f4u-focused .btn {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.f4u-focused .btn:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--form-color, #640e2c) 60%, transparent);
+}
+
 .f4u-form-card .btn {
     min-width: 10rem;
     justify-content: center;
@@ -487,11 +496,19 @@ body.dark * {
     transform: translateY(0);
 }
 
+/* Dark forms: a thin light outline keeps dark brand colors visible */
+.dark .f4u-form-card .btn,
+.dark .f4u-focused .btn,
+.dark .f4u-focused [aria-label="Controles do formulário"] button {
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 0.14);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .f4u-form-card {
         animation: none;
     }
-    .f4u-form-card .btn:not(:disabled):hover {
+    .f4u-form-card .btn:not(:disabled):hover,
+    .f4u-focused .btn:not(:disabled):hover {
         transform: none;
     }
 }

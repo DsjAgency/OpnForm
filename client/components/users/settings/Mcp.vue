@@ -3,7 +3,7 @@
     <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
       <div>
         <div class="flex items-center gap-2">
-          <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+          <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50 text-primary-800">
             <Icon name="i-heroicons-cpu-chip" class="h-5 w-5" />
           </div>
           <div>
@@ -112,7 +112,7 @@
       >
         <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-blue-600">
+            <p class="text-xs font-semibold uppercase tracking-wider text-primary-800">
               Endpoint de conexão
             </p>
             <h4 class="mt-1 font-semibold text-neutral-900">
@@ -196,7 +196,7 @@
                 @click.prevent="copyValue(settings.snippets.portable, 'Agent Plugin configuration copied')"
               />
             </div>
-            <pre class="max-h-72 overflow-auto p-4 text-xs leading-6 text-blue-100"><code>{{ settings.snippets.portable }}</code></pre>
+            <pre class="max-h-72 overflow-auto p-4 text-xs leading-6 text-primary-100"><code>{{ settings.snippets.portable }}</code></pre>
           </div>
         </details>
       </section>

@@ -8,7 +8,7 @@
         <div class="w-full flex  px-4 py-2">
           <Icon
             :name="props.icon"
-            class="w-6 h-6 text-blue-500"
+            class="w-6 h-6 text-primary-700"
           />
           <h3 class="text-md font-semibold ml-2">
             {{ props.title }}

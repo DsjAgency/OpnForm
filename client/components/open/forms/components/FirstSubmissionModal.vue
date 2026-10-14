@@ -43,7 +43,7 @@
           <NuxtLink
             :to="integrationsPageUrl"
             target="_blank"
-            class="text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 hover:underline flex items-center gap-1"
+            class="text-xs text-primary-800 hover:text-primary-900 dark:text-primary-600 hover:underline flex items-center gap-1"
             @click="trackIntegrationsLinkClick"
           >
             Ver todas as integrações
@@ -60,14 +60,14 @@
         <!-- Featured Integration: Email -->
         <div
           role="button"
-          class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-4 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors cursor-pointer group"
+          class="bg-primary-50 dark:bg-primary-950/20 border border-primary-200 dark:border-primary-900 rounded-lg p-4 mb-4 hover:bg-primary-100 dark:hover:bg-primary-950/30 transition-colors cursor-pointer group"
           @click="openEmailIntegration"
         >
           <div class="flex items-start gap-3">
-            <div class="flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-800 rounded-lg flex items-center justify-center">
+            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center">
               <Icon
                 name="heroicons:envelope-20-solid"
-                class="text-blue-600 dark:text-blue-300"
+                class="text-primary-800 dark:text-primary-300"
                 size="20px"
               />
             </div>
@@ -90,7 +90,7 @@
             </div>
             <Icon
               name="heroicons:chevron-right"
-              class="text-neutral-400 group-hover:text-blue-600 transition-colors flex-shrink-0"
+              class="text-neutral-400 group-hover:text-primary-800 transition-colors flex-shrink-0"
               size="20px"
             />
           </div>

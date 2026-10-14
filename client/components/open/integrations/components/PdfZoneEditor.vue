@@ -55,7 +55,7 @@
           <!-- Drawing Zone (while creating) -->
           <div
             v-if="isDrawing && drawingRect"
-            class="absolute border-2 border-blue-500 bg-blue-100/30 pointer-events-none"
+            class="absolute border-2 border-primary-700 bg-primary-100/30 pointer-events-none"
             :style="drawingRectStyle"
           />
 
@@ -64,7 +64,7 @@
             v-if="pdfLoading"
             class="absolute inset-0 flex items-center justify-center bg-white/80"
           >
-            <Loader class="h-8 w-8 text-blue-600" />
+            <Loader class="h-8 w-8 text-primary-800" />
           </div>
         </div>
       </div>
@@ -96,7 +96,7 @@
         <div
           :class="[
             'rounded-xl border border-dashed bg-gray-50/70 p-4 shadow-sm',
-            selectedZone ? 'border-blue-400 bg-white' : 'border-gray-200'
+            selectedZone ? 'border-primary-600 bg-white' : 'border-gray-200'
           ]"
         >
           <div class="flex items-center justify-between">

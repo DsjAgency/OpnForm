@@ -10,7 +10,7 @@
         :class="isEmbedded ? 'absolute right-4 top-4 z-30' : 'mb-2'"
       >
         <p v-if="!isEmbedded" class="flex items-center gap-2 text-sm font-medium text-neutral-700">
-          <span class="size-2 rounded-full bg-blue-500" aria-hidden="true" />
+          <span class="size-2 rounded-full bg-primary-700" aria-hidden="true" />
           Private preview
         </p>
         <UButton
@@ -30,7 +30,7 @@
       </header>
 
       <div v-if="loading" class="rounded-xl border bg-white p-12 text-center">
-        <Loader class="mx-auto h-6 w-6 text-blue-500" />
+        <Loader class="mx-auto h-6 w-6 text-primary-700" />
       </div>
       <UAlert
         v-else-if="error"

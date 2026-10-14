@@ -2,7 +2,7 @@
   <div class="w-full border-b border-neutral-200 dark:border-neutral-700 px-3 py-2 min-h-14 flex gap-x-2 items-center bg-white dark:bg-neutral-900">
     <a
       href="#"
-      class="ml-2 flex text-blue font-semibold text-sm -m-1 hover:bg-blue-500/10 rounded-md p-1 group"
+      class="ml-2 flex text-blue font-semibold text-sm -m-1 hover:bg-primary-700/10 rounded-md p-1 group"
       @click.prevent="$emit('go-back')"
     >
       <Icon

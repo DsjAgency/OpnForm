@@ -86,7 +86,7 @@ const tagClasses = computed(() => {
       return `${base} bg-orange-500 text-white`
     case 'pro':
     default:
-      return `${base} bg-blue-500 text-white`
+      return `${base} bg-primary-700 text-white`
   }
 })
 

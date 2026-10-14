@@ -2,8 +2,8 @@
   <div class="bg-white">
     <section class="relative overflow-hidden">
       <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-linear-to-b from-white via-blue-50 to-white" />
-        <div class="absolute left-0 top-12 h-80 w-80 rounded-full bg-blue-100/70 blur-3xl" />
+        <div class="absolute inset-0 bg-linear-to-b from-white via-primary-50 to-white" />
+        <div class="absolute left-0 top-12 h-80 w-80 rounded-full bg-primary-100/70 blur-3xl" />
         <div class="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-cyan-100/70 blur-3xl" />
       </div>
 
@@ -14,7 +14,7 @@
               <AppSumoRegister />
             </div>
 
-            <div class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700">
+            <div class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-3 py-1 text-sm font-medium text-primary-900">
               <UIcon name="i-heroicons-user-plus" class="h-4 w-4" />
               Nova conta
             </div>

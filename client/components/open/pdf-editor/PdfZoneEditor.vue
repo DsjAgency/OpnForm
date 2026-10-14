@@ -5,7 +5,7 @@
       v-if="pdfLoading"
       class="fixed inset-0 z-20 flex items-center justify-center bg-white/80 dark:bg-neutral-900/80"
     >
-      <Loader class="h-8 w-8 text-blue-600" />
+      <Loader class="h-8 w-8 text-primary-800" />
     </div>
 
     <!-- Multi-page stack: pages vertically with spacing -->
@@ -47,15 +47,15 @@
             class="absolute border-2 cursor-move transition-colors"
             :class="[
               selectedZoneId === zone.id
-                ? 'border-blue-500 bg-blue-500/20'
-                : 'border-blue-400/60 bg-blue-400/10 hover:border-blue-500 hover:bg-blue-500/15'
+                ? 'border-primary-700 bg-primary-700/20'
+                : 'border-primary-600/60 bg-primary-600/10 hover:border-primary-700 hover:bg-primary-700/15'
             ]"
             :style="getZoneStyle(zone)"
             @mousedown.stop="startDragging($event, zone)"
             @click.stop="selectZone(zone.id)"
           >
             <div
-              class="absolute -top-5 left-0 text-xs bg-blue-500 text-white px-1.5 py-0.5 rounded whitespace-nowrap"
+              class="absolute -top-5 left-0 text-xs bg-primary-700 text-white px-1.5 py-0.5 rounded whitespace-nowrap"
               :class="{ 'opacity-60': selectedZoneId !== zone.id }"
             >
               {{ getZoneLabel(zone) }}
@@ -87,18 +87,18 @@
               {{ getZoneLabel(zone) }}
             </div>
             <div
-              class="absolute bottom-0 right-0 w-3 h-3 bg-blue-500 cursor-se-resize"
+              class="absolute bottom-0 right-0 w-3 h-3 bg-primary-700 cursor-se-resize"
               @mousedown.stop="startResizing($event, zone)"
             />
           </div>
           <div
             v-if="snapGuides.page === pageNum && snapGuides.vertical !== null"
-            class="absolute top-0 bottom-0 w-px bg-blue-500/80 pointer-events-none z-20"
+            class="absolute top-0 bottom-0 w-px bg-primary-700/80 pointer-events-none z-20"
             :style="{ left: `${snapGuides.vertical}%` }"
           />
           <div
             v-if="snapGuides.page === pageNum && snapGuides.horizontal !== null"
-            class="absolute left-0 right-0 h-px bg-blue-500/80 pointer-events-none z-20"
+            class="absolute left-0 right-0 h-px bg-primary-700/80 pointer-events-none z-20"
             :style="{ top: `${snapGuides.horizontal}%` }"
           />
         </div>

@@ -27,7 +27,7 @@
           <InputHelp>
             <span>
               <a
-                class="text-blue-500 cursor-pointer"
+                class="text-primary-700 cursor-pointer"
                 @click="connectProvider"
               >
                 Clique aqui
@@ -51,7 +51,7 @@
 
     <!-- No accounts: show connect prompt -->
     <div v-else class="rounded-lg border border-neutral-200 bg-white px-4 py-7 text-center shadow-sm">
-      <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-blue-100 bg-blue-50 text-blue-600">
+      <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-primary-100 bg-primary-50 text-primary-800">
         <Icon
           :name="connectIcon || 'i-heroicons-link'"
           class="h-5 w-5"

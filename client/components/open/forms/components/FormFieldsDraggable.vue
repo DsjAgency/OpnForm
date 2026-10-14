@@ -4,7 +4,7 @@
     group="form-elements"
     item-key="id"
     class="grid grid-cols-12 relative transition-all w-full"
-    :class="draggingNewBlock ? 'rounded-md bg-blue-50 dark:bg-neutral-800' : ''"
+    :class="draggingNewBlock ? 'rounded-md bg-primary-50 dark:bg-neutral-800' : ''"
     ghost-class="ghost-item"
     filter=".not-draggable"
     :animation="200"
@@ -71,6 +71,6 @@ function getFieldWidthClasses(width) {
 
 <style lang="scss" scoped>
 .ghost-item {
-  @apply bg-blue-100 dark:bg-blue-900 rounded-md;
+  @apply bg-primary-100 dark:bg-primary-950 rounded-md;
 }
 </style>

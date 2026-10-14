@@ -393,7 +393,7 @@ const showCharLimit = computed(() => {
   .ql-snow.ql-toolbar button.ql-active,
   .ql-snow.ql-toolbar button:focus,
   .ql-snow.ql-toolbar button:hover {
-    @apply text-blue-500;
+    @apply text-primary-700;
   }
 }
 
@@ -408,7 +408,7 @@ const showCharLimit = computed(() => {
 
 .rich-editor, .mention-input {
   span[mention] {
-    @apply inline-flex items-center align-baseline leading-tight text-sm relative bg-blue-100 text-blue-800 border border-blue-200 rounded-md px-1 py-0.5 mx-0.5;
+    @apply inline-flex items-center align-baseline leading-tight text-sm relative bg-primary-100 text-primary-900 border border-primary-200 rounded-md px-1 py-0.5 mx-0.5;
     max-width: 200px;
     white-space: nowrap;
     overflow: hidden;

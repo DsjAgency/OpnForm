@@ -119,7 +119,7 @@
                     <p class="mt-5 text-sm text-neutral-600">
                       <button
                         type="button"
-                        class="font-semibold text-blue-500 hover:text-blue-800 focus:outline-hidden focus:underline transition duration-150 ease-in-out"
+                        class="font-semibold text-primary-700 hover:text-primary-900 focus:outline-hidden focus:underline transition duration-150 ease-in-out"
                         @click="openFileUpload"
                       >
                         Envie seu áudio,

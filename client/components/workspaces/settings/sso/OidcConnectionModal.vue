@@ -45,7 +45,7 @@
                     Provedores de e-mail comuns não são permitidos.
                     <button
                       type="button"
-                      class="text-blue-600 hover:text-blue-700 underline"
+                      class="text-primary-800 hover:text-primary-900 underline"
                       @click="openSupportChat"
                     >
                       Fale com o suporte
@@ -61,17 +61,17 @@
             <p class="text-xs uppercase tracking-wide text-neutral-500">Segurança</p>
             
             <!-- Redirect URI Display -->
-            <div v-if="redirectUri" class="rounded-lg border border-blue-200 bg-blue-50 p-3">
-              <p class="text-xs font-medium text-blue-900 mb-1">URI de redirecionamento</p>
-              <p class="text-xs text-blue-700 mb-2">
+            <div v-if="redirectUri" class="rounded-lg border border-primary-200 bg-primary-50 p-3">
+              <p class="text-xs font-medium text-primary-950 mb-1">URI de redirecionamento</p>
+              <p class="text-xs text-primary-900 mb-2">
                 Copie esta URL e adicione-a às URIs de redirecionamento permitidas no seu provedor OIDC:
               </p>
               <CopyContent
                 :content="redirectUri"
                 label="Copiar"
               />
-              <div v-if="isEditing" class="mt-3 border-t border-blue-200 pt-3">
-                <p class="mb-2 text-xs text-blue-700">
+              <div v-if="isEditing" class="mt-3 border-t border-primary-200 pt-3">
+                <p class="mb-2 text-xs text-primary-900">
                   Se a URL da instância mudou, atualize esta URL de retorno, atualize-a no provedor e salve a conexão.
                 </p>
                 <UButton

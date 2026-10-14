@@ -11,14 +11,14 @@
     <div
       ref="handleRef"
       :class="[
-        'absolute top-0 h-full w-1 hover:bg-blue-300 cursor-col-resize transition-colors duration-150 group z-10',
+        'absolute top-0 h-full w-1 hover:bg-primary-300 cursor-col-resize transition-colors duration-150 group z-10',
         direction === 'left' 
           ? 'right-0' 
           : 'left-0'
       ]"
       @mousedown="$emit('start-resize', $event)"
     >
-      <div class="absolute inset-y-0 -right-1 group-hover:bg-blue-500 group-hover:opacity-20" />
+      <div class="absolute inset-y-0 -right-1 group-hover:bg-primary-700 group-hover:opacity-20" />
     </div>
   </UTooltip>
 </template>

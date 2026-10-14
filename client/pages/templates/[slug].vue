@@ -232,7 +232,7 @@
               class="flex flex-col items-center gap-4 text-center lg:items-start sm:text-left sm:items-start xl:flex-row"
             >
               <div
-                class="inline-flex items-center justify-center w-10 h-10 text-base font-bold bg-white rounded-full shadow-xs ring ring-inset ring-neutral-200 text-blue-500 shrink-0"
+                class="inline-flex items-center justify-center w-10 h-10 text-base font-bold bg-white rounded-full shadow-xs ring ring-inset ring-neutral-200 text-primary-700 shrink-0"
               >
                 1
               </div>
@@ -254,7 +254,7 @@
               class="flex flex-col items-center gap-4 text-center lg:items-start sm:text-left sm:items-start xl:flex-row"
             >
               <div
-                class="inline-flex items-center justify-center w-10 h-10 text-base font-bold bg-white rounded-full shadow-xs ring ring-inset ring-neutral-200 text-blue-500 shrink-0"
+                class="inline-flex items-center justify-center w-10 h-10 text-base font-bold bg-white rounded-full shadow-xs ring ring-inset ring-neutral-200 text-primary-700 shrink-0"
               >
                 2
               </div>
@@ -271,7 +271,7 @@
           </div>
 
           <!-- add video here -->
-          <!--          <div class="max-w-5xl mx-auto mt-12 shadow-sm rounded-xl bg-blue-50 aspect-video" />-->
+          <!--          <div class="max-w-5xl mx-auto mt-12 shadow-sm rounded-xl bg-primary-50 aspect-video" />-->
         </div>
       </section>
     </template>

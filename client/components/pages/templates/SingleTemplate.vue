@@ -5,7 +5,7 @@
   >
     <div v-if="template.is_new" class="absolute top-0 right-0 p-3 z-10">
       <span
-        class="inline-flex items-center gap-1 rounded-full bg-blue-500 px-2 py-1 text-xs font-medium text-white"
+        class="inline-flex items-center gap-1 rounded-full bg-primary-700 px-2 py-1 text-xs font-medium text-white"
       >
         <svg
           aria-hidden="true"

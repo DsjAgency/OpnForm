@@ -8,7 +8,7 @@
       <div class="flex items-center w-full gap-4 px-2">
         <Icon
           :name="integration?.icon"
-          class="text-blue-500"
+          class="text-primary-700"
           size="40px"
         />
         <h2 class="text-lg font-semibold">

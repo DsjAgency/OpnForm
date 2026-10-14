@@ -45,8 +45,8 @@
                 <VueDraggable
                   :model-value="section.columns"
                   item-key="id"
-                  :ghost-class="['opacity-50', 'bg-blue-50', 'rounded-md']"
-                  :chosen-class="['bg-blue-100', 'rounded-md']"
+                  :ghost-class="['opacity-50', 'bg-primary-50', 'rounded-md']"
+                  :chosen-class="['bg-primary-100', 'rounded-md']"
                   :animation="200"
                   group="columns"
                   :data-section-type="section.type"
@@ -132,8 +132,8 @@
                   <VueDraggable
                     :model-value="hiddenDetectedAttributionColumns"
                     item-key="id"
-                    :ghost-class="['opacity-50', 'bg-blue-50', 'rounded-md']"
-                    :chosen-class="['bg-blue-100', 'rounded-md']"
+                    :ghost-class="['opacity-50', 'bg-primary-50', 'rounded-md']"
+                    :chosen-class="['bg-primary-100', 'rounded-md']"
                     :animation="200"
                     group="columns"
                     data-section-type="hidden"
@@ -192,8 +192,8 @@
                     <VueDraggable
                       :model-value="hiddenOtherAttributionColumns"
                       item-key="id"
-                      :ghost-class="['opacity-50', 'bg-blue-50', 'rounded-md']"
-                      :chosen-class="['bg-blue-100', 'rounded-md']"
+                      :ghost-class="['opacity-50', 'bg-primary-50', 'rounded-md']"
+                      :chosen-class="['bg-primary-100', 'rounded-md']"
                       :animation="200"
                       group="columns"
                       data-section-type="hidden"

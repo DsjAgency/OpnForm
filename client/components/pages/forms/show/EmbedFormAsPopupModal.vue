@@ -31,7 +31,7 @@
         </h3>
         <p class="pb-6">
           Uma prévia do pop-up do formulário foi adicionada a esta página.
-          <span class="font-semibold text-blue-800">Clique no botão no canto inferior
+          <span class="font-semibold text-primary-900">Clique no botão no canto inferior
             {{ advancedOptions.position }} corner to try it</span>.
         </p>
 
@@ -43,18 +43,18 @@
           do seu site.
         </p>
 
-        <div class="border border-blue-300 bg-blue-50 dark:bg-notion-dark-light rounded-md p-4 mb-5 w-full mx-auto mt-4 select-all">
+        <div class="border border-primary-300 bg-primary-50 dark:bg-notion-dark-light rounded-md p-4 mb-5 w-full mx-auto mt-4 select-all">
           <div class="flex items-center">
-            <p class="select-all text-blue-500 flex-grow break-all">
+            <p class="select-all text-primary-700 flex-grow break-all">
               {{ embedPopupCode }}
             </p>
             <div
-              class="hover:bg-blue-100 rounded-sm transition-colors cursor-pointer"
+              class="hover:bg-primary-100 rounded-sm transition-colors cursor-pointer"
               @click="copyToClipboard"
             >
                 <Icon 
                   name="heroicons:clipboard-document" 
-                  class="h-6 w-6 text-blue-500" 
+                  class="h-6 w-6 text-primary-700" 
                 />
             </div>
           </div>

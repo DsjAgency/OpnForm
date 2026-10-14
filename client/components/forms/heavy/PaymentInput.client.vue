@@ -32,7 +32,7 @@
       <template v-else>
         <div
           v-if="shouldShowPreviewMessage || (props.isAdminPreview && (!stripeState.stripeAccountId || !publishableKey || !isStripeJsLoaded))"
-          :class="ui.section({ class: props.ui?.slots?.section }) + ' p-4 text-center text-sm text-blue-700 bg-blue-100 dark:bg-blue-900/50 dark:text-blue-300 rounded-md'"
+          :class="ui.section({ class: props.ui?.slots?.section }) + ' p-4 text-center text-sm text-primary-900 bg-primary-100 dark:bg-primary-950/50 dark:text-primary-300 rounded-md'"
         >
           <p v-if="shouldShowPreviewMessage">Salve o formulário para ativar a pré-visualização do pagamento.</p>
           <p v-else>
@@ -109,7 +109,7 @@
           </StripeElements>
         </div>
         <div v-else>
-          <div v-if="props.isAdminPreview" class="my-4 p-4 text-center text-sm text-blue-700 bg-blue-100 dark:bg-blue-900/50 dark:text-blue-300 rounded-md">
+          <div v-if="props.isAdminPreview" class="my-4 p-4 text-center text-sm text-primary-900 bg-primary-100 dark:bg-primary-950/50 dark:text-primary-300 rounded-md">
             <p>Iniciando o pagamento. {{ !!stripeState?.stripeAccountId ? 'Conta Stripe conectada': 'Nenhuma conta Stripe conectada' }}.</p>
             <p class="mt-2">O formulário de pagamento aparece para as pessoas no formulário publicado.</p>
             <p v-if="!publishableKey" class="mt-2 text-red-500">Chave pública do Stripe ausente na configuração.</p>

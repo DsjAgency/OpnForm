@@ -4,7 +4,7 @@
       v-for="(source, sourceIndex) in sources"
       :key="source.id"
       type="button"
-      class="group flex min-h-30 w-full flex-col justify-between rounded-lg border border-neutral-200 bg-white p-4 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-[0_18px_42px_-30px_rgba(37,99,235,0.38)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30"
+      class="group flex min-h-30 w-full flex-col justify-between rounded-lg border border-neutral-200 bg-white p-4 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-primary-200 hover:shadow-[0_18px_42px_-30px_rgba(37,99,235,0.38)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-700/30"
       :class="sources.length % 2 === 1 && sourceIndex === sources.length - 1 ? 'sm:col-span-2' : ''"
       @click="$emit('select', source.id)"
     >
@@ -20,7 +20,7 @@
         </span>
         <Icon
           name="i-heroicons-arrow-right"
-          class="mt-1 h-4 w-4 text-neutral-300 transition group-hover:translate-x-0.5 group-hover:text-blue-500"
+          class="mt-1 h-4 w-4 text-neutral-300 transition group-hover:translate-x-0.5 group-hover:text-primary-700"
         />
       </div>
       <div class="mt-4">

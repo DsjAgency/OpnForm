@@ -25,7 +25,7 @@
           <InputHelp>
             <span>
               <a
-                class="text-blue-500 cursor-pointer"
+                class="text-primary-700 cursor-pointer"
                 @click="openConnectionsModal"
               >
                 Clique aqui

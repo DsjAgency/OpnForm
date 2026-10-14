@@ -38,7 +38,7 @@
                 :key="category.id"
                 class="w-full text-left px-3 py-2 rounded-md text-sm"
                 :class="activeCategory === category.id 
-                  ? 'bg-blue-50 text-blue-700 font-medium' 
+                  ? 'bg-primary-50 text-primary-900 font-medium' 
                   : 'text-gray-600 hover:bg-gray-50'"
                 @click="activeCategory = category.id"
               >
@@ -62,7 +62,7 @@
                 class="mb-8 pb-6 border-b last:border-b-0"
               >
                 <h4 class="font-mono text-base font-semibold">
-                  <span class="text-blue-600">{{ getFunctionName(func.signature) }}</span>
+                  <span class="text-primary-800">{{ getFunctionName(func.signature) }}</span>
                   <span class="text-gray-400">{{ getFunctionArgs(func.signature) }}</span>
                 </h4>
                 <p class="text-sm text-gray-600 mt-2">

@@ -26,7 +26,7 @@
               <div
                 class="transition-colors"
                 :class="{
-                  'text-blue-600': showLogic,
+                  'text-primary-800': showLogic,
                   'text-neutral-300': !showLogic,
                 }"
               >

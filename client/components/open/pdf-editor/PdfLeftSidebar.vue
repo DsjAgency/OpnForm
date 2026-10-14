@@ -43,7 +43,7 @@
           class="relative rounded-lg overflow-hidden border-2 transition-all shadow-sm"
           :class="[
             currentPage === pageNum
-              ? 'border-blue-500 ring-2 ring-blue-500/30'
+              ? 'border-primary-700 ring-2 ring-primary-700/30'
               : 'border-neutral-300 dark:border-neutral-600 hover:border-neutral-400 dark:hover:border-neutral-500'
           ]"
         >
@@ -62,7 +62,7 @@
             v-if="!isNewPage(pageNum) && !thumbnailsLoaded[pageNum]"
             class="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-neutral-900/80"
           >
-            <Loader class="h-4 w-4 text-blue-600" />
+            <Loader class="h-4 w-4 text-primary-800" />
           </div>
           <!-- Top-right: Add page / Remove page (hover only) -->
           <div
@@ -81,7 +81,7 @@
             </button>
             <button
               type="button"
-              class="p-1 rounded bg-blue-600 hover:bg-blue-700 text-white shadow"
+              class="p-1 rounded bg-primary-800 hover:bg-primary-900 text-white shadow"
               title="Adicionar página depois desta"
               @click.stop="addPageAfter(Number(pageNum))"
             >
@@ -107,7 +107,7 @@
           class="mt-1.5 text-center text-xs font-medium transition-colors"
           :class="[
             currentPage === pageNum
-              ? 'text-blue-600 dark:text-blue-400'
+              ? 'text-primary-800 dark:text-primary-600'
               : 'text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-300'
           ]"
         >

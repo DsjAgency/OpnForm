@@ -18,7 +18,7 @@
       id="mcp-client-config-panel"
       role="region"
       :aria-label="`Configuração de ${label}`"
-      class="max-h-72 overflow-auto p-4 text-xs leading-6 text-blue-100"
+      class="max-h-72 overflow-auto p-4 text-xs leading-6 text-primary-100"
     ><code>{{ content }}</code></pre>
   </div>
 </template>

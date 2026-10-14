@@ -73,14 +73,14 @@
     <!-- Info Footer -->
     <div
       v-if="computedVariables && computedVariables.length > 0"
-      class="mt-6 p-3 bg-blue-50 rounded-lg"
+      class="mt-6 p-3 bg-primary-50 rounded-lg"
     >
       <div class="flex items-start gap-2">
         <Icon
           name="i-heroicons-information-circle"
-          class="h-5 w-5 text-blue-500 shrink-0 mt-0.5"
+          class="h-5 w-5 text-primary-700 shrink-0 mt-0.5"
         />
-        <p class="text-sm text-blue-700">
+        <p class="text-sm text-primary-900">
           Insira variáveis onde for possível usar menções com @: e-mails, mensagens de agradecimento, URLs de redirecionamento e integrações.
         </p>
       </div>

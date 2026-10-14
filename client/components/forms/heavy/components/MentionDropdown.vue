@@ -30,7 +30,7 @@
                 v-for="field in filteredMentions"
                 :key="field.id"
                 class="flex items-center p-2 rounded-md cursor-pointer hover:bg-neutral-100"
-                :class="{ 'bg-blue-50 border border-blue-100 inset-0': selectedField?.id === field.id, 'border border-transparent': selectedField?.id !== field.id }"
+                :class="{ 'bg-primary-50 border border-primary-100 inset-0': selectedField?.id === field.id, 'border border-transparent': selectedField?.id !== field.id }"
                 @click="selectField(field)"
                 @dblclick="selectField(field, true)"
               >

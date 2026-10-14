@@ -9,7 +9,7 @@
     <Loader
       v-if="loading"
       key="loader"
-              class="h-6 w-6 text-blue-500 mx-auto"
+              class="h-6 w-6 text-primary-700 mx-auto"
     />
     <div
       v-else

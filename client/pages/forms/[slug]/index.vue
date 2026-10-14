@@ -18,7 +18,7 @@
           </p>
           <button
             type="button"
-            class="mt-6 rounded-lg bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600"
+            class="mt-6 rounded-lg bg-primary-700 px-4 py-2 font-medium text-white hover:bg-primary-800"
             @click="retryForm"
           >
             Tentar novamente
@@ -30,7 +30,7 @@
       </div>
       <div v-else-if="formLoading">
         <p class="text-center mt-6 p-4">
-          <loader class="h-6 w-6 text-blue-500 mx-auto" />
+          <loader class="h-6 w-6 text-primary-700 mx-auto" />
         </p>
       </div>
       <template v-else>

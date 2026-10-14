@@ -20,13 +20,13 @@
     <div
       v-if="editing"
       class="absolute inset-0 border rounded-md border-inset transition-colors"
-      :class="{ 'border-transparent': !editing, 'border-blue-500': editing }"
+      :class="{ 'border-transparent': !editing, 'border-primary-700': editing }"
     >
       <input
         ref="editInputRef"
         v-model="content"
         class="absolute inset-0 focus:outline-hidden bg-white rounded-sm transition-colors px-2"
-        :class="[{ 'bg-blue-50': editing }, contentClass]"
+        :class="[{ 'bg-primary-50': editing }, contentClass]"
         :maxlength="maxLength"
         @blur="editing = false"
         @keyup.enter="editing = false"

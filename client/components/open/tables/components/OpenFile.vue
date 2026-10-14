@@ -109,7 +109,7 @@
               v-if="isPdfLoading"
               class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 text-neutral-600 dark:text-neutral-300"
             >
-              <Loader class="h-8 w-8 text-blue-600" />
+              <Loader class="h-8 w-8 text-primary-800" />
               <span>Carregando PDF...</span>
             </div>
             <div

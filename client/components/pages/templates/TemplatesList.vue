@@ -126,7 +126,7 @@
             :key="row.slug"
             :to="{ params: { slug: row.slug }, name: 'templates-types-slug' }"
             :title="row.name"
-            class="text-neutral-600 dark:text-neutral-400 transition-colors duration-300 hover:text-blue-500"
+            class="text-neutral-600 dark:text-neutral-400 transition-colors duration-300 hover:text-primary-700"
           >
             {{ row.name }}
           </NuxtLink>
@@ -166,7 +166,7 @@
               name: 'templates-industries-slug',
             }"
             :title="row.name"
-            class="text-neutral-600 dark:text-neutral-400 transition-colors duration-300 hover:text-blue-500"
+            class="text-neutral-600 dark:text-neutral-400 transition-colors duration-300 hover:text-primary-700"
           >
             {{ row.name }}
           </NuxtLink>

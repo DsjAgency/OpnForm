@@ -60,7 +60,7 @@
             <Icon
               :name="getService(item.provider)?.icon"
               size="24px"
-              class="text-blue-500"
+              class="text-primary-700"
             />
             <span class="font-semibold">{{ getService(item.provider)?.name || item.provider }}</span>
           </div>

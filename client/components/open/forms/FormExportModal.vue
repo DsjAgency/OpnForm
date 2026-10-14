@@ -21,9 +21,9 @@
             <div v-if="exportStatus === 'queued'" key="queued" class="text-center space-y-4">
               <div class="w-16 h-16 mx-auto relative">
                 <!-- Animated pulse ring -->
-                <div class="absolute inset-0 bg-blue-100 rounded-full animate-ping opacity-75"></div>
-                <div class="relative w-full h-full bg-blue-200 rounded-full flex items-center justify-center">
-                  <UIcon name="i-heroicons-clock" class="w-8 h-8 text-blue-600" />
+                <div class="absolute inset-0 bg-primary-100 rounded-full animate-ping opacity-75"></div>
+                <div class="relative w-full h-full bg-primary-200 rounded-full flex items-center justify-center">
+                  <UIcon name="i-heroicons-clock" class="w-8 h-8 text-primary-800" />
                 </div>
               </div>
               <div class="space-y-2">
@@ -47,7 +47,7 @@
                   ></circle>
                 </svg>
                 <div class="absolute inset-0 flex items-center justify-center">
-                  <span class="text-lg font-bold text-blue-600">{{ Math.round(smoothProgress) }}%</span>
+                  <span class="text-lg font-bold text-primary-800">{{ Math.round(smoothProgress) }}%</span>
                 </div>
               </div>
               <div class="space-y-2">

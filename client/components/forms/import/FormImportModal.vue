@@ -131,7 +131,7 @@
               <Icon
                 v-if="detectedSource === source.id && !sourceIssue"
                 name="i-heroicons-check-circle"
-                class="h-4 w-4 text-blue-600"
+                class="h-4 w-4 text-primary-800"
               />
               <Icon
                 v-else-if="source.requiresAuth && !authenticated"
@@ -199,7 +199,7 @@
                 <InputHelp>
                   <span>
                     <a
-                      class="cursor-pointer text-blue-500"
+                      class="cursor-pointer text-primary-700"
                       @click="connectProvider"
                     >
                       Conectar outra conta
@@ -214,7 +214,7 @@
             v-else
             class="text-center"
           >
-            <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-blue-100 bg-blue-50 text-blue-600">
+            <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-primary-100 bg-primary-50 text-primary-800">
               <Icon
                 name="i-simple-icons-google"
                 class="h-5 w-5"
@@ -385,7 +385,7 @@ const statusClass = computed(() => {
   }
 
   if (detectedSource.value) {
-    return 'text-blue-600'
+    return 'text-primary-800'
   }
 
   return 'text-neutral-500'
@@ -472,7 +472,7 @@ const clearUrl = () => {
 
 const sourceCardClass = (source) => {
   if (detectedSource.value === source.id && !sourceIssue.value) {
-    return 'border-blue-200 ring-1 ring-blue-100'
+    return 'border-primary-200 ring-1 ring-primary-100'
   }
 
   if (source.requiresAuth && !authenticated.value) {

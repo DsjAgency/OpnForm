@@ -2,7 +2,7 @@
   <ErrorBoundary @on-error="onFormEditorError">
     <template #error="{ error, clearError }">
       <div class="flex-grow w-full flex items-center justify-center flex-col gap-4">
-        <h1 class="text-blue-800 text-2xl font-medium">
+        <h1 class="text-primary-900 text-2xl font-medium">
           Ops! Algo deu errado.
         </h1>
         <p class="text-neutral-500 max-w-lg text-center">

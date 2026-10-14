@@ -74,7 +74,7 @@
             :data-block-index="index"
             :class="[
               'flex rounded-md items-center gap-2 p-2 group',
-              selectedIndex === index ? 'bg-blue-100 dark:bg-blue-900' : 'hover:bg-neutral-50'
+              selectedIndex === index ? 'bg-primary-100 dark:bg-primary-950' : 'hover:bg-neutral-50'
             ]"
             role="button"
             :tabindex="selectedIndex === index ? 0 : -1"
@@ -123,7 +123,7 @@
             :data-block-index="filteredInputBlocks.length + index"
             :class="[
               'flex rounded-md items-center gap-2 p-2',
-              selectedIndex === (filteredInputBlocks.length + index) ? 'bg-blue-100 dark:bg-blue-900' : 'hover:bg-neutral-50'
+              selectedIndex === (filteredInputBlocks.length + index) ? 'bg-primary-100 dark:bg-primary-950' : 'hover:bg-neutral-50'
             ]"
             role="button"
             :tabindex="selectedIndex === (filteredInputBlocks.length + index) ? 0 : -1"
@@ -323,6 +323,6 @@ workingFormStore.resetBlockForm()
 
 <style lang="scss" scoped>
 .ghost-item {
-  @apply bg-blue-100 dark:bg-blue-900 rounded-md w-full col-span-full;
+  @apply bg-primary-100 dark:bg-primary-950 rounded-md w-full col-span-full;
 }
 </style>

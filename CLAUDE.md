@@ -70,6 +70,9 @@ Contexto para o Claude Code neste repositório. Leia também o `AGENTS.md` (conv
   - Animações globais no `app.css`: `f4u-fade-up` e `f4u-float` (respeitam "reduzir movimento").
   - Tempo relativo em pt-BR no navegador com `timeAgo()` (`client/lib/utils.js`), porque o `last_edited_human` da API segue o idioma do navegador.
 - Formulário público: formulários clássicos com largura "centralizada" aparecem como cartão sobre fundo suave tingido pela cor do formulário (`useCardLayout` em `components/open/forms/OpenForm.vue`; classes `f4u-form-backdrop` / `f4u-form-card` no `app.css`). Vale na página pública e na pré-visualização do editor, nunca em iframes/embeds. O selo "Feito com Forms4U" é `components/pages/forms/show/PoweredBy.vue`.
+  - Formato "uma pergunta por vez" (`OpenFormFocused.vue`): usa o mesmo fundo (`f4u-form-backdrop`) quando não há imagem de capa; setas com contraste calculado pela cor do formulário.
+  - Modo escuro só existe nos formulários públicos (configuração de cada formulário); o painel é sempre claro (`colorMode` fixo em `light`).
+- Sem azul do OpnForm no painel/editor: use `primary-*` (vinho). As páginas de marketing (que redirecionam) e as cores de ícone de espaço de trabalho podem manter outras cores.
 - Cor primária: vinho `#640e2c` (paleta `cidadania` 50–950 em `@theme static` no `client/css/app.css`); `--ui-primary` usa o tom 800 no claro e 400 no escuro.
 - Menu lateral sem as seções "Produto" e "Ajuda" (`useSharedNavigation` retorna lista vazia).
 - Sem banners/modais de upgrade: `openSubscriptionModal` (em `useAppModals`) só mostra um aviso neutro; `PlanTag` nunca aparece; `UpgradeBanner` e `GitHubStar` foram removidos.

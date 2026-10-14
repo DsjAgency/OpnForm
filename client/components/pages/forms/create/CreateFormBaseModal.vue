@@ -24,7 +24,7 @@
               class="rounded-lg border border-neutral-200 bg-white p-5 shadow-[0_24px_70px_-45px_rgba(15,23,42,0.45)] sm:p-6"
             >
               <div class="mx-auto mb-4 max-w-lg text-center">
-                <div class="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-lg border border-blue-100 bg-blue-50 text-blue-600">
+                <div class="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-lg border border-primary-100 bg-primary-50 text-primary-800">
                   <Icon
                     name="i-heroicons-sparkles"
                     class="h-4 w-4"
@@ -39,7 +39,7 @@
                 <button
                   type="button"
                   data-testid="form-style-classic"
-                  class="group relative overflow-hidden rounded-lg border border-neutral-200 bg-white p-4 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-[0_18px_45px_-28px_rgba(37,99,235,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30"
+                  class="group relative overflow-hidden rounded-lg border border-neutral-200 bg-white p-4 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-primary-200 hover:shadow-[0_18px_45px_-28px_rgba(37,99,235,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-700/30"
                   @click="selectStyle('classic')"
                 >
                   <div class="rounded-lg bg-neutral-50 p-3 ring-1 ring-neutral-100">
@@ -58,14 +58,14 @@
                     </div>
                     <Icon
                       name="i-heroicons-arrow-right"
-                      class="mt-1 h-4 w-4 text-neutral-300 transition group-hover:translate-x-0.5 group-hover:text-blue-500"
+                      class="mt-1 h-4 w-4 text-neutral-300 transition group-hover:translate-x-0.5 group-hover:text-primary-700"
                     />
                   </div>
                 </button>
                 <button
                   type="button"
                   data-testid="form-style-focused"
-                  class="group relative overflow-hidden rounded-lg border border-neutral-200 bg-white p-4 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-[0_18px_45px_-28px_rgba(37,99,235,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30"
+                  class="group relative overflow-hidden rounded-lg border border-neutral-200 bg-white p-4 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-primary-200 hover:shadow-[0_18px_45px_-28px_rgba(37,99,235,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-700/30"
                   @click="selectStyle('focused')"
                 >
                   <div class="rounded-lg bg-neutral-50 p-3 ring-1 ring-neutral-100">
@@ -84,7 +84,7 @@
                     </div>
                     <Icon
                       name="i-heroicons-arrow-right"
-                      class="mt-1 h-4 w-4 text-neutral-300 transition group-hover:translate-x-0.5 group-hover:text-blue-500"
+                      class="mt-1 h-4 w-4 text-neutral-300 transition group-hover:translate-x-0.5 group-hover:text-primary-700"
                     />
                   </div>
                 </button>
@@ -126,7 +126,7 @@
                 >
                   <div class="flex items-center justify-between gap-3 border-b border-neutral-100 bg-neutral-50/80 px-3 py-2">
                     <div class="flex items-center gap-2">
-                      <span class="flex h-7 w-7 items-center justify-center rounded-md bg-blue-600 text-white shadow-sm">
+                      <span class="flex h-7 w-7 items-center justify-center rounded-md bg-primary-800 text-white shadow-sm">
                         <Icon
                           name="i-heroicons-bolt"
                           class="h-4 w-4"
@@ -164,7 +164,7 @@
                       </div>
                       <div class="h-1.5 overflow-hidden rounded-md bg-neutral-100">
                         <div
-                          class="h-full rounded-md bg-blue-600 transition-[width] duration-500 ease-out"
+                          class="h-full rounded-md bg-primary-800 transition-[width] duration-500 ease-out"
                           :style="{ width: `${generationProgress}%` }"
                         />
                       </div>
@@ -207,11 +207,11 @@
                     <button
                       type="button"
                       data-testid="form-base-simple-contact"
-                      class="group flex h-full min-h-28 w-full flex-col justify-between rounded-lg border border-neutral-200 bg-white p-4 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-[0_18px_42px_-30px_rgba(37,99,235,0.38)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30"
+                      class="group flex h-full min-h-28 w-full flex-col justify-between rounded-lg border border-neutral-200 bg-white p-4 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-primary-200 hover:shadow-[0_18px_42px_-30px_rgba(37,99,235,0.38)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-700/30"
                       @click="startFromContactForm"
                     >
                       <div class="flex items-center justify-between gap-3">
-                        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+                        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50 text-primary-800">
                           <UIcon
                             name="i-heroicons-envelope"
                             class="h-5 w-5"
@@ -219,7 +219,7 @@
                         </span>
                         <Icon
                           name="i-heroicons-arrow-right"
-                          class="h-4 w-4 text-neutral-300 transition group-hover:translate-x-0.5 group-hover:text-blue-500"
+                          class="h-4 w-4 text-neutral-300 transition group-hover:translate-x-0.5 group-hover:text-primary-700"
                         />
                       </div>
                       <div class="mt-4">

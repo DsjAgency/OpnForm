@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full border-b px-3 py-3 min-h-16 flex gap-x-3 items-center bg-white">
+  <div class="w-full border-b border-neutral-200/80 px-3 py-3 min-h-16 flex gap-x-3 items-center bg-white shadow-[0_1px_0_rgb(0_0_0/0.02)]">
     <a
       v-if="backButton"
       href="#"
-      class="ml-2 flex text-blue font-semibold text-sm -m-1 hover:bg-blue-500/10 rounded-md p-1 group"
+      class="ml-2 flex text-blue font-semibold text-sm -m-1 hover:bg-primary-700/10 rounded-md p-1 group"
       @click.prevent="$emit('go-back')"
     >
       <Icon

@@ -66,13 +66,13 @@
       
       <!-- Result Display - Fixed at bottom of right panel -->
       <div v-if="validationResult.valid && localVariable.formula" class="mt-auto pt-4 border-t">
-        <div class="p-4 bg-blue-50 rounded-lg">
+        <div class="p-4 bg-primary-50 rounded-lg">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
-              <Icon name="i-heroicons-calculator" class="w-5 h-5 text-blue-600" />
-              <span class="text-sm font-medium text-blue-900">Resultado</span>
+              <Icon name="i-heroicons-calculator" class="w-5 h-5 text-primary-800" />
+              <span class="text-sm font-medium text-primary-950">Resultado</span>
             </div>
-            <span class="text-lg font-mono font-bold text-blue-700">
+            <span class="text-lg font-mono font-bold text-primary-900">
               {{ computedResult }}
             </span>
           </div>

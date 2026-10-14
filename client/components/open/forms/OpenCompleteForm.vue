@@ -18,7 +18,7 @@
     </ClientOnly>
     <v-transition name="fade" mode="out-in">
       <div v-if="isAutoSubmit" key="auto-submit" class="text-center p-6">
-        <Loader class="h-6 w-6 text-blue-500 mx-auto" />
+        <Loader class="h-6 w-6 text-primary-700 mx-auto" />
       </div>
 
       <component

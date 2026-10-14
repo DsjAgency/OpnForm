@@ -1,8 +1,8 @@
 <template>
   <div class="overflow-hidden">
-    <div class="flex min-w-0 items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2">
-      <span class="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white text-blue-600 shadow-sm ring-1 ring-blue-100">
-        <span class="absolute inset-1 rounded-sm border border-blue-200/80 ai-loader-scan" />
+    <div class="flex min-w-0 items-center gap-2 rounded-lg border border-primary-100 bg-primary-50 px-3 py-2">
+      <span class="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white text-primary-800 shadow-sm ring-1 ring-primary-100">
+        <span class="absolute inset-1 rounded-sm border border-primary-200/80 ai-loader-scan" />
         <Icon
           :name="currentIcon"
           class="h-4 w-4"

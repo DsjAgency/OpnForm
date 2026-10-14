@@ -149,7 +149,7 @@
             v-if="loading"
             class="w-full py-2 flex justify-center"
           >
-            <Loader class="h-6 w-6 text-blue-500 mx-auto" />
+            <Loader class="h-6 w-6 text-primary-700 mx-auto" />
           </div>
           <div
             v-if="filteredOptions.length > 0"

@@ -2,7 +2,8 @@
   <form
     v-if="form"
     class="@container pb-20"
-    :class="{ 'f4u-form-backdrop min-h-full': useCardLayout }"
+    :class="{ 'f4u-form-backdrop min-h-full': useCardLayout, 'f4u-has-bg': useCardLayout && !!pageBackground }"
+    :style="useCardLayout ? formBackgroundStyle(pageBackground, { fixed: !isPreviewBackground }) : undefined"
     @submit.prevent=""
   >
     <!-- Classic cover/logo rendering -->
@@ -160,6 +161,7 @@ import FormProgressbar from './FormProgressbar.vue'
 import PoweredBy from '~/components/pages/forms/show/PoweredBy.vue'
 import { FormMode } from '~/lib/forms/FormModeStrategy.js'
 import { useIsIframe } from '~/composables/useIsIframe'
+import { formBackgroundStyle, resolveFormBackground } from '~/lib/forms/form-background.js'
 
 const props = defineProps({
   formManager: { type: Object, required: true }
@@ -261,6 +263,10 @@ const useCardLayout = computed(() => {
     && form.value?.width === 'centered'
     && [FormMode.LIVE, FormMode.PREVIEW].includes(mode)
 })
+
+// Page background (Forms4U wallpapers, custom image or none)
+const isPreviewBackground = computed(() => props.formManager?.mode?.value === FormMode.PREVIEW)
+const pageBackground = computed(() => resolveFormBackground(form.value, !!props.formManager?.darkMode?.value))
 
 // Branding display control comes from strategy; default to true
 const showBranding = computed(() => props.formManager?.strategy?.value?.display?.showBranding ?? true)

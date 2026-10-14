@@ -8,7 +8,7 @@ Contexto para o Claude Code neste repositório. Leia também o `AGENTS.md` (conv
   - Não renomeie código interno: variáveis, classes (ex.: `OpnFormServer`), pastas, pacotes, cookies, ícones `opnform:*`, a API do SDK (`window.opnform`), nem os arquivos `LICENSE` e avisos de licença.
   - Exceção: o e-mail de chave de licença (`LicenseKeyNotification`) fala do produto OpnForm Enterprise e mantém esse nome.
 - O código-base é o **OpnForm** (construtor de formulários open-source), sendo customizado para uso **interno da Cidadania4U**, em substituição ao Zoho Forms.
-- Ambiente de desenvolvimento: `docker-compose.dev.yml`. Frontend em http://127.0.0.1:3000, API via Nginx em http://localhost.
+- Ambiente de desenvolvimento: `docker-compose.dev.yml`. Frontend em http://127.0.0.1:3000, API via Nginx em http://localhost. O `nuxt dev` às vezes encerra com `ECONNRESET` (conexão abortada); o container `opnform-client` tem `restart: unless-stopped` para voltar sozinho.
 - **Responda sempre em português.**
 
 ## Regra obrigatória
@@ -70,6 +70,7 @@ Contexto para o Claude Code neste repositório. Leia também o `AGENTS.md` (conv
   - Animações globais no `app.css`: `f4u-fade-up` e `f4u-float` (respeitam "reduzir movimento").
   - Tempo relativo em pt-BR no navegador com `timeAgo()` (`client/lib/utils.js`), porque o `last_edited_human` da API segue o idioma do navegador.
 - Formulário público: formulários clássicos com largura "centralizada" aparecem como cartão sobre fundo suave tingido pela cor do formulário (`useCardLayout` em `components/open/forms/OpenForm.vue`; classes `f4u-form-backdrop` / `f4u-form-card` no `app.css`). Vale na página pública e na pré-visualização do editor, nunca em iframes/embeds. O selo "Feito com Forms4U" é `components/pages/forms/show/PoweredBy.vue`.
+  - Fundo da página: `form.settings.background` = `forms4u-claro` | `forms4u-vinho` | `none` | `custom` (com `settings.background_image`). Sem escolha, usa o claro (ou o vinho se o formulário estiver no modo escuro). Imagens em `client/public/img/backgrounds/`; lógica em `client/lib/forms/form-background.js`; seletor no editor (Aparência → Marca) em `FormBackgroundPicker.vue`. No formato focado com fundo, cada pergunta aparece num painel branco (`f4u-step-panel`).
   - Formato "uma pergunta por vez" (`OpenFormFocused.vue`): usa o mesmo fundo (`f4u-form-backdrop`) quando não há imagem de capa; setas com contraste calculado pela cor do formulário.
   - Modo escuro só existe nos formulários públicos (configuração de cada formulário); o painel é sempre claro (`colorMode` fixo em `light`).
 - Sem azul do OpnForm no painel/editor: use `primary-*` (vinho). As páginas de marketing (que redirecionam) e as cores de ícone de espaço de trabalho podem manter outras cores.
@@ -80,6 +81,15 @@ Contexto para o Claude Code neste repositório. Leia também o `AGENTS.md` (conv
 - Sem links para Discord/GitHub/site/docs/central de ajuda do OpnForm.
 - Páginas de marketing redirecionam para `/home` (logado) ou `/login`: `client/middleware/marketing-redirect.global.js`. Não use `defineRouteRules({ swr })` nessas páginas: o cache do servidor ignoraria o login e serviria o mesmo redirecionamento para todos.
 - Modelos: só os criados pela equipe (banco local). Os modelos oficiais do opnform.com ficam desligados (`SHOW_OFFICIAL_TEMPLATES=false`, padrão em `api/config/opnform.php`). A tela "Modelos" é `/templates/my-templates`; a galeria `/templates` e as páginas por tipo/setor redirecionam para ela.
+
+## Importação do Zoho Forms
+
+- Importador: `api/app/Service/FormImport/Importers/ZohoFormsImporter.php` (fora da pasta Enterprise), registrado como `zoho_forms` no `FormImportRegistry` e no botão "Importar" (detecção em `client/lib/forms/detect-form-import-source.js`).
+- Usa só o link público (`…/form/Nome/formperma/Chave`): estrutura pelo HTML e regras condicionais pelo JSON público `{link}/liverules`. Não usa a API nem token do Zoho.
+- Regras "mostrar" viram campo oculto + `show-block` (+ `require-answer` se era obrigatório); "ocultar" vira `hide-block`. Campos repetidos ganham o nome da seção ("— Segundo filho").
+- Subformulário (grupo repetível) vira a pergunta "Quantos você vai informar?" + N cópias fixas; N = `ZOHO_IMPORT_SUBFORM_COPIES` (padrão 3, limitado ao máximo do Zoho).
+- Domínios próprios do Zoho aceitos na importação: `ZOHO_FORMS_CUSTOM_DOMAINS` (ex.: `forms.cidadania4u.com.br`).
+- Não vêm do Zoho: notificações, integrações, máscaras de entrada, regras de página e respostas antigas.
 
 ## Validação
 

@@ -1,5 +1,5 @@
 <template>
-  <form ref="formElement" v-if="form" @submit.prevent="" class="@container w-full relative overflow-hidden flex flex-col min-h-full" :class="{ 'f4u-form-backdrop f4u-focused': useBrandBackdrop }" :style="focusedFormStyle">
+  <form ref="formElement" v-if="form" @submit.prevent="" class="@container w-full relative overflow-hidden flex flex-col min-h-full" :class="{ 'f4u-form-backdrop f4u-focused': useBrandBackdrop, 'f4u-has-bg': useBrandBackdrop && !!pageBackground }" :style="[focusedFormStyle, useBrandBackdrop ? formBackgroundStyle(pageBackground, { fixed: !isPreviewBackground }) : {}]">
     <!-- Fixed fullscreen background from form cover -->
     <div v-if="form.cover_picture" class="absolute inset-0 pointer-events-none">
       <BlockMediaLayout :image="coverMedia" alt="Imagem de capa do formulário" />
@@ -109,6 +109,7 @@ import { FormMode } from '~/lib/forms/FormModeStrategy.js'
 import { useFormImagePreloader } from '~/composables/forms/useFormImagePreloader.js'
 import PoweredBy from '~/components/pages/forms/show/PoweredBy.vue'
 import { useIsIframe } from '~/composables/useIsIframe'
+import { formBackgroundStyle, resolveFormBackground } from '~/lib/forms/form-background.js'
 
 const props = defineProps({
   formManager: { type: Object, required: true }
@@ -282,6 +283,9 @@ const useBrandBackdrop = computed(() => {
     && !isIframe
     && [FormMode.LIVE, FormMode.PREVIEW].includes(mode)
 })
+
+const isPreviewBackground = computed(() => props.formManager?.mode?.value === FormMode.PREVIEW)
+const pageBackground = computed(() => resolveFormBackground(form.value, !!props.formManager?.darkMode?.value))
 
 // Arrow icon color with enough contrast against the form color (Nuxt UI would
 // use a dark icon in dark mode, invisible on dark form colors)

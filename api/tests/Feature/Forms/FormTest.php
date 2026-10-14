@@ -799,3 +799,27 @@ it('clears invalid optional selection constraints during form creation', functio
 
     expect($savedField)->not->toHaveKeys(['min_selection', 'max_selection']);
 });
+
+it('saves the page background chosen for a form', function () {
+    $user = $this->actingAsUser();
+    $workspace = $this->createUserWorkspace($user);
+    $form = $this->createForm($user, $workspace);
+
+    $formData = (new \App\Http\Resources\FormResource($form))->toArray(request());
+    $formData['settings'] = [
+        'background' => 'custom',
+        'background_image' => 'https://example.com/fundo.png',
+    ];
+
+    $this->putJson(route('open.forms.update', $form), $formData)->assertSuccessful();
+
+    expect($form->fresh()->settings)->toMatchArray([
+        'background' => 'custom',
+        'background_image' => 'https://example.com/fundo.png',
+    ]);
+
+    $formData['settings'] = ['background' => 'papel-de-parede'];
+    $this->putJson(route('open.forms.update', $form), $formData)
+        ->assertStatus(422)
+        ->assertJsonValidationErrors(['settings.background']);
+});

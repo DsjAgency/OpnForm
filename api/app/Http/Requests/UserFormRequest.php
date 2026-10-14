@@ -204,6 +204,9 @@ abstract class UserFormRequest extends \Illuminate\Foundation\Http\FormRequest
             'settings' => 'nullable|array',
             'settings.navigation_arrows' => 'sometimes|boolean',
             'settings.auto_next' => 'sometimes|boolean',
+            // Page background: Forms4U wallpapers, a custom image or none
+            'settings.background' => 'sometimes|nullable|in:forms4u-claro,forms4u-vinho,none,custom',
+            'settings.background_image' => 'sometimes|nullable|url:http,https|max:2048',
 
             // Analytics
             'analytics' => 'nullable|array',

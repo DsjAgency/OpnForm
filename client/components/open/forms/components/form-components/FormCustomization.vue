@@ -168,6 +168,8 @@
       <ImageWithSettings :form="form" name="cover_picture" :label="isFocused ? 'Fundo' : 'Capa (~1500px)'" kind="cover" />
     </div>
 
+    <FormBackgroundPicker :form="form" class="mt-4" />
+
     <toggle-switch-input
       name="no_branding"
       :form="form"
@@ -244,6 +246,7 @@ import PlanTag from "~/components/app/PlanTag.vue"
 import { DEFAULT_COLOR, ensureSettingsObject } from "@/composables/forms/initForm"
 import PresentationStyleSwitch from "./PresentationStyleSwitch.vue"
 import ImageWithSettings from "../media/ImageWithSettings.vue"
+import FormBackgroundPicker from "./FormBackgroundPicker.vue"
 
 
 const workingFormStore = useWorkingFormStore()

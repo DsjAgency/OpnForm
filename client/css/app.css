@@ -496,6 +496,32 @@ body.dark * {
     transform: translateY(0);
 }
 
+/* With a page background image (wallpaper or custom), the focused layout
+   shows each question on a panel so the text stays readable. */
+.f4u-has-bg .f4u-step-panel {
+    background-color: rgb(255 255 255 / 0.96);
+    border-radius: 1.5rem;
+    padding: 2rem 1.5rem;
+    box-shadow:
+        0 1px 2px rgb(15 23 42 / 0.04),
+        0 12px 40px -12px rgb(15 23 42 / 0.18);
+}
+
+@media (min-width: 640px) {
+    .f4u-has-bg .f4u-step-panel {
+        padding: 2.5rem 2.75rem;
+    }
+}
+
+.dark .f4u-has-bg .f4u-step-panel {
+    background-color: rgb(46 46 46 / 0.96);
+}
+
+/* Navigation arrows stay visible over a background image */
+.f4u-has-bg [aria-label="Controles do formulário"] button {
+    box-shadow: 0 0 0 2px rgb(255 255 255 / 0.85), 0 4px 12px rgb(0 0 0 / 0.15);
+}
+
 /* Dark forms: a thin light outline keeps dark brand colors visible */
 .dark .f4u-form-card .btn,
 .dark .f4u-focused .btn,

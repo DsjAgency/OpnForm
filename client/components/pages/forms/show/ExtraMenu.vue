@@ -121,7 +121,7 @@ const items = computed(() => {
         ...props.isMainPage ? [{
         label: 'Editar',
         icon: 'i-heroicons-pencil-square-20-solid',
-        to: { name: 'forms-slug-edit', params: { slug: props.form.slug } }
+        onClick: () => router.push({ name: 'forms-slug-edit', params: { slug: props.form.slug } })
       }] : [],
       {
         label: 'Duplicar formulário',

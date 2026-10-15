@@ -40,6 +40,7 @@
 import { computed } from "vue"
 
 const { openUserSettings } = useAppModals()
+const router = useRouter()
 
 const { user: userQuery, logout: logoutMutationFactory } = useAuth()
 const { data: user } = userQuery()
@@ -80,7 +81,7 @@ const dropdownItems = computed(() => {
     navItems.push({
       label: 'Administração',
       icon: 'i-heroicons-shield-check',
-      to: { name: 'admin' }
+      onSelect: () => router.push({ name: 'admin' })
     })
   }
 

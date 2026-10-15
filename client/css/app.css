@@ -539,6 +539,88 @@ body.dark * {
     }
 }
 
+/* Thank-you screen: a check mark in the form color above the message */
+.f4u-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem auto 1.25rem;
+    border-radius: 9999px;
+    color: var(--form-color, #640e2c);
+    background-color: color-mix(in srgb, var(--form-color, #640e2c) 12%, white);
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--form-color, #640e2c) 6%, transparent);
+    animation: f4u-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.dark .f4u-success-icon {
+    background-color: color-mix(in srgb, var(--form-color, #640e2c) 30%, transparent);
+    color: white;
+}
+
+.f4u-success-text {
+    text-align: center;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+}
+
+@keyframes f4u-pop {
+    from {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Public forms on phones: comfortable touch targets (at least 48px),
+   16px text so iOS does not zoom into fields, roomier option lists and
+   full-width buttons. Scoped to the public form, so the panel is untouched. */
+@media (max-width: 639px) {
+    .open-complete-form input[type="text"],
+    .open-complete-form input[type="email"],
+    .open-complete-form input[type="tel"],
+    .open-complete-form input[type="number"],
+    .open-complete-form input[type="url"],
+    .open-complete-form input[type="password"],
+    .open-complete-form .v-select button,
+    .open-complete-form .form-group button[aria-haspopup] {
+        min-height: 3rem;
+        font-size: max(1rem, 1em);
+    }
+
+    .open-complete-form textarea {
+        font-size: max(1rem, 1em);
+    }
+
+    .open-complete-form .input-label {
+        font-size: 0.95rem;
+        line-height: 1.35;
+    }
+
+    .open-complete-form [role="option"] {
+        min-height: 2.75rem;
+    }
+
+    .open-complete-form .btn {
+        min-height: 3.25rem;
+        font-size: 1.0625rem;
+    }
+
+    .f4u-form-card {
+        padding: 1.75rem 1.25rem 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .f4u-success-icon {
+        animation: none;
+    }
+}
+
 /* Thin, discreet scrollbars in the app shell */
 .dashboard-layout * {
     scrollbar-width: thin;

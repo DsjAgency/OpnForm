@@ -2,10 +2,10 @@
   <div
     v-if="workspace"
     data-testid="home-page"
-    class="flex flex-col h-full min-h-screen bg-[#fbfafa]"
+    class="flex flex-col h-full min-h-screen bg-[#fcf9f8]"
   >
     <div
-      class="sticky top-0 z-50 bg-white/80 backdrop-blur-md h-[49px] border-b border-neutral-200/80 p-2 sm:px-4"
+      class="sticky top-[49px] sm:top-0 z-50 bg-white/80 backdrop-blur-md h-[49px] border-b border-neutral-200/80 p-2 sm:px-4"
     >
       <div
         class="max-w-6xl mx-auto flex items-center justify-between flex-shrink-0 gap-2 px-2 sm:px-0"
@@ -13,10 +13,11 @@
         <VTransition name="fade">
           <div
             v-if="forms?.length > 0 || isFilteringForms"
-            class="flex items-center gap-2"
+            class="flex min-w-0 flex-1 sm:flex-none items-center gap-2"
           >
             <UInput
               v-model="search"
+              class="min-w-0 flex-1 sm:flex-none"
               placeholder="Buscar formulários..."
               icon="i-heroicons-magnifying-glass-solid"
             />
@@ -46,9 +47,11 @@
           <UButton
             v-if="!workspace?.is_readonly"
             icon="i-heroicons-plus"
-            label="Criar formulário"
-            :to="{ name: 'forms-create' }"
-          />
+            aria-label="Criar formulário"
+            @click="router.push({ name: 'forms-create' })"
+          >
+            <span class="hidden sm:inline">Criar formulário</span>
+          </UButton>
         </TrackClick>
       </div>
     </div>
@@ -148,7 +151,7 @@
                   size="lg"
                   icon="i-heroicons-plus"
                   label="Criar formulário"
-                  :to="{ name: 'forms-create' }"
+                  @click="router.push({ name: 'forms-create' })"
                 />
                 <UButton
                   size="lg"
@@ -156,7 +159,7 @@
                   variant="outline"
                   icon="i-heroicons-document-duplicate"
                   label="Ver modelos"
-                  :to="{ name: 'templates-my-templates' }"
+                  @click="router.push({ name: 'templates-my-templates' })"
                 />
               </div>
             </div>
@@ -258,6 +261,7 @@ useOpnSeoMeta({
 })
 
 // Composables
+const router = useRouter()
 const { current: workspace, currentId: workspaceId } = useCurrentWorkspace()
 
 const {

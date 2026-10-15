@@ -1,7 +1,7 @@
 <template>
   <form
     v-if="form"
-    class="@container pb-20"
+    class="@container pb-10 sm:pb-20"
     :class="{ 'f4u-form-backdrop min-h-full': useCardLayout, 'f4u-has-bg': useCardLayout && !!pageBackground }"
     :style="useCardLayout ? formBackgroundStyle(pageBackground, { fixed: !isPreviewBackground }) : undefined"
     @submit.prevent=""
@@ -147,7 +147,8 @@
     </div>
 
     <!-- Branding button -->
-    <div v-if="!form.no_branding && showBranding" class="fixed z-10 bottom-4 right-4">
+    <!-- On phones the badge sits below the form instead of floating over the fields -->
+    <div v-if="!form.no_branding && showBranding" class="mt-8 flex justify-center sm:mt-0 sm:fixed sm:z-10 sm:bottom-4 sm:right-4">
       <PoweredBy :color="form.color" />
     </div>
   </form>

@@ -49,6 +49,8 @@
         <UButton
           v-bind="getButtonProps(item)"
           :class="buttonClass"
+          :aria-label="item.ariaLabel || item.label"
+          :aria-current="item.active ? 'page' : undefined"
           @click="handleClick(item)"
         >
           <template #trailing v-if="item.kbd">
@@ -108,6 +110,8 @@ const props = defineProps({
 
 const emit = defineEmits(['item-click'])
 
+const router = useRouter()
+
 // Setup keyboard shortcuts
 const shortcuts = computed(() => {
   const shortcutMap = {}
@@ -146,10 +150,12 @@ function getTrackingProperties(item) {
 }
 
 function getButtonProps(item) {
-  // Create a copy of the item without the onClick handler
+  // Internal routes (`to`) are left out so UButton renders a <button> instead
+  // of an <a href>: navigation happens in handleClick via router.push and the
+  // browser shows no URL preview on hover. External `href` items stay links.
   // eslint-disable-next-line no-unused-vars
-  const { onClick, ...buttonProps } = item
-  return buttonProps
+  const { onClick, to, ariaLabel, ...buttonProps } = item
+  return buttonProps.href ? buttonProps : { ...buttonProps, type: 'button' }
 }
 
 function handleClick(item) {
@@ -157,10 +163,9 @@ function handleClick(item) {
   if (typeof item.onClick === 'function') {
     item.onClick()
   }
-  // Handle navigation for items with 'to' property
-  else if (item.to) {
-    // Use navigateTo for internal navigation
-    navigateTo(item.to)
+  // Internal navigation ('#' marks loading placeholders)
+  else if (item.to && item.to !== '#') {
+    router.push(item.to)
   }
   // Handle external links
   else if (item.href) {

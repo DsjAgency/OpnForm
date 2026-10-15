@@ -2,8 +2,8 @@
   <BaseSidebar>
 
     <template #mobile-header>
-      <h1 class="sm:hidden text-base font-medium text-neutral-500 tracking-wider px-2 truncate">
-        {{ loading ? 'Loading...' : form?.title }}
+      <h1 class="sm:hidden !text-base !font-semibold text-neutral-800 px-2 truncate">
+        {{ loading ? 'Carregando...' : form?.title }}
       </h1>
     </template>
 

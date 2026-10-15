@@ -68,10 +68,11 @@
       </div>
     </div>
 
-    <NuxtLink
-      :to="{ name: 'forms-slug-show-submissions', params: { slug: form.slug } }"
-      class="absolute inset-0 z-10"
+    <button
+      type="button"
+      class="absolute inset-0 z-10 rounded-[inherit] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary-700"
       :aria-label="`Abrir ${form.title}`"
+      @click="openForm"
     />
   </div>
 
@@ -124,10 +125,11 @@
       </div>
     </div>
 
-    <NuxtLink
-      :to="{ name: 'forms-slug-show-submissions', params: { slug: form.slug } }"
-      class="absolute inset-0 z-10"
+    <button
+      type="button"
+      class="absolute inset-0 z-10 rounded-[inherit] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary-700"
       :aria-label="`Abrir ${form.title}`"
+      @click="openForm"
     />
   </div>
 </template>
@@ -156,6 +158,9 @@ const ACCENTS = [
   { solid: "#4a031d", background: "linear-gradient(135deg, #640e2c 0%, #4a031d 60%, #2d000e 100%)" },
   { solid: "#8c2c48", background: "linear-gradient(135deg, #d78697 0%, #ab4660 50%, #640e2c 100%)" },
 ]
+const router = useRouter()
+const openForm = () => router.push({ name: "forms-slug-show-submissions", params: { slug: props.form.slug } })
+
 const accent = computed(() => ACCENTS[(props.form.id || 0) % ACCENTS.length])
 
 const updatedLabel = computed(() => timeAgo(props.form.updated_at) || props.form.last_edited_human)

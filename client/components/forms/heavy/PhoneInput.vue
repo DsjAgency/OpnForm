@@ -133,8 +133,8 @@ const countryFlagSize = computed(() => {
 })
 
 // Methods
-const getCountryBy = (code = 'US', type = 'code') => {
-  if (!code) code = 'US' // Default US
+const getCountryBy = (code = 'BR', type = 'code') => {
+  if (!code) code = 'BR' // Default Brazil (+55)
   return countries.value.find((item) => {
     return item[type] === code
   }) ?? null

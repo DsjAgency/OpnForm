@@ -1,7 +1,7 @@
 <template>
   <aside
     :class="[
-      'bg-[#faf9f9] border-neutral-200/80 flex flex-col transition-all duration-300 ease-in-out z-[60]',
+      'bg-[#faf6f5] border-neutral-200/80 flex flex-col transition-all duration-300 ease-in-out z-[60]',
       isMobileMenuOpen
         ? 'fixed inset-0'
         : 'sticky top-0 w-full h-[49px] overflow-hidden sm:flex sm:fixed sm:h-full sm:w-58 sm:border-r',
@@ -69,9 +69,14 @@
     >
       <slot name="footer" :isMobileMenuOpen="isMobileMenuOpen">
         <div class="flex items-center justify-center px-2 py-1">
-          <NuxtLink :to="{ name: 'home' }" class="opacity-90 hover:opacity-100 transition-opacity">
-            <img src="/img/forms4u-logo.png" alt="Forms4U" class="h-7 w-auto">
-          </NuxtLink>
+          <button
+            type="button"
+            aria-label="Forms4U – ir para o início"
+            class="rounded-md opacity-90 hover:opacity-100 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+            @click="router.push({ name: 'home' })"
+          >
+            <img src="/img/forms4u-logo.png" alt="" class="h-7 w-auto">
+          </button>
         </div>
       </slot>
     </div>
@@ -80,6 +85,7 @@
 
 <script setup>
 const slots = useSlots()
+const router = useRouter()
 
 const isMobileMenuOpen = ref(false)
 

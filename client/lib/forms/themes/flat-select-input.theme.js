@@ -97,7 +97,7 @@ export const flatSelectInputTheme = {
     size: {
       xs: { option: 'px-2 py-1 text-xs' },
       sm: { option: 'px-2 py-1.5 text-sm' },
-      md: { option: 'px-3 py-2 text-base' },
+      md: { option: 'px-3 py-3 sm:py-2 text-base' },
       lg: { option: 'px-4 py-3 text-lg' }
     },
     borderRadius: {

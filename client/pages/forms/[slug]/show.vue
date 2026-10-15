@@ -108,7 +108,8 @@
                       color="primary"
                       icon="i-heroicons-pencil"
                       class="hover:no-underline"
-                      :to="{ name: 'forms-slug-edit', params: { slug: form.slug } }"
+                      aria-label="Editar formulário"
+                      @click="router.push({ name: 'forms-slug-edit', params: { slug: form.slug } })"
                     >
                       Editar <span class="hidden md:inline">formulário</span>
                     </UButton>
@@ -143,6 +144,8 @@
               <div class="flex flex-wrap gap-2 flex-col mt-2">
                 <FormStatusBadges size="sm" :form="form" />
               </div>
+
+              <FormMobileTabs :form="form" />
             </div>
           </div>
 
@@ -172,7 +175,7 @@
                 variant="soft"
                 class="hover:no-underline"
                 icon="i-heroicons-arrow-left"
-                :to="{ name: 'home' }"
+                @click="router.push({ name: 'home' })"
               >
                 Ir para o painel
               </UButton>
@@ -193,6 +196,7 @@ import FormSidebar from "../../../components/layouts/FormSidebar.vue"
 import ExtraMenu from "../../../components/pages/forms/show/ExtraMenu.vue"
 import FormCleanings from "../../../components/pages/forms/show/FormCleanings.vue"
 import FormStatusBadges from "../../../components/open/forms/components/FormStatusBadges.vue"
+import FormMobileTabs from "../../../components/pages/forms/show/FormMobileTabs.vue"
 import TrackClick from "../../../components/global/TrackClick.vue"
 
 definePageMeta({
@@ -205,6 +209,7 @@ useOpnSeoMeta({
 
 // Composables
 const route = useRoute()
+const router = useRouter()
 const workingFormStore = useWorkingFormStore()
 const { detail: formDetail } = useForms()
 

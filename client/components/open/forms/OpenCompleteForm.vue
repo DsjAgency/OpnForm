@@ -86,16 +86,19 @@
 
         <!-- Submitted view provided to renderer -->
         <template #after-submit>
+          <div class="f4u-success-icon" aria-hidden="true">
+            <UIcon name="i-heroicons-check-20-solid" class="size-8" />
+          </div>
           <TextBlock
             v-if="form.submitted_text"
-            class="form-description text-neutral-700 dark:text-neutral-300 whitespace-pre-wrap"
+            class="form-description f4u-success-text text-neutral-700 dark:text-neutral-300 whitespace-pre-wrap"
             :content="form.submitted_text"
             :mentions-allowed="true"
             :form="form"
             :form-data="submittedData"
           />
           <div class="flex flex-col w-full gap-2 mt-4">
-            <div class="flex gap-2 items-center">
+            <div class="flex flex-wrap gap-2 items-center justify-center">
               <open-form-button
                 v-if="pdfDownloadEnabled"
                 :form="form"
@@ -578,7 +581,7 @@ defineExpose({
 <style lang="scss">
 .open-complete-form {
   * {
-    font-family: var(--font-family, Inter, sans-serif) !important;
+    font-family: var(--font-family, euclid-circular-b), euclid-circular-b, sans-serif !important;
   }
 
 }

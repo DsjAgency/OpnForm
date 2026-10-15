@@ -483,7 +483,7 @@ test("register succeeds and lands in the form creation flow", async ({ page }) =
 
 test("login succeeds for the seeded user", async ({ page }) => {
   await loginUi(page)
-  await expect(page.getByTestId("home-page").getByRole("link", { name: "Criar formulário" }).first()).toBeVisible()
+  await expect(page.getByTestId("home-page").getByRole("button", { name: "Criar formulário" }).first()).toBeVisible()
 })
 
 test("invalid login stays on the login page", async ({ page }) => {

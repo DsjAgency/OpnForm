@@ -161,15 +161,12 @@ useOpnSeoMeta({
   ),
 })
 
-onBeforeRouteLeave((to, from, next) => {
-  if (pdfStore.hasUnsavedChanges) {
-    if (window.confirm('As alterações feitas podem não ser salvas. Tem certeza de que quer sair?')) {
-      window.onbeforeunload = null
-      return next()
-    }
-    return next(false)
-  }
+const { confirmLeave } = useLeaveConfirm()
 
-  return next()
+onBeforeRouteLeave(async () => {
+  if (!pdfStore.hasUnsavedChanges) return true
+  const leave = await confirmLeave()
+  if (leave) window.onbeforeunload = null
+  return leave
 })
 </script>

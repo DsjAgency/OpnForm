@@ -68,11 +68,10 @@
       :class="{ 'hidden': !isMobileMenuOpen, 'sm:block': true }"
     >
       <slot name="footer" :isMobileMenuOpen="isMobileMenuOpen">
-        <div class="flex items-center justify-between gap-2 px-2 py-1">
+        <div class="flex items-center justify-center px-2 py-1">
           <NuxtLink :to="{ name: 'home' }" class="opacity-90 hover:opacity-100 transition-opacity">
             <img src="/img/forms4u-logo.png" alt="Forms4U" class="h-7 w-auto">
           </NuxtLink>
-          <span v-if="version" class="text-[10px] font-medium text-neutral-400 rounded-full bg-neutral-100 px-1.5 py-0.5">v{{ version }}</span>
         </div>
       </slot>
     </div>
@@ -83,7 +82,6 @@
 const slots = useSlots()
 
 const isMobileMenuOpen = ref(false)
-const version = computed(() => useFeatureFlag('version'))
 
 // Check if header slot has content
 const hasHeaderContent = computed(() => {

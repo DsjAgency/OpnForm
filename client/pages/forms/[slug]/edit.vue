@@ -107,16 +107,13 @@ watch(
   { immediate: true }
 )
 
-onBeforeRouteLeave((to, from, next) => {
-  if (isDirty()) {
-    if (window.confirm('As alterações feitas podem não ser salvas. Tem certeza de que quer sair?')) {
-      window.onbeforeunload = null
-      next()
-    } else {
-      next(false)
-    }
-  }
-  next()
+const { confirmLeave } = useLeaveConfirm()
+
+onBeforeRouteLeave(async () => {
+  if (!isDirty()) return true
+  const leave = await confirmLeave()
+  if (leave) window.onbeforeunload = null
+  return leave
 })
 
 onBeforeMount(() => {
